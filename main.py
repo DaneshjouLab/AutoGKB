@@ -13,9 +13,5 @@ Usage:
 Author: [Your Name or Lab]
 """
 
-# Your imports and code start below
-
-
-"""This module does blah blah."""
 if __name__ == "__main__":
     pass
