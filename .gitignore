@@ -1,1 +1,16 @@
 .vscode
+
+# pixi environments
+.pixi
+*.egg-info
+
+# python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+
+# environments
+.pyenv
+.env
