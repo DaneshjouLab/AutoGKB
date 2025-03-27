@@ -9,3 +9,8 @@ Files: Config/**
 Copyright: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
 License: Apache-2.0
 Comment: All files are part of the Daneshjou Lab projects.
+
+Files: src/**
+Copyright: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+License: Apache-2.0
+Comment: All files are part of the Daneshjou Lab projects.
