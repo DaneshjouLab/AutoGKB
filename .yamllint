@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+# SPDX-License-Identifier: Apache-2.0
+---
+extends: default
+
+rules:
+  truthy:
+    level: warning
+    allowed-values: ["false", "true", "on", "off"]
+  document-start:
+    level: warning 
+  line-length:
+    max: 180
+    level: warning
+  document-start:
+    present: false

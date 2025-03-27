@@ -1,1 +1,19 @@
+# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+# SPDX-License-Identifier: Apache-2.0
+
 .vscode
+
+# pixi environments
+.pixi
+*.egg-info
+
+# python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+
+# environments
+.pyenv
+.env

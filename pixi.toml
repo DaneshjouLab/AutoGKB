@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+# SPDX-License-Identifier: Apache-2.0
+
+[project]
+authors = [
+    "Aaron Fanous <aron7628@stanford.edu>",
+    "Shlok Natarajan <shlok.natarajan@gmail.com>"
+]
+channels = ["conda-forge"]
+name = "AutoGKB"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]

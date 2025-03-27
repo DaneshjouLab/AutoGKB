@@ -2,10 +2,10 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
 Files: DataSet/**
 Copyright: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
-License: Apache
+License: Apache-2.0
 Comment: All files are part of the Daneshjou Lab projects.
 
 Files: Config/**
 Copyright: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
-License: Apache
+License: Apache-2.0
 Comment: All files are part of the Daneshjou Lab projects.
