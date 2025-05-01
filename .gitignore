@@ -19,4 +19,4 @@ __pycache__
 .env
 
 # data
-load_data/saved_data/
+src/load_data/saved_data/
