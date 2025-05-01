@@ -112,8 +112,41 @@ def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, del
 
     return existing_results
 
+def get_unique_pmcids() -> List[str]:
+    """
+    Get a list of unique PMCIDs from the PMCID mapping (pmcid_mapping.json)
+    """
+    # Load the unique PMCIDs if they've already been saved
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    unique_pmcids_path = os.path.join(base_dir, "saved_data", "unique_pmcids.json")
+    if os.path.exists(unique_pmcids_path):
+        with open(unique_pmcids_path, "r") as f:
+            try:
+                pmcids = json.load(f)
+            except json.JSONDecodeError as e:
+                logger.error(f"Error loading unique PMCIDs from {unique_pmcids_path}: {e}")
+                raise e
+        logger.info(f"Loaded {len(pmcids)} unique PMCIDs from {unique_pmcids_path}")
+        return pmcids
+    
+    # Load from pmcid_mapping.json if unique pmcids haven't been saved
+    results_path = os.path.join(base_dir, "saved_data", "pmcid_mapping.json")
+    with open(results_path, "r") as f:
+        existing_results = json.load(f)
+    # get the unique pmcids
+    pmcids = list(set(existing_results.values()))
+
+    # Save the unique pmcids to a json file
+    unique_pmcids_path = os.path.join(base_dir, "saved_data", "unique_pmcids.json")
+    with open(unique_pmcids_path, "w") as f:
+        json.dump(pmcids, f)
+    logger.info(f"Unique PMCIDs saved to {unique_pmcids_path}")
+    return pmcids
+
 
 if __name__ == "__main__":
-    pmid_list = get_pmid_list()
-    results = batch_pmid_to_pmcid(pmid_list, os.getenv("NCBI_EMAIL"))
-    logger.info(f"PMCID mapping complete. {len(results)} PMIDs mapped to PMCIDs.")
+    # pmid_list = get_pmid_list()
+    # results = batch_pmid_to_pmcid(pmid_list, os.getenv("NCBI_EMAIL"))
+    # logger.info(f"PMCID mapping complete. {len(results)} PMIDs mapped to PMCIDs.")
+    pmcids = get_unique_pmcids()
+    logger.info(f"Number of unique PMCIDs: {len(pmcids)}")
