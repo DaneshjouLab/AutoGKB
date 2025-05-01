@@ -17,3 +17,6 @@ __pycache__
 # environments
 .pyenv
 .env
+
+# data
+saved_data/
