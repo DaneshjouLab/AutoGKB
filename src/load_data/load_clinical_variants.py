@@ -110,8 +110,20 @@ def get_pmid_list(override: bool = False) -> list:
     """
     Loads the pmid list from the variant annotations tsv file.
     """
-    df = load_variant_annotations_tsv(override)
-    return df["PMID"].unique().tolist()
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    pmid_list_path = os.path.join(base_dir, "saved_data", "pmid_list.json")
+    if os.path.exists(pmid_list_path):
+        logger.info(f"Loading PMIDs from {pmid_list_path}")
+        with open(pmid_list_path, "r") as f:
+            pmid_list = json.load(f)
+    else:
+        df = load_variant_annotations_tsv(override)
+        pmid_list = df["PMID"].unique().tolist()
+        logger.info(f"Saving PMIDs to {pmid_list_path}")
+        with open(pmid_list_path, "w") as f:
+            json.dump(pmid_list, f)
+    return pmid_list
+
 
 if __name__ == "__main__":
     pmid_list = get_pmid_list()
