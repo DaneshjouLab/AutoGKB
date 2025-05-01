@@ -7,6 +7,11 @@ from loguru import logger
 import pandas as pd
 import json
 
+"""
+This file contains functions to load the clinical variants data from the PharmGKB API.
+The key function is get_pmid_list(), which loads the PMIDs from the variant annotations tsv file and saves them to a json file.
+"""
+
 def download_and_extract_variant_annotations(override: bool = False) -> str:
     """
     Downloads and extracts the variant annotations zip file.
