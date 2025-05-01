@@ -21,3 +21,4 @@ This repository contains Python scripts for running and building a Pharmacogenom
 | Convert the PMID to PMCID | ✅ |
 | Update to use non-official pmid to pmcid | |
 | Fetch the content from the PMCID |  |
+| Create pairing of annotations to article | |
