@@ -88,6 +88,7 @@ def load_unique_variants(save_results: bool = True) -> dict:
     """
     Loads the unique variants from the variant annotations tsv file and saves them to a json file.
     If the json file already exists, it will be loaded from the file.
+    NOTE: Don't think this function is needed anymore. get_pmid_list() is used instead.
     """
     base_dir = os.path.dirname(os.path.abspath(__file__))
     unique_variants_path = os.path.join(base_dir, "saved_data", "unique_variants.json")
@@ -109,9 +110,9 @@ def get_pmid_list(override: bool = False) -> list:
     """
     Loads the pmid list from the variant annotations tsv file.
     """
-    df = load_variant_annotations_tsv()
+    df = load_variant_annotations_tsv(override)
     return df["PMID"].unique().tolist()
 
 if __name__ == "__main__":
     pmid_list = get_pmid_list()
-    print(pmid_list[0:50])
+    print(f"Number of unique PMIDs: {len(pmid_list)}")
