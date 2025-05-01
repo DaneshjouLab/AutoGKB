@@ -5,8 +5,17 @@ from io import BytesIO
 import shutil
 from loguru import logger
 import pandas as pd
+import json
 
-def download_and_extract_clinical_variants(override=False):
+def download_and_extract_clinical_variants(override: bool = False) -> str:
+    """
+    Downloads and extracts the clinical variants zip file.
+    If the folder already exists, it will be skipped unless override parameter is set to True.
+    Params:
+        override (bool): If True, the folder will be deleted and the zip file will be downloaded and extracted again.
+    Returns:
+        str: The path to the extracted folder.
+    """
     url = "https://api.pharmgkb.org/v1/download/file/data/clinicalVariants.zip"
     
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -34,13 +43,21 @@ def download_and_extract_clinical_variants(override=False):
     return extract_dir
 
 
-def load_clinical_variants_tsv():
+def load_clinical_variants_tsv(override: bool = False) -> pd.DataFrame:
+    """
+    Loads the clinical variants tsv file.
+    If the file does not exist, it will be downloaded and extracted.
+    Params:
+        override (bool): If True, the file will be downloaded and extracted again.
+    Returns:
+        pd.DataFrame: The loaded clinical variants tsv file.
+    """
     base_dir = os.path.dirname(os.path.abspath(__file__))
     tsv_path = os.path.join(base_dir, "saved_data", "clinicalVariants", "clinicalVariants.tsv")
 
     if not os.path.exists(tsv_path):
         logger.info(f"{tsv_path} not found. Downloading data...")
-        download_and_extract_clinical_variants()
+        download_and_extract_clinical_variants(override)
 
     if not os.path.exists(tsv_path):
         logger.error(f"File still not found after download attempt: {tsv_path}")
@@ -50,7 +67,44 @@ def load_clinical_variants_tsv():
     df = pd.read_csv(tsv_path, sep='\t')
     return df
 
+def unique_variants(df: pd.DataFrame) -> dict:
+    """
+    Generates a dictionary with unique values for each column of a Pandas DataFrame.
+
+    Args:
+        df: The input Pandas DataFrame.
+
+    Returns:
+        A dictionary where keys are column names and values are lists of unique values
+        for that column. Returns an empty dictionary if the input is invalid.
+    """
+    if not isinstance(df, pd.DataFrame):
+        logger.error("Input is not a Pandas DataFrame")
+        return {}
+
+    return {col: df[col].unique().tolist() for col in df.columns}
+
+def load_unique_variants(save_results: bool = True) -> dict:
+    """
+    Loads the unique variants from the clinical variants tsv file and saves them to a json file.
+    If the json file already exists, it will be loaded from the file.
+    """
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    unique_variants_path = os.path.join(base_dir, "saved_data", "unique_variants.json")
+    if os.path.exists(unique_variants_path):
+        logger.info(f"Loading unique variants from {unique_variants_path}")
+        with open(unique_variants_path, "r") as f:
+            unique_values_per_column = json.load(f)
+    else:
+        logger.info(f"Unique variants not found at {unique_variants_path}. Loading from tsv file...")
+        df = load_clinical_variants_tsv()
+        unique_values_per_column = unique_variants(df)
+        if save_results:
+            logger.info(f"Saving unique variants to {unique_variants_path}")
+            with open(unique_variants_path, "w") as f:
+                json.dump(unique_values_per_column, f)
+    return unique_values_per_column
 
 if __name__ == "__main__":
-    df = load_clinical_variants_tsv()
-    print(df.head())
+    unique_variants = load_unique_variants()
+    print(str(unique_variants)[0:50])
