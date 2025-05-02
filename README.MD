@@ -11,3 +11,14 @@
 ## Description
 
 This repository contains Python scripts for running and building a Pharmacogenomic Agentic system to annotate and label genetic variants based on their phenotypical associations from journal articles. 
+
+
+## Progress Tracker
+| Task | Status |
+| --- | --- |
+| Download the zip of variants from pharmgkb | ✅  |
+| Get a PMID list from the variants tsv (column PMID) | ✅ |
+| Convert the PMID to PMCID | ✅ |
+| Update to use non-official pmid to pmcid | |
+| Fetch the content from the PMCID |  |
+| Create pairing of annotations to article | |
