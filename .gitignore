@@ -20,3 +20,5 @@ __pycache__
 
 # data
 src/load_data/saved_data/
+src/fetch_articles/saved_data/downloaded_pmcids.json
+src/fetch_articles/saved_data/articles/

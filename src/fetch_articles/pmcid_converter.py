@@ -115,6 +115,8 @@ def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, del
 def get_unique_pmcids() -> List[str]:
     """
     Get a list of unique PMCIDs from the PMCID mapping (pmcid_mapping.json)
+    NOTE: Could add functionality to check for new PMCIDs in mapping and update the unique_pmcids.json file
+    Currently function returns the pre-existing unique PMCIDs if they exist or regenerates the list from the mapping.
     """
     # Load the unique PMCIDs if they've already been saved
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -126,7 +128,7 @@ def get_unique_pmcids() -> List[str]:
             except json.JSONDecodeError as e:
                 logger.error(f"Error loading unique PMCIDs from {unique_pmcids_path}: {e}")
                 raise e
-        logger.info(f"Loaded {len(pmcids)} unique PMCIDs from {unique_pmcids_path}")
+        logger.warning(f"Loaded {len(pmcids)} pre-existing unique PMCIDs from {unique_pmcids_path}")
         return pmcids
     
     # Load from pmcid_mapping.json if unique pmcids haven't been saved
