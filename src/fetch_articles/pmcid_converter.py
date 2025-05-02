@@ -31,14 +31,20 @@ def load_saved_pmcid_mapping() -> Dict[str, Optional[str]]:
     if os.path.exists(results_path):
         with open(results_path, "r") as f:
             existing_results = json.load(f)
-        logger.info(f"Loaded {len(existing_results)} existing PMCID mappings from {results_path}")
+        logger.info(
+            f"Loaded {len(existing_results)} existing PMCID mappings from {results_path}"
+        )
     else:
-        logger.info(f"No PMCID mapping found at {results_path}. Creating empty mapping.")
+        logger.info(
+            f"No PMCID mapping found at {results_path}. Creating empty mapping."
+        )
         existing_results = {}
     return existing_results
-    
 
-def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, delay: float = 0.4) -> Dict[str, Optional[str]]:
+
+def batch_pmid_to_pmcid(
+    pmids: List[str], email: str, batch_size: int = 100, delay: float = 0.4
+) -> Dict[str, Optional[str]]:
     """
     Convert a list of PMIDs to PMCIDs using NCBI's ID Converter API.
 
@@ -65,10 +71,10 @@ def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, del
     if len(filtered_pmids) == 0:
         logger.warning("No PMIDs to process. Exiting.")
         return existing_results
-    
+
     # Process remaining PMIDs
     for i in range(0, len(filtered_pmids), batch_size):
-        batch = filtered_pmids[i:i + batch_size]
+        batch = filtered_pmids[i : i + batch_size]
         batch_str = [str(pmid) for pmid in batch]
         ids_str = ",".join(batch_str)
         logger.info(f"Processing PMIDs {i + 1} to {i + len(batch)}...")
@@ -77,7 +83,7 @@ def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, del
             "tool": "pmid2pmcid_tool",
             "email": email,
             "ids": ids_str,
-            "format": "json"
+            "format": "json",
         }
 
         try:
@@ -99,7 +105,7 @@ def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, del
                 results[pmid] = None
 
         time.sleep(delay)
-    
+
     # Merge existing results with new results
     existing_results.update(results)
 
@@ -111,6 +117,7 @@ def batch_pmid_to_pmcid(pmids: List[str], email: str, batch_size: int = 100, del
     logger.info(f"Updated PMCID mappings saved to {results_path}")
 
     return existing_results
+
 
 def get_unique_pmcids() -> List[str]:
     """
@@ -126,11 +133,15 @@ def get_unique_pmcids() -> List[str]:
             try:
                 pmcids = json.load(f)
             except json.JSONDecodeError as e:
-                logger.error(f"Error loading unique PMCIDs from {unique_pmcids_path}: {e}")
+                logger.error(
+                    f"Error loading unique PMCIDs from {unique_pmcids_path}: {e}"
+                )
                 raise e
-        logger.warning(f"Loaded {len(pmcids)} pre-existing unique PMCIDs from {unique_pmcids_path}")
+        logger.warning(
+            f"Loaded {len(pmcids)} pre-existing unique PMCIDs from {unique_pmcids_path}"
+        )
         return pmcids
-    
+
     # Load from pmcid_mapping.json if unique pmcids haven't been saved
     results_path = os.path.join(base_dir, "saved_data", "pmcid_mapping.json")
     with open(results_path, "r") as f:

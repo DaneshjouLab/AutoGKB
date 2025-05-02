@@ -12,6 +12,7 @@ This file contains functions to load the clinical variants data from the PharmGK
 The key function is get_pmid_list(), which loads the PMIDs from the variant annotations tsv file and saves them to a json file.
 """
 
+
 def download_and_extract_variant_annotations(override: bool = False) -> str:
     """
     Downloads and extracts the variant annotations zip file.
@@ -22,7 +23,7 @@ def download_and_extract_variant_annotations(override: bool = False) -> str:
         str: The path to the extracted folder.
     """
     url = "https://api.pharmgkb.org/v1/download/file/data/variantAnnotations.zip"
-    
+
     base_dir = os.path.dirname(os.path.abspath(__file__))
     save_dir = os.path.join(base_dir, "saved_data")
     extract_dir = os.path.join(save_dir, "variantAnnotations")
@@ -58,7 +59,9 @@ def load_variant_annotations_tsv(override: bool = False) -> pd.DataFrame:
         pd.DataFrame: The loaded variant annotations tsv file.
     """
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    tsv_path = os.path.join(base_dir, "saved_data", "variantAnnotations", "var_drug_ann.tsv")
+    tsv_path = os.path.join(
+        base_dir, "saved_data", "variantAnnotations", "var_drug_ann.tsv"
+    )
 
     if not os.path.exists(tsv_path):
         logger.info(f"{tsv_path} not found. Downloading data...")
@@ -66,11 +69,14 @@ def load_variant_annotations_tsv(override: bool = False) -> pd.DataFrame:
 
     if not os.path.exists(tsv_path):
         logger.error(f"File still not found after download attempt: {tsv_path}")
-        raise FileNotFoundError(f"File still not found after download attempt: {tsv_path}")
+        raise FileNotFoundError(
+            f"File still not found after download attempt: {tsv_path}"
+        )
 
     logger.info(f"Loading TSV from: {tsv_path}")
-    df = pd.read_csv(tsv_path, sep='\t')
+    df = pd.read_csv(tsv_path, sep="\t")
     return df
+
 
 def unique_variants(df: pd.DataFrame) -> dict:
     """
@@ -89,6 +95,7 @@ def unique_variants(df: pd.DataFrame) -> dict:
 
     return {col: df[col].unique().tolist() for col in df.columns}
 
+
 def load_unique_variants(save_results: bool = True) -> dict:
     """
     Loads the unique variants from the variant annotations tsv file and saves them to a json file.
@@ -102,7 +109,9 @@ def load_unique_variants(save_results: bool = True) -> dict:
         with open(unique_variants_path, "r") as f:
             unique_values_per_column = json.load(f)
     else:
-        logger.info(f"Unique variants not found at {unique_variants_path}. Loading from tsv file...")
+        logger.info(
+            f"Unique variants not found at {unique_variants_path}. Loading from tsv file..."
+        )
         df = load_variant_annotations_tsv()
         unique_values_per_column = unique_variants(df)
         if save_results:
@@ -110,6 +119,7 @@ def load_unique_variants(save_results: bool = True) -> dict:
             with open(unique_variants_path, "w") as f:
                 json.dump(unique_values_per_column, f)
     return unique_values_per_column
+
 
 def get_pmid_list(override: bool = False) -> list:
     """
