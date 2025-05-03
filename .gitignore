@@ -22,3 +22,12 @@ __pycache__
 src/load_data/saved_data/
 src/fetch_articles/saved_data/downloaded_pmcids.json
 src/fetch_articles/saved_data/articles/
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.lzma
+*.tar.lz
+*.tar.lzo
+
+.DS_Store

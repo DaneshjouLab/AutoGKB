@@ -12,7 +12,8 @@ platforms = ["osx-arm64"]
 version = "0.1.0"
 
 [tasks]
-update-downloaded-pmcids = "python -c 'from src.fetch_articles.article_downloader import update_downloaded_pmcids; update_downloaded_pmcids()'"
+update-download-map = "python -c 'from src.fetch_articles.article_downloader import update_downloaded_pmcids; update_downloaded_pmcids()'"
+download-articles = "python -m src.fetch_articles.article_downloader"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"

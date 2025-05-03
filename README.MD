@@ -20,5 +20,5 @@ This repository contains Python scripts for running and building a Pharmacogenom
 | Get a PMID list from the variants tsv (column PMID) | ✅ |
 | Convert the PMID to PMCID | ✅ |
 | Update to use non-official pmid to pmcid | |
-| Fetch the content from the PMCID |  |
+| Fetch the content from the PMCID | ✅ |
 | Create pairing of annotations to article | |
