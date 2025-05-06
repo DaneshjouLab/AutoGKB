@@ -6,7 +6,10 @@
 
 # AutoGKB
 
-
+Goals:
+1. Continously fetch publications on pharmacogenomic relationships
+2. Extract variants annotations from an article
+3. Create a general benchmark for an extraction system
 
 ## Description
 
