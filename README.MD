@@ -8,8 +8,11 @@
 
 Goals:
 1. Continously fetch publications on pharmacogenomic relationships
-2. Extract variants annotations from an article
-3. Create a general benchmark for an extraction system
+2. Extract drug related variants annotations from an article. Associations in which the variant affects a drug dose, response, metabolism, etc.
+3. Create a general benchmark for an extraction system that can output a score for an extraction system
+Given: Article, Ground Truth Variants (Manually extracted and recorded in var_drug_ann.tsv:)
+Input: Extraction System or Extracted Variants
+Output: Score 
 
 ## Description
 
