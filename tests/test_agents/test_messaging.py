@@ -6,9 +6,10 @@ Purpose of this file is to test
 
 
 import pytest 
-from agents.messaging import message
+from src.agents.messaging import Messaging
 
 
+# 
 
 def test_init():
     messaging = Messaging()

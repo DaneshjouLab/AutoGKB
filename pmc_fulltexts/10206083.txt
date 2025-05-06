@@ -1,0 +1,4311 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Development of the semi-dry dot-blot method for intraoperative detecting micropapillary component in lung adenocarcinoma based on proteomics analysis - PMC
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Skip to main content
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        An official website of the United States government
+                    
+
+
+Here's how you know
+
+
+
+
+
+
+Here's how you know
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Official websites use .gov
+
+
+
+                            A
+                            
+.gov
+ website belongs to an official
+                            government organization in the United States.
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Secure .gov websites use HTTPS
+
+
+
+                            A 
+lock
+ (
+                            
+
+
+
+
+Lock
+
+
+
+                                    Locked padlock icon
+                                    
+
+
+
+
+
+
+) or 
+https://
+ means you've safely
+                                connected to the .gov website. Share sensitive
+                                information only on official, secure websites.
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Search
+                        
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+    
+        
+
+        Log out
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        Search…
+                    
+
+
+
+
+
+
+
+                            Search NCBI
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Primary site navigation
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Search
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Logged in as:
+                    
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+        
+
+        Log in
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search PMC Full-Text Archive
+
+
+
+
+
+
+
+
+
+
+Search in PMC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Advanced Search
+                        
+
+
+
+
+
+
+
+                                Journal List
+                            
+
+
+
+
+
+
+
+                                User Guide
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with,
+    the contents by NLM or the National Institutes of Health.
+
+    Learn more:
+    
+PMC Disclaimer
+
+    |
+    
+
+        PMC Copyright Notice
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Br J Cancer
+. 2023 Apr 4;128(11):2116–2125. doi: 
+10.1038/s41416-023-02241-x
+
+
+
+
+
+
+Search in PMC
+
+
+Search in PubMed
+
+
+View in NLM Catalog
+
+
+Add to search
+
+
+
+
+Development of the semi-dry dot-blot method for intraoperative detecting micropapillary component in lung adenocarcinoma based on proteomics analysis
+
+
+Long Xu
+
+
+Long Xu
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Long Xu
+
+
+
+
+
+
+1,
+#
+, 
+Hang Su
+
+
+Hang Su
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Hang Su
+
+
+
+
+
+
+1,
+#
+, 
+Shengnan Zhao
+
+
+Shengnan Zhao
+
+
+
+
+2
+Department of Pathology, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Shengnan Zhao
+
+
+
+
+
+
+2,
+#
+, 
+Haojie Si
+
+
+Haojie Si
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Haojie Si
+
+
+
+
+
+
+1
+, 
+Huikang Xie
+
+
+Huikang Xie
+
+
+
+
+2
+Department of Pathology, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Huikang Xie
+
+
+
+
+
+
+2
+, 
+Yijiu Ren
+
+
+Yijiu Ren
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Yijiu Ren
+
+
+
+
+
+
+1
+, 
+Jiani Gao
+
+
+Jiani Gao
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Jiani Gao
+
+
+
+
+
+
+1
+, 
+Fang Wang
+
+
+Fang Wang
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Fang Wang
+
+
+
+
+
+
+1
+, 
+Xiaofeng Xie
+
+
+Xiaofeng Xie
+
+
+
+
+2
+Department of Pathology, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Xiaofeng Xie
+
+
+
+
+
+
+2
+, 
+Chenyang Dai
+
+
+Chenyang Dai
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Chenyang Dai
+
+
+
+
+
+
+1
+, 
+Chunyan Wu
+
+
+Chunyan Wu
+
+
+
+
+2
+Department of Pathology, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Chunyan Wu
+
+
+
+
+
+
+2
+, 
+Deping Zhao
+
+
+Deping Zhao
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Deping Zhao
+
+
+
+
+
+
+1,
+✉
+, 
+Chang Chen
+
+
+Chang Chen
+
+
+
+
+3
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Clinical Center for Thoracic Surgery Research, Tongji University, Shanghai, People’s Republic of China 
+
+
+Find articles by 
+Chang Chen
+
+
+
+
+
+
+3,
+✉
+; 
+Surgical Thoracic Alliance of Rising Star Group
+
+
+
+
+
+
+Author information
+
+
+Article notes
+
+
+Copyright and License information
+
+
+
+
+
+
+
+
+
+
+1
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+
+
+2
+Department of Pathology, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai, People’s Republic of China 
+
+
+
+
+3
+Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Clinical Center for Thoracic Surgery Research, Tongji University, Shanghai, People’s Republic of China 
+
+
+
+
+
+
+✉
+Corresponding author.
+
+
+
+
+
+
+#
+Contributed equally.
+
+
+
+
+
+
+
+
+Received 2022 Aug 16; Revised 2023 Mar 6; Accepted 2023 Mar 16; Issue date 2023 Jun 15.
+
+
+
+
+© The Author(s), under exclusive licence to Springer Nature Limited 2023, Springer Nature or its licensor (e.g. a society or other partner) holds exclusive rights to this article under a publishing agreement with the author(s) or other rightsholder(s); author self-archiving of the accepted manuscript version of this article is solely governed by the terms of such publishing agreement and applicable law.
+
+
+PMC Copyright notice
+
+
+
+
+
+
+PMCID: PMC10206083  PMID: 
+37016102
+
+
+
+
+Abstract
+
+
+Background
+
+
+Micropapillary (MIP) component was a major concern in determining surgical strategy in lung adenocarcinoma (LUAD). We sought to develop a novel method for detecting MIP component during surgery.
+Methods
+
+
+Differentially expressed proteins between MIP-positive and MIP-negative LUAD were identified through proteomics analysis. The semi-dry dot-blot (SDB) method which visualises the targeted protein was developed to detect MIP component.
+Results
+
+
+Cellular retinoic acid-binding protein 2 (CRABP2) was significantly upregulated in MIP-positive LUAD (
+P
+ < 0.001), and the high CRABP2 expression zone showed spatial consistency with MIP component. CRABP2 expression was also associated with decreased recurrence-free survival (
+P
+ < 0.001). In the prospective cohort, the accuracy and sensitivity of detecting MIP component using SDB method by visualising CRABP2 were 82.2% and 72.7%, which were comparable to these of pathologist. Pathologist with the aid of SDB method would improve greatly in diagnostic accuracy (86.4%) and sensitivity (78.2%). In patients with minor MIP component (≤5%), the sensitivity of SDB method (63.6%) was significantly higher than pathologist (45.4%).
+Conclusions
+
+
+Intraoperative examination of CRABP2 using SDB method to detect MIP component reached comparable performance to pathologist, and SDB method had notable superiority than pathologist in detecting minor MIP component.
+Subject terms:
+ Non-small-cell lung cancer, Proteomic analysis
+Background
+
+
+Lung adenocarcinoma (LUAD) is a heterogenous group in pathologic features, and exhibits broad spectrum of prognosis even in early-stage [
+1
+–
+3
+]. In 2011, LUAD was classified into five subtypes: lepidic, acinar, papillary, solid and micropapillary (MIP) based on the morphologic pattern by the International Association for the Study of Lung Cancer, the American Thoracic Society, and the European Respiratory Society (IASLC/ATS/ERS) [
+4
+]. This classification system recommends comprehensive histologic subtyping based on pattern recognition and a semiquantitative assessment of each pattern in 5% increments in invasive LUAD. Numerous researches have confirmed the impact of classification system on surgical decision-making, survival stratification and administration of adjuvant therapy [
+5
+–
+7
+].
+
+
+Of that, MIP predominant LUAD was strongly associated with aggressive clinicopathologic behaviours, including nodal involvement, presence of tumour spread through air space (STAS), lymph node micrometastasis, and ultimately resulted in a higher postoperative recurrence rate compared to other histologic subtypes [
+8
+–
+12
+]. Importantly, even a minor percentage of MIP component would have significant impact on surgical strategy and the extent of lymph node dissection [
+13
+–
+15
+]. Previous studies found that patients with MIP component who underwent segmentectomy had significantly unfavourable survival than those who underwent lobectomy [
+13
+, 
+14
+]. Therefore, detecting MIP component accurately before or during surgery is crucial to determine optimal surgical strategy for early-stage LUAD.
+
+
+Use of preoperative CT to predict MIP has been reported in several studies, but the predictive accuracy and sensitivity were not satisfactory [
+16
+]. The preoperative biopsy specimens used for estimation of histologic subtypes were also demonstrated to be inaccurate, since the limited specimen could not represent the panoramic view of the tumour [
+17
+]. Moreover, using the intraoperative frozen section (FS) to identify MIP component was still challengeable with the sensitivity less than 40% [
+18
+, 
+19
+].
+
+
+In this study, we performed proteomics analysis to identify differentially expressed proteins (DEPs) between MIP-positive and MIP-negative LUAD samples. Moreover, we developed a novel method for detecting MIP component during the surgery by visualisation of DEPs using semi-dry dot-blot (SDB) method, and compared its diagnostic performance with a pathologist panel.
+Patients and methods
+
+
+Study patients
+
+
+The institutional review board of Shanghai Pulmonary Hospital affiliated to Tongji University approved this study (IRB NO: L21-340), the informed consent from individual patients was waived. Fresh frozen tumour tissues weighting around 300 mg from three MIP predominant and three MIP-negative LUAD patients were prospectively collected and used for proteomics analysis to identify DEPs. To validate the correlation between DEPs and MIP component, a retrospective cohort of 147 clinical stage I–IIA LUAD patients who underwent radical resection between April 2013 and September 2013 were enroled for immunohistochemistry (IHC) staining. Patients who had preoperative treatment or history of malignant tumour were excluded from this retrospective cohort.
+
+
+To assess the diagnostic performance of employing the SDB method to identify MIP component, a prospective cohort of 118 clinical stage I–IIA LUAD that underwent surgical resection from October 2021 to December 2021 were collected. Meanwhile, an experienced pathologist (SZ) examined the FS slides to evaluate the status of MIP component on routine FS diagnosis. After that, Dr. Zhao reevaluated the status of MIP component combined with SDB auxiliary. The diagnostic accuracy, sensitivity, specificity and time spent were compared among SDB method, pathologist, and pathologist with aid of SDB method. The total time spent was calculated from the moment the specimen was removed to the moment the diagnosis was made.
+Proteomics analysis to identify differentially expressed proteins
+
+
+Three MIP-positive and three MIP-negative frozen tumour tissues were employed for proteomics analysis. Liquid chromatography–tandem MS analysis was performed on a Q Exactive mass spectrometer (Thermo Scientific) that was coupled to Easy nLC (Proxeon Biosystems) for 120 min with the help provided by Shanghai Applied Protein Technology Co., Ltd. (Shanghai, China). The raw data for each sample were combined and searched using the MaxQuant software (version 1.5.3.17) for identification and quantitation analysis. Quantifiable proteins were defined as those can be identified at least twice in the three biological replicates. Proteins with 
+P
+-value < 0.05 and abundance fold change (FC) > 2 were defined as differentially expressed between the MIP-positive and MIP-negative groups.
+Evaluation of histologic patterns and IHC staining
+
+
+Two experienced pathologists (HX and XX) independently reviewed all the hematoxylin and eosin
+-
+stained tumour slides from retrospective and prospective cohorts. When a disagreement occurred, another senior pathologist (CW) would review the slide in doubt to achieve a consensus. All the five traditional histologic patterns were recognised according to the IASLC/ATS/ERS classification with a 5% increment [
+4
+], and complex glands (including cribriform and fused glands) were reviewed and included to a sum of 100% according to the IASLC newly proposed grading system [
+20
+]. Visceral plural invasion, STAS, and lymphovascular invasion were also assessed in the permanent slides. The FS slides in the prospective cohort were recorded in similar manner with those of permanent slides. In this study, MIP positive was defined as tumours with MIP component greater or equal to 5%. Otherwise, tumour without MIP component was defined as MIP negative. Tumours with MIP negative or 5% MIP was defined as minor MIP group (MIP ≤ 5%).
+
+
+Four significantly upregulated proteins (cellular retinoic acid-binding protein 2, CRABP2; cartilage intermediate layer protein 1, CILP; pyruvate carboxylase, PCB; beta-1,4-galactosyltransferase 5, B4GALT5) with FC larger than 10 in MIP-positive group were selected as targeted proteins via proteomics analysis. IHC staining for these four selected targeted proteins was performed following the protocol of previous studies [
+21
+]. For each patient in the retrospective cohort, four serial 4 μm thick formalin-fixed paraffin-embedded tissue slides were prepared for CRABP2 (abcam, ab181255), CILP (abcam, ab192881), PCB (abcam, ab115579) and B4GALT5 (abcam, ab110398) staining. All the slides were examined by a senior pathologist (CW).
+
+
+Histochemistry score (H-score) was used to measure the staining intensity of the targeted proteins in IHC staining semi-quantitatively. Cases were scored as negative, weakly positive, moderately positive or strongly positive according to the percentage of positive cells, after which an H-score was generated (this being a score of 0–3 intensity multiplied by the percentage of positive cells [range 0–300]). The prognostic impact of targeted protein H-score and its relationship with MIP percentage were evaluated. The prognostic impact and clinicopathologic features of targeted protein were then validated using the Gene Expression Omnibus (GEO) database, and a total of 461 LUAD (
+GSE29013
+, 
+GSE31210
+, 
+GSE31908
+, 
+GSE50081
+ and 
+GSE8894
+) were extracted. The median value of targeted protein expression in the GEO cohort was used to categorise patients into high and low expression groups. Moreover, 51 LUAD from The Cancer Genome Atlas (TCGA) programme with annotated predominant histologic subtype were enroled to confirm the differential expression of targeted protein between MIP predominant and non-MIP predominant LUAD.
+Development of semi-dry dot-blot method to identify MIP component
+
+
+After the validation of targeted proteins using IHC staining and publicly available datasets, CRABP2 was selected as the most valuable targeted protein to develop SDB system for detecting MIP component intraoperatively. Specimens were sliced into two blocks (block A and block B) along the largest diameter interface of the tumour. Two or three layers of tissue section at the largest diameter interface of block A were taken for the routine FS diagnosis by pathologist.
+
+
+Figure 
+1
+ showed the schematic diagram of the SDB method. A small block with dimensions of 5 × 5 × 3 mm derived from the centre of block B was sliced into several parallel sections at the maximum diameter. The dissected tumour tissues were washed for 30 s with 1.5 ml of phosphate-buffered saline, then suspended cells in the lavage fluid were centrifuged to collect cell pellet. The RIPA lysis buffer was used to lyse the cell pellet to extract proteins. The dot-blot membrane (modified nylon membrane) was soaked in wash buffer (0.05% Tween 20 in phosphate-buffered saline). The monoclonal antibody to CRABP2 was used as the primary antibody, and peroxidase-coupled immunoglobulin G (ImmPRESS anti-mouse/ rabbit immunoglobulin G; Vector Laboratories, Burlingame, Calif) was used as the secondary antibody. Two circles with one centimeter in diameter were drawn on the membrane. Both primary and secondary antibodies were placed onto the first circle for the actual test, and primary antibody alone was placed onto the other circle as a reference. The membrane was incubated with the two antibodies for 3 min at room temperature. The reaction was visualised by chromogenic using a Vector VIP substrate kit (Vector Laboratories), which reveals the presence of peroxidase activity through releasing a purple chromogen. The SDB method was determined as positive result when a denser appearance of chromogen in the circle of the actual test than that in the reference one. In contrast, equal density of chromogen in both circles manifested negative result. The time spent of SDB method was recorded.
+
+
+Fig. 1. The flow diagram of SDB method for detecting micropapillary.
+
+
+
+
+Open in a new tab
+
+
+The fresh tumour tissue was sliced and washed by phosphate-buffered saline. After centrifugation, the cell pellets were lysed to extract proteins. The samples were added into the test and reference circle on the membrane that was incubated with anti-CRABP2. The result was confirmed by colorimetric detection. SDB semi-dry dot-blot, CRABP2 cellular retinoic acid-binding protein 2.
+Statistical analysis
+
+
+The association between MIP percentage and CRABP2 H-score was assessed by linear regression analysis. The optimal cutoff value for stratifying CRABP2 H-score into high and low expression groups were determined by X-tile software (version 3.6.1) based on the maximum χ
+2
+ score and minimum 
+P-
+value. The Image J software was applied to quantify the integrated density of the SDB staining in the test circle and reference circle, the integrated density ratio of test to reference was then used to investigate the relationship between the SDB staining intensity and MIP percentage. The Kaplan-Meier method and log-rank test were performed for survival analysis. The area under receiver operating curves (AUC) were used to compare the diagnostic accuracy among SDB method, pathologist, and pathologist with aid of SDB. A decision curve analysis (DCA) was performed to quantify the benefit of accuracy in detecting MIP component. A larger area under the decision curve indicated that the diagnostic method was more accurate for detecting MIP component. A two-sided 
+P-
+value less than 0.05 was considered statistically significant. All the statistical analysis were performed via SPSS 22.0 (IBM, Armonk, NY, USA) and R software (version 3.6.1, 
+http://www.R-project.org
+).
+Results
+
+
+Proteomic landscape of LUAD with or without MIP component
+
+
+In order to identify the DEPs between MIP-positive and -negative LUAD, label-free proteomics analysis was performed on three MIP-positive LUAD and three MIP-negative LUAD (Fig. 
+2a, b
+). Patients in the MIP-positive group had 40%, 60%, and 60% MIP component, respectively. The baseline characteristics of the six patients were shown in Table. 
+S1
+. A total of 5166 proteins were identified with high confidence, and 4612 proteins were reliably quantified in no less than 50% samples in at least one group between MIP-positive and MIP-negative groups (Fig. 
+S1A
+). Venn diagram (Fig. 
+S1B, C
+) was used to analyse the reproducibility of identified proteins within groups, 3871 (78.0%) and 3259 (73.4%) proteins were found to be shared within the MIP-positive and MIP-negative groups, respectively. Additionally, 4311 (84.6%) proteins were shared between MIP-positive and -negative groups, whereas 654 (12.8%) and 129 (2.5%) proteins were specific to MIP-positive and MIP-negative tumours, respectively (Fig. 
+S1D
+). The Kyoto Encyclopedia of Genes and Genomes pathway analysis revealed that the upregulation in MIP-positive tissues including peroxisome proliferators-activated receptors signalling pathway, glycan biosynthesis and metabolism, and amino acid metabolism, which are associated with cancer invasion and metastasis (Fig. 
+S1E
+).
+
+
+Fig. 2. Identification and validation of targeted proteins for SDB method.
+
+
+
+
+Open in a new tab
+
+
+a
+ The morphologic appearance of MIP. 
+b
+ Samples for proteomic analysis. 
+c
+ Overview of identified DEPs. 
+d
+ Volcano plots for identifying most significant DEPs. 
+e
+ Validation of selected DEPs using immunohistochemistry staining. 
+f
+ Correlation between MIP percentage and H-score of CRABP2. 
+g
+ The recurrence-free survival according to CRABP2 expression level in 147 LUAD cohorts; 
+h
+ the recurrence-free survival according to CRABP2 expression level in an independent cohort including 460 LUAD. SDB semi-dry dot-blot, MIP micropapillary, DEPs differentially expressed proteins, CRABP2 cellular retinoic acid-binding protein 2.
+Furthermore, we screened for DEPs (FC > 2 and 
+P
+ < 0.05) between MIP positive and MIP negative via group 
+t
+-test, and 276 DEPs including 170 upregulated and 106 downregulated DEPs were identified (Fig. 
+2c
+). Details of DEPs were listed in Table. 
+S2
+. Additionally, four DEPs were significantly upregulated in MIP-positive group with FC > 10. Volcano plots indicating the FC in expression and the statistical significance of MIP-positive versus MIP-negative tumours were shown in Fig. 
+2d
+. The most highly upregulated proteins in MIP-positive group, CRABP2, CILP, PCB and B4GALT, were preliminarily selected as the targeted proteins for visualisation of MIP component by SDB method, despite the adjusted 
+P
+-values for the abovementioned proteins did not reach significance in the volcano plots after correcting for multiple hypothesis testing (Fig. 
+S2
+) due to the relatively small sample size.
+Validation of targeted protein for identifying MIP component using SDB method
+
+
+IHC staining of the four targeted proteins was performed in the retrospective cohort of 147 LUAD to validate the specificity (Fig. 
+2e
+). IHC staining demonstrated that the high expression of CRABP2 was primarily localised in MIP component, linear regression analysis also revealed that CRABP2 H-score was strongly correlated with the MIP percentage (R
+2
+ = 0.5081, Fig. 
+2f
+). In an independent cohort of 51 LUAD from TCGA dataset with annotated predominant histologic subtype, MIP predominant LUAD had higher levels of CRABP2 expression than acinar/papillary/solid predominant LUAD (Fig. 
+S3
+, 
+P
+ = 0.007). However, CILP and PCB showed light staining in tumour tissues, the B4GALT5 expression was higher in tumour tissue but specific to acinar component (Fig. 
+2e
+). The linear analysis also demonstrated that the H-score of these three proteins were slightly associated with the MIP percentage (Fig. 
+S4
+).
+
+
+To further evaluate the clinicopathological and prognostic significance of CRABP2 expression in the 147 LUAD, the CRABP2 expression H-score was classified into high (H-score > 100) and low (H-score ≤ 100) expression groups via X-tile software (Fig. 
+S5
+). The clinicopathological characteristics according to CRABP2 expression level were compared in Table. 
+S3
+. Patients in the group with high CRABP2 expression had larger tumour size (
+P
+ = 0.004), advanced T stage (
+P
+ = 0.043), higher frequency of STAS (
+P
+ = 0.020), more MIP predominant LUAD (
+P
+ = 0.020), more MIP-positive LUAD (
+P
+ < 0.001) and higher recurrence rate (
+P
+ = 0.029). The survival analysis found that higher CRABP2 expression was relevant with decreased recurrence-free survival (
+P
+ = 0.017, Fig. 
+2g
+). Similarly, patients with higher CRABP2 expression were associated with advanced pathologic stage (Table. 
+S4
+, 
+P
+ = 0.063) and a deterioration in recurrence-free survival referring to an independent 461 LUAD composed cohort from GEO database (
+P
+ = 0.01, Fig. 
+2h
+). These results suggested that CRABP2 was highly relevant to MIP component and was finally selected as the targeted protein of MIP component in SDB method.
+
+
+We developed SDB method for detecting MIP component intraoperatively via visualisation of CRABP2, the positive result was defined as a denser appearance of chromogen in the actual test than that in the reference. As shown in Fig. 
+3
+, patient one with a part-solid nodule underwent limited resection, the SDB method found CRABP2 was negative in colorimetric detection, and the final pathology confirmed the absence of MIP component. Patient two and three with 10 and 60% MIP component were successfully detected by SDB method and been confirmed in the final pathology. More examples of SDB appearance and corresponding final pathology were displayed in Fig. 
+S6
+.
+
+
+Fig. 3. Validation of SDB method for detecting MIP component through colorimetric comparison.
+
+
+
+
+Open in a new tab
+
+
+a
+ Patient 1 showed equal chromogenic density in test and reference circle, and final pathology demonstrated no MIP component. 
+b
+, 
+c
+ Patients 2 and 3 had 10 and 60% MIP component, intraoperative SDB method found denser appearance of chromogen in the test circle. SDB semi-dry dot-blot, MIP micropapillary.
+Furthermore, we explored the spatial specificity of CRABP2 expression using the SDB method by sampling two blocks within a single tumour in three patients (Fig. 
+S7
+). Patient one had been determined by the pathologist to be MIP negative in both FS-B-1 and FS-B-2, and the SDB results supported this finding. According to the pathologist’s FS diagnosis, patients two and three had MIP component in FS-B-1 but not in FS-B-2, while the SDB method showed positive results for MIP component in both block B-1 and block B-2. These findings showed that the histologic composition of the LUAD was spatially heterogeneous, making it difficult for the normal FS examination to fully assess MIP in every level of the sample tumour tissue. It was more beneficial to use the SDB method to thoroughly assess the CRABP2 expression of the entire sampling block to detect MIP component.
+Comparison of diagnostic performance between SDB method and pathologist in a prospective cohort
+
+
+To evaluate the diagnostic performance of the SDB method for intraoperative MIP component detection, a prospective cohort of 118 clinical stage I–IIA LUAD was used. Table 
+1
+ listed the clinicopathologic characteristics for MIP-positive (
+n
+ = 55) and MIP-negative (
+n
+ = 63) individuals. Patients in the MIP-positive group had more lobectomies (
+P
+ = 0.016), larger tumour size (
+P
+ < 0.001), advanced T stage (
+P
+ = 0.001), higher frequency of visceral pleural invasion (
+P
+ < 0.001), lymphovascular invasion (
+P
+ < 0.001) and STAS (
+P
+ < 0.001). We then explored the correlation between SDB staining intensity and MIP percentage in this prospective cohort, increased integrated density ratio of test to reference circle on SDB staining was found to be positively correlated with the increase of MIP percentage (Fig. 
+S8
+, R
+2
+ = 0.3089, 
+P
+ < 0.001).
+
+
+Table 1.
+
+
+Clinicopathological characteristics of patients in the prospective cohort.
+
+
+
+
+
+
+Variables
+
+
+MIP positive (
+n
+ = 55)
+
+
+MIP negative (
+n
+ = 63)
+
+
+
+
+P
+-value
+
+
+
+
+
+
+
+
+Age (<65), years
+
+
+26 (47.3)
+
+
+39 (61.9)
+
+
+0.111
+
+
+
+
+
+
+Male
+
+
+16 (29.1)
+
+
+24 (38.1)
+
+
+0.303
+
+
+
+
+
+
+Smoking history
+
+
+14 (25.5)
+
+
+25 (39.7)
+
+
+0.101
+
+
+
+
+
+
+Tumour location
+
+
+
+
+
+
+0.944
+
+
+
+
+
+
+  Upper or middle lobe
+
+
+37 (67.3)
+
+
+42 (66.7)
+
+
+
+
+
+
+
+
+  Lower lobe
+
+
+18 (32.7)
+
+
+21 (33.3)
+
+
+
+
+
+
+
+
+Surgical extent
+
+
+
+
+
+
+0.016
+
+
+
+
+
+
+  Sublobar resection
+
+
+3 (5.5)
+
+
+13 (20.6)
+
+
+
+
+
+
+
+
+  Lobectomy
+
+
+52 (94.5)
+
+
+50 (79.4)
+
+
+
+
+
+
+
+
+Tumour size (mean ± SD)
+
+
+2.9 ± 1.0
+
+
+2.2 ± 0.9
+
+
+<0.001
+
+
+
+
+
+
+Pathological T stage
+
+
+
+
+
+
+0.001
+
+
+
+
+
+
+  T1a
+
+
+1 (1.8)
+
+
+3 (4.8)
+
+
+
+
+
+
+
+
+  T1b
+
+
+5 (9.1)
+
+
+24 (38.1)
+
+
+
+
+
+
+
+
+  T1c
+
+
+14 (25.5)
+
+
+17 (27.0)
+
+
+
+
+
+
+
+
+  T2a
+
+
+28 (50.9)
+
+
+17 (27.0)
+
+
+
+
+
+
+
+
+  T2b
+
+
+7 (12.7)
+
+
+2 (3.2)
+
+
+
+
+
+
+
+
+Pathological N stage
+
+
+
+
+
+
+0.071
+
+
+
+
+
+
+  N0
+
+
+41 (74.5)
+
+
+57 (90.5)
+
+
+
+
+
+
+
+
+  N1
+
+
+5 (9.1)
+
+
+2 (3.2)
+
+
+
+
+
+
+
+
+  N2
+
+
+9 (16.4)
+
+
+4 (6.3)
+
+
+
+
+
+
+
+
+VPI
+
+
+25 (45.5)
+
+
+7 (11.1)
+
+
+<0.001
+
+
+
+
+
+
+LVI
+
+
+10 (18.2)
+
+
+0 (0)
+
+
+<0.001
+
+
+
+
+
+
+STAS
+
+
+27 (49.1)
+
+
+8 (12.7)
+
+
+<0.001
+
+
+
+
+
+
+Predominant histologic subtype
+
+
+
+
+
+
+0.020
+
+
+
+
+
+
+  Lepidic
+
+
+0 (0)
+
+
+8 (12.7)
+
+
+
+
+
+
+
+
+  Acinar
+
+
+38 (69.1)
+
+
+44 (69.8)
+
+
+
+
+
+
+
+
+  Papillary
+
+
+5 (9.1)
+
+
+4 (6.3)
+
+
+
+
+
+
+
+
+  MIP
+
+
+3 (5.5)
+
+
+0 (0)
+
+
+
+
+
+
+
+
+  Solid
+
+
+1 (1.8)
+
+
+3 (4.8)
+
+
+
+
+
+
+
+
+  Complex glands
+
+
+8 (14.5)
+
+
+4 (6.3)
+
+
+
+
+
+
+
+
+
+
+Open in a new tab
+
+
+MIP
+ micropapillary, 
+SD
+ standard deviation, 
+VPI
+ visceral pleural invasion, 
+LVI
+ lymphovascular invasion, 
+STAS
+ spread through air space.
+For all patients, the diagnostic accuracy, sensitivity and specificity of SDB method for detecting MIP component were 82.2%, 72.7%, and 90.5%, respectively (Table 
+2
+). The SDB method was able to successfully identify 40 of the 55 MIP-positive patients. In these 15 missed cases by SDB method, pathologist missed four cases in addition to the 11 that were correctly identified. On the other hand, 10 of the 14 cases missed by the pathologist were correctly recognised, while four cases were also missed by SDB method. The corresponding FS slide of the missed cases in SDB method was reevaluated by the pathologists, we found that nine missed cases were due to the sampling error, and six missed cases were due to suboptimal performance of the SDB method.
+
+
+Table 2.
+
+
+Diagnostic performance of SDB method for detecting micropapillary and comparison with pathologist and pathologist wit aid of SDB.
+
+
+
+
+
+
+
+
+Diagnostic model
+
+
+Final pathology
+
+
+Average time
+
+
+Accuracy
+
+
+Sensitivity
+
+
+Specificity
+
+
+Kappa
+
+
+
+
+
+
+MIP positive
+
+
+MIP negative
+
+
+
+
+
+
+
+
+
+
+All patients
+
+
+(
+n
+ = 55)
+
+
+(
+n
+ = 63)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SDB
+
+
+
+
+  Positive
+
+
+40
+
+
+6
+
+
+28.0 ± 3.1
+
+
+82.2%
+
+
+72.7%
+
+
+90.5%
+
+
+0.639
+
+
+
+
+
+
+  Negative
+
+
+15
+
+
+57
+
+
+
+
+Pathologist
+
+
+
+
+  Positive
+
+
+41
+
+
+8
+
+
+31.3 ± 2.7
+
+
+81.4%
+
+
+74.5%
+
+
+87.3%
+
+
+0.623
+
+
+
+
+
+
+  Negative
+
+
+14
+
+
+55
+
+
+
+
+Pathologist + SDB
+
+
+
+
+  Positive
+
+
+43
+
+
+4
+
+
+33.7 ± 3.6
+
+
+86.4%
+
+
+78.2%
+
+
+93.6%
+
+
+0.725
+
+
+
+
+
+
+  Negative
+
+
+12
+
+
+59
+
+
+
+
+
+
+
+
+Patients with MIP
+ ≤ 5%
+
+
+(
+n
+ = 22)
+
+
+(
+n
+ = 63)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SDB
+
+
+
+
+  Positive
+
+
+14
+
+
+6
+
+
+27.9 ± 2.9
+
+
+83.5%
+
+
+63.6%
+
+
+90.5%
+
+
+0.558
+
+
+
+
+
+
+  Negative
+
+
+8
+
+
+57
+
+
+
+
+Pathologist
+
+
+
+
+  Positive
+
+
+10
+
+
+8
+
+
+31.5 ± 2.6
+
+
+76.5%
+
+
+45.4%
+
+
+87.3%
+
+
+0.348
+
+
+
+
+
+
+  Negative
+
+
+12
+
+
+55
+
+
+
+
+Pathologist + SDB
+
+
+
+
+  Positive
+
+
+16
+
+
+4
+
+
+33.5 ± 3.7
+
+
+88.2%
+
+
+72.7%
+
+
+93.6%
+
+
+0.684
+
+
+
+
+
+
+  Negative
+
+
+6
+
+
+59
+
+
+
+
+
+
+
+
+Open in a new tab
+
+
+MIP
+ micropapillary, 
+SDB
+ semi-dry dot-blot.
+In comparison with pathologist, SDB method possessed similar sensitivity (72.7% vs. 74.5%). Additionally, the pathologist with aid of SDB method achieved overall improvement in accuracy (86.4%), sensitivity (78.2%), and specificity (93.6%). Table. 
+S5
+ showed the measurement of difference in diagnostic performance including accuracy, sensitivity and specificity. The AUC values of all three models (Fig. 
+4a
+) were greater than 0.8, and pathologist with aid of SDB method achieved largest value of 0.859. The DCA (Fig. 
+4b
+) demonstrated that the pathologist with aid of SDB method provided larger net benefit in detecting MIP component than SDB method or pathologist alone. The average time spent was 28.0, 31.3 and 33.7 min for SDB, pathologist and pathologist with aid of SDB method, respectively.
+
+
+Fig. 4. Performance of SDB method for detecting MIP component and compare it with pathologist.
+
+
+
+
+Open in a new tab
+
+
+a
+, 
+b
+ Comparison among SDB method, pathologist alone and pathologist with aid of SDB by AUC and DCA in all patients. 
+c
+, 
+d
+ Comparison among SDB method, pathologist alone and pathologist with aid of SDB by AUC and DCA in patients with MIP ≤ 5%. SDB semi-dry dot-blot, MIP micropapillary, AUC area under receiver operating curve, DCA decision curve analysis.
+Comparison of diagnostic performance in patients with minor MIP component
+
+
+Minor MIP component was also reported to be significantly correlated with unfavourable prognosis and play an important role in surgical decision-making [
+14
+, 
+22
+]. In order to evaluate the performance of SDB method in detecting minor percentage of MIP component (≤5%, defined as negative MIP or 5% MIP), which was challenging for junior pathologists to realise through FS slides, subgroup analysis in patients with MIP ≤ 5% were conducted. There were 22 patients with 5% MIP and 63 patients without MIP component. Table 
+2
+ showed the diagnostic performance, and Table. 
+S5
+ presented a comparison of the three diagnostic models. SDB method outperformed pathologist in terms of diagnostic accuracy (83.5% vs. 76.5%) and sensitivity (63.6% vs. 45.4%). In terms of pathologist with aid of SDB method, the accuracy, sensitivity and specificity elevated to 88.2%, 72.7% and 93.6%, respectively. The average time spent in subgroup analysis indicated similar tendency with the result in all patients, the average time spent was 27.9, 31.5 and 33.5 min for SDB, pathologist and pathologist with aid of SDB method, respectively.
+
+
+Furthermore, the AUC and DCA analysis were performed to evaluate the performance in detecting minor MIP component quantitatively (Fig. 
+4c, d
+). The AUC values were 0.771, 0.664 and 0.832 for SDB method, pathologist and pathologist with aid of SDB. The DCA indicated that pathologist with aid of SDB provided the largest net benefit, and SDB method provided greater net benefit in predicting minor MIP component than pathologist. These results demonstrated that the SDB method outperformed pathologist in detecting minor MIP component, suggesting that it might be useful in identifying cases that would be easily missed by pathologists.
+Discussion
+
+
+Given to the prognostic impact of MIP component and its role in determining surgical strategy in early-stage LUAD, preoperative or intraoperative grasping the presence of MIP component could be vital for matching patients into an approximate surgical type. In this study, we identified 276 DEPs between MIP-positive and MIP-negative groups using proteomics analysis, and developed a novel method to identify MIP component via CRABP2 visualisation. We prospectively demonstrated that SDB method was feasible for intraoperative detection of MIP component with a sensitivity of 72.7%, that was comparable to pathologist. Moreover, the advantage of SDB method was reflected in detecting minor MIP component, which was superior to pathologist (sensitivity, 63.6% vs. 45.4%). For pathologist with aid of SDB method, the diagnostic performance was further improved.
+
+
+Lobectomy was deemed as the standard treatment for early-stage lung cancer [
+23
+], but the controversy between lobectomy and limited resection has continued to heat up since a large amount of small-sized lung nodules were detected by low-dose computed tomography [
+24
+, 
+25
+]. The practical implications of limited resection have greatly extended over the past several years [
+26
+–
+29
+]. Recently, the JCOG0802/WJOG4607L study firstly demonstrated the superiority of segmentectomy over lobectomy in overall survival (94.3% vs. 91.1%, 
+P
+ = 0.0082) for small-sized (≤2 cm) peripheral non-small cell lung cancer [
+30
+]. Of note, patients in segmentectomy group experienced more locoregional recurrences than patients in lobectomy group (10.5% vs. 5.4%, 
+P
+ = 0.0018). Hence, clinical implications of segmentectomy needs to be further discussed by accumulating more evidence from other similar studies such as CALGB/Alliance 140503 [
+31
+] and our ongoing randomised trials (
+NCT 04937283
+).
+
+
+The IASLC/ATS/ERS proposed histologic classification was a strong classifier of prognosis, patients with MIP predominant LUAD probably correlated with aggressive behaviour. Furthermore, Raul et al. [
+32
+] found that MIP predominant LUAD had a higher tumour mutation burden, increased chromosomal instability, and more oncogenic pathway alterations compared with other histologic subtypes, that unravel the aggressive behaviour of MIP predominant LUAD from a biological point of view. In addition to predominant subtype, Zhao et al. [
+22
+]. reported that even minor MIP component were associated with poor prognosis and lymph node metastasis. Importantly, we and other researchers confirmed the presence of MIP component was associated with increased risk of postoperative recurrence in patients treated with limited resection than lobectomy [
+13
+, 
+14
+]. These results indicated that limited resection was insufficient for LUAD harbouring MIP component, and detection of MIP component could help surgeons prevent local control failure after limited resection.
+
+
+Through efforts have been tried to identify MIP component using preoperative CT, needle biopsy or intraoperative FS. Huang et al. [
+17
+]. reported that the overall concordance of predominant histologic subtype was 58.6% between preoperative CT guided needle biopsy and final pathology, but none of the five MIP predominant cases were detected. The limited volume of retrieved specimen, that cannot represent the panoramic view of tumour, restricted the diagnostic accuracy of preoperative needle biopsy. CT-based radiomics were recently explored to predict MIP component, Song et al. [
+33
+]. reported that combining imaging parameters with clinical features can provide favourable diagnostic accuracy, the sensitivity and specificity for identifying presence of MIP component were 54.9% and 64.0%, respectively. Nevertheless, the radiomics approach had a strict requirement in CT scan parameters’ acquisition and the performance of existed model for predicting MIP component was moderate and might not be suitable for clinical practice yet. Intraoperative FS examination with a large amount of tissue available for evaluation is a practical option, providing more information than preoperative methods in consideration of the histologically heterogeneity of the tumour. Yeh et al. [
+18
+]. firstly reported the accuracy of using FS to identify histologic subtypes, they found the sensitivity in predicting presence of MIP component was only 37%. Therefore, a novel method that can identify MIP component in real time with higher accuracy needs to be developed.
+
+
+We hypothesised that MIP-positive LUAD display distinct patterns of differential protein abundance in comparison with MIP-negative LUAD, and these proteins that are characteristically abundant in MIP-positive LUAD may imply new candidate biomarkers for MIP component detection. We performed proteomics analysis to characterise DEPs between MIP-positive and MIP-negative LUAD tissues, and validated the targeted protein of CRABP2 via IHC staining. CRABP2 belongs to fatty acid-binding protein family which binds with all-trans retinoic acid (RA). In cells that express high levels of CRABP2, RA is a pro-apoptotic agent and promotes the survival of cells [
+34
+]. CRABP2 is reported to be highly expressed in a variety of cancers, including breast cancer, ovarian cancer, head and neck tumours, and also in lung cancer, which is closely associated with high tumour invasion and poor prognosis [
+21
+, 
+35
+–
+37
+]. In the present study, CRABP2 was expressed highly in MIP-positive LUAD group and was highly relevant to MIP component in IHC staining. Based on these results, CRABP2 may play a role in cancer development which could be used to explain the aggressive behaviour of MIP-positive LUAD preliminarily.
+
+
+Hirakawa et al. [
+38
+]. firstly introduced the SDB method to visualise lymph node metastasis by detecting anti-pancytokeratin intraoperatively. The SDB method possessed a short reaction time to make a solid phase that allow it to be implemented into intraoperative practice. The most predominant advantage of SDB method was its simple procedure without requirement of special equipment and rich experience in FS diagnosis. Previous studies mainly apply the SDB method into identification of lymph node metastasis [
+39
+–
+42
+]. In this study, we developed the SDB method to predict MIP component by visualising CRABP2. The sensitivity and specificity of SDB method was comparable to senior pathologist, and pathologist with aid of SDB method had a greater diagnostic sensitivity of 78.2%. Of note, the time spent in SDB method was shorter than regular FS examination. Additionally, minor percentage of MIP which was easily missed in FS could be detected more accurately by SDB method (sensitivity, SDB method vs. pathologists: 63.6% vs. 45.4%). Moreover, the consumption of tumour tissues for SDB methods was derived from an isolated half block, so that SDB would not interfere with routine FS diagnosis.
+
+
+Currently, use of protein biomarkers, such as cancer antigen 125, carcinoembryonic antigen, cytokeratin-19 fragment and the precursor form of surfactant protein B were mainly applied in distinguishing between benign and malignant nodules [
+43
+–
+46
+]. Using commercially available enzyme-linked immunosorbent assay kits, Kim et al. [
+47
+]. examined the levels of CRABP2 in plasma and came to the conclusion that these levels may be a potential diagnostic and prognostic marker in non-small cell lung cancer. Therefore, it is possible to assess the levels of CRABP2 expression in blood. There hasn’t been any research on employing blood biomarkers to detect histologic components, thus it is unknown whether protein biomarkers specific to MIP components were released into the blood. Furthermore, as a singular protein showed subpar performance in screening and diagnosis [
+46
+], the sensitivity, specificity, and accuracy of detecting MIP component using CRABP2 alone in blood were important issues for implementing it into clinical practice. Future study in this area would be fascinating to pursue.
+
+
+Although the SDB method was an accurate, simple, and time-saving approach for detecting MIP component, there were several limitations in this study. Firstly, the sample size for proteomics analysis to discriminate DEPs was small, and the tumour tissue was not purified by microdissection since the histologic heterogeneity was intrinsic to LUAD. A larger sample size using purified tumour tissue could provide more solid evidence. Secondly, the enroled patients in the prospective cohort, consisting of clinical stage I to IIA LUAD, exceeded the general indication for limited resection that required no more than 2 cm in tumours’ diameter. However, the prospective cohort was designed to continuously enrol patients to avoid selection bias. Thirdly, it is more rigorous to sample a section for FS diagnosis from block B after SDB process to comprehensively evaluate the MIP component. However, it was restricted to insufficient tissue left for FS diagnosis after SDB process especially for small-sized tumour, more sensitive method that sacrificing less tumour tissue to identify MIP component was worth to expect in the future. Finally, prospective randomised trials comparing limited resection and lobectomy based on the presence of MIP component using SDB method was warranted to consolidate our results.
+Conclusion
+
+
+In conclusion, we developed a brand-new, reliable, and economic SDB method to detect MIP component based on the proteomics analysis, which could become an alternative for detecting MIP. The SDB method manifested comparable performance in detecting MIP compared with pathologist, and higher accuracy and sensitivity in recognising cases with minor MIP component. The SDB method could become complementary to pathologists in identifying MIP component during surgery.
+Supplementary information
+
+
+
+
+Supplemental Table 1
+ (17.2KB, docx) 
+
+
+
+
+Supplemental Table 2
+ (106.9KB, xlsx) 
+
+
+
+
+Supplemental Table 3
+ (16.2KB, docx) 
+
+
+
+
+Supplemental Table 4
+ (14.6KB, docx) 
+
+
+
+
+Supplemental Table 5
+ (17.2KB, docx) 
+
+
+
+
+Supplemental Figure Legend
+ (13.4KB, docx) 
+
+
+
+
+Supplemental Figure 1
+ (7.1MB, tif) 
+
+
+
+
+Supplemental Figure 2
+ (6.6MB, tif) 
+
+
+
+
+Supplemental Figure 3
+ (4.1MB, tif) 
+
+
+
+
+Supplemental Figure 4
+ (7.1MB, tif) 
+
+
+
+
+Supplemental Figure 5
+ (2.3MB, tif) 
+
+
+
+
+Supplemental Figure 6
+ (5.5MB, tif) 
+
+
+
+
+Supplemental Figure 7
+ (7.8MB, tif) 
+
+
+
+
+Supplemental Figure 8
+ (6.2MB, tif) 
+
+
+Acknowledgements
+
+
+Not applicable.
+Author contributions
+
+
+Conception and design: LX, HS, SZ, DZ and CC; Administrative support: CW, DZ and CC; Provision of study materials or patients: CW, DZ and CC; Collection and assembly of data: HS, HX, YR, JG, FW, XX and CD. Data analysis and interpretation: LX, HS and SZ. Manuscript writing: All authors; Final approval of manuscript: All authors.
+Funding
+
+
+This work was supported by the National Key Research and Development Program of China (grant no. 2022YFC2407401), the Shanghai Hospital Development Center (SHDC2020CR1021B and SHDC22021217), Shanghai Municipal Health Commission (202040322 and 20194Y0129), Shanghai Science and Technology Commission (20XD1403000 and 21S31905200).
+Data availability
+
+
+The datasets used and/or analysed during the current study are available from the corresponding author on reasonable request.
+Competing interests
+
+
+The authors declare no competing interests.
+Ethics approval and consent to participate
+
+
+The institutional review board of Shanghai Pulmonary Hospital affiliated to Tongji University approved this study (IRB NO: L21-340).
+Consent for publication
+
+
+Not applicable.
+Footnotes
+
+
+
+
+Publisher’s note
+ Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+
+These authors contributed equally: Long Xu, Hang Su, Shengnan Zhao.
+
+
+A list of authors and their affiliations appears at the end of the paper.
+
+
+Contributor Information
+
+
+Deping Zhao, Email: zdp1992@163.com.
+
+
+Chang Chen, Email: chenthoracic@163.com.
+Supplementary information
+
+
+The online version contains supplementary material available at 10.1038/s41416-023-02241-x.
+References
+
+
+
+
+
+
+1.
+Zhu E, Dai C, Xie H, Su H, Hu X, Li M, et al.  Lepidic component identifies a subgroup of lung adenocarcinoma with a distinctive prognosis: a multicenter propensity-matched analysis. Ther Adv Med Oncol. 2020;12:1758835920982845. doi: 10.1177/1758835920982845.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+2.
+Wang T, Deng J, She Y, Zhang L, Wang B, Ren Y, et al.  Radiomics signature predicts the recurrence-free survival in stage I non-small cell lung cancer. Ann Thorac Surg. 2020;109:1741–9. doi: 10.1016/j.athoracsur.2020.01.010.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+3.
+She Y, Jin Z, Wu J, Deng J, Zhang L, Su H, et al.  Development and validation of a deep learning model for non-small cell lung cancer survival. JAMA Netw open. 2020;3:e205842. doi: 10.1001/jamanetworkopen.2020.5842.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+4.
+Travis WD, Brambilla E, Noguchi M, Nicholson AG, Geisinger KR, Yatabe Y, et al.  International association for the study of lung cancer/american thoracic society/european respiratory society international multidisciplinary classification of lung adenocarcinoma. J Thorac Oncol. 2011;6:244–85. doi: 10.1097/JTO.0b013e318206a221.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+5.
+Yanagawa N, Shiono S, Abiko M, Ogata SY, Sato T, Tamura G. New IASLC/ATS/ERS classification and invasive tumor size are predictive of disease recurrence in stage I lung adenocarcinoma. J Thorac Oncol. 2013;8:612–8. doi: 10.1097/JTO.0b013e318287c3eb.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+6.
+Travis WD, Brambilla E, Van Schil P, Scagliotti GV, Huber RM, Sculier JP, et al.  Paradigm shifts in lung cancer as defined in the new IASLC/ATS/ERS lung adenocarcinoma classification. Eur Respir J. 2011;38:239–43. doi: 10.1183/09031936.00026711.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+7.
+Warth A, Muley T, Meister M, Stenzinger A, Thomas M, Schirmacher P, et al.  The novel histologic International Association for the Study of Lung Cancer/American Thoracic Society/European Respiratory Society classification system of lung adenocarcinoma is a stage-independent predictor of survival. J Clin Oncol. 2012;30:1438–46. doi: 10.1200/JCO.2011.37.2185.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+8.
+Chen D, Ding Q, Wang W, Wang X, Wu X, Mao Y, et al.  Characterization of extracapsular lymph node involvement and its clinicopathological characteristics in stage II-IIIA lung adenocarcinoma. Ann Surg Oncol. 2021;28:2088–98. doi: 10.1245/s10434-020-09154-6.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+9.
+Yao J, Zhu E, Li M, Liu J, Zhang L, Ke H, et al.  Prognostic impact of micropapillary component in patients with node-negative subcentimeter lung adenocarcinoma: a Chinese cohort study. Thorac Cancer. 2020;11:3566–75. doi: 10.1111/1759-7714.13702.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+10.
+Pani E, Kennedy G, Zheng X, Ukert B, Jarrar D, Gaughan C, et al.  Factors associated with nodal metastasis in 2-centimeter or less non-small cell lung cancer. J Thorac Cardiovasc Surg. 2020;159:1088–96. doi: 10.1016/j.jtcvs.2019.07.089.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+11.
+Yuan Y, Ma G, Zhang Y, Chen H. Presence of micropapillary and solid patterns are associated with nodal upstaging and unfavorable prognosis among patient with cT1N0M0 lung adenocarcinoma: a large-scale analysis. J Cancer Res Clin Oncol. 2018;144:743–9. doi: 10.1007/s00432-017-2571-7.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+12.
+Dai C, Xie H, Kadeer X, Su H, Xie D, Ren Y, et al.  Relationship of lymph node micrometastasis and micropapillary component and their joint influence on prognosis of patients with stage I lung adenocarcinoma. Am J Surg Pathol. 2017;41:1212–20. doi: 10.1097/PAS.0000000000000901.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+13.
+Nitadori J, Bograd AJ, Kadota K, Sima CS, Rizk NP, Morales EA, et al.  Impact of micropapillary histologic subtype in selecting limited resection vs lobectomy for lung adenocarcinoma of 2 cm or smaller. J Natl Cancer Inst. 2013;105:1212–20. doi: 10.1093/jnci/djt166.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+14.
+Su H, Xie H, Dai C, Zhao S, Xie D, She Y, et al.  Procedure-specific prognostic impact of micropapillary subtype may guide resection strategy in small-sized lung adenocarcinomas: a multicenter study. Ther Adv Med Oncol. 2020;12:1758835920937893. doi: 10.1177/1758835920937893.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+15.
+Sun W, Su H, Liu J, Zhang L, Li M, Xie H, et al.  Impact of histological components on selecting limited lymphadenectomy for lung adenocarcinoma ≤2 cm. Lung Cancer. 2020;150:36–43. doi: 10.1016/j.lungcan.2020.09.016.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+16.
+Xu Y, Ji W, Hou L, Lin S, Shi Y, Zhou C, et al.  Enhanced CT-based radiomics to predict micropapillary pattern within lung invasive adenocarcinoma. Front Oncol. 2021;11:704994. doi: 10.3389/fonc.2021.704994.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+17.
+Huang KY, Ko PZ, Yao CW, Hsu CN, Fang HY, Tu CY, et al.  Inaccuracy of lung adenocarcinoma subtyping using preoperative biopsy specimens. J Thorac Cardiovasc Surg. 2017;154:332–9. doi: 10.1016/j.jtcvs.2017.02.059.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+18.
+Yeh YC, Nitadori J, Kadota K, Yoshizawa A, Rekhtman N, Moreira AL, et al.  Using frozen section to identify histological patterns in stage I lung adenocarcinoma of < /=3 cm: accuracy and interobserver agreement. Histopathology. 2015;66:922–38. doi: 10.1111/his.12468.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+19.
+Trejo Bittar HE, Incharoen P, Althouse AD, Dacic S. Accuracy of the IASLC/ATS/ERS histological subtyping of stage I lung adenocarcinoma on intraoperative frozen sections. Mod Pathol. 2015;28:1058–63. doi: 10.1038/modpathol.2015.71.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+20.
+Moreira AL, Ocampo PSS, Xia Y, Zhong H, Russell PA, Minami Y, et al.  A grading system for invasive pulmonary adenocarcinoma: a proposal from the International Association for the Study of Lung Cancer Pathology Committee. J Thorac Oncol. 2020;15:1599–610. doi: 10.1016/j.jtho.2020.06.001.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+21.
+Feng X, Zhang M, Wang B, Zhou C, Mu Y, Li J, et al.  CRABP2 regulates invasion and metastasis of breast cancer through hippo pathway dependent on ER status. J Exp Clin cancer Res. 2019;38:361. doi: 10.1186/s13046-019-1345-2.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+22.
+Zhao Y, Wang R, Shen X, Pan Y, Cheng C, Li Y, et al.  Minor components of micropapillary and solid subtypes in lung adenocarcinoma are predictors of lymph node metastasis and poor prognosis. Ann Surg Oncol. 2016;23:2099–105. doi: 10.1245/s10434-015-5043-9.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+23.
+Ginsberg RJ, Rubinstein LV. Randomized trial of lobectomy versus limited resection for T1 N0 non-small cell lung cancer. Lung Cancer Study Group. Ann Thorac Surg. 1995;60:615–22. doi: 10.1016/0003-4975(95)00537-U.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+24.
+Kang HR, Cho JY, Lee SH, Lee YJ, Park JS, Cho YJ, et al.  Role of low-dose computerized tomography in lung cancer screening among never-smokers. J Thorac Oncol. 2019;14:436–44. doi: 10.1016/j.jtho.2018.11.002.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+25.
+Aberle DR, Adams AM, Berg CD, Black WC, Clapp JD, Fagerstrom RM, et al.  Reduced lung-cancer mortality with low-dose computed tomographic screening. N Engl J Med. 2011;365:395–409. doi: 10.1056/NEJMoa1102873.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+26.
+Wisnivesky JP, Henschke CI, Swanson S, Yankelevitz DF, Zulueta J, Marcus S, et al.  Limited resection for the treatment of patients with stage IA lung cancer. Ann Surg. 2010;251:550–4. doi: 10.1097/SLA.0b013e3181c0e5f3.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+27.
+Veluswamy RR, Ezer N, Mhango G, Goodman E, Bonomi M, Neugut AI, et al.  Limited resection versus lobectomy for older patients with early-stage lung cancer: impact of histology. J Clin Oncol. 2015;33:3447–53. doi: 10.1200/JCO.2014.60.6624.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+28.
+Chiang XH, Lu TP, Hsieh MS, Tsai TM, Liao HC, Kao TN, et al.  Thoracoscopic wedge resection versus segmentectomy for cT1N0 lung adenocarcinoma. Ann Surg Oncol. 2021;28:8398–411. doi: 10.1245/s10434-021-10213-9.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+29.
+Tsutani Y, Miyata Y, Nakayama H, Okumura S, Adachi S, Yoshimura M, et al.  Appropriate sublobar resection choice for ground glass opacity-dominant clinical stage IA lung adenocarcinoma: wedge resection or segmentectomy. Chest. 2014;145:66–71. doi: 10.1378/chest.13-1094.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+30.
+Saji H, Okada M, Tsuboi M, Nakajima R, Suzuki K, Aokage K, et al.  Segmentectomy versus lobectomy in small-sized peripheral non-small-cell lung cancer (JCOG0802/WJOG4607L): a multicentre, open-label, phase 3, randomised, controlled, non-inferiority trial. Lancet. 2022;399:1607–17. doi: 10.1016/S0140-6736(21)02333-3.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+31.
+Altorki NK, Wang X, Wigle D, Gu L, Darling G, Ashrafi AS, et al.  Perioperative mortality and morbidity after sublobar versus lobar resection for early-stage non-small-cell lung cancer: post-hoc analysis of an international, randomised, phase 3 trial (CALGB/Alliance 140503) Lancet Respir Med. 2018;6:915–24. doi: 10.1016/S2213-2600(18)30411-9.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+32.
+Caso R, Sanchez-Vega F, Tan KS, Mastrogiacomo B, Zhou J, Jones GD, et al.  The underlying tumor genomics of predominant histologic subtypes in lung adenocarcinoma. J Thorac Oncol. 2020;15:1844–56. doi: 10.1016/j.jtho.2020.08.005.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+33.
+Song SH, Park H, Lee G, Lee HY, Sohn I, Kim HS, et al.  Imaging phenotyping using radiomics to predict micropapillary pattern within lung adenocarcinoma. J Thorac Oncol. 2017;12:624–32. doi: 10.1016/j.jtho.2016.11.2230.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+34.
+Schug TT, Berry DC, Shaw NS, Travis SN, Noy N. Opposing effects of retinoic acid on cell growth result from alternate activation of two different nuclear receptors. Cell. 2007;129:723–33. doi: 10.1016/j.cell.2007.02.050.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+35.
+Xie T, Tan M, Gao Y, Yang H. CRABP2 accelerates epithelial mesenchymal transition in serous ovarian cancer cells by promoting TRIM16 methylation via upregulating EZH2 expression. Environ Toxicol. 2022;37:1957–67. doi: 10.1002/tox.23542.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+36.
+Calmon MF, Rodrigues RV, Kaneto CM, Moura RP, Silva SD, Mota LD, et al.  Epigenetic silencing of CRABP2 and MX1 in head and neck tumors. Neoplasia. 2009;11:1329–39. doi: 10.1593/neo.91110.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+37.
+Han SS, Kim WJ, Hong Y, Hong SH, Lee SJ, Ryu DR, et al.  RNA sequencing identifies novel markers of non-small cell lung cancer. Lung Cancer. 2014;84:229–35. doi: 10.1016/j.lungcan.2014.03.018.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+38.
+Hirakawa H, Shibata K, Ohzono E. Use of a semi-dry dot-blot for rapid detection of lymph node metastasis. Clin Chim Acta. 2010;411:1149–50. doi: 10.1016/j.cca.2010.04.003.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+39.
+Hamada K, Otsubo R, Takeshita H, Nonaka T, Tominaga T, Hidaka S, et al.  Diagnosis of lymph node metastasis in colorectal cancer by a semi-dry dot-blot method. Anticancer Res. 2019;39:2069–76. doi: 10.21873/anticanres.13318.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+40.
+Otsubo R, Hirakawa H, Oikawa M, Baba M, Inamasu E, Shibata K, et al.  Validation of a novel diagnostic kit using the semidry dot-blot method to detect metastatic lymph nodes in breast cancer: distinguishing macrometastases from nonmacrometastases. Clin Breast Cancer. 2018;18:e345–e351. doi: 10.1016/j.clbc.2017.07.009.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+41.
+Tomoshige K, Tsuchiya T, Otsubo R, Oikawa M, Yamasaki N, Matsumoto K, et al.  Intraoperative diagnosis of lymph node metastasis in non-small-cell lung cancer by a semi-dry dot-blot method. Eur J Cardiothorac Surg. 2016;49:617–22. doi: 10.1093/ejcts/ezv118.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+42.
+Otsubo R, Oikawa M, Hirakawa H, Shibata K, Abe K, Hayashi T, et al.  Novel diagnostic procedure for determining metastasis to sentinel lymph nodes in breast cancer using a semi-dry dot-blot method. Int J Cancer. 2014;134:905–12. doi: 10.1002/ijc.28408.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+43.
+Fahrmann JF, Marsh T, Irajizad E, Patel N, Murage E, Vykoukal J, et al.  Blood-based biomarker panel for personalized lung cancer risk assessment. J Clin Oncol. 2022;40:876–83. doi: 10.1200/JCO.21.01460.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+44.
+Bigbee WL, Gopalakrishnan V, Weissfeld JL, Wilson DO, Dacic S, Lokshin AE, et al.  A multiplexed serum biomarker immunoassay panel discriminates clinical lung cancer patients from high-risk individuals found to be cancer-free by CT screening. J Thorac Oncol. 2012;7:698–708. doi: 10.1097/JTO.0b013e31824ab6b0.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+45.
+Ostrin EJ, Bantis LE, Wilson DO, Patel N, Wang R, Kundnani D, et al.  Contribution of a blood-based protein biomarker panel to the classification of indeterminate pulmonary nodules. J Thorac Oncol. 2021;16:228–36. doi: 10.1016/j.jtho.2020.09.024.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+46.
+Guida F, Sun N, Bantis LE, Muller DC, Li P, Taguchi A, et al.  Assessment of lung cancer risk on the basis of a biomarker panel of circulating proteins. JAMA Oncol. 2018;4:e182078. doi: 10.1001/jamaoncol.2018.2078.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+47.
+Kim DJ, Kim WJ, Lim M, Hong Y, Lee SJ, Hong SH, et al.  Plasma CRABP2 as a novel biomarker in patients with non-small cell lung cancer. J Korean Med Sci. 2018;33:e178. doi: 10.3346/jkms.2018.33.e178.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+Associated Data
+
+
+This section collects any data citations, data availability statements, or supplementary materials included in this article.
+
+
+Supplementary Materials
+
+
+
+
+Supplemental Table 1
+ (17.2KB, docx) 
+
+
+
+
+Supplemental Table 2
+ (106.9KB, xlsx) 
+
+
+
+
+Supplemental Table 3
+ (16.2KB, docx) 
+
+
+
+
+Supplemental Table 4
+ (14.6KB, docx) 
+
+
+
+
+Supplemental Table 5
+ (17.2KB, docx) 
+
+
+
+
+Supplemental Figure Legend
+ (13.4KB, docx) 
+
+
+
+
+Supplemental Figure 1
+ (7.1MB, tif) 
+
+
+
+
+Supplemental Figure 2
+ (6.6MB, tif) 
+
+
+
+
+Supplemental Figure 3
+ (4.1MB, tif) 
+
+
+
+
+Supplemental Figure 4
+ (7.1MB, tif) 
+
+
+
+
+Supplemental Figure 5
+ (2.3MB, tif) 
+
+
+
+
+Supplemental Figure 6
+ (5.5MB, tif) 
+
+
+
+
+Supplemental Figure 7
+ (7.8MB, tif) 
+
+
+
+
+Supplemental Figure 8
+ (6.2MB, tif) 
+
+
+Data Availability Statement
+
+
+The datasets used and/or analysed during the current study are available from the corresponding author on reasonable request.
+
+
+Articles from British Journal of Cancer are provided here courtesy of 
+Cancer Research UK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View on publisher site
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PDF (1.9 MB)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Permalink
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESOURCES
+
+
+
+
+
+
+
+                            Similar articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                             Cited by other articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                                 Links to NCBI Databases
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Download .nbib
+
+
+.nbib
+
+
+
+
+
+
+
+
+
+
+Format:
+
+
+
+
+
+        AMA
+      
+
+
+
+        APA
+      
+
+
+
+        MLA
+      
+
+
+
+        NLM
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Add to Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create a new collection
+
+
+
+
+
+
+
+
+Add to an existing collection
+
+
+
+
+
+
+
+
+
+
+
+                Name your collection
+               
+*
+
+
+
+
+
+
+
+
+
+
+
+                Choose a collection
+              
+
+
+
+
+
+
+
+                Unable to load your collection due to an error
+
+
+Please try again
+
+
+
+
+
+
+
+
+
+
+
+          Add
+        
+
+
+
+          Cancel
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                Follow NCBI
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on LinkedIn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on GitHub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI RSS feed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Connect with NLM
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on YouTube
+
+
+
+
+
+
+
+
+
+
+
+
+National Library of Medicine
+            
+ 8600 Rockville Pike
+ Bethesda, MD 20894
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Web Policies
+
+    
+
+
+
+
+
+
+
+
+    
+
+    FOIA
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS Vulnerability Disclosure
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Help
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Accessibility
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Careers
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    NLM
+
+    
+
+
+
+
+
+
+
+
+    
+
+    NIH
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS
+
+    
+
+
+
+
+
+
+
+
+    
+
+    USA.gov
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Back to Top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

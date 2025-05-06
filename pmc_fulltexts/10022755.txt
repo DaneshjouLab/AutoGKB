@@ -1,0 +1,3461 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Geographic clustering of travel-acquired infections in Ontario, Canada, 2008–2020 - PMC
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Skip to main content
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        An official website of the United States government
+                    
+
+
+Here's how you know
+
+
+
+
+
+
+Here's how you know
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Official websites use .gov
+
+
+
+                            A
+                            
+.gov
+ website belongs to an official
+                            government organization in the United States.
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Secure .gov websites use HTTPS
+
+
+
+                            A 
+lock
+ (
+                            
+
+
+
+
+Lock
+
+
+
+                                    Locked padlock icon
+                                    
+
+
+
+
+
+
+) or 
+https://
+ means you've safely
+                                connected to the .gov website. Share sensitive
+                                information only on official, secure websites.
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Search
+                        
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+    
+        
+
+        Log out
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        Search…
+                    
+
+
+
+
+
+
+
+                            Search NCBI
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Primary site navigation
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Search
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Logged in as:
+                    
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+        
+
+        Log in
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search PMC Full-Text Archive
+
+
+
+
+
+
+
+
+
+
+Search in PMC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Advanced Search
+                        
+
+
+
+
+
+
+
+                                Journal List
+                            
+
+
+
+
+
+
+
+                                User Guide
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with,
+    the contents by NLM or the National Institutes of Health.
+
+    Learn more:
+    
+PMC Disclaimer
+
+    |
+    
+
+        PMC Copyright Notice
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PLOS Glob Public Health
+. 2023 Mar 17;3(3):e0001608. doi: 
+10.1371/journal.pgph.0001608
+
+
+
+
+
+
+Search in PMC
+
+
+Search in PubMed
+
+
+View in NLM Catalog
+
+
+Add to search
+
+
+
+
+Geographic clustering of travel-acquired infections in Ontario, Canada, 2008–2020
+
+
+Vinyas Harish
+
+
+Vinyas Harish
+
+
+
+
+1
+MD/PhD Program, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+2
+Dalla Lana School of Public Health, University of Toronto, Toronto, ON, Canada
+
+
+Conceptualization, Formal analysis, Methodology, Project administration, Visualization, Writing – original draft, Writing – review & editing
+
+
+Find articles by 
+Vinyas Harish
+
+
+
+
+
+
+1,
+2
+, 
+Emmalin Buajitti
+
+
+Emmalin Buajitti
+
+
+
+
+2
+Dalla Lana School of Public Health, University of Toronto, Toronto, ON, Canada
+
+
+
+
+3
+Epidemiology, Biostatistics and Occupational Health, McGill University, Montreal, QC, Canada
+
+
+Conceptualization, Formal analysis, Writing – original draft, Writing – review & editing
+
+
+Find articles by 
+Emmalin Buajitti
+
+
+
+
+
+
+2,
+3
+, 
+Holly Burrows
+
+
+Holly Burrows
+
+
+
+
+4
+Yale School of Public Health, Yale University, New Haven, CT, United States of America
+
+
+Formal analysis, Writing – original draft, Writing – review & editing
+
+
+Find articles by 
+Holly Burrows
+
+
+
+
+
+
+4
+, 
+Joshua Posen
+
+
+Joshua Posen
+
+
+
+
+5
+Division of Infectious Diseases, The Hospital for Sick Children, Toronto, ON, Canada
+
+
+Methodology, Writing – original draft, Writing – review & editing
+
+
+Find articles by 
+Joshua Posen
+
+
+
+
+
+
+5
+, 
+Isaac I Bogoch
+
+
+Isaac I Bogoch
+
+
+
+
+6
+Division of Infectious Diseases, Department of Medicine, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+Writing – review & editing
+
+
+Find articles by 
+Isaac I Bogoch
+
+
+
+
+
+
+6
+, 
+Antoine Corbeil
+
+
+Antoine Corbeil
+
+
+
+
+7
+Public Health Ontario, Toronto, ON, Canada
+
+
+Writing – review & editing
+
+
+Find articles by 
+Antoine Corbeil
+
+
+
+
+
+
+7
+, 
+Jonathan B Gubbay
+
+
+Jonathan B Gubbay
+
+
+
+
+5
+Division of Infectious Diseases, The Hospital for Sick Children, Toronto, ON, Canada
+
+
+
+
+7
+Public Health Ontario, Toronto, ON, Canada
+
+
+
+
+8
+Department of Laboratory Medicine and Pathobiology, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+Writing – review & editing
+
+
+Find articles by 
+Jonathan B Gubbay
+
+
+
+
+
+
+5,
+7,
+8
+, 
+Laura C Rosella
+
+
+Laura C Rosella
+
+
+
+
+2
+Dalla Lana School of Public Health, University of Toronto, Toronto, ON, Canada
+
+
+
+
+8
+Department of Laboratory Medicine and Pathobiology, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+9
+Institute for Better Health, Trillium Health Partners, Mississauga, ON, Canada
+
+
+Conceptualization, Methodology, Writing – review & editing
+
+
+Find articles by 
+Laura C Rosella
+
+
+
+
+
+
+2,
+8,
+9
+, 
+Shaun K Morris
+
+
+Shaun K Morris
+
+
+
+
+5
+Division of Infectious Diseases, The Hospital for Sick Children, Toronto, ON, Canada
+
+
+
+
+10
+Department of Paediatrics, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+11
+Child Health Evaluative Sciences, The Hospital for Sick Children, Toronto, ON, Canada
+
+
+Conceptualization, Methodology, Project administration, Supervision, Writing – review & editing
+
+
+Find articles by 
+Shaun K Morris
+
+
+
+
+
+
+5,
+10,
+11,
+*
+
+
+
+
+Editor: 
+Everton Falcão de Oliveira
+12
+
+
+
+
+
+
+Author information
+
+
+Article notes
+
+
+Copyright and License information
+
+
+
+
+
+
+
+
+
+
+1
+MD/PhD Program, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+2
+Dalla Lana School of Public Health, University of Toronto, Toronto, ON, Canada
+
+
+
+
+3
+Epidemiology, Biostatistics and Occupational Health, McGill University, Montreal, QC, Canada
+
+
+
+
+4
+Yale School of Public Health, Yale University, New Haven, CT, United States of America
+
+
+
+
+5
+Division of Infectious Diseases, The Hospital for Sick Children, Toronto, ON, Canada
+
+
+
+
+6
+Division of Infectious Diseases, Department of Medicine, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+7
+Public Health Ontario, Toronto, ON, Canada
+
+
+
+
+8
+Department of Laboratory Medicine and Pathobiology, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+9
+Institute for Better Health, Trillium Health Partners, Mississauga, ON, Canada
+
+
+
+
+10
+Department of Paediatrics, Temerty Faculty of Medicine, University of Toronto, Toronto, ON, Canada
+
+
+
+
+11
+Child Health Evaluative Sciences, The Hospital for Sick Children, Toronto, ON, Canada
+
+
+
+
+12
+Federal University of Mato Grosso do Sul, BRAZIL
+
+
+
+
+I have read the journal’s policy and the authors of this manuscript have the following competing interests: IIB has consulted for BlueDot, a social enterprise that develops digital technologies for public health, outside the submitted work. JBG works as a scientific editor for GIDEON, an online resource on infectious diseases, outside the submitted work. All other authors declare no conflicts of interest related to the content of this manuscript.
+
+
+
+
+✉
+* E-mail: 
+shaun.morris@sickkids.ca
+
+
+
+
+
+
+Roles
+
+
+
+
+Vinyas Harish
+: 
+Conceptualization, Formal analysis, Methodology, Project administration, Visualization, Writing – original draft, Writing – review & editing
+
+
+
+
+
+
+Emmalin Buajitti
+: 
+Conceptualization, Formal analysis, Writing – original draft, Writing – review & editing
+
+
+
+
+
+
+Holly Burrows
+: 
+Formal analysis, Writing – original draft, Writing – review & editing
+
+
+
+
+
+
+Joshua Posen
+: 
+Methodology, Writing – original draft, Writing – review & editing
+
+
+
+
+
+
+Isaac I Bogoch
+: 
+Writing – review & editing
+
+
+
+
+
+
+Antoine Corbeil
+: 
+Writing – review & editing
+
+
+
+
+
+
+Jonathan B Gubbay
+: 
+Writing – review & editing
+
+
+
+
+
+
+Laura C Rosella
+: 
+Conceptualization, Methodology, Writing – review & editing
+
+
+
+
+
+
+Shaun K Morris
+: 
+Conceptualization, Methodology, Project administration, Supervision, Writing – review & editing
+
+
+
+
+
+
+Everton Falcão de Oliveira
+: 
+Editor
+
+
+
+
+
+
+Received 2022 Nov 3; Accepted 2023 Jan 20; Collection date 2023.
+
+
+
+
+© 2023 Harish et al
+
+
+This is an open access article distributed under the terms of the 
+Creative Commons Attribution License
+, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+
+
+PMC Copyright notice
+
+
+
+
+
+
+PMCID: PMC10022755  PMID: 
+36963058
+
+
+
+
+Abstract
+
+
+As the frequency of international travel increases, more individuals are at risk of travel-acquired infections (TAIs). In this ecological study of over 170,000 unique tests from Public Health Ontario’s laboratory, we reviewed all laboratory-reported cases of malaria, dengue, chikungunya, and enteric fever in Ontario, Canada between 2008–2020 to identify high-resolution geographical clusters for potential targeted pre-travel prevention. Smoothed standardized incidence ratios (SIRs) and 95% posterior credible intervals (CIs) were estimated using a spatial Bayesian hierarchical model. High- and low-incidence areas were described using data from the 2016 Census based on the home forward sortation area of patients testing positive. A second model was used to estimate the association between drivetime to the nearest travel clinic and incidence of TAI within high-incidence areas. There were 6,114 microbiologically confirmed TAIs across Ontario over the study period. There was spatial clustering of TAIs (Moran’s I = 0.59, p<0.0001). Compared to low-incidence areas, high-incidence areas had higher proportions of immigrants (p<0.0001), were lower income (p = 0.0027), had higher levels of university education (p<0.0001), and less knowledge of English/French languages (p<0.0001). In the high-incidence Greater Toronto Area (GTA), each minute increase in drive time to the closest travel clinic was associated with a 3% reduction in TAI incidence (95% CI 1–6%). While urban neighbourhoods in the GTA had the highest burden of TAIs, geographic proximity to a travel clinic in the GTA was not associated with an area-level incidence reduction in TAI. This suggests other barriers to seeking and adhering to pre-travel advice.
+Introduction
+
+
+Prior to the COVID-19 pandemic, international travel was increasingly prevalent. In 2019, there were 1.5 billion international travellers, about half of whom travelled to low and lower middle-income countries [
+1
+, 
+2
+]. With increasing travel, more travellers are exposed to infectious agents not endemic to their departure region and more travel-acquired infections (TAI) occur[
+3
+, 
+4
+]. Pre-travel advice (PTA), which includes patient education on topics such as malaria prophylaxis, vaccination, food and water safety, and strategies for prevention of other vector-borne diseases, has been shown to decrease the rate of TAIs [
+5
+]. The World Health Organization recommends all travellers receive pre-travel advice, yet only 15–54% of travellers do so [
+4
+, 
+6
+–
+8
+]. Surveillance data indicates that upwards of 70% of travellers who become ill due to travel did not receive PTA [
+9
+, 
+10
+].
+
+
+Up to 76% of travellers acquire a TAI [
+1
+, 
+11
+]. Most TAIs are mild and self-limited, such as traveller’s diarrhea. However, up to 8% of travellers become ill enough to seek clinical care during or after travel, and up to 1% of all travellers develop a febrile or systemic illness with elevated morbidity or mortality, such as malaria, enteric fever, dengue fever and chikungunya [
+9
+]. A quarter of all travellers report symptoms of TAI after completion of travel, signifying a significant burden of imported infections and healthcare needs [
+1
+]. During the 10-year period from 2009–2018, 4,947 imported cases of malaria and 1,536 imported cases of enteric fever were reported in Canada, about half of which were reported in Ontario [
+12
+, 
+13
+]. Among sub-national jurisdictions in North America, only New York State has a higher reported rate of malaria cases than Ontario [
+13
+, 
+14
+]. In addition to the morbidity caused by these TAIs, attributable medical costs in Ontario have been calculated to be CAD$4,558 per case of malaria and CAD$7,852 per case of enteric fever [
+15
+].
+
+
+Previous studies have found that travellers visiting friends and relatives (VFR), business travellers, and those travelling with children, on short notice, or for extended durations are less likely to receive PTA [
+4
+, 
+16
+–
+19
+]. These same factors have been associated with increased incidence of TAI [
+9
+, 
+10
+, 
+20
+]. Quality of PTA also varies depending on the provider, with VFRs especially being less likely to consult a travel medicine specialist [
+6
+, 
+11
+, 
+19
+]. Thus, many of the highest incidence travellers are likely not receiving appropriate PTA, leading to missed opportunities for prevention of TAIs.
+
+
+Ontario’s public health system is subdivided into 34 local public health units. Demographic factors and incidence of TAIs vary significantly between health units, with three health units–Toronto, Peel, and Ottawa–reporting almost 80% of provincial malaria cases [
+12
+]. Due to the large population sizes covered by these health three units (one to three million each), it would be impractical to distribute TAI prevention efforts at the level of the public health unit. Geographical analysis by postal code for targeted interventions has yielded specific outcomes for non-communicable diseases [
+21
+, 
+22
+], but has not previously been described for TAIs in a Canadian context.
+
+
+Our objective was to review all laboratory confirmed cases of four common TAIs (malaria, enteric fever, dengue fever, and chikungunya) in Ontario between 2008–2020 to identify high-resolution geographical clusters. Our secondary objective was to explore the association between geographic proximity to travel clinics and neighbourhood-level burden of TAIs. We hypothesized that there would be clustering of TAIs in urban centres and that proximity to travel clinics (measured by drive time) would be associated with reduced neighbourhood-level TAI burden.
+Methods
+
+
+Ethics statement
+
+
+Approval from The Hospital for Sick Children Research Ethics Board (REB) was obtained for this study (REB #1000068880).
+Study design and setting
+
+
+Our study setting is Ontario, Canada’s most populous province with a population over 15 million as of 2022 [
+23
+]. Ontario has a universal single-payer health system that provides free access to a wide range of services including laboratory testing to the vast majority of residents. We reviewed all tests for malaria, enteric fever (caused by Salmonella enterica serovar Typhi or Paratyphi), dengue, and chikungunya processed at Public Health Ontario’s laboratory between July 15, 2008 to December 31, 2020. Public Health Ontario is Ontario’s provincial public health reference laboratory and conducts confirmatory testing for the listed TAIs across the province. Since residents were eligible for testing without additional cost, we can provide population-level estimates of disease burden robust to detection bias.
+Data source
+
+
+PHO’s laboratory information system was queried for the time period of July 15, 2008 (date of implementation of the laboratory information system) to December 31, 2020. All test results for malaria (microscopy, rapid diagnostic tests [RDT], and polymerase chain reaction [PCR] tests), enteric fever (blood, bone marrow, urine, and stool cultures), dengue fever (IgM enzyme-linked immunosorbent assay [ELISA], IgG ELISA, and PCR tests), and chikungunya (IgM ELISA, IgG ELISA, and PCR tests) were extracted. Chikungunya coverage begins in 2015 while dengue coverage begins in 2008 with ELISA and PCR added in 2016. Each data point was collected at the test level and included the patient’s home forward sortation area (FSA) from their 6-digit postal code in addition to the specimen type, test performed, and test result. If the FSA was unavailable, the submitter’s FSA was provided instead. Each test was also assigned a unique patient identifier based on health card number, first name, last name, and date of birth.
+Outcome definition
+
+
+The primary outcome of this study was the population-standardized incidence ratio of TAIs at the FSA level. The FSA is defined by the first three alphanumeric characters within a Canadian postal code and is a common level of geographic analysis. Each FSA comprises roughly 20,000 people but can vary in coverage due to heterogeneity in geography and population size (e.g., FSAs in northern Ontario are very large in area as the region is sparsely populated).
+
+
+To determine an accurate count of unique TAI episodes, we identified a time period for attribution of positive tests to the same infection episode (as opposed to a reinfection episode). Repeat positive results outside this period were considered to represent a reinfection. For malaria, the defined period for persistently positive microscopy was set at 14 days, and at 90 days for RDT and PCR. The period was set at 14 days for enteric fever culture, dengue PCR, and chikungunya PCR. For dengue or chikungunya IgM ELISA, the period was set at 365 days. Due to small counts and similar incidence profiles (i.e., same vector and similar geographic distribution), dengue and chikungunya cases were pooled during analysis as ‘arboviruses’. The main analyses are presented with all diseases pooled together as TAIs, but disaggregated analyses can be found in the 
+S1 Text
+.
+Exposures and covariate selection
+
+
+The primary aim of this study was to identify any geographic clustering in TAI burden within Ontario. The secondary aim was to explore the association between geographic proximity to travel clinics and FSA-level burden of TAIs. In Canada, self-described travel clinics provide heterogeneous services from healthcare providers whose expertise in travel medicine varies considerably. To identify and include in our analysis only travel clinics that meet a minimum standard, we defined a travel clinic as a healthcare site designated by the Public Health Agency of Canada as a yellow fever vaccination centre [
+24
+]. All listed sites in Ontario were identified and geocoded with latitude and longitude coordinates using the Google Maps Geocoding application programming interface (API) [
+25
+]. Drive times were calculated from the centroid of each FSA polygon to each travel clinic using the Open Source Routing Machine API which determines the shortest path between a series of points on road networks [
+26
+]. This list of drive times was then filtered to obtain the drive time from each FSA to the closest travel clinic as a continuous variable in minutes.
+
+
+Sociodemographic covariates of interest were defined 
+a priori
+ based on expert knowledge and obtained from Statistics Canada’s 2016 Census (
+https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/index-eng.cfm
+) at the FSA level. Specifically, we included log-transformed median household income after tax as a continuous variable and immigration status, knowledge of official languages (English and French), ethnicity (Caribbean, African, Latin American, Middle Eastern, East and Southeast Asian, and South Asian), and education level (postsecondary certificate/diploma/degree) as proportions.
+Statistical analyses
+
+
+A detailed and accessible overview of spatial modelling with Bayesian hierarchical models can be found elsewhere [
+27
+]. Counts of unique TAIs were used to calculate annual period-wide FSA-level case counts as well as population-standardized incidence ratios (SIRs). The expected number of cases was determined by multiplying the Ontario-wide rate of pooled cases by the population of each FSA. Smoothed SIRs and 95% posterior credible intervals (CIs) were estimated with a Besag spatial Bayesian hierarchical model (BHM), which accounts for statistical instability and uncertainty in small area incidence and are widely used for small-area rate analyses [
+28
+, 
+29
+]. Due to overdispersion of case counts and large number of FSAs with zero cases, we used a zero-inflated negative binomial base model. The Moran’s I test was used to test for global spatial autocorrelation in BHM-smoothed SIRs (i.e., if the spatial distribution of values can be explained by random chance) [
+30
+].
+
+
+Posterior CIs were used to identify high- and low- incidence areas of TAIs, which were described using sociodemographic data from the 2016 Canadian census. High-incidence areas were defined as those with smoothed SIR 95% CIs greater than 1 (i.e., lower credible limit > 1), and low-incidence areas with smoothed SIR 95% CIs less than 1 (i.e., upper credible limit < 1). Moderate-incidence areas are those with smoothed SIR 95% CIs that cross 1. To test for significant differences in Census characteristics between groups, we used the Kruskall-Wallis and Wilcoxon rank sum tests. All statistical tests were two-sided and a p-value of <0.05 was considered significant. A second BHM was used to estimate the association between drive time to the nearest travel clinic and incidence of TAI within high-incidence areas, adjusted for potential confounders. We estimated the percent variance explained by our covariates by subtracting the variance of the posterior SIRs in the unadjusted model from the variance of the adjusted model, dividing the difference by the unadjusted variance, and then multiplying the quotient by 100 [
+31
+]. All analyses were done in the R programming language (R version 4.0.1, RStudio version 1.3.9, Boston, MA, USA).
+Results
+
+
+Between July 15, 2008 and December 31, 2020, a total of 171,500 tests for malaria, enteric fever, dengue, and chikungunya were performed on 107,106 unique individuals. To avoid inappropriate clustering around health facilities, including those that serve large immigrant populations, we excluded 388 tests because of missing or invalid (i.e., outside of Ontario) patient home FSA. Of the 171,112 tests that were eligible, a total of 11,398 were positive for at least one of the four TAIs under study. Of these positive tests, 5,284 were excluded because they represented persistently positive repeat test results for the same TAI episode in the same patient. Therefore, the final analytic cohort included 6,114 laboratory confirmed unique TAI episodes (Fig A in 
+S1 Text
+).
+
+
+The annual absolute number of microbiologically confirmed enteric fever and malaria infections remained relatively stable at around 200 per year between 2010 and 2019 (
+Fig 1
+). There was greater variation in arbovirus infection numbers over the same time period, with annual numbers fluctuating between 100 and 280. Pooled annual TAI episodes peaked in 2019 at 715. The incidence of all TAIs dropped sharply in 2020, coinciding with the COVID-19 pandemic.
+
+
+Fig 1. Year-over-year burden of travel-acquired infections in Ontario, Canada.
+
+
+
+
+Open in a new tab
+
+
+The arbovirus category consists of both dengue and chikungunya.
+BHM-smoothed TAI SIRs by FSA ranged from 0 to 8 across Ontario, with higher SIRs generally located in the Greater Toronto Area (GTA) (
+Fig 2A and 2B
+). There was spatial clustering of TAIs (Moran’s I = 0.59, p<0.0001). The majority of FSAs deemed high-incidence for TAIs (i.e., those with SIR 95% CIs greater than 1; n = 57) were located in the GTA (n = 53), with the majority of the remaining GTA FSAs considered moderate-incidence (
+Fig 2D
+). There were five FSAs with SIRs over 5, and three of those 5 corresponded to the locations of hospitals within downtown Toronto and Ottawa. The majority of FSAs outside the GTA had SIRs less than 1, with the exception of certain FSAs in Northern Ontario and the Greater Ottawa Area (
+Fig 2C and 2D
+).
+
+
+Fig 2. Standardized travel-acquired infection incidence across Ontario, Canada.
+
+
+
+
+Open in a new tab
+
+
+Bayesian hierarchical model (BHM) smoothed standardized incidence ratios (SIRs) for travel-acquired infections (TAIs) and estimated incidence levels (panels A and C) with insets for the Greater Toronto Area (B and D). High-incidence areas are defined as those with smoothed SIR 95% credible intervals (Cis) greater than 1 and low-incidence areas with smoothed SIR 95% CIs less than 1. Adapted from Statistics Canada, 2016 Census–Boundary Files, 2019-11-13. This does not constitute an endorsement by Statistics Canada of this product.
+The absolute case counts in the GTA for all three disease categories—arboviruses, enteric fever, and malaria—generally followed the spatial pattern observed for the TAI SIRs (
+Fig 3
+). Enteric fever cases were the most clustered (
+Fig 3C
+) while arboviruses were the most dispersed (
+Fig 3A
+). Higher incidence FSAs had a significantly higher proportion of: immigrants; recent immigrants (migrated between 2001–2016); lower household after-tax income; university certificate or diploma above a Bachelors; and lower knowledge of Canada’s official languages English and French (
+Fig 4
+). In the GTA, each minute increase in drive time to the closest travel clinic was associated with a 3% reduction in TAI incidence (95% CI 1–6%) (
+Table 1
+). When comparing adjusted and unadjusted models, the Census covariates explained roughly 15% of the variation in TAI incidence.
+
+
+Fig 3. Burden of travel-acquired infections in the Greater Toronto Area.
+
+
+
+
+Open in a new tab
+
+
+Raw counts of microbiologically confirmed infections for arboviruses (panel A), malaria (panel B), enteric fever (panel C) and for all diseases (panel D) in the Greater Toronto Area over the study period. Adapted from Statistics Canada, 2016 Census–Boundary Files, 2019-11-13. This does not constitute an endorsement by Statistics Canada of this product.
+Fig 4. Characterizing high, moderate, and low-incidence clusters of travel-acquired illness burden across Ontario, Canada.
+
+
+
+
+Open in a new tab
+
+
+Boxplots comparing clusters of FSAs across Ontario using key characteristics from the 2016 Census. Kruskall-Wallis and Wilcoxon rank sum tests were used as appropriate. All statistical tests were two-sided and a p-value of <0.05 was considered significant.
+Table 1. Drivetime analysis.
+
+
+Adjusted Bayesian hierarchical model estimates for the association between drivetime to closest travel clinic and forward sortation area (FSA)-level travel-acquired infection burden within the Greater Toronto Area.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FSA-level Incidence Factor
+
+
+Adjusted Relative Incidence (95% CI)
+
+
+
+
+
+
+
+
+Drivetime to closest travel clinic
+
+
+0.966 (0.943–0.988)
+
+
+
+
+
+
+% of population with no knowledge of English/French
+
+
+1.014 (0.963–1.069)
+
+
+
+
+
+
+% of population that is immigrant
+
+
+0.980 (0.961–1.000)
+
+
+
+
+
+
+% of population with Caribbean ethnicity
+
+
+1.042 (1.004–1.082)
+
+
+
+
+
+
+% of population with African ethnicity
+
+
+1.034 (0.990–1.079)
+
+
+
+
+
+
+% of population with Latin American ethnicity
+
+
+1.013 (0.949–1.081)
+
+
+
+
+
+
+% of population with Middle Eastern ethnicity
+
+
+1.039 (1.004–1.074)
+
+
+
+
+
+
+% of population with East/Southeast Asian ethnicity
+
+
+1.009 (0.994–1.024)
+
+
+
+
+
+
+% of population with South Asian ethnicity
+
+
+1.031 (1.019–1.044)
+
+
+
+
+
+
+% of population with postsecondary certificate/diploma/degree
+
+
+0.998 (0.979–1.017)
+
+
+
+
+
+
+Log-transformed median household after-tax income
+
+
+0.888 (0.543–1.513)
+
+
+
+
+
+
+
+
+Open in a new tab
+Discussion
+
+
+We reviewed all laboratory confirmed cases of four common TAIs—malaria, enteric fever, dengue fever, and chikungunya—in Ontario between 2008–2020 to identify high-resolution geographical clusters. There was spatial clustering of TAIs largely within the GTA, the largest urban centre in Canada. Compared to low-incidence areas, high-incidence areas had higher proportions of immigrants, lower income status, higher university education, and lower knowledge of English and French. Contrary to our hypothesis, each minute increase in drivetime to the closest travel clinic in the GTA was associated with a 3% reduction in TAI incidence.
+
+
+Previous work in Ontario has suggested that area-level measures of socioeconomic status are not fully representative as proxies for individual-level data, but that they can measure important drivers of health outcomes and inequities [
+32
+]. This is particularly important in the context of TAIs. Communities of immigrants may live within similar regions and may share comparable incidences of TAI because of similar travel destinations and/or behaviours associated with travel. We found that Census covariates explained only 15% of the TAI incidence variation between adjusted and unadjusted models, thus other community- and individual-level factors are likely at play. Ethnicity was an important lens for understanding TAI clusters and provides important potential pathways for targeted education. In the GTA, enteric fever was highly clustered in predominantly South Asian communities whereas malaria was clustered in predominantly African communities (particularly Nigerian and Somali communities). These findings correlate with the high incidence rates of enteric fever in South Asia and of malaria in sub-Saharan Africa, likely due to community members recently immigrating from or travelling to these regions. This clustering of TAIs based on travel region may explain the significant spatial autocorrelation in TAIs observed here (Moran’s I = 0.59, p<0.0001), which is higher than some of the other correlations reported in the literature such as heat-related illness (Moran’s I = 0.21) and opioid-related deaths (Moran’s I = 0.46) [
+33
+, 
+34
+]. The highest incidence neighbourhoods in this study are marginalized along multiple social determinants of health including low economic status, recent immigration, and lower knowledge of Canada’s official languages. Intersectional vulnerability in communities has been linked to a range of adverse health outcomes, from chronic conditions to COVID-19 [
+35
+, 
+36
+]. While it may appear counterintuitive that higher levels of university education were associated with TAI clusters, this could be because many immigrants were highly educated in their home countries prior to their arrival in Canada and that education was favoured in the Canadian points-based immigration system until the early 2010s [
+37
+]. However, this finding may be limited to our jurisdiction and we caution readers against making a similar argument in their jurisdiction if circumstances and evidence may differ. Geospatial analyses may create meaningful lines of inquiry, including by challenging conventional knowledge, that are well suited for further exploration by mixed-methods and qualitative research in high-incidence areas.
+
+
+Access to health services has been conceptualized along three dimensions: physical accessibility, financial affordability, and acceptability [
+38
+]. Regarding physical accessibility, our drive time analysis demonstrates that clinics appear to be appropriately located near high-incidence communities. Financial affordability has been previously reported to be a barrier to seeking and following PTA among VFR travellers residing in the GTA [
+39
+]. Similar to the United States, Ontario’s universal health insurance program does not cover PTA, travel-related immunizations nor chemoprophylaxis [
+40
+]. Given this barrier and the potentially high healthcare costs linked to the management of TAIs, our findings highlight the need for cost effectiveness analyses evaluating the financial benefits of travel clinics on TAI prevention as well as pilot programs for PTA cost coverage in high-incidence communities [
+15
+]. The last dimension of access to health services, acceptability, may be the most complex barrier to address as it encompasses numerous dimensions of risk perception [
+41
+]. Studies have found that travellers may not accurately perceive risks associated with their travel and thus may believe PTA to be unnecessary for them [
+7
+, 
+19
+]. These beliefs are accentuated in VFR travellers. Uncertainty regarding itineraries and rushed circumstances surrounding travel (e.g., to attend a funeral) provide logistical challenges that hinder the feasibility of seeking PTA [
+39
+]. Since the tools to prevent these TAIs are different and vary in effectiveness, geospatial analyses, both aggregated and disaggregated by pathogen of interest, may serve as the first step towards guiding the local co-design of interventions with trusted community organizations to promote the acceptability of PTA in high-incidence communities [
+16
+, 
+39
+, 
+42
+, 
+43
+]. There can be significant ethno-cultural heterogeneity within a high-incidence community and thus clinicians and public health professionals may face the need to provide several distinct cultural tailorings of geographically targeted interventions (i.e., malaria prevention tailored to Nigerian residents, typhoid prevention tailored to South Asian residents). Research into cost-effective and culturally sensitive interventions to improve uptake of PTA could represent a fruitful area for future work.
+
+
+Our study features numerous strengths and contributions. First, it leverages a comprehensive dataset from a universal single-payer health system. Since residents were eligible for testing without additional cost, we can provide population-level estimates of disease burden robust to detection bias. Moreover, Ontario has a combination of highly urban and rural communities and is among the most ethnically diverse populations in the world, both of which improve the generalizability of our work to high income jurisdictions with high levels of immigration and multicultural populations. Spatial analyses may be especially useful to plan interventions in major metropolitan areas, as similar ethno-cultural clustering of TAIs has been reported in VFRs living in New York City and London [
+44
+–
+47
+]. Large, representative studies of this patient population and timescale are currently rare, as many of the published studies are based on chart reviews from individual travel clinics, surveys of travellers in airports, or the International Society of Travel Medicine GeoSentinel Surveillance Network collaboration efforts [
+9
+, 
+16
+]. While GeoSentinel provides a wide-ranging survey of the burden of TAIs across countries, the relatively fewer number of participant sites per country prevents comprehensive studies within a given geospatial jurisdiction. To our knowledge, we are the first group to examine geographic access to travel clinics as a form of pre-event access prior to a health outcome of interest (TAI). Finally, our geospatial approach was rigorous as we used Bayesian modelling to smooth small case counts and computed drive times to measure distance to care as opposed to less accurate straight-line distances. Bayesian modelling also reduces bias due to the modifiable areal unit problem (MAUP), whereby aggregating data into geopolitical units to study trends is sensitive to the administrative boundaries creating these units [
+48
+].
+
+
+Our study also has limitations. Although we expect to have excellent case identification, a limitation is that those without coverage in Ontario’s health insurance plan (e.g., newly landed immigrants/refugees) may be less likely to seek care and be identified with a TAI. Moreover, we did not have patient-level information on the location, nature, and duration of travel, as well as if PTA was individually sought or received. Lacking these details limits our ability to fully understand patterns and incidence groups. Our analysis does not consider differences in travel clinics (e.g., if a certified travel medicine specialist provides care, clinics that provide pre-travel advice without yellow fever certification) and changes in travel clinic locations over time. Unfortunately, no historical repository of travel clinic locations is publicly available. Our analysis also does not consider changes in community demographics over time since we only used data from the 2016 Census to gauge risk factors. As with all area-level studies, it is possible that our findings would be different based on different geographic boundaries due to the MAUP [
+49
+]. While smaller geographic boundaries may capture more variation, larger ones may be more relevant for planning interventions [
+50
+], reduce the risk of spillover effects [
+51
+], and are likely more temporally stable. Future work in Ontario should leverage mixed-methods designs to glean more nuanced, individual level information in the identified high-incidence communities. Jurisdictions with year-specific risk factors could also consider more advanced methods that handle time-varying confounding (e.g., G methods) to account for changing trends. Moreover, there may be misclassification bias due to the difficulty in determining if a positive test result corresponds to a new clinical episode or persistent infection. To mitigate this, we set time cut-offs between positive tests based on the expected persistence of a positive test result, acknowledging that this approach may still yield misclassified episodes. Finally, while PHO performs the majority of testing for TAIs in Ontario, it is possible that some individuals may have obtained testing by other laboratory facilities and would not be captured in this study. As PHO only performs bacterial stool cultures to support outbreaks or at the request of public health units, it is possible that our estimates undercount enteric fever as diagnosed by stool. Since arboviral infections are more likely to be mild and self-limited compared to malaria and enteric fever, it is possible our estimates undercount the burden of dengue and chikungunya.
+Conclusion
+
+
+While urban neighbourhoods in the Greater Toronto Area had the highest burden of travel-acquired infections in Ontario, geographic proximity to a travel clinic was not associated with an area-level reduction in the incidence of infections. This suggests other barriers to seeking and/or adhering to pre-travel advice. Future research, policy measures, and community-based interventions should consider barriers to the affordability and acceptability of pre-travel advice to better understand and ultimately reduce the burden of travel-acquired infections.
+Supporting information
+
+
+
+
+S1 Text
+(DOCX)
+
+
+
+
+
+
+Click here for additional data file.
+ (1.5MB, docx) 
+
+
+Acknowledgments
+
+
+We thank Adriana Peci at Public Health Ontario for preparing the data cut used in this study.
+Data Availability
+
+
+The underlying data used in this study is from Public Health Ontario's (PHO) laboratory and contains sensitive and potentially identifying personal health information (e.g., geographic location) for rare conditions. PHO cannot disclose the underlying data. Doing so would compromise individual privacy contrary to PHO’s ethical and legal obligations. Our Research Ethics Board approval also does not permit us to share data. Restricted access to the data may be available under conditions prescribed by the Ontario Personal Health Information Protection Act, 2004, the Ontario Freedom of Information and Protection of Privacy Act, the Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans (TCPS 2 (2018)), and PHO privacy and ethics policies. Data are available for researchers who meet PHO’s criteria for access to confidential data. Information about PHO’s data access request process is available on-line at 
+https://www.publichealthontario.ca/en/data-and-analysis/using-data/data-requests
+. Analytic code can be found on GitHub at the following repository: 
+https://github.com/PopHealthAnalytics/TropMed
+.
+Funding Statement
+
+
+This work was supported by the Canadian Institutes for Health Research (CIHR) Banting and Best Canada Graduate Scholarships (Master’s and Doctoral) [to VH], Association for Medical Microbiology and Infectious Diseases (AMMI) Canada - Canadian Foundation for Infectious Diseases (CFID) Medical Student Research Award 2021 [to VH], the CIHR Vanier Scholarship [to EB], and a Canada Research Chair in Population Health Analytics [to LCR]. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.
+References
+
+
+
+
+
+
+1.
+Vilkman K, Pakkanen SH, Lääveri T, Siikamäki H, Kantele A. Travelers’ health problems and behavior: prospective study with post-travel follow-up.
+BMC Infect Dis. 2016;16: 328. doi: 10.1186/s12879-016-1682-0
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+2.
+United Nations World Tourism Organization. UNWTO World Tourism Barometer and Statistical Annex, January 2020. UNWTO World Tourism Barometer (English version).
+2020;18: 1–48. doi: 10.18111/wtobarometereng.2020.18.1.1
+ [
+DOI
+] [
+Google Scholar
+]
+
+
+
+
+3.
+Hill DR, Ericsson CD, Pearson RD, Keystone JS, Freedman DO, Kozarsky PE, et al. The Practice of Travel Medicine: Guidelines by the Infectious Diseases Society of America. Clinical Infectious Diseases. 2006;43: 1499–1539. doi: 10.1086/508782
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+4.
+Kain D, Findlater A, Lightfoot D, Maxim T, Kraemer MUG, Brady OJ, et al. Factors Affecting Pre-Travel Health Seeking Behaviour and Adherence to Pre-Travel Health Advice: A Systematic Review.
+J Travel Med. 2019;26. doi: 10.1093/jtm/taz059
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+5.
+Reed JM, McIntosh IB, Powers K. Travel Illness and the Family Practitioner: A Retrospective Assessment of Travel-Induced Illness in General Practice and the Effect of a Travel Illness Clinic.
+J Travel Med.
+1994;1: 192–198. doi: 10.1111/j.1708-8305.1994.tb00594.x
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+6.
+Duval B, De Serre G, Shadmani R, Boulianne N, Pohani G, Naus M, et al. A population-based comparison between travelers who consulted travel clinics and those who did not.
+J Travel Med. 2003;10: 4–10. doi: 10.2310/7060.2003.30659
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+7.
+LaRocque RC, Rao SR, Tsibris A, Lawton T, Anita Barry M, Marano N, et al. Pre‐travel Health Advice‐Seeking Behavior Among US International Travelers Departing From Boston Logan International Airport.
+J Travel Med.
+2010;17: 387–391. doi: 10.1111/j.1708-8305.2010.00457.x
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+8.
+Hill DR. The burden of illness in international travelers. N Engl J Med. 2006;354: 115–117. doi: 10.1056/NEJMp058292
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+9.
+Harvey K, Esposito DH, Han P, Kozarsky P, Freedman DO, Plier DA, et al. Surveillance for travel-related disease—GeoSentinel Surveillance System, United States, 1997–2011.
+MMWR Surveill Summ. 2013;62: 1–23.
+ [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+10.
+Boggild AK, Geduld J, Libman M, Yansouni CP, McCarthy AE, Hajek J, et al. Malaria in travellers returning or migrating to Canada: surveillance report from CanTravNet surveillance data, 2004–2014.
+CMAJ Open. 2016;4: E352–E358. doi: 10.9778/cmajo.20150115
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+11.
+Hill DR. Health problems in a large cohort of Americans traveling to developing countries.
+J Travel Med. 2000;7: 259–266. doi: 10.2310/7060.2000.00075
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+12.
+Nelder MP, Russell C, Williams D, Johnson K, Li L, Baker SL, et al. Spatiotemporal dynamics and demographic profiles of imported Plasmodium falciparum and Plasmodium vivax infections in Ontario, Canada (1990–2009).
+PLoS One. 2013;8: e76208. doi: 10.1371/journal.pone.0076208
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+13.
+Public Health Agency of Canada. Reported cases from 2009 to 2018 in Canada—notifiable diseases on-line. Ottawa; 2021.
+
+
+
+
+
+
+14.
+Mace KE, Lucchi NW, Tan KR. Malaria Surveillance—United States, 2017.
+MMWR Surveill Summ. 2021;70: 1–35. doi: 10.15585/mmwr.ss7002a1
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+15.
+Savage RD, Rosella LC, Crowcroft NS, Horn M, Khan K, Holder L, et al. Direct Medical Costs of 3 Reportable Travel-Related Infections in Ontario, Canada, 2012–2014. Emerg Infect Dis. 2019;25: 1501–1510. doi: 10.3201/eid2508.190222
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+16.
+Hagmann S, Benavides V, Neugebauer R, Purswani M. Travel health care for immigrant children visiting friends and relatives abroad: retrospective analysis of a hospital-based travel health service in a US urban underserved area.
+J Travel Med. 2009;16: 407–412. doi: 10.1111/j.1708-8305.2009.00357.x
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+17.
+Angell SY, Behrens RH. Risk assessment and disease prevention in travelers visiting friends and relatives.
+Infect Dis Clin North Am. 2005;19: 49–65. doi: 10.1016/j.idc.2004.11.001
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+18.
+Hendel-Paterson B, Swanson SJ. Pediatric travelers visiting friends and relatives (VFR) abroad: Illnesses, barriers and pre-travel recommendations.
+Travel Med Infect Dis. 2011;9: 192–203. doi: 10.1016/j.tmaid.2010.09.007
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+19.
+Hamer DH, Connor BA. Travel health knowledge, attitudes and practices among United States travelers.
+J Travel Med. 2004;11: 23–26. doi: 10.2310/7060.2004.13577
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+20.
+Leder K, Tong S, Weld L, Kain KC, Wilder-Smith A, von Sonnenburg F, et al. Illness in travelers visiting friends and relatives: a review of the GeoSentinel Surveillance Network. Clin Infect Dis. 2006;43: 1185–1193. doi: 10.1086/507893
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+21.
+Creatore MI, Glazier RH, Moineddin R, Fazli GS, Johns A, Gozdyra P, et al. Association of Neighborhood Walkability With Change in Overweight, Obesity, and Diabetes. JAMA. 2016;315: 2211–2220. doi: 10.1001/jama.2016.5898
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+22.
+Kersten EE, Adler NE, Gottlieb L, Jutte DP, Robinson S, Roundfield K, et al. Neighborhood Child Opportunity and Individual-Level Pediatric Acute Care Use and Diagnoses. Pediatrics. 2018;141: e20172309. doi: 10.1542/peds.2017-2309
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+23.
+Ontario Ministry of Finance. Ontario Demographic Quarterly: Highlights of first quarter. In: 
+https://www.ontario.ca/page/ontario-demographic-quarterly-highlights-first-quarter#:~:text=Ontario’s%20population%20reached%2015%2C007%2C816%20on,the%20same%20quarter%20of%202021.&text=Emigrants%20plus%20net%20change%20in,Source%3A%20Statistics%20Canada
+. 2022.
+
+
+
+
+
+
+24.
+Public Health Agency of Canada. Yellow Fever Vaccination Centres in Ontario. In: Travel Health [Internet]. 2022 [cited 5 May 2022]. Available: 
+https://www.canada.ca/en/public-health/services/travel-health/yellow-fever/vaccination-centres-canada-ontario.html
+
+
+
+
+
+
+25.
+Google Maps Platform. Geocoding API Overview. In: Documentation [Internet]. 2022 [cited 5 May 2022]. Available: 
+https://developers.google.com/maps/documentation/geocoding/overview
+
+
+
+
+
+
+26.
+Luxen D, Vetter C. Real-Time Routing with OpenStreetMap Data. Proceedings of the 19th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems.
+New York, NY, USA: Association for Computing Machinery; 2011. pp. 513–516. doi: 10.1145/2093973.2094062
+ [
+DOI
+] [
+Google Scholar
+]
+
+
+
+
+27.
+Moraga P.
+Spatial modeling of areal data. Lip cancer in Scotland. 1st ed. Geospatial Health Data Modeling and Visualization with R-INLA and Shiny. 1st ed. London, UK and Boca Raton, FL, USA: Chapman and Hall/CRC; 2020.
+ [
+Google Scholar
+]
+
+
+
+
+28.
+Lawson AB. Bayesian Disease Mapping: Hierarchical Modeling in Spatial Epidemiology. 3rd ed. London, UK: Chapman and Hall/CRC; 2018.
+ [
+Google Scholar
+]
+
+
+
+
+29.
+Rue H, Martino S, Chopin N. Approximate Bayesian inference for latent Gaussian models by using integrated nested Laplace approximations.
+J R Stat Soc Series B Stat Methodol. 2009;71: 319–392. doi: 10.1111/j.1467-9868.2008.00700.x
+ [
+DOI
+] [
+Google Scholar
+]
+
+
+
+
+30.
+MORAN PAP. NOTES ON CONTINUOUS STOCHASTIC PHENOMENA.
+Biometrika. 1950;37: 17–23. doi: 
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+31.
+Buajitti E, Watson T, Norwood T, Kornas K, Bornbaum C, Henry D, et al. Regional variation of premature mortality in Ontario, Canada: a spatial analysis. Popul Health Metr. 2019;17: 9. doi: 10.1186/s12963-019-0193-9
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+32.
+Buajitti E, Chiodo S, Rosella LC. Agreement between area- and individual-level income measures in a population-based cohort: Implications for population health research.
+SSM Popul Health. 2020;10: 100553. doi: 10.1016/j.ssmph.2020.100553
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+33.
+Lehnert EA, Wilt G, Flanagan B, Hallisey E. Spatial exploration of the CDC’s Social Vulnerability Index and heat-related health outcomes in Georgia. International Journal of Disaster Risk Reduction. 2020;46: 101517. doi: 10.1016/j.ijdrr.2020.101517
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+34.
+Jones CW, Christman Z, Smith CM, Safferman MR, Salzman M, Baston K, et al. Comparison between buprenorphine provider availability and opioid deaths among US counties.
+J Subst Abuse Treat. 2018;93: 19–25. doi: 10.1016/j.jsat.2018.07.008
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+35.
+Moin JS, Moineddin R, Upshur REG. Measuring the association between marginalization and multimorbidity in Ontario, Canada: A cross-sectional study.
+J Comorb.
+2018;8: 2235042X18814939. doi: 10.1177/2235042X18814939
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+36.
+Sundaram ME, Calzavara A, Mishra S, Kustra R, Chan AK, Hamilton MA, et al. Individual and social determinants of SARS-CoV-2 testing and positivity in Ontario, Canada: a population-wide study.
+Can Med Assoc J. 2021;193: E723 LP-E734. doi: 10.1503/cmaj.202608
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+37.
+Hou F, Lu Y. Over-education Among University-educated Immigrants in Canada and the United States. 2019.
+ [
+Google Scholar
+]
+
+
+
+
+38.
+Evans DB, Hsu J, Boerma T. Universal health coverage and universal access. Bull World Health Organ. 2013;91: 546–546A. doi: 10.2471/BLT.13.125450
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+39.
+Savage RD, Rosella LC, Crowcroft NS, Arneja J, de Villa E, Horn M, et al. How Can We Keep Immigrant Travelers Healthy? Health Challenges Experienced by Canadian South Asian Travelers Visiting Friends and Relatives.
+Qual Health Res. 2017;28: 610–623. doi: 10.1177/1049732317746381
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+40.
+Hughes IV R, Klein Z. Assessing US traveller vaccination access: an evaluation of US requirements for healthcare payer coverage of recommended travel vaccines.
+J Travel Med.
+2020;27: taaa118. doi: 10.1093/jtm/taaa118
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+41.
+Leggat PA, Franklin R. Risk Perception and Travelers.
+J Travel Med.
+2013;20: 1–2. doi: 10.1111/j.1708-8305.2012.00663.x
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+42.
+Seale H, Kaur R, Mahimbo A, MacIntyre CR, Zwar N, Smith M, et al. Improving the uptake of pre-travel health advice amongst migrant Australians: exploring the attitudes of primary care providers and migrant community groups.
+BMC Infect Dis. 2016;16: 213. doi: 10.1186/s12879-016-1479-1
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+43.
+Heywood AE, Zwar N. Improving access and provision of pre-travel healthcare for travellers visiting friends and relatives: a review of the evidence†.
+J Travel Med.
+2018;25: tay010. doi: 10.1093/jtm/tay010
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+44.
+Adamson R, Reddy V, Jones L, Antwi M, Bregman B, Weiss D, et al. Epidemiology and Burden of Hepatitis A, Malaria, and Typhoid in New York City Associated With Travel: Implications for Public Health Policy.
+Am J Public Health. 2010;100: 1249–1252. doi: 10.2105/AJPH.2009.178335
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+45.
+Smith AD, Bradley DJ, Smith V, Blaze M, Behrens RH, Chiodini PL, et al. Imported malaria and high risk groups: observational study using UK surveillance data 1987–2006. BMJ. 2008;337: a120. doi: 10.1136/bmj.a120
+
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+46.
+Reddy S, Rangaiah J, Addiman S, Wareham D, Wilson P, Sefton A. Epidemiology, antibiotic resistance trends and the cost of enteric fever in East London, 2005–2010.
+Travel Med Infect Dis. 2011;9: 206–212. doi: 10.1016/j.tmaid.2011.03.003
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+47.
+Morgan M, Figueroa-Muñoz JI. Barriers to Uptake and Adherence with Malaria Prophylaxis by the African Community in London, England: Focus Group Study.
+Ethn Health.
+2005;10: 355–372. doi: 10.1080/13557850500242035
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+48.
+Xu P, Huang H, Dong N, Abdel-Aty M. Sensitivity analysis in the context of regional safety modeling: Identifying and assessing the modifiable areal unit problem.
+Accid Anal Prev. 2014;70: 110–120. doi: 10.1016/j.aap.2014.02.012
+
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+49.
+Kwan M-P. The Limits of the Neighborhood Effect: Contextual Uncertainties in Geographic, Environmental Health, and Social Science Research. Ann Am Assoc Geogr. 2018;108: 1482–1490. doi: 10.1080/24694452.2018.1453777
+ [
+DOI
+] [
+Google Scholar
+]
+
+
+
+
+50.
+Séguin A-M, Apparicio P, Riva M. The Impact of Geographical Scale in Identifying Areas as Possible Sites for Area-Based Interventions to Tackle Poverty: The Case of Montréal.
+Appl Spat Anal Policy.
+2012;5: 231–251. doi: 10.1007/s12061-011-9068-6
+ [
+DOI
+] [
+Google Scholar
+]
+
+
+
+
+51.
+Chaix B, Duncan D, Vallée J, Vernez-Moudon A, Benmarhnia T, Kestens Y. The “Residential” Effect Fallacy in Neighborhood and Health Studies: Formal Definition, Empirical Identification, and Correction.
+Epidemiology. 2017;28. Available: 
+https://journals.lww.com/epidem/Fulltext/2017/11000/The__Residential__Effect_Fallacy_in_Neighborhood.5.aspx
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+Associated Data
+
+
+This section collects any data citations, data availability statements, or supplementary materials included in this article.
+
+
+Supplementary Materials
+
+
+
+
+S1 Text
+(DOCX)
+
+
+
+
+
+
+Click here for additional data file.
+ (1.5MB, docx) 
+
+
+Data Availability Statement
+
+
+The underlying data used in this study is from Public Health Ontario's (PHO) laboratory and contains sensitive and potentially identifying personal health information (e.g., geographic location) for rare conditions. PHO cannot disclose the underlying data. Doing so would compromise individual privacy contrary to PHO’s ethical and legal obligations. Our Research Ethics Board approval also does not permit us to share data. Restricted access to the data may be available under conditions prescribed by the Ontario Personal Health Information Protection Act, 2004, the Ontario Freedom of Information and Protection of Privacy Act, the Tri-Council Policy Statement: Ethical Conduct for Research Involving Humans (TCPS 2 (2018)), and PHO privacy and ethics policies. Data are available for researchers who meet PHO’s criteria for access to confidential data. Information about PHO’s data access request process is available on-line at 
+https://www.publichealthontario.ca/en/data-and-analysis/using-data/data-requests
+. Analytic code can be found on GitHub at the following repository: 
+https://github.com/PopHealthAnalytics/TropMed
+.
+
+
+Articles from PLOS Global Public Health are provided here courtesy of 
+PLOS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View on publisher site
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PDF (1.5 MB)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Permalink
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESOURCES
+
+
+
+
+
+
+
+                            Similar articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                             Cited by other articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                                 Links to NCBI Databases
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Download .nbib
+
+
+.nbib
+
+
+
+
+
+
+
+
+
+
+Format:
+
+
+
+
+
+        AMA
+      
+
+
+
+        APA
+      
+
+
+
+        MLA
+      
+
+
+
+        NLM
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Add to Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create a new collection
+
+
+
+
+
+
+
+
+Add to an existing collection
+
+
+
+
+
+
+
+
+
+
+
+                Name your collection
+               
+*
+
+
+
+
+
+
+
+
+
+
+
+                Choose a collection
+              
+
+
+
+
+
+
+
+                Unable to load your collection due to an error
+
+
+Please try again
+
+
+
+
+
+
+
+
+
+
+
+          Add
+        
+
+
+
+          Cancel
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                Follow NCBI
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on LinkedIn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on GitHub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI RSS feed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Connect with NLM
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on YouTube
+
+
+
+
+
+
+
+
+
+
+
+
+National Library of Medicine
+            
+ 8600 Rockville Pike
+ Bethesda, MD 20894
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Web Policies
+
+    
+
+
+
+
+
+
+
+
+    
+
+    FOIA
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS Vulnerability Disclosure
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Help
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Accessibility
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Careers
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    NLM
+
+    
+
+
+
+
+
+
+
+
+    
+
+    NIH
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS
+
+    
+
+
+
+
+
+
+
+
+    
+
+    USA.gov
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Back to Top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

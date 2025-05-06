@@ -17,3 +17,7 @@ __pycache__
 # environments
 .pyenv
 .env
+
+todo.md
+.venv
+.conda

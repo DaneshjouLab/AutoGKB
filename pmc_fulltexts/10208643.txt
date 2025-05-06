@@ -1,0 +1,2908 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Mediation Analysis of Maternal Smoking, Gestational Age, and Birth Weight on the Texas–Mexico Border - PMC
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Skip to main content
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        An official website of the United States government
+                    
+
+
+Here's how you know
+
+
+
+
+
+
+Here's how you know
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Official websites use .gov
+
+
+
+                            A
+                            
+.gov
+ website belongs to an official
+                            government organization in the United States.
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Secure .gov websites use HTTPS
+
+
+
+                            A 
+lock
+ (
+                            
+
+
+
+
+Lock
+
+
+
+                                    Locked padlock icon
+                                    
+
+
+
+
+
+
+) or 
+https://
+ means you've safely
+                                connected to the .gov website. Share sensitive
+                                information only on official, secure websites.
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Search
+                        
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+    
+        
+
+        Log out
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        Search…
+                    
+
+
+
+
+
+
+
+                            Search NCBI
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Primary site navigation
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Search
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Logged in as:
+                    
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+        
+
+        Log in
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search PMC Full-Text Archive
+
+
+
+
+
+
+
+
+
+
+Search in PMC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Advanced Search
+                        
+
+
+
+
+
+
+
+                                Journal List
+                            
+
+
+
+
+
+
+
+                                User Guide
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with,
+    the contents by NLM or the National Institutes of Health.
+
+    Learn more:
+    
+PMC Disclaimer
+
+    |
+    
+
+        PMC Copyright Notice
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+South Med J
+. 2023 Jun 1;116(6):478–481. doi: 
+10.14423/SMJ.0000000000001566
+
+
+
+
+
+
+Search in PMC
+
+
+Search in PubMed
+
+
+View in NLM Catalog
+
+
+Add to search
+
+
+
+
+Mediation Analysis of Maternal Smoking, Gestational Age, and Birth Weight on the Texas–Mexico Border
+
+
+Chinodebem Ogbutor
+
+
+
+
+Chinodebem Ogbutor
+, 
+MA
+
+
+
+
+From the 
+1
+Paul L. Foster School of Medicine
+
+
+Find articles by 
+Chinodebem Ogbutor
+
+
+
+
+
+
+1
+, 
+Stephanie M Mishaw
+
+
+
+
+Stephanie M Mishaw
+, 
+MD, MPH
+
+
+
+
+
+
+2
+Department of Obstetrics and Gynecology
+
+
+Find articles by 
+Stephanie M Mishaw
+
+
+
+
+
+
+2
+, 
+Zuber D Mulla
+
+
+
+
+Zuber D Mulla
+, 
+PhD
+
+
+
+
+
+
+2
+Department of Obstetrics and Gynecology
+
+
+
+
+3
+Office of Faculty Development, Texas Tech University Health Sciences Center El Paso, El Paso
+
+
+
+
+4
+Julia Jones Matthews School of Population and Public Health, Texas Tech University Health Sciences Center, Abilene.
+
+
+Find articles by 
+Zuber D Mulla
+
+
+
+
+
+
+2,
+3,
+4
+
+
+
+
+
+
+Author information
+
+
+Article notes
+
+
+Copyright and License information
+
+
+
+
+
+
+
+
+From the 
+1
+Paul L. Foster School of Medicine
+
+
+
+
+2
+Department of Obstetrics and Gynecology
+
+
+
+
+3
+Office of Faculty Development, Texas Tech University Health Sciences Center El Paso, El Paso
+
+
+
+
+4
+Julia Jones Matthews School of Population and Public Health, Texas Tech University Health Sciences Center, Abilene.
+
+
+
+
+✉
+Correspondence to Dr Zuber D. Mulla, Office of Faculty Development, Texas Tech University Health Sciences Center El Paso, 5001 El Paso Dr, MSC 21007, El Paso, TX 79905. E-mail: 
+zuber.mulla@ttuhsc.edu
+.
+
+
+
+
+
+
+Accepted 2023 Feb 6; Issue date 2023 Jun.
+
+
+
+
+Copyright © 2023 The Author(s). Published by Wolters Kluwer Health, Inc. on behalf of the Southern Medical Association.
+
+
+This is an open-access article distributed under the terms of the 
+Creative Commons Attribution-Non Commercial-No Derivatives License 4.0 (CCBY-NC-ND)
+, where it is permissible to download and share the work provided it is properly cited. The work cannot be changed in any way or used commercially without permission from the journal.
+
+
+PMC Copyright notice
+
+
+
+
+
+
+PMCID: PMC10208643  PMID: 
+37263610
+
+
+
+
+
+
+A mediation analysis can decompose a total effect into a direct effect and an indirect effect. Data on the indirect effect of maternal smoking on birth weight as mediated by gestational age in Hispanic populations are lacking. The authors ’ objective was to conduct such a mediation analysis using birth records from a large county that is located on the Texas – Mexico border.
+
+
+Key Words:
+ birth weight, gestational age, Hispanic ethnicity, maternal smoking, mediation analysis
+Objectives
+
+
+Published data on the indirect effect of maternal smoking on birth weight as mediated by gestational age in Hispanic populations are lacking. Our goal was to conduct such a mediation analysis using data from El Paso County, Texas.
+
+
+Methods
+
+
+El Paso County is located on the US−Mexico border. A simple mediation analysis was conducted using year 2010 El Paso County birth certificate data. The SAS macro PROCESS 3.5.3 was used to estimate the direct and indirect effects of active maternal smoking (by trimester) on birth weight (in grams) in the setting of linear regression. The single mediator was gestational age in weeks. A direct or indirect effect was deemed to be present if the 95% confidence limits (CLs) excluded 0. Analyses were adjusted for multiple variables, including maternal prepregnancy body mass index. The indirect effect was reported along with a 95% bootstrap CL.
+Results
+
+
+A total of 16,654 singleton births were included in the cohort. The majority of the mothers were White Hispanic (87.2%). The mean (standard deviation) birth weight was 3198.6 g (517.2). A direct effect of maternal smoking during each trimester on birth weight was detected. An indirect effect of maternal smoking on birth weight was not detected in any of the trimesters. In adjusted analyses for the third trimester, the indirect effect for every 1-U increase in the mean number of cigarettes smoked per day was −4.18 (95% bootstrap CL −10.64 to 1.99).
+Conclusions
+
+
+In our large, predominantly Hispanic cohort, it appears that gestational age is not a mediator of the effect of maternal smoking on birth weight. Future studies in our population should explore other possible mediators of this association.
+
+
+Key Points
+
+
+
+
+Active maternal smoking during pregnancy is associated with an increased incidence of low birth weight, and this relation has been reported to vary by race (non-Hispanic White and Black).
+
+
+Statistical mediation analyses in Hispanic populations in which the risk factor is maternal smoking, the mediator is gestational age, and the outcome is birth weight are needed.
+
+
+In our large, predominantly Hispanic sample, gestational age was not a mediator of the effect of maternal smoking on birth weight.
+
+
+
+
+Preterm birth (birth before 37 completed weeks of gestation) and low birth weight are conditions of major public health importance. According to the March of Dimes, 10.2% of the infants (live births) born in the United States in 2019 were preterm.
+1
+ In 2019 the incidence of low birth weight (defined as a birth weight < 2500 g) was 8.3% of live births.
+2
+
+
+The prevalence of maternal smoking during pregnancy in the United States was 9.2% in 2010, and this measure decreased steadily to 6.9% in 2017.
+3
+ Maternal cigarette smoking during pregnancy has been linked to an increased risk of preterm birth and low birth weight.
+4
+ A recent meta-analysis of studies conducted in the Americas found an odds ratio of 2.00 (95% confidence interval 1.77–2.26) for the association between active maternal smoking and low birth weight.
+5
+
+
+Certain previous investigations of non-Hispanic White and Black women (summarized by Singleton et al
+6
+) have noted that the association between maternal smoking and low birth weight varied by race; however, similar data are lacking in Hispanic populations. A PubMed search did not reveal any publications reporting both the direct effect of maternal smoking during pregnancy on birth weight and the indirect effect of maternal smoking on birth weight mediated by gestational age in a predominantly Hispanic population. This gap in knowledge was addressed using birth certificate data from El Paso County, Texas. El Paso County is located on the Texas–Mexico border, and its population was estimated to be 839,238 in 2019.
+7
+ The majority of the residents (82.9%) of El Paso County identify as Hispanic or Latinx.
+7
+Methods
+
+
+The study protocol was reviewed by the Institutional Review Board for the Protection of Human Subjects at Texas Tech University Health Sciences Center El Paso and was deemed exempt from formal institutional review board review.
+
+
+Source of Data and Inclusion Criteria
+
+
+A retrospective cohort study was conducted using deidentified birth certificate data from El Paso County, Texas, for the year 2010. The overall dataset has information on 17,503 births. Our analysis was restricted to singleton births. Records with an unknown value for gestational age, any of the maternal cigarette smoking variables, or maternal level of education were deleted. If a record had a gestational age of >44 weeks (an implausible value), then it was excluded from our analysis.
+Statistical Analysis
+
+
+Data on key variables were summarized using means and standard deviations (SDs) for continuous variables and number and percentage for categorical and count variables. Preterm birth was defined as birth before 37 completed weeks of gestation. Low birth weight was defined as an infant birth weight < 2500 g. A mediation analysis was performed using SAS 9.4 software (SAS Institute, Cary, NC) and the SAS macro PROCESS version 3.5.3 (authored by Andrew F. Hayes).
+8
+ The Figure displays a causal diagram known as a directed acyclic graph, which illustrates the hypothesized relations between the variables that were studied.
+9
+ Maternal smoking during pregnancy was the independent variable (
+X
+) and the outcome (
+Y
+) was birth weight in grams. Gestational age served as the single mediator of interest and is represented by the letter 
+M
+. The total effect, direct effect, and indirect effect of maternal smoking on birth weight were quantified using a simple mediation model in the setting of linear regression. Maternal smoking was recorded in the dataset as the average number of cigarettes smoked per day. Analyses were stratified by maternal smoking during each trimester.
+
+
+Let 
+a
+, 
+b
+, 
+c
+, and 
+c′
+ represent causal effects (Fig.; note that the quantity 
+c
+ is not shown in the Figure). These four quantities were parameter estimates (regression coefficients) from linear regression models. The total effect of 
+X
+ on 
+Y
+ is denoted by 
+c
+ and is defined as the direct effect (
+c′
+) plus the indirect effect. The indirect effect is the product of 
+a
+ and 
+b
+:
+
+
+Fig.
+
+
+
+
+Open in a new tab
+
+
+Directed acyclic graph for the hypothesized effect of maternal smoking during pregnancy on birth weight, where 
+a, b, and c′
+ represent causal effects estimated from linear regression models.
+
+
+c
+=
+c
+′
++
+a
+(
+b
+)
+
+
+(1)
+
+
+
+
+The four quantities in Equation 1 were derived from the following three ordinary least squares linear regression models
+
+
+
+
+Y
+^
+=
+β
+0
++
+cX
+,
+
+
+(2)
+
+
+
+
+
+
+M
+^
+=
+β
+0
++
+aX
+,
+
+
+(3)
+
+
+
+
+and
+
+
+
+
+Y
+^
+=
+β
+0
++
+c
+′
+X
++
+bM
+.
+
+
+(4)
+
+
+
+
+The direct effect of maternal smoking during pregnancy is the unmediated effect of this exposure on birth weight. The indirect effect of maternal smoking during pregnancy is the portion of the exposure that is mediated through gestational age.
+
+
+Given that the sampling distribution of the indirect effect is typically not Gaussian distributed, calculating confidence limits (CLs) for the true indirect effect based on normality is not appropriate.
+8
+ As such, statistical inference about the indirect effect of maternal smoking was performed by inspecting the 95% bootstrap CL produced by the PROCESS macro using the percentile method.
+8
+ A total of 12,000 bootstrap samples were requested from PROCESS. If the 95% bootstrap CL excludes the value of 0, then we can conclude with 95% confidence that an indirect effect different from 0 is present. Parameter estimates were adjusted for maternal age, number of prenatal care visits, maternal race and ethnicity, educational level, nulliparity, diabetes mellitus (prepregnancy or gestational), and prepregnancy maternal body mass index.
+Results
+
+
+A total of 16,654 records were available for analysis after applying our inclusion and exclusion criteria. Characteristics of the cohort are reported in Table 
+1
+. The mean maternal age (SD) was 26.3 years (6.2 years) and the majority of the mothers were White Hispanic (87.2%). The prevalence of smoking on average one to nine cigarettes per day during the first trimester was 1.6% (Table 
+1
+). This prevalence decreased to 1.0% in the third trimester. Gestational age ranged from 18 to 44 completed weeks, and the incidence of preterm birth (before 37 completed weeks) was 12.3% (n = 2043). The mean birth weight (SD) was 3198.6 g (517.2 g) (Table 
+1
+). The incidence of low birth weight (defined as a birth weight < 2500 g) was 7.3% (n = 1208).
+
+
+Table 1.
+
+
+Characteristics of 16,654 singleton births in El Paso County, Texas, 2010
+
+
+
+
+
+
+Characteristic
+
+
+No. (%) or mean (SD)
+
+
+
+
+
+
+
+
+Demographic variables
+
+
+
+
+
+
+
+
+ Maternal age, y, mean (SD)
+
+
+26.3 (6.2)
+
+
+
+
+
+
+ Maternal race and ethnicity, N (%)
+
+
+
+
+
+
+
+
+  White Hispanic
+
+
+14,514 (87.2)
+
+
+
+
+
+
+  White non-Hispanic
+
+
+1435 (8.6)
+
+
+
+
+
+
+  Other
+
+
+705 (4.2)
+
+
+
+
+
+
+ Maternal educational level, N (%)
+
+
+
+
+
+
+
+
+  Bachelor’s degree or higher
+
+
+3107 (18.7)
+
+
+
+
+
+
+Clinical and obstetric variables
+
+
+
+
+
+
+
+
+ Body mass index (kg/m
+2
+), mean (SD)
+
+
+25.9 (5.7)
+
+
+
+
+
+
+ Nulliparous, N (%)
+
+
+6566 (39.4)
+
+
+
+
+
+
+ No. prenatal visits, N (%)
+
+
+
+
+
+
+
+
+  0
+
+
+489 (2.9)
+
+
+
+
+
+
+  1–4
+
+
+1227 (7.4)
+
+
+
+
+
+
+  5–8
+
+
+5154 (31.0)
+
+
+
+
+
+
+  ≥9
+
+
+9784 (58.8)
+
+
+
+
+
+
+ Diabetes mellitus, N (%)
+
+
+
+
+
+
+
+
+  Prepregnancy diabetes mellitus
+
+
+45 (0.3)
+
+
+
+
+
+
+  Gestational diabetes mellitus
+
+
+345 (2.1)
+
+
+
+
+
+
+  Prepregnancy or gestational diabetes mellitus
+
+
+390 (2.3)
+
+
+
+
+
+
+Main exposure variables
+
+
+
+
+
+
+
+
+ Mean no. cigarettes smoked per day by mother during first trimester, N (%)
+
+
+
+
+
+
+
+
+  0
+
+
+16,312 (98.0)
+
+
+
+
+
+
+  1–9
+
+
+268 (1.6)
+
+
+
+
+
+
+  10–19
+
+
+58 (0.4)
+
+
+
+
+
+
+  ≥20
+
+
+16 (0.1)
+
+
+
+
+
+
+ Mean no. cigarettes smoked per day by mother during second trimester, N (%)
+
+
+
+
+
+
+
+
+  0
+
+
+16,381 (98.4)
+
+
+
+
+
+
+  1–9
+
+
+216 (1.3)
+
+
+
+
+
+
+  10–19
+
+
+47 (0.3)
+
+
+
+
+
+
+  ≥20
+
+
+10 (0.1)
+
+
+
+
+
+
+ Mean no. cigarettes smoked per day by mother during third trimester, N (%)
+
+
+
+
+
+
+
+
+  0
+
+
+16,459 (98.8)
+
+
+
+
+
+
+  1–9
+
+
+158 (1.0)
+
+
+
+
+
+
+  10–19
+
+
+32 (0.2)
+
+
+
+
+
+
+  ≥20
+
+
+5 (0.03)
+
+
+
+
+
+
+Mediator
+
+
+
+
+
+
+
+
+ Gestational age, wk, mean (SD)
+
+
+38.4 (2.2)
+
+
+
+
+
+
+Outcome
+
+
+
+
+
+
+
+
+ Birth weight, g, mean (SD)
+
+
+3198.6 (517.2)
+
+
+
+
+
+
+
+
+Open in a new tab
+
+
+SD, standard deviation.
+Table 
+2
+ presents the adjusted results of the simple mediation analysis. The linear regression parameter estimates were adjusted for maternal age, the number of prenatal care visits, maternal race-ethnicity, maternal educational level, nulliparity, diabetes mellitus (prepregnancy or gestational), and maternal body mass index. A direct effect of maternal smoking during each trimester on birth weight was detected. In the third trimester, for every 1-U increase in the mean number of cigarettes smoked per day, there was a decrease in birth weight of 14.82 g (95% CL −25.02 to −4.62). An indirect effect of maternal smoking was not detected in any of the trimesters. In the third trimester the indirect effect of the mean number of cigarettes smoked per day was −4.18 (95% bootstrap CL −10.64 to 1.99).
+
+
+Table 2.
+
+
+Adjusted
+a
+ results of the simple mediation analyses derived from linear regression models stratified by trimester
+
+
+
+
+
+
+
+
+
+
+Direct effect of MS
+
+
+Indirect effect of MS
+
+
+
+
+
+
+Trimester
+
+
+Estimate
+
+
+95% CL
+
+
+Estimate
+
+
+95% CL
+
+
+
+
+
+
+
+
+
+
+ First
+
+
+−13.18
+
+
+−19.87 to −6.50
+
+
+−1.91
+
+
+−6.74 to 2.81
+
+
+
+
+
+
+ Second
+
+
+−12.80
+
+
+−19.90 to −5.70
+
+
+−1.19
+
+
+−8.35 to 4.04
+
+
+
+
+
+
+ Third
+
+
+−14.82
+
+
+−25.02 to −4.62
+
+
+−4.18
+
+
+−10.64 to 1.99
+
+
+
+
+
+
+
+
+Open in a new tab
+
+
+
+
+The exposure variable is MS reported as the mean number of cigarettes smoked per day in each trimester, the mediator is gestational age in weeks, and the outcome is infant birth weight. CL, confidence limit; MS, maternal smoking.
+
+
+a
+Parameter estimates were adjusted for maternal age, number of prenatal care visits, maternal race and ethnicity, educational level, nulliparity, diabetes mellitus (prepregnancy or gestational), and maternal body mass index.
+
+
+Discussion
+
+
+In a simple mediation analysis, the indirect effect estimates the impact of 
+X
+ on 
+Y
+ through a single intermediary.
+8
+ Our simple mediation analysis in a predominantly Hispanic population on the US–Mexico border did not detect an indirect effect of maternal smoking on infant birth weight via gestational age.
+
+
+The strengths of our study include its large sample size and uniqueness. We could not find a similar investigation that had been conducted in El Paso County, Texas. An additional strength of our investigation was the use of modern mediation analysis techniques rather than the causal steps approach that was popularized in the 1980s by Baron and Kenny. It has been noted that the Baron and Kenny method has several limitations and flaws.
+8
+
+
+A limitation of this study is the unknown accuracy (eg, sensitivity, specificity, positive predictive value) of the variables found in this county birth certificate dataset. We could not find any published studies that reported measures of accuracy for El Paso County, Texas, birth certificate data. A study by Northam et al investigated the birth certificate data collection methods at five high-delivery hospitals in North Texas.
+10
+ The authors found “considerable variance in how birth certificate data were obtained” at these five hospitals.
+10
+ Of note, these hospitals were visited in 2001, before the adoption of the 2003 revised US standard birth certificate. Our study focused on year 2010 data.
+
+
+The Texas Department of State Health Services’ Center for Health Statistics (CHS) was contacted by the corresponding author and was informed that the CHS has not conducted validation studies of the accuracy of Texas birth certificate data (CHS Vital Events Data Management, personal communication). All of the counties in Texas follow state guidelines in regard to registering births (Field Services representative, Texas Department of State Health Services, Vital Statistics Section, personal communication), however. Ninety-nine percent of all births in Texas occur in a hospital, and birth registrars are required to complete the birth certificate within 5 days (Field Services representative, Texas Department of State Health Services, Vital Statistics Section, personal communication). In addition, the Texas Department of State Health Services provides online resources to assist birth registrars in collecting accurate data,
+11
+ and this agency hosts trainings for birth registrars during their conferences (CHS Vital Events Data Management, personal communication).
+
+
+A discussion of maternal smoking is merited. The prevalence of active maternal smoking during pregnancy in our cohort was lower than expected. Given the social stigma of maternal smoking, smoking status may have been underreported in our sample.
+12
+ Ideally, active smoking by the mother during pregnancy would be validated using cotinine values.
+13
+ Cotinine can be measured in a variety of specimens, including saliva, serum, and urine.
+14
+ A major limitation of our study is that information on this gold standard of smoking status was not found in the birth certificate dataset.
+
+
+Detailed information on preterm birth also was lacking in our database. For example, it is unknown whether a preterm birth was iatrogenic or spontaneous. Given this limitation and those listed earlier, our findings have limited clinical significance. Nonetheless, the authors hope to stimulate a dialog on the role of mediation analysis in medicine. Clinicians and health scientists interested in applying mediation analysis to real-world data are referred to the article by Jung.
+15
+Conclusions
+
+
+This mediation analysis using birth certificate data did not find an effect of maternal smoking on infant birth weight through our hypothesized mediator of gestational age. Future similar studies should consider other possible mediators, such as intrauterine growth restriction, and also strive to collect information on maternal passive smoking.
+Footnotes
+
+
+
+
+This study was funded in part by a Scholarly Activity and Research Program Mini-Grant (ED183439; principal investigator: Z.D. Mulla) from the Department of Medical Education, Paul L. Foster School of Medicine, Texas Tech University Health Sciences Center El Paso, El Paso, Texas.
+
+
+C.O. has received compensation from the Texas Tech Paul L. Foster School of Medicine Scholarly Activity and Research Program. The remaining authors did not report any financial relationships or conflicts of interest.
+
+
+Contributor Information
+
+
+Chinodebem Ogbutor, Email: chogbuto@ttuhsc.edu.
+
+
+Stephanie M. Mishaw, Email: smishaw53@gmail.com.
+References
+
+
+
+
+
+
+1.
+March of Dimes . Peristats. Quick facts: preterm birth. 2019. Available at: 
+https://www.marchofdimes.org/peristats/reports/united-states/report-card
+. Accessed March 29, 2023.
+
+
+
+
+
+
+2.
+March of Dimes . Peristats. Low birthweight: United States, 2009–2019. Available at: 
+https://stacks.cdc.gov/view/cdc/100472
+. Accessed March 29, 2023.
+
+
+
+
+
+
+3.
+Azagba S Manzione L Shan L, et al. Trends in smoking during pregnancy by socioeconomic characteristics in the United States, 2010–2017. 
+BMC Pregnancy Childbirth
+
+2020;20:52.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+4.
+Soneji S, Beltrán-Sánchez H. Association of maternal cigarette smoking and smoking cessation with preterm birth. 
+JAMA Netw Open
+
+2019;2:e192514.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+5.
+Perez da Silva Pereira P Da Mata FAF, et al. Maternal active smoking during pregnancy and low birth weight in the Americas: a systematic review and meta-analysis. 
+Nicotine Tob Res
+
+2017;19:497–505.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+6.
+Singleton EG, Harrell JP, Kelly LM. Racial differentials in the impact of maternal cigarette smoking during pregnancy on fetal development and mortality: concerns for black psychologists. 
+J Black Psychol
+
+1986;12:71–83.
+ [
+Google Scholar
+]
+
+
+
+
+7.
+US Census Bureau . QuickFacts. El Paso County, Texas. 
+https://www.census.gov/quickfacts/elpasocountytexas
+. Accessed May 22, 2021.
+ [
+Google Scholar
+]
+
+
+
+
+8.
+Hayes AF. 
+Introduction to Mediation, Moderation, and Conditional Process Analysis, Second Edition: A Regression-Based Approach
+. New York: The Guilford Press; 2018.
+ [
+Google Scholar
+]
+
+
+
+
+9.
+Bandoli G Palmsten K Flores KF, et al. Constructing causal diagrams for common perinatal outcomes: benefits, limitations and motivating examples with maternal antidepressant use in pregnancy. 
+Paediatr Perinat Epidemiol
+
+2016;30:521–528.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+10.
+Northam S, Polancich S, Restrepo E. Birth certificate methods in five hospitals. 
+Public Health Nurs
+
+2003;20:318–327.
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+11.
+Texas Department of State Health Services . Birth registrars. 
+https://dshs.texas.gov/vs/partners/birth-registrars/?terms=birth+registrar+training
+. Accessed April 5, 2022.
+
+
+
+
+
+
+12.
+Grant A Morgan M Gallagher D, et al. Smoking during pregnancy, stigma and secrets: visual methods exploration in the UK. 
+Women Birth
+
+2020;33:70–76.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+13.
+Vartiainen E Seppälä T Lillsunde P, et al. Validation of self reported smoking by serum cotinine measurement in a community-based study. 
+J Epidemiol Community Health
+
+2002;56:167–170.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+14.
+Kim S. Overview of cotinine cutoff values for smoking status classification. 
+Int J Environ Res Public Health
+
+2016;13:1236.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+15.
+Jung SJ. Introduction to mediation analysis and examples of its application to real-world data. 
+J Prev Med Public Health
+
+2021;54:166–172.
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+Articles from Southern Medical Journal are provided here courtesy of 
+Wolters Kluwer Health
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View on publisher site
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PDF (133.0 KB)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Permalink
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESOURCES
+
+
+
+
+
+
+
+                            Similar articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                             Cited by other articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                                 Links to NCBI Databases
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Download .nbib
+
+
+.nbib
+
+
+
+
+
+
+
+
+
+
+Format:
+
+
+
+
+
+        AMA
+      
+
+
+
+        APA
+      
+
+
+
+        MLA
+      
+
+
+
+        NLM
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Add to Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create a new collection
+
+
+
+
+
+
+
+
+Add to an existing collection
+
+
+
+
+
+
+
+
+
+
+
+                Name your collection
+               
+*
+
+
+
+
+
+
+
+
+
+
+
+                Choose a collection
+              
+
+
+
+
+
+
+
+                Unable to load your collection due to an error
+
+
+Please try again
+
+
+
+
+
+
+
+
+
+
+
+          Add
+        
+
+
+
+          Cancel
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                Follow NCBI
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on LinkedIn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on GitHub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI RSS feed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Connect with NLM
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on YouTube
+
+
+
+
+
+
+
+
+
+
+
+
+National Library of Medicine
+            
+ 8600 Rockville Pike
+ Bethesda, MD 20894
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Web Policies
+
+    
+
+
+
+
+
+
+
+
+    
+
+    FOIA
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS Vulnerability Disclosure
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Help
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Accessibility
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Careers
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    NLM
+
+    
+
+
+
+
+
+
+
+
+    
+
+    NIH
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS
+
+    
+
+
+
+
+
+
+
+
+    
+
+    USA.gov
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Back to Top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

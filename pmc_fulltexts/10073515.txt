@@ -1,0 +1,4057 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            The forgotten key players in rheumatoid arthritis: IL-8 and IL-17 – Unmet needs and therapeutic perspectives - PMC
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      Skip to main content
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        An official website of the United States government
+                    
+
+
+Here's how you know
+
+
+
+
+
+
+Here's how you know
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Official websites use .gov
+
+
+
+                            A
+                            
+.gov
+ website belongs to an official
+                            government organization in the United States.
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Secure .gov websites use HTTPS
+
+
+
+                            A 
+lock
+ (
+                            
+
+
+
+
+Lock
+
+
+
+                                    Locked padlock icon
+                                    
+
+
+
+
+
+
+) or 
+https://
+ means you've safely
+                                connected to the .gov website. Share sensitive
+                                information only on official, secure websites.
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Search
+                        
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Log in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+    
+        
+
+        Log out
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        Search…
+                    
+
+
+
+
+
+
+
+                            Search NCBI
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Primary site navigation
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Search
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Logged in as:
+                    
+
+
+
+
+
+
+
+
+
+    
+
+    Dashboard
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Publications
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Account settings
+
+    
+
+
+
+
+
+
+
+
+
+
+    
+        
+
+        Log in
+
+        
+    
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Search PMC Full-Text Archive
+
+
+
+
+
+
+
+
+
+
+Search in PMC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Advanced Search
+                        
+
+
+
+
+
+
+
+                                Journal List
+                            
+
+
+
+
+
+
+
+                                User Guide
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with,
+    the contents by NLM or the National Institutes of Health.
+
+    Learn more:
+    
+PMC Disclaimer
+
+    |
+    
+
+        PMC Copyright Notice
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Front Med (Lausanne)
+. 2023 Mar 22;10:956127. doi: 
+10.3389/fmed.2023.956127
+
+
+
+
+
+
+Search in PMC
+
+
+Search in PubMed
+
+
+View in NLM Catalog
+
+
+Add to search
+
+
+
+
+The forgotten key players in rheumatoid arthritis: IL-8 and IL-17 – Unmet needs and therapeutic perspectives
+
+
+Elisa Gremese
+
+
+Elisa Gremese
+
+
+
+
+1
+Division of Clinical Immunology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+2
+Immunology Core Facility, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+3
+School of Medicine, Università Cattolica del Sacro Cuore, Rome, Italy
+
+
+Find articles by 
+Elisa Gremese
+
+
+
+
+
+
+1,
+2,
+3,
+*
+, 
+Barbara Tolusso
+
+
+Barbara Tolusso
+
+
+
+
+1
+Division of Clinical Immunology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+2
+Immunology Core Facility, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+Find articles by 
+Barbara Tolusso
+
+
+
+
+
+
+1,
+2
+, 
+Dario Bruno
+
+
+Dario Bruno
+
+
+
+
+1
+Division of Clinical Immunology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+4
+Department of Medicine, University of Verona, Verona, Italy
+
+
+Find articles by 
+Dario Bruno
+
+
+
+
+
+
+1,
+4
+, 
+Simone Perniola
+
+
+Simone Perniola
+
+
+
+
+1
+Division of Clinical Immunology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+Find articles by 
+Simone Perniola
+
+
+
+
+
+
+1
+, 
+Gianfranco Ferraccioli
+
+
+Gianfranco Ferraccioli
+
+
+
+
+3
+School of Medicine, Università Cattolica del Sacro Cuore, Rome, Italy
+
+
+Find articles by 
+Gianfranco Ferraccioli
+
+
+
+
+
+
+3,
+*
+, 
+Stefano Alivernini
+
+
+Stefano Alivernini
+
+
+
+
+2
+Immunology Core Facility, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+3
+School of Medicine, Università Cattolica del Sacro Cuore, Rome, Italy
+
+
+
+
+5
+Division of Rheumatology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+Find articles by 
+Stefano Alivernini
+
+
+
+
+
+
+2,
+3,
+5
+
+
+
+
+
+
+Author information
+
+
+Article notes
+
+
+Copyright and License information
+
+
+
+
+
+
+
+
+
+
+1
+Division of Clinical Immunology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+2
+Immunology Core Facility, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+3
+School of Medicine, Università Cattolica del Sacro Cuore, Rome, Italy
+
+
+
+
+4
+Department of Medicine, University of Verona, Verona, Italy
+
+
+
+
+5
+Division of Rheumatology, Fondazione Policlinico Universitario A. Gemelli-IRCCS, Rome, Italy
+
+
+
+
+Edited by: Javier Rodríguez-Carrio, University of Oviedo, Spain
+
+
+Reviewed by: Viviana Marzaioli, Trinity College Dublin, Ireland; Myles Lewis, Queen Mary University of London, United Kingdom; David Fox, University of Michigan, United States
+
+
+
+
+✉
+*Correspondence: Elisa Gremese, 
+elisa.gremese@unicatt.it
+ Gianfranco Ferraccioli 
+gianfranco.ferraccioli@unicatt.it
+
+
+
+
+This article was submitted to Rheumatology, a section of the journal Frontiers in Medicine
+
+
+
+
+
+
+Received 2022 May 29; Accepted 2023 Feb 21; Collection date 2023.
+
+
+
+
+Copyright © 2023 Gremese, Tolusso, Bruno, Perniola, Ferraccioli and Alivernini.
+
+
+This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY). The use, distribution or reproduction in other forums is permitted, provided the original author(s) and the copyright owner(s) are credited and that the original publication in this journal is cited, in accordance with accepted academic practice. No use, distribution or reproduction is permitted which does not comply with these terms.
+
+
+PMC Copyright notice
+
+
+
+
+
+
+PMCID: PMC10073515  PMID: 
+37035302
+
+
+
+
+Abstract
+
+
+Despite the relevant advances in our understanding of the pathogenetic mechanisms regulating inflammation in rheumatoid arthritis (RA) and the development of effective therapeutics, to date, there is still a proportion of patients with RA who do not respond to treatment and end up progressing toward the development of joint damage, extra-articular complications, and disability. This is mainly due to the inter-individual heterogeneity of the molecular and cellular taxonomy of the synovial membrane, which represents the target tissue of RA inflammation. Tumor necrosis factor alpha (TNFα) and interleukin-6 (IL-6) are crucial key players in RA pathogenesis fueling the inflammatory cascade, as supported by experimental evidence derived from 
+in vivo
+ animal models and the effectiveness of biologic-Disease Modifying Anti-Rheumatic Drugs (b-DMARDs) in patients with RA. However, additional inflammatory soluble mediators such as IL-8 and IL-17 exert their pathogenetic actions promoting the detrimental activation of immune and stromal cells in RA synovial membrane, tendons, and extra-articular sites, as well as blood vessels and lungs, causing extra-articular complications, which might be excluded by the action of anti-TNFα and anti-IL6R targeted therapies. In this narrative review, we will discuss the role of IL-8 and IL-17 in promoting inflammation in multiple biological compartments (i.e., synovial membrane, blood vessels, and lung, respectively) in animal models of arthritis and patients with RA and how their selective targeting could improve the management of treatment resistance in patients.
+
+
+Keywords:
+ interleukin-8, interleukin-17, rheumatoid arthritis, organ damage, chronic pain
+Introduction
+
+
+The synovial membrane is a key tissue in rheumatoid arthritis
+
+
+The synovial membrane (SM), which covers the joints and lines the joint cavity, is made up of two layers: lining and sublining (
+1–3
+). The 
+lining layer
+ is made up of two/three cell layers and does not have a basement membrane. The cell types of the lining layer are resident synovial macrophages and fibroblast-like synoviocytes (FLS) that reside over an underlying connective tissue. This underlying connective tissue is the sublining layer that is characterized by sparse tissue-resident macrophages and fibroblasts, adipose cells, and blood and lymphatic vessels as well as minimal infiltrating inflammatory cells. In the last few years, the use of high-definition technologies such as single-cell RNA sequencing revealed the heterogeneity of these populations and novel cell–specific functions (
+4–6
+). In particular, in healthy conditions, synovial tissue-resident macrophages and fibroblasts play a crucial homeostatic function forming an immunological barrier that enables the isolation of the joint cavity through their expression of membrane tight junctions and by the release of regulatory and anti-inflammatory mediators maintaining joint homeostasis (
+4–7
+). Few mast cells (MCs) have been described in normal synovium, mainly the subset containing either tryptase (MCt) or chymase (MCtc) (
+8
+). In the collagen-induced arthritis (CIA) model, MCs emerged as players of the early immune-driven arthritis (not in the effector phase of the immune response in the K/BxN model) (
+9
+), and MCt is thought to contribute to the tissue hyperplasia by inhibiting FLS apoptosis (
+10
+). During arthritis development, immune cells are recruited toward the synovial membrane that shows lining layer hyperplasia and becomes a tumor-like tissue (pannus). The pannus formation presents a molecular basis and pathways leading synovial fibroblasts to achieve and maintain an aggressive phenotype, similar to locally invasive cancer (
+3
+). Analyzing the physiology of FLS, it was demonstrated that normal FLS and RA-FLS spontaneously express genes such as IL-6, IL-8 (CXCL8), and transforming growth factor ß1 (TGFß1) but not tumor necrosis factor alpha (TNFα). After LPS stimulation, normal FLS and RA-FLS expressed granulocyte-macrophage colony-stimulating factor (GM-CSF) and interleukin-1α (IL-1α) (
+11
+). Interestingly, another study showed that long-standing RA-derived FLS constitutively expressed basic fibroblast growth factor (FGF), TGFß, IL-1α, and IL-6 but not TNFα (
+12
+), suggesting that FLS are constitutively prone to synthesize IL1-α and ß and mostly IL-6, IL-8, and TGFß but not TNFα.
+
+
+Moreover, mesenchymal stem cells (MSCs) represent a transitional cell in the synovial tissue that is capable of differentiating into fibroblasts, maintaining their potential multilineage differentiation 
+in vitro
+, with the main immunological function of controlling T-cell and B-cell activation and proliferation, blocking the activation of natural killer (NK) cells, reducing the antigen-presenting function of dendritic cells inducing the phenotypic transformation of macrophages, and reducing the apoptosis of polymorphonuclear (PMN) cells (
+13
+, 
+14
+). The anti-inflammatory functions of MSCs are exerted through the synthesis of IL-6, interleukin-10 (IL-10), TGFß, hepatocyte growth factor (HGF), and prostaglandin E2 (PgE2) (
+14
+). Of particular interest, the injection of human MSCs obtained from synovial tissue of patients with osteoarthritis (OA) into the joint cavity of collagen-induced arthritis (CIA) in DBA/1J mice model was associated with a decrease in TNF-α, IFN-γ, and interleukin-17A (IL-17A), while IL-10 production increased. Moreover, the number of T helper 1 (Th1) and Th17 cells in the spleen of mice treated with SM-MSCs (synovial membrane-MSCs) was decreased, while the number of Th2 (T helper 2), Treg (T regulatory), PD-1+ CXCR5+ FoxP3+ follicular Treg cells, and IL-10-regulated B cells was increased (
+15
+).
+
+
+Finally, RA synovial tissues were characterized by the presence of nurse-like cells (NLCs), having the ability to promote antibody production by B cells, to protect lymphocytes from apoptosis, and to secrete a large number of cytokines and chemokines, i.e., monocyte chemotactic protein1 (MCP-1), IL-8, and other chemokines (
+16
+), as well as IL-6, IL-7, GM-CSF, and granulocyte colony-stimulating factor (G-CSF) (
+17
+), promoting the accumulation and activation of monocytes and lymphocytes, including B cells (
+18
+). RA-NLC has also the unique capacity to promote the differentiation of osteoclasts from myeloid precursors in a receptor activator of NF-κB/receptor activator of NF-κB ligand (RANKL) in an independent manner (
+14
+).
+IL-17 (and IL-8) as target cytokines in animal models of arthritis
+
+
+Several studies have demonstrated that the synovial tissue of animal models of arthritis, such as CIA, adjuvant-induced arthritis (AA), antigen-induced arthritis (AIA), streptococcal cell wall (SCW) arthritis, and SKG (ZAP-70 mutation model, harbor a strain of a recessive mutation of the gene encoding an SH2 domain of ζ-associated protein 70 (ZAP-70), a key signaling molecule in T cells), express and synthesize an array of pro-inflammatory molecules (IL-1ß, IL-6, and TNFα) at the onset that determines the aggressive damaging disease phenotype (
+19
+). In particular, in the CIA model, the knock-out of the 
+IL-6
+ gene (
+IL-6
+−/−
+) led to complete protection from the onset of arthritis and a decrease of the anti-collagen type II autoantibody level (
+20
+). Interestingly, early neutralization of IL-6 bioactivities, after immunization with type II collagen, leads to a significant reduction of Th17 cells and subsequent protection from CIA (
+21
+). Mice knocked out for 
+IL-17
+ (IL-17
+−/−
+), 129/sc x C36BL/B6 F1 hybrid background, and IL-17
++/+
+ littermates, showed CIA suppression, suggesting that IL-17 was crucial for collagen-specific T-cell activation and collagen-specific IgG2a synthesis (
+22
+). No data were available on the constitutive production of IL-17 by RA-FLS. This suggests that IL-6 plays an early effect in RA pathogenesis and is crucial to induce IL-17 synthesis. IL-17 is mainly (even if not exclusively) produced by specific T cells (Th17) that have been recruited into the synovial tissue, and which are generated under the influence of TGFβ, IL-6, and IL-1 (
+23
+), which are all molecules constitutively expressed by FLS. The key role of IL-17 in RA is supported by the observation that overexpression of IL-17 in DBA-1/BOM knee joint mice, as well as in SCW arthritis, induces joint inflammation, bone erosion, and cartilage proteoglycan loss (
+24
+). According to these data, IL-17 appears to amplify the inflammatory cascade triggered by IL-1α and β, TGFβ, and IL-6. Moreover, FLS cells constitutively express CXCL12 (stromal cell-derived factor 1, SDF-1) that recruits T cells which, in turn, constitutively express its receptor CXCR4 (
+25
+), and IL-6 that, through STAT3 activation, induces the expression of CCR3, CCR4, CCR5, and CXCR2 (
+26
+), all receptors present in CD3
+pos
+ cells associated with the synthesis of chemokines as CCL4 (macrophage inflammatory protein, MIP-1β), CCL5 (regulated upon activation, normally T cell expressed and secreted, RANTES), CCL17 (thymus and activation-regulated chemokine, TARC), and CXCL10 (interferon-y-inducible protein- IP-10) (
+25
+, 
+26
+). These chemokines contribute to the progressive accumulation of monocytes–macrophages infiltrating the tissue. In particular, RANTES, MIP-1β,α, and SDF-1 are more actively involved in the recruitment of T and B cells into the synovial pannus leading to the formation of extranodal lymphoid tissue and pseudo germinal centers, as seen in early and long-standing RA-derived synovial tissues (
+27
+). The massive recruitment of B and T lymphocytes cannot occur without neoangiogenesis, which is strongly favored by the chemokines that possess angiogenic properties, such as IL-8, CXCL12, CXCL5 (ENA-78, epithelial cell-derived neutrophil attractant 78), and CXCL1 (GRO alpha, growth-related oncogene alpha). Among the chemokines, IL8, which has functional homologs (CXCL1/KV, CXCL2/MIP-2, and CXCL5-6/LIX in rodents), plays a key role, since antagonizing its function by blocking one of its receptors (CXCR2) through an antagonist significantly reduced acute and chronic arthritis inflammation in rabbits (
+28
+). Indeed, the more inflammation in the tissue, the more inflamed the synovial fluid, which shows enrichment of infiltrating PMNs, strongly recruited by IL-8, CXCL5, and CXCL1. Therefore, the constitutive syntheses of IL-8 and SDF-1 by FLS strongly contribute to synovitis chronicity, allowing the continuous recruitment of PMNs into the joint cavity of T and B cells into the synovial tissue. In this scenario, IL-8 and CXCL12 are likely essential for the recruitment and maturation of Th17, and the constitutive production of IL-6 and IL-8 by FLS is crucial for the whole process of synovial tissue inflammation. Indeed, FLS cocultured with IL17 for 48 h, produced a high amount of IL-6 and IL-8 (
+29
+).
+Cellular crosstalk through IL-8 and IL-17
+
+
+IL-8
+
+
+IL-8 is secreted by multiple cell types, including FLS, macrophages, monocytes, PMNs, endothelial cells, and MSCs (
+24
+), and its expression is regulated at both transcriptional and post-transcriptional levels (
+25
+). IL-8 mediates its effects 
+via
+ binding to two heterotrimeric G protein-coupled receptors, CXCR1 and CXCR2, that become phosphorylated, desensitized, and internalized. The signaling pathways activated downstream by CXCR1/2 engagement, including mitogen-activated protein kinase MAPK pathways (p38, MEK1/2, and JNK) (
+30
+). IL-8 signaling activates a wide range of transcription factors, such as nuclear factor kappa B (NFκB), activator protein-1 (AP-1), hypoxia-inducible factor 1 (HIF-1), and signal transducer and activator of transcription 3 (STAT3). It is chemotactic for PMNs, monocytes, and fibroblasts. Moreover, IL-8 also accelerates fibroblast migration and stimulates the deposition of tenascin and fibronectin during wound healing 
+in vivo
+. In epithelial, endothelial, and fibroblastic cells, secretion of IL-8 is induced by IL-17 (
+31
+). It is one of the key chemokines regulating neoangiogenesis (
+28
+, 
+32
+). Importantly, IL-8 appears crucial in RA for the recruitment and infiltration of the synovium by leukocytes, and it is easily detectable in the synovial fluids and by 
+in situ
+ hybridization in the rheumatoid synovial tissue, correlating with disease activity (
+33
+, 
+34
+). In particular, IL-8 activates PMNs and subsequently releases neutrophil-derived chemotactic factor (NDCF) acting as chemotactic factors for monocytes and T cells (
+35
+). Inside the synovial tissue with lympho-myeloid pathotype, IL-8 is produced by CD20
+pos
+ germinal center (GC) lymphocytes, especially centroblasts and centrocytes, and it appears crucial, along with RANTES, to enhance the recruitment of T cells inside the GC and favor the interaction between B and T cells at a stage in which B lymphocytes are engaged in active-dependent interactions with T cells (
+36–38
+). In addition, IL-8 is produced by cells located within the 
+sublining layer
+ that is in direct contact with the cartilage, being one major adipokine secreted by stromal cells (
+39
+). If we consider that synovial stromal cells attract monocytes by producing IL-8 and MCP-1 (
+40
+) and IL-8 downregulates the expression of tissue inhibitors of metalloproteinases (TIMPs) (
+41
+), the increased synthesis of IL-8 in the sublining layer represents the ideal site for an increased expression of collagenases leading to cartilage damage (
+42
+). Moreover, IL-8 induces motility and loss of focal adhesion in primary fibroblasts and favors the direct invasion of cartilage by FLS and macrophages (
+37
+) that erode and degrade cartilage through the synthesis of collagenases (
+43–47
+). Since FLS cells constitutively express and synthesize IL-1β, and IL-1β is a strong inducer of IL-8 by chondrocytes (
+42
+), an amplification loop involving FLS and macrophages in the degradation and erosion of cartilage appears in place within the arthritis synovial tissue, with MMP14 (metallo type 1 matrix metalloproteinases) of critical importance (
+48–50
+).
+
+
+In the joint “bare areas,” referring to the bone within the synovial space that is not covered by articular cartilage, the IL-8 recruitment of FLS and macrophages may lead to the key feature of inflammatory arthritis, that is, bone erosions (
+48
+, 
+49
+). In fact, IL-8 has been identified as an autocrine regulator of RANKL-induced osteoclastogenesis, by promoting the expression of RANKL by osteoblastic stromal cells (
+50
+, 
+51
+). Either osteoclast precursors or mature osteoclasts express CXCR1, the IL-8 receptor, and the IL-8 effect on osteoclasts and their progenitors is associated with CXCR1 cell surface expression, demonstrating a direct effect of IL-8 on osteoclast differentiation and activity (
+52
+). Moreover, the ablation of IL-8 with a neutralizing antibody, attenuated osteoclastogenesis by the inhibition of NFATc1 translocation to the nucleus, even in the presence of RANKL (
+53
+), clearly supporting the notion that IL-8 is an autocrine key regulator of osteoclasts differentiation and activation. This role of IL-8 may explain why 34.9% of patients with early RA (symptoms duration 6.4 ± 3.3 months) had erosions at diagnosis (
+49
+). The presence of Anti-citrullinated protein antibodies (ACPA), through the binding to citrullinated vimentin (as a putative autoantigen) present on the surface of osteoclasts, may increase cellular differentiation to bone-resorbing osteoclasts 
+via
+ autocrine stimulation of TNF production (
+44
+). In particular, ACPAs against vimentin or enolase, but not against other citrullinated peptides, were shown to induce the expression of IL-8 by osteoclast precursor cells, which acts in an autocrine way to facilitate osteoclastogenesis (
+54
+), thus stressing the role of the innate immune response in the erosion process, especially of seropositive arthritis. Since seronegative (for ACPA and rheumatoid factors) early RA also presents erosions in a significant percentage (31.9%) (
+55
+), the ACPA positivity does not appear to be a needful requisite for being erosive. In these cases, the IL-8-driven pathway may still play a key role.
+IL-17
+
+
+There is no evidence of the constitutive IL-17 production by FLS in humans. In 1999, Chabaud et al. (
+56
+) demonstrated IL-17 in synovial biopsies of patients with RA. The IL-17 family is composed of six members (i.e., A–F) and is mainly produced not only by Th17 but also by CD8
++
+ T cells, CD4-CD8-γδ T cells, NK cells, innate lymphoid cells (ILC3), mast cells (MCs), and PMNs, yet Th17 are thought to be the main drivers of arthritis (
+57
+, 
+58
+). Of interest, the MCs capture, store, and release bioactive IL17A (
+59
+, 
+60
+). In CIA models, Th17 and γδT cells were found in the synovial tissues, and Th17 depletion protected mice from bone erosions (
+61
+). In a seminal study, Komatsu et al. (
+62
+) showed that transferring CD25
+hi
+Foxp3
+pos
+CD4
+pos
+ or CD25
+low
+Foxp3
+pos
+CD4
+pos
+ T cells into mice immunized with type II collagen, and 1 week after secondary immunization, CD25
+low
+Foxp3
+pos
+CD4
+pos
+ T cells lost Foxp3 expression and became IL-17-producing cells. When culturing CD25
+low
+Foxp3
+pos
+CD4
+pos
+ T cells with Thy1
+pos
+CD11 cells (synovial fibroblasts) but not with Thy1
+neg
+CD11b
+pos
+ cells (synovial macrophages), Foxp3 was lost and became Th17-producing IL-17. The major mediator of the transition from a regulatory to active status of T cell was found to be IL-6, heavily produced by Thy1
+pos
+CD11b
+neg
+ cells (FLS), and the treatment with a neutralizing antibody against IL-6, while neither an antibody against TNF-α nor IL-1β, inhibited the generation of Th17 cells after the coculture of Foxp3
+pos
+CD4
+pos
+ T cells with synovial fibroblasts. These data suggest that IL-6, secreted by FLS, is crucial in the development of Th17 (along with IL1, TGFβ, and IL23) (
+62
+) and the production of IL-17. Furthermore, Th17 cells expressed high levels of RANKL and had higher osteoclastogenic ability than naive CD4
+pos
+ T cell-derived Th17 cells in a co-culture of synovial fibroblasts and bone marrow-derived monocyte and macrophage precursor cells (
+62
+). Moreover, IL-17 is able to enhance cartilage proteoglycan loss and inhibit its synthesis, as demonstrated in mouse models (
+56
+). On human RA-derived bone explants, IL-17 enhanced IL-6 production, increased bone resorption, and decreased its formation (
+56
+). Of critical importance, IL-17 induces the production of IL-6 and IL-8 from RA FLS 
+via
+ PI3Kinase/Akt-dependent pathways, thus further amplifying the inflammatory role of FLS in RA pathogenesis (
+63
+). In addition, the finding that IL-17 is directly involved in the stimulation of fibroblasts and endothelial cells to secrete cytokines such as IL-6, IL-8, G-CSF (granulocyte colony-stimulating factor), and prostaglandin E2, and in sustaining the proliferation of CD34
++
+ hematopoietic progenitors suggests that this cytokine is not only an amplifier molecule but also a potent bridge between innate immune response and systemic inflammatory response (
+64
+). Finally, the demonstration that on one side IL-17 promotes B-cell chemotaxis (
+65
+)and on the other side that B cells stimulated with IL-4, IFNγ, IL-6, and TGFβ upregulate the expression of both IL-17A and F, appears to be an important step toward pannus expansion and maintenance (
+66
+).
+
+
+In conclusion, IL-8 at the onset and IL-17 after the RA onset (
+58
+) are key cytokines involved in the amplification of the arthritis inflammatory process, with the expansion of FLS and the action on chondrolytic and osteolytic activation.
+IL-8 and IL-17 as key players in organ damage (cardiovascular risk, lung interstitial fibrosis, chronic obstructive pulmonary disease, and chronic pain) in RA.
+
+
+IL-8
+
+
+The expression of IL-8 is induced not only by several inflammatory cytokines but also by oxidized low-density lipoprotein (OxLDL) that mediates cholesterol loading of macrophages, which, in turn, selectively reduces the production of tissue inhibitors of metalloproteinases-1 (TIMP-1) by human monocyte-derived macrophages (HMDMs) (
+40
+). The role in cardiovascular disease is supported by the demonstration that myocardial ischemia and reperfusion strongly increase IL-8 mRNA expression, which determines leukostasis and PMNs-mediated myocardial injury (
+67
+), and by the observation that inhibiting IL-8 with a monoclonal antibody protects the myocardium from the injury of ischemia–reperfusion, as seen in a New Zealand White (NZW) mouse model (
+68
+). Moreover, the demonstration that in interstitial lung disease-idiopathic pulmonary fibrosis (ILD-IPF), IL-8 and its receptor CXCR1 are highly expressed by mesenchymal progenitor cells (MPCs), which are the cellular originators of IPF fibroblasts, is of clinical significance. Most importantly, IL-8 was shown to expand the MPCs population, recruit activated macrophages, and promote fibrosis (
+69
+).
+
+
+Finally, musculoskeletal chronic inflammatory diseases are often associated with acute and chronic pain. The demonstration that IL-8 plays an important role in neuropathic pain (following nerve injury) (
+70
+), and the observation that an inhibitor of IL-8-CXCR1/2 interaction improved neuropathic pain (
+71
+), suggest that IL-8 may indeed play a role in chronic neuropathic pain that affects 17–21% of patients with RA (
+72
+).
+IL-17 family
+
+
+Within its biological effects, IL-17A might promote accelerated atherosclerosis, which is a key extra-articular manifestation of RA (
+73
+). The observation that in the ApoE
+−/−
+ (apolipoprotein E-deficient) mouse model, which is a model prone to accelerated atherosclerosis, IL-17A blockage reduced the plaque burden, IL-6 levels, G-CSF levels, CXCL1 expression, and macrophage content in the aorta strongly suggests, among many others, a pathogenetic role of IL-17A in the atherogenic process (
+74
+). The clinical observation that RA patients who had higher baseline bioactive peripheral blood IL-17 levels and were followed for 19.8 years had a higher incidence of stroke, acute myocardial infarction (AMI), or peripheral acute artery ischemia, supports the reported experimental data (
+75
+).
+
+
+Considering the lung involvement in RA, interesting data have emerged from studies on mice models deficient in the IL-17 receptor A (IL-17Ra
+−/−
+), showing that in two different mice models of pulmonary fibrosis employing COPD stimuli (cigarette smoking and viral mimetic polyinosinic-polycytidylic acid), animals were protected from both airway inflammation and fibrosis (
+76
+). Moreover, blocking IL-17A or IL-17Ra with monoclonal antibodies proved that IL-17A exerts crucial functions in this process. In fact, the IL-17A/IL-17Ra axis has been demonstrated to be critical in murine fibrosis models (
+77
+), and most importantly, it was demonstrated, 
+in vitro
+, that IL-17A-stimulated human fibroblasts proliferation can be suppressed by inhibitors of Janus Kinase 2 (JAK2) or JAK1-3, while myofibroblast transdifferentiation is sensitive to JAK2 inhibition (
+78
+).
+
+
+The IL-17/IL-17R axis has a role even in chronic pain in RA, as emerged from experimental data in a mouse model of neuropathic pain elicited by partial ligation of the sciatic nerve, in which the IL-17 knock-out mice demonstrated significantly lower pain hypersensitivity, decreased infiltration of T cells and macrophages into the sciatic nerve, and decreased activation of microglia and astrocytes in the L3–L5 dorsal and ventral horns of the spinal cord. Conversely, IL-17 infusion increased mechanical allodynia and thermal hyperalgesia (
+79
+). This study demonstrates that, in experimental models, IL-17 increases glial activation and neuropathic pain after peripheral nerve injury, and if we consider that IL-17A crosses the brain barrier to trigger neuroinflammation in rat models (
+80
+), we may infer that IL-17A indeed is a player in one of the most complex symptoms of pathophysiology, the occurrence of neuropathic pain in chronic inflammatory illnesses (
+Figure 1
+).
+
+
+Figure 1.
+
+
+
+
+Open in a new tab
+
+
+Pathogenetic actions of interleukin-8 (IL-8) and IL-17 on immune and stromal cells in multiple biological compartments in rheumatoid arthritis. (Left section) Schematic representation of the pathogenetic actions of IL-8 in the synovial tissue, blood vessel wall, and alveolar space in RA. 
+Synovial tissue
+: The release of IL-8 by resident macrophages and fibroblast-like synoviocytes (FLS) plays a chemotactic action promoting the recruitment of immune cells toward the synovial tissue fueling tissue inflammation and promoting osteoclasts differentiation and activation leading to bone damage. 
+Vessel wall
+: The release of IL-8 by infiltrating macrophages promotes the proliferation of smooth muscle cells and the activation of endothelial cells promoting plaque progression. 
+Alveolar space
+: The release of IL-8 by alveolar macrophages enhances myeloid cell migration from circulation and promotes the development of hyper-fibrotic macrophages. Moreover, the release of IL-8 from mesenchymal cells induces their migration and proliferation in an autocrine loop. (Right section) Schematic representation of the pathogenetic actions of IL-17 in the synovial tissue, blood vessel wall, and alveolar space in RA. 
+Synovial tissue
+: The release of IL-17 by Th17 lymphocytes promotes the activation of synovial macrophages and FLS contributing to the chronicity of synovitis. Moreover, IL-17 is a potent inducer of osteoclast/chondrocyte activation contributing to bone and cartilage damage. 
+Vessel wall
+: The release of IL-17 by adaptive and innate immune cells promotes the chemotaxis of immune cells within the vessel plaque and promotes endothelial cell apoptosis, accelerating the atherosclerotic process and leading to increased cardiovascular risk. 
+Alveolar space
+: The release of IL-17 interferes with the pneumocyte I autophagy process and its release by pneumocytes type II enhances fibroblast proliferation, which contributes to extracellular matrix deposition and lung fibrosis.
+IL-8 and IL-17 and monoclonal antibodies
+
+
+Experimental data and synovial tissue analyses have demonstrated the presence and function of IL-8 and IL-17 in RA. Kraan et al. showed a higher expression of IL-8/CXCL8 in the involved joints of patients with RA compared with uninvolved ones (
+35
+), and Koch et al. demonstrated the crucial pro-angiogenetic role of IL-8 in the development of chronic synovitis in RA (
+81
+). When examining peripheral blood and synovial fluid compartments, IL-8 levels were significantly increased in the plasma of very early RA (VERA) compared with established RA or healthy controls and in the synovial fluid of established RA compared with osteoarthritis patients (
+82
+). Despite this, the results obtained from the use of anti-IL-8/CXCL8 in a clinical trial enrolling patients with RA have not been published, and the compound was not further developed (
+83
+).
+
+
+Moreover, synovial tissue of patients with RA is significantly enriched in IL-17 (
+84
+, 
+85
+), and IL-17 receptors were identified in the endothelial cells of RA synovium and chondrocytes derived from many types of arthritis, with the highest expression in osteoarthritis and SpA cartilages and the lowest in RA cartilage (
+82
+). Similar to IL-8, the peripheral blood of patients with VERA is enriched in IL-17 compared with established RA or healthy controls, and the synovial fluid of patients with established RA shows significantly higher IL-17 levels compared with osteoarthritis (
+82
+).
+
+
+However, despite a strong biological background, the efficacy of secukinumab (a fully human monoclonal antibody binding and neutralizing selectively IL-17A) in RA was modest when compared with abatacept (
+86
+), with limited efficacy in patients who were poor responders to TNF inhibitors (
+87
+). We know that chronically stimulated lymphocytes undergo TCR-zeta downregulation and become TCR-zeta
+dim
+ lymphocytes. TCR-zeta
+dim
+ lymphocytes are increased in RA synovial tissue and would selectively migrate to the joint during disease flare. We, and others, found that TCR-zeta
+dim
+ lymphocytes not only produce IL-17 but also IFNγ (
+88
+). These T cells are called non-classical Th1 because they produce IFNγ similar to Th1, yet they have been shown to proliferate more than Th17 after stimulation and to produce an increased amount of pro-inflammatory cytokines (GM-CSF, TNFα, IL2, IL17, and IFNγ), and might be more resistant to IL-17-targeted therapy (
+89
+). Tenosynovitis occurs in a subset of patients with RA, even in patients with no metacarpophalangeal joint synovitis (
+90
+), and these patients could benefit from an anti-IL-17A therapeutic approach if they do not fully respond to the specific biologic agent (
+83
+). Although no data are available on patients’ refractory to anti-TNF, a bifunctional antibody might be relevant, as observed in other illnesses (
+91
+).
+
+
+How can we support the IL-8 and IL-17 involvement in RA?
+
+
+The answer comes from the biology of RA. Studying the effects of gold sodium thiomalate (GST) and methotrexate (MTX) in RA, both employed as first-line therapy in RA diagnosis, Seitz et al. (
+92
+) showed that after stimulation with lipopolysaccharide (LPS) or IL-1ß, there was a profound decrease of IL-8 levels in peripheral blood mononuclear cell (PBMC) cultures from healthy controls as well as patients with RA, and also a significant decrease in the spontaneous production of IL-8 by RA PBMCs. If we consider that IL-8 is released by several cells which populate the synovial tissue of RA (
+93
+, 
+94
+) (endothelial cells, FLS, MLS, and chondrocytes), we may hypothesize that control of the innate immune response by MTX may be obtained through the inhibition of IL-8 synthesis. The demonstration that tocilizumab (a monoclonal antibody directed against the IL-6 receptor) was able to inhibit the synthesis of IL-8 from triple-negative breast cancer cells, thus blocking both IL-6 and IL-8, which promotes angiogenesis and favor the growth and spread of the disease, suggests that targeting IL-6 means targeting also IL-8, with IL-6 coming first (
+95
+). Since MTX also decreased IL-6 synthesis after stimulation with LPS of PBMC from juvenile idiopathic arthritis (JIA) (
+96
+) and in the GPI-arthritis model (glucose-6-phosphate isomerase-induced arthritis model), MTX potently inhibits the development of arthritis, and this effect relates to the progressive reduced SLC19A1 expression (the folate carrier SCL19A1) (
+97
+). Thus, it is possible to infer that the inhibition of IL-6 is a key to downregulating IL-8. In contrast, when studying gene expression in whole blood-derived cells, patients with RA stabilized under etanercept (a fusion protein produced by recombinant DNA that fuses the TNF receptor to the constant end of the IgG1 antibody) showed an increased expression of the IL-8 gene, as well as under infliximab therapy (a DNA-derived chimeric monoclonal antibody working by binding to and neutralizing TNFα) (
+98
+). The induction of a strong pro-inflammatory gene such as IL-8, under TNFα inhibition, suggests that an underlying persistent inflammatory milieu may be associated with RA clinical stabilization. Whether this may foresee the progressive loss of efficacy, needs to be defined in follow-up studies of patients treated with TNF inhibitors. In contrast, Lun et al. (
+99
+) showed a significant decrease in TNFα and IL-8 released by peripheral blood-derived mononuclear cells stimulated with phytohaemagglutinin and LPS under infliximab treatment, without any change in the induction of IL-6, IL-1ß, and IL-18. These apparently contradictory results support the idea that a persistent inflammatory background may remain after TNFα inhibition.
+
+
+If IL-6 is upstream in RA disease, it follows that targeting IL-6 means also targeting IL-8, while a direct inhibition of IL-8 may not stop the whole inflammatory cascade. Further support to the rationale that IL-6 and IL-8 walk together is the demonstration that RA-derived FLS stimulated with TNFα and IL-17 showed a higher synthesis of IL-6, IL-8, and G-CSF. Much lower concentrations of TNFα than IL-17 were required to stimulate chemokines, with IL-6 stimulated at higher amounts than IL-8. Interestingly, a bispecific antibody against TNF and IL-17 blocked their expression and synthesis much more than it can be done using single selective inhibitors. Consequently, the anti-arthritic effect of the bispecific antibody became evident in the TNFα human transgenic arthritis model — hTNF
+tg
+ (C57Bl6 background, Tg197 strain) (
+100
+).
+
+
+If targeting IL-6 leads to an increase in the Treg/Th17 ratio, since the conversion of Treg cells (Foxp3 positive) into Th17 cells is IL-6 dependent (
+62
+), a tocilizumab treatment increased this ratio 
+in vivo
+ (
+101
+). Once again, targeting IL-6 means targeting IL-17 downstream, and since TNFα induces IL-6 and IL-8, targeting IL-6 means also stopping the deleterious effects of TNFα. This can be the reason why IL-6 has been considered the pivotal cytokine in RA (
+102
+). Indirect supports to these considerations come from recent data showing that abatacept (a fusion protein composed of the Fc region of the immunoglobulin IgG1 fused to the extracellular domain of CTLA-4, an immune check-point that downregulates T-cell activation and the immune response) leads its strongest effects in patients with the lowest IL-6 levels at the baseline and with the highest Treg levels (
+103
+).
+Unmet needs and perspectives
+
+
+Despite incredible advances in our understanding of the cellular and molecular biology of RA, an important percentage of patients cannot be led to full persistent remission. We recognize that IL-6 (upstream pivot) and TNFα (final kingmaker) represent key players in treatment options, yet there are patients who we define as difficult to treat (
+104
+) that still do not reach a satisfactory clinical control with the available therapies (
+Figure 1
+). To avoid multiple interventions with multiple drugs with different modes of action, following the pathogenetic pathways described here, a sequential therapy like in hematology (
+105
+), with anti–IL-6 or anti-TNFα followed by anti–IL-17, might offer favorable outcomes. In the CIA model, the dual blockade of TNF and IL-17 gave better results than either monotherapy (
+106
+) and in the TNFα transgenic animal model of arthritis, as well as cartilage and bone damage, were better controlled with bi-specific antibodies (anti-TNFα and anti–IL-17A) than with monotherapies (
+100
+). Along the same line, in the CIA model, the therapeutic intervention during the induction phase of arthritis with anti–IL-6 and anti–IL-21 reduced disease development more efficaciously than monotherapies (
+107
+).
+
+
+It is well accepted that patients with RA are clinically heterogeneous and that the lympho-myeloid pathotype at synovial tissue analysis represents the most aggressive and severe subset (
+108
+). In this scenario, RA patients with resistant tenosynovitis might benefit from anti–IL-6, which has been shown to also act on the stromal component (
+108
+), followed by anti–IL-17 therapy (
+106
+). Conversely, in RA patients with an erosive disease, anti–IL-6 or anti-TNFα, followed by anti–IL-8, which is a key factor promoting erosiveness, should be tested. Alternatively to anti–IL-8 inhibitors, not currently available in the clinic, JAK inhibitors could be employed sequentially (
+109
+, 
+110
+), some of which (i.e., peficitinib and filgotinib) may act on FLS reducing their migration invasiveness and decreasing their synthesis of IL-8 and IL-6 (
+111
+). All of these unmet needs require intensive and tireless biopsy-driven research at the cellular (
+112
+) and molecular levels (
+113
+), aimed to develop a more biologically oriented personalized decisional algorithm. While waiting for bifunctional antibodies, the dual-target with anti-TNFα (certolizumab), followed by targeting IL-17A-F (ixekizumab), led to faster and stronger disease control in anti-TNFα incomplete responders, at the expense of more, not severe, infections (
+114
+).
+
+
+Recent studies on the genetic background of seropositive (rheumatoid factor and anti-citrullinated protein antibodies positive) RA suggest that the inflammatory milieu is very complex (
+113
+). The association between seropositive RA and STAT4 (significantly associated with RA and activated by a variety of cytokines, i.e., IL-12, type 1 IFN, IL-23, IL-2, IL-27, and IL-35), PTPN22 (important for TCR and BCR signaling, for the upregulation of IL-4R, IL-13R, IL-17R, and IL-21R, the hyper citrullination, and netosis) (
+112
+), FLT3 (important for the maintenance of hematopoietic progenitors, development of B cell lineage, and dendritic cells), gene variants, CTLA4, and IL6ST, supports the rationale that along with the major final players, other molecules are certainly involved in different phases.
+Conclusion
+
+
+The availability of synovial tissue biopsy during the RA course might provide information on the aggressiveness of synovitis (
+19
+) in terms of stromal cells proliferation and enrichment of B-cell lineage (
+105
+) and can be integrated with the assessment of the activity across the disease stages through multiparametric activity scores (
+106
+) to create patient-specific individual taxonomy. This will allow clinicians to define much earlier the individual molecular signature and the entity of the response to therapy and will let them promptly modify the therapeutic approach. Therefore, an oncohematological-like approach with drugs modulating different targets could be achievable once the clinical features and tissue characteristics have defined this individual multiparametric matrix.
+Author contributions
+
+
+EG, GF, and SA conceived the study. EG, BT, DB, SP, and SA collected the literature data. BT, DB, SP, and SA drafted the figure. EG, BT, DB, SP, BT, SA, and GF drafted and revised the manuscript. All authors contributed to the article and approved the submitted version.
+Conflict of interest
+
+
+The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
+Publisher’s note
+
+
+All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article, or claim that may be made by its manufacturer, is not guaranteed or endorsed by the publisher.
+References
+
+
+
+
+
+
+1.
+Iwanaga T, Shikichi M, Kitamura H, Yanase H, Nozawa-Inoue K. Morphology and functional roles of synoviocytes in the joint. Arch Histol Cytol. (2000) 63:17–31. doi: 10.1679/aohc.63.17
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+2.
+Bresnihan B, Flanagan AM, Firenstein GS. Synovium In: Firestein G, editor. Kelley's Textbook of Rheumatology. Vol. 1. 9th edn, Elsevier. (2013). 20–32.
+
+
+
+
+
+
+3.
+Bottini N, Firenstein GS. Duality of fibroblast-like synoviocytes in RA: passive responders and imprinted aggressors. Nat Rev Rheumatol. (2013) 9:24–33. doi: 10.1038/nrrheum.2012.190, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+4.
+Udalova IA, Mantovani A, Feldmann M. Macrophage heterogeneity in the context of rheumatoid arthritis. Nat Rev Rheumatol. (2016) 12:472–85. doi: 10.1038/nrrheum.2016.91, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+5.
+Alivernini S, MacDonald L, Elmesmari A, Finlay S, Tolusso B, Gigante MR, et al. Distinct synovial tissue macrophage subsets regulate inflammation and remission in rheumatoid arthritis. Nat Med. (2020) 26:1295–306. doi: 10.1038/s41591-020-0939-8, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+6.
+Croft AP, Campos J, Jansen K, Turner JD, Marshall J, Attar M, et al. Distinct fibroblast subsets drive inflammation and damage in arthritis. Nature. (2019) 570:246–51. doi: 10.1038/s41586-019-1263-7, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+7.
+Culemann S, Grüneboom A, Nicolás-Ávila JÁ, Weidner D, Lämmle KF, Rothe T, et al. Locally renewing resident synovial macrophages provide a protective barrier for the joint. Nature. (2019) 572:670–5. doi: 10.1038/s41586-019-1471-1, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+8.
+Gotis-Graham I, McNeil HP. Mast cell responses in rheumatoid synovium. Association of the MCTC subset with matrix turnover and clinical progression. Arthritis Rheum. (1997) 40:479–89. doi: 10.1002/art.1780400314, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+9.
+Rivellese F, Nerviani A, Rossi FW, Marone G, Matucci Cerinic M, De Paulis A, et al. Mast cells in rheumatoid arthritis: friends or foes?
+Autoimmun Rev. (2017) 16:557–63. doi: 10.1016/j.autrev.2017.04.001
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+10.
+Sawamukai N, Yukawa S, Saito K, Nakayamada S, Kambayashi T, Tanaka Y. Mast-cell-derived tryptase inhibits apoptosis of human synovial fibroblasts via Rh0-mediated signaling. Arthritis Rheum. (2010) 62:952–9. doi: 10.1002/art.27331, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+11.
+Schwachula A, Riemann D, Kehlen A, Langner J. Characterization of the immunophenotype and functional properties of fibroblast-like synoviocytes in comparison to skin fibroblasts and umbilical vein endothelial cells. Immunobiology. (1994) 190:67–92. doi: 10.1016/S0171-2985(11)80284-6, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+12.
+Bucala R, Ritchlin C, Winchester R, Cerami A. Constitutive production of inflammatory and mitogenic cytokines by rheumatoid synovial fibroblasts. J Exp Med. (1991) 173:569–74. doi: 10.1084/jem.173.3.569, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+13.
+De Bari C, Dell'Accio F, Tylzanowski P, Luyten FP. Multipotent mesenchymal stem cells from adult human synovial membrane. Arthritis Rheum. (2001) 44:1928–42. doi: 10.1002/1529-0131(200108)44:8<1928::AID-ART331>3.0.CO;2-P, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+14.
+Li N, Gao J, Mi L, Zhang G, Zhang L, Zhang N, et al. Synovial membrane mesenchymal stem cells: past life, current situation, and application in bone and joint diseases. Stem Cell Res Ther. (2020) 11:381. doi: 10.1186/s13287-020-01885-3, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+15.
+Yan M, Liu X, Dang Q, Huang H, Yang F, Li Y. Intra-articular injection of human synovial membrane-derived mesenchymal stem cells in murine collagen-induced arthritis: assessment of immunomodulatory capacity in vivo. Stem Cells Int. (2017) 2017:9198328. doi: 10.1155/2017/9198328, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+16.
+Ochi T, Yoshikawa H, Toyosaki-Maeda LPE. Nurse-like cells reside in the synovial tissue and bone marrow in rheumatoid arthritis. Arthritis Res Ther. (2007) 9:201. doi: 10.1186/ar2105, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+17.
+Takeuchi E, Tomita T, Toyosaki-Maeda T, Kaneko M, Takano H, Hashimoto H, et al. Establishment and characterization of nurse cell-like stromal cell lines from synovial tissues of patients with rheumatoid arthritis. Arthritis Rheum. (1999) 42:221–8. doi: 10.1002/1529-0131(199902)42:2<221: AID-ANR3>3.0.CO;2-N, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+18.
+Shimaoka Y, Attrep JF, Hirano T, Ishihara K, Suzuki R, Toyosaki T, et al. Nurse-like cells from bone marrow and synovium of patients with rheumatoid arthritis promote survival and enhance function of human B cells. J Clin Invest. (1998) 102:606–18. doi: 10.1172/JCI3162, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+19.
+Ferraccioli G, Bracci-Laudiero L, Alivernini S, Gremese E, Tolusso B, De Benedetti F. Interleukin-1β and interleukin-6 in arthritis animal models: roles in the early phase of transition from acute to chronic inflammation and relevance for human rheumatoid arthritis. Mol Med. (2010) 16:552–7. doi: 10.2119/molmed.2010.00067, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+20.
+Alonzi T, Fattori E, Lazzaro D, Costa P, Probert L, Kollias G, et al. Interleukin 6 is required for the development of collagen-induced arthritis. J Exp Med. (1998) 187:461–8. doi: 10.1084/jem.187.4.461, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+21.
+Fujimoto M, Serada S, Mihara M, Uchiyama Y, Yoshida H, Koike N, et al. Interleukin-6 blockade suppresses autoimmune arthritis in mice by the inhibition of inflammatory Th17 responses. Arthritis Rheum. (2008) 58:3710–9. doi: 10.1002/art.24126, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+22.
+Nakae S, Nambu A, Sudo K, Iwakura Y. Suppression of immune induction of collagen-induced arthritis in IL-17-deficient mice. J Immunol. (2003) 171:6173–7. doi: 10.4049/jimmunol.171.11.6173, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+23.
+van den Berg WB, Miossec P. IL-17 as a future therapeutic target for rheumatoid arthritis. Nat Rev Rheumatol. (2009) 5:549–53. doi: 10.1038/nrrheum.2009.179
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+24.
+Lubberts E, Joosten LA, Oppers B, van den Bersselaar L, Coenen-de Roo CJ, Kolls JK, et al. IL-1-independent role of IL-17 in synovial inflammation and joint destruction during collagen-induced arthritis. J Immunol. (2001) 167:1004–13. doi: 10.4049/jimmunol.167.2.1004, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+25.
+Filer A, Raza K, Salmon M, Buckley CD. The role of chemokines in leucocyte-stromal interactions in rheumatoid arthritis. Front Biosci. (2011) 13:2674–85. doi: 10.2741/2874, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+26.
+McLoughlin RM, Jenkins BJ, Grail D, Williams AS, Fielding CA, Parker CR, et al. IL-6 trans-signaling via STAT3 directs T cell infiltration in acute inflammation. PNAS. (2005) 102:9589–94. doi: 10.1073/pnas.0501794102, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+27.
+Alivernini S, Tolusso B, Gessi M, Gigante MR, Mannocci A, Petricca L, et al. Inclusion of synovial tissue-derived characteristics in a nomogram for the prediction of treatment response in treatment-naive rheumatoid arthritis patients. Arthritis Rheum. (2021) 73:1601–13. doi: 10.1002/art.41726, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+28.
+Podolin PL, Bolognese BJ, Foley JJ, Schmidt DB, Buckley PT, Widdowson LI, et al. A potent and selective nonpeptide antagonist of CXCR2 inhibits acute and chronic models of arthritis in the rabbit. J Immunol. (2002) 169:6435–44. doi: 10.4049/jimmunol.169.11.6435, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+29.
+Kato H, Endres J, Fox DA. The roles of IFNγ versus IL17 in pathogenic effects of human TH17 cells on synovial fibroblasts. Mod Rheumatol. (2013) 23:1140–50. doi: 10.1007/s10165-012-0811-x, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+30.
+Kracht M, Saklatvala J. Transcriptional and posttranscriptional control of gene expression in inflammation. Cytokine. (2002) 20:91–106. doi: 10.1006/cyto.2002.0895
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+31.
+Lotz M, Terkeltaub R, Villiger PM. Cartilage and joint inflammation: regulation of IL-8 expression by human articular chondrocytes. J Immunol. (1992) 148:466–73. doi: 10.4049/jimmunol.148.2.466
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+32.
+Baggiolini M, Clark-Lewis I. Interleukin-8, a chemotactic and inflammatory cytokine. FEBS Lett. (1992) 307:97–101. doi: 10.1016/j.cyto.2022.155828
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+33.
+Koch AE, Polverini PJ, Kunkel SL, Harlow LA, DiPietro LA, Elner VM, et al. Interleukin-8 as a macrophage-derived mediator of angiogenesis. Science. (1992) 258:1798–801. doi: 10.1126/science.1281554, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+34.
+Hu DE, Hori Y, Fan TPD. Interleukin-8 stimulates angiogenesis in rats. Inflammation. (1993) 17:135–43. doi: 10.1007/BF00916100
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+35.
+Kraan MC, Patel DD, Haringman JJ, Smith MD, Weedon H, Ahern MJ, et al. The development of clinical signs of rheumatoid synovial inflammation is associated with increased synthesis of the chemokine CXCL8 (interleukin 8). Arthritis Res. (2001) 3:65–71. doi: 10.1186/ar141, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+36.
+Beaulieu AD, McColl SR. Differential expression of two major cytokines produced by neutrophils, IL-8 and interleukin-1 receptor antagonist, in neutrophils isolated from the synovial fluid and peripheral blood of patients with rheumatoid arthritis. Arthritis Rheum. (1994) 37:855–9. doi: 10.1002/art.1780370613, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+37.
+Bruun JM, Lihn AS, Madan AK, Pedersen SB, Schiøtt KM, Fain JN, et al. Higher production of IL-8 in visceral vs. subcutaneous adipose tissue. Implication of nonadipose cells in adipose tissue. Am J Physiol Endocrinol Metab. (2004) 286:E8–E13. doi: 10.1152/ajpendo.00269.2003, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+38.
+Taub DD, Anver M, Oppenheim JJ, Longo DL, Murphy WJ. T lymphocyte recruitment by Interleukin-8 (IL-8) IL-8-induced degranulation of neutrophils releases potent chemoattractants for human T lymphocytes both in vitro and in vivo. J Clin Invest. (1996) 97:1931–41. doi: 10.1172/JCI118625, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+39.
+Hayashida K, Nanki T, Girschic H, Yavuz S, Ochi T, Lipsky PE. Synovial stromal cells from rheumatoid arthritis patients attract monocytes by producing MCP-1 and IL-8. Arthritis Res. (2001) 3:118–26. doi: 10.1186/ar149, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+40.
+Moreau M, Brocheriou I, Petit L, Ninio E, Chapman MJ, Rouis M. Interleukin-8 mediates downregulation of tissue tnhibitor of metalloproteinase-1 expression in cholesterol-loaded human macrophages. Relevance to stability of Atherosclerotic Plaque. Circulation. (1999) 99:420–6. doi: 10.1161/01.cir.99.3.420, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+41.
+Pap T, Korb-Pap A. Carytilage damage in OA and RA: two unequal siblings. Nat Rev Rheumatol. (2015) 11:606–15. doi: 10.1038/nrrheum.2015.95, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+42.
+Dunlevy JR, Couchman JR. Interleukin-8 induces motile behavior and loss of focal adhesions in primary fibroblasts. J Cell Sci. (1995) 108:311–21. doi: 10.1242/jcs.108.1.311, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+43.
+Dayer JM, Krane SM, Russell RGG, Robinson DR. Production of collagenase and prostaglandins by isolated adherent rheumatoid synovial cells. PNAS. (1976) 73:945–9. doi: 10.1073/pnas.73.3.945, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+44.
+Krane SM. Collagenases and collagen degradation. J Invest Dermatol. (1982) 79:83–6. doi: 10.1111/1523-1747.ep12545849
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+45.
+Billinghurst RC, Dahlberg L, Ionescu M, Reiner A, Bourne R, Rorabeck C, et al. Enhanced cleavage of type II collagen by collagenases in osteoarthritic articular cartilage. J Clin Invest. (1997) 99:1534–45. doi: 10.1172/JCI119316, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+46.
+Wernicke D, Schulze-Westhoff C, Petrow P, Zacher J, Gay S, Gromnica-Ihle E. Stimulation of collagenase 3 expression in synovial fibroblasts of patients with rheumatoid arthritis by contact with a three-dimensional collagen matrix or with normal cartilage when coimplanted in NOD/SCID mice. Arthritis Rheum. (2002) 46:64–74. doi: , PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+47.
+van der Laan WH, Pap T, Ronday HK, Grimbergen JM, Huisman LG, TeKoppele JM, et al. Cartilage degradation and invasion by rheumatoid synovial fibroblasts is inhibited by gene transfer of a cell surface-targeted plasmin inhibitor. Arthritis Rheum. (2000) 43:1710–8. doi: , PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+48.
+Attur M, Lu C, Zhang X, Han T, Alexandre C, Valacca C, et al. Membrane-type 1 matrix metalloproteinase modulates tissue homeostasis by a non-proteolytic mechanism. iScience. (2020) 23:101789. doi: 10.1016/j.isci.2020.101789, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+49.
+Geusens P, van den Bergh J. Bone erosions in rheumatoid arthritis. Rheumatology. (2014) 53:4–5. doi: 10.1093/rheumatology/ket358
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+50.
+Schett G, Gravallese E. Bone erosion in rheumatoid arthritis: mechanisms, diagnosis and treatment. Nat Rev Rheumatol. (2012) 8:656–64. doi: 10.1038/nrrheum.2012.153, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+51.
+Kopesky P, Tiedemann K, Alkekhia D, Zecher C, Millard B, Schoeberl B, et al. Autocrine signaling is a key regulatory element during osteoclastogenesis. Biol Open. (2014) 3:767–76. doi: 10.1242/bio.20148128, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+52.
+Bendre MS, Montague DC, Peery T, Akel NS, Gaddy D, Suva LJ, et al. Interleukin-8 stimulation of osteoclastogenesis and bone resorption is a mechanism for the increased osteolysis of metastatic bone disease. Bone. (2003) 33:28–37. doi: 10.1016/s8756-3282(03)00086-3, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+53.
+Rothe L, Collin-Osdoby P, Chen Y, Sunyer T, Chaudhary L, Tsay A, et al. Human osteoclasts and osteoclast-like cells synthesize and release high basal and inflammatory stimulated levels of the potent chemokine interleukin-8. Endocrinology. (1998) 139:4353–63. doi: 10.1210/endo.139.10.6247, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+54.
+Krishnamurthy A, Joshua V, Haj Hensvold A, Jin T, Sun M, Vivar N, et al. Identification of a novel chemokine-dependent molecular mechanism underlying rheumatoid arthritis-associated autoantibody-mediated bone loss. Ann Rheum Dis. (2016) 75:721–9. doi: 10.1136/annrheumdis-2015-208093, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+55.
+Fedele AL, Petricca L, Tolusso B, Alivernini S, Canestri S, Di Mario C, et al. Interleukin-6 and IgA-rheumatoid factor are crucial for baseline erosiveness, and anti-citrullinated peptide antibodies for radiographic progression in early rheumatoid arthritis treated according to a treat-to-target strategy. Scand J Rheumatol. (2018) 47:351–9. doi: 10.1080/03009742.2017.1416668, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+56.
+Chabaud M, Durand JM, Buchs N, Fossiez F, Page G, Frappart L, et al. Human interleukin-17: a T cell-derived proinflammatory cytokine produced by the rheumatoid synovium. Arthritis Rheum. (1999) 42:963–70. doi: 10.1002/1529-0131, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+57.
+Pollinger B, Junt T, Metzler B, Walker UA, Tyndall A, Allard C, et al. Th17 cells, not IL-17+ γδ T cells, drive arthritic bone destruction in mice and humans. J Immunol. (2011) 186:2602–12. doi: 10.4049/jimmunol.1003370, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+58.
+Ferraccioli G, Zizzo G. The potential role of Th17 in mediating the transition from acute to chronic autoimmune inflammation: rheumatoid arthritis as a model. Discov Med. (2011) 11:413–24.
+ [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+59.
+Noordenbos T, Blijdorp I, Chen S, Stap J, Mul E, Canete JD, et al. Human mast cells capture, store and release bioactive, exogenous IL17A. J Leukoc Biol. (2016) 100:453–62. doi: 10.1189/jlb.3HI1215-542R, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+60.
+Noordenbos T, Yeremenko N, Gofita I, van de Sande M, Tak PP, Caňete JD, et al. Interleukin-17-positive mast cells contribute to synovial inflammation in spondylarthritis. Arthritis Rheum. (2012) 64:99–109. doi: 10.1002/art.33396, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+61.
+Sato K, Suematsu A, Okamoto K, Yamaguchi A, Morishita Y, Kadono Y, et al. Th17 functions as an osteoclastogenic helper T cell subset that links T cell activation and bone destruction. J Exp Med. (2006) 203:2673–82. doi: 10.1084/jem.20061775, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+62.
+Komatsu N, Okamoto K, Sawa S, Nakashima T, Oh-hora M, Kodama T, et al. Pathogenic conversion of Foxp3+ T cells into Th17 cells in autoimmune arthritis. Nat Med. (2014) 20:62–8. doi: 10.1038/nm.3432, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+63.
+Hwang SY, Kim JY, Kim KW, Park MK, Moon Y, Kim WU, et al. IL-17 induces production of IL-6 and IL-8 in rheumatoid arthritis synovial fibroblasts via NF-κB- and PI3-kinase/Akt-dependent pathways. Arthritis Res Ther. (2004) 6:R120–8. doi: 10.1186/ar1038, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+64.
+Fossiez F, Djossou O, Chomarat P, Flores-Romo L, Ait-Yahia S, Maat C, et al. T cell interleukin-17 induces stromal cells to produce proinflammatory and hematopoietic cytokines. J Exp Med (1996) 183:2593–603. doi: 10.1084/jem.183.6.2593, 2603, PMID: .
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+65.
+Halwani R, Al-Kufaidy R, Vazquez-Tello A. IL-17 enhances chemotaxis of primary human B cells during asthma. PLoS One. (2014) 9:e114604. doi: 10.1371/journal.pone.0114604, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+66.
+Vazquez-Tello A, Halwani R, Li R, Nadigel J, Bar-Or A, Mazer BD, et al. IL17A and IL17F expression in B lymphocytes. Int Arch Allergy Immunol. (2012) 157:406–16. doi: 10.1159/000329527, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+67.
+Kukielka GL, Smith CW, LaRosa GJ, Manning AM, Mendoza LH, Daly TJ, et al. Interleukin-8 gene induction in the myocardium after ischemia and reperfusion in vivo. J Clin Invest. (1995) 95:89–103. doi: 10.1172/JCI117680, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+68.
+Boyle EM, Jr, Kovacich JC, Hèbert CA, Canty TG, Jr, Chi E, Morgan EN, et al. Inhibition of interleukin-8 blocks myocardial ischemia-reperfusion injury. J Thorac Cardiovasc Surg. (1998) 116:114–21. doi: 10.1016/S0022-5223(98)70249-1, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+69.
+Yang L, Herrera J, Gilbertsen A, Xia H, Smith K, Benyumov A, et al. IL-8 mediates idiopathic pulmonary fibrosis mesenchymal progenitor cell fibrogenicity. Am J Phys Lung Cell Mol Phys. (2018) 314:L127–36. doi: 10.1152/ajplung.00200.2017, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+70.
+Khan J, Hassun H, Zusman T, Korczeniewska O, Eliav E. Interleukin-8 levels in rat models of nerve damage and neuropathic pain. Neurosc Lett. (2017) 657:106–12. doi: 10.1016/j.neulet.2017.07.049, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+71.
+Brandolini L, Castelli V, Aramini A, Giorgio C, Bianchini G, Russo R, et al. DF2726A, a new IL-8 signalling inhibitor, is able to counteract chemotherapy-induced neuropathic pain. Sci Rep. (2019) 9:11729. doi: 10.1038/s41598-019-48231-z, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+72.
+Koop SM, ten Klooster PM, Vonkeman HE, Steunebrink LM, van de Laar MA. Neuropathic-like pain features and cross-sectional associations in rheumatoid arthritis. Arthritis Res Ther. (2015) 17:237. doi: 10.1186/s13075-015-0761-8, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+73.
+Wang J, He L, Li W, LvA S. Role of IL-17 in rheumatoid arthritis patients complicated with atherosclerosis. Front Pharmacol. (2022) 13:828933. doi: 10.3389/fphar.2022.828933, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+74.
+Smith E, Prasad KM, Butcher M, Dobrian A, Kolls JK, Ley K, et al. Blockade of IL-17A results in reduced atherosclerosis in ApolipoproteinE-deficient mice. Circulation. (2010) 121:1746–55. doi: 10.1161/CIRCULATIONAHA.109.924886, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+75.
+Robert M, Hot A, Mifsud F, Ndongo-Thiam N, Miossec P. Synergistic interaction between high bioactive IL-17A and joint destruction for the occurrence of cardiovascular events in RA. Front Immunol. (2020) 11:1998. doi: 10.3389/fimmu.2020.01998, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+76.
+Yanagisawa H, Hashimoto M, Minagawa S, Takasaka N, Ma R, Moermans C, et al. Role of IL-17A in murine models of COPD airway disease. Am J Phys Lung Cell Mol Phys. (2017) 312:L122–30. doi: 10.1152/ajplung.00301.2016, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+77.
+Hasan SA, Eksteen B, Reid D, Paine HV, Alansary A, Johannson K, et al. Role of IL-17A and neutrophils in fibrosis in experimental hypersensitivity pneumonitis. J Allergy Clin Immunol. (2013) 131:1663–1673.e5. doi: 10.1016/j.jaci.2013.01.015, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+78.
+Zhang J, Wang D, Wang L, Wang S, Roden AC, Zhao H, et al. Profibrotic effect of IL-17A and elevated IL-17RA in idiopathic pulmonary fibrosis and rheumatoid arthritis-associated lung disease support a direct role for IL-17A/IL-17RA in human fibrotic interstitial lung disease. Am J Phys Lung Cell Mol Phys. (2019) 316:L487–97. doi: 10.1152/ajplung.00301.2018, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+79.
+Kim CF, Moalem-Taylor G. Interleukin-17 contributes to neuroinflammation and neuropathic pain following peripheral nerve injury in mice. J Pain. (2011) 12:370–83. doi: 10.1016/j.jpain.2010.08.003, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+80.
+Chen H, Tang X, Li J, Hu B, Yang W, Zhan M, et al. IL-17 crosses the blood-brain barrier to trigger neuroinflammation: a novel mechanism in nitroglycerin-induced chronic migraine. J Headache Pain. (2022) 23:1. doi: 10.1186/s10194-021-01374-9, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+81.
+Koch AE, Volin MV, Woods JM, Kunkel SL, Connors MA, Harlow LA, et al. Regulation of angiogenesis by the C-X-C chemokines interleukin-8 and epithelial neutrophil activating peptide 78 in the rheumatoid joint. Arthritis Rheum. (2001) 44:31–40. doi: , PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+82.
+Cascão R, Moura RA, Perpétuo I, Canhão H, Vieira-Sousa E, Mourão AF, et al. Identification of a cytokine network sustaining neutrophil and Th17 activation in untreated early rheumatoid arthritis. Arthritis Res Ther. (2010) 12:R196. doi: 10.1186/ar3168, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+83.
+Koch AE. Chemokines and their receptors in rheumatoid arthritis: future targets?
+Arthritis Rheum. (2005) 52:710–21. doi: 10.1002/art.20932
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+84.
+Honorati MC, Meliconi R, Pulsatelli L, Canè S, Frizziero L, Facchini A. High in vivo expression of interleukin-17 receptor in synovial endothelial cells and chondrocytes from arthritis patients. Rheumatology. (2001) 40:522–7. doi: 10.1093/rheumatology/40.5.522, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+85.
+Zrioual S, Ecochard R, Tournadre A, Lenief V, Cazalis MA, Miossec P. Genome-wide comparison between IL-17A- and IL-17F-induced effects in human rheumatoid arthritis synoviocytes. J Immunol. (2009) 182:3112–20. doi: 10.4049/jimmunol.0801967, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+86.
+Blanco FJ, Möricke R, Dokoupilova E, Codding C, Neal J, Andersson M, et al. Secukinumab in active rheumatoid arthritis: a phase III randomized, double-blind, active comparator- and placebo-controlled study. Arthritis Rheum. (2017) 69:1144–53. doi: 10.1002/art.40070, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+87.
+Dokoupilová E, Aelion J, Takeuchi T, Malavolta N, Sfikakis PP, Wang Y, et al. Secukinumab after anti-tumour necrosis factor-α therapy: a phase III study in active rheumatoid arthritis. Scand J Rheumatol. (2018) 47:276–81. doi: 10.1080/03009742.2017.1390605, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+88.
+Zizzo G, De Santis M, Bosello SL, Fedele AL, Peluso G, Gremese E, et al. Synovial fluid derived Thelper 17 cells, correlate with inflammatory activity in arthritis, irrespectively of diagnosis. Clin Immunol. (2011) 138:107–16. doi: 10.1016/j.clim.2010.10.002, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+89.
+Basdeo SA, Cluxton D, Sulaimani J, Moran B, Canavan M, Orr C, et al. Ex-Th17 (nonclassical Th1) cells are functionally distinct from classical Th1 and Th17 cells and are not constrained by regulatory T cells. J Immunol. (2017) 198:2249–59. doi: 10.4049/jimmunol.1600737, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+90.
+Rowbotham EL, Freeston JE, Emery P, Grainger AJ. The prevalence of tenosynovitis of the interosseous tendons of the hand in patients with rheumatoid arthritis. Eur Radiol. (2016) 26:444–50. doi: 10.1007/s00330-015-3859-0, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+91.
+Longo DL. The expanding clinical role of Bifunctional antibodies. N Engl J Med. (2022) 387:2287–90. doi: 10.1056/NEJMe2208708, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+92.
+Seitz M, Dewald B, Ceska M, Gerber N, Baggiolini M. Interleukin-8 in inflammatory rheumatic diseases: synovial fluid levels, relation to rheumatoid factors, production by mononuclear cells, and effects of gold sodium thiomalate and methotrexate. Rheumatol Int. (1992) 12:159–64. doi: 10.1007/BF00274936, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+93.
+Watson ML, Westwick J, Fincham NJ, Camp RD. Elevation of PMN cytosolic free calcium and locomotion stimulated by novel peptides from IL-1-treated human synovial cell cultures. Biochem Biophys Res Commun. (1988) 155:1154–60. doi: 10.1016/s0006-291x(88)81261-0, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+94.
+Strieter RM, Kunkel SL, Showell HJ, Remick DG, Phan SH, Ward PA, et al. Endothelial cell gene expression of a neutrophil chemotactic factor by TNF-alpha, LPS, and IL-1 beta. Science. (1989) 243:1467–9. doi: 10.1126/science.2648570
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+95.
+Alraouji NN, Aboussekhra A. Tocilizumab inhibits IL-8 and the proangiogenic potential of triple negative breast cancer cells. Mol Carcinog. (2021) 60:51–9. doi: 10.1002/mc.23270, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+96.
+Aggarwal A, Misra R. Methotrexate inhibits interleukin-6 production in patients with juvenile rheumatoid arthritis. Rheumatol Int. (2003) 23:134–7. doi: 10.1007/s00296-002-0267-y, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+97.
+Hashizume M, Yoshida H, Tanaka K, Suzuki M, Matsumoto I, Sumida T, et al. Interleukin-6 regulates anti-arthritic effect of methotrexate via reduction of SLC19A1 expression in a mouse arthritis model. Arthritis Res Ther. (2012) 14:R96. doi: 10.1186/ar3821, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+98.
+Edwards CK, 3rd, Green JS, Volk HD, Schiff M, Kotzin BL, Mitsuya H, et al. Combined antitumor necrosis factor-α therapy and DMARD therapy in rheumatoid arthritis patients reduces inflammatory gene expression in whole blood compared to DMARD therapy alone. Front Immunol. (2012) 3:366. doi: 10.3389/fimmu.2012.00366, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+99.
+Lun SW, Wong CK, Tam LS, Li EK, Lam CW. Decreased ex vivo production of TNF-alpha and IL-8 by peripheral blood cells of patients with rheumatoid arthritis after infliximab therapy. Int Immunopharmacol. (2007) 7:1668–77. doi: 10.1016/j.intimp.2007.08.021, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+100.
+Fischer JA, Hueber AJ, Wilson S, Galm M, Baum W, Kitson C, et al. Combined inhibition of tumor necrosis factor α and interleukin-17 as a therapeutic opportunity in rheumatoid arthritis: development and characterization of a novel bispecific antibody. Arthritis Rheum. (2015) 67:51–62. doi: 10.1002/art.38896, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+101.
+Pesce B, Soto L, Sabugo F, Wurmann P, Cuchacovich M, López MN, et al. Effect of interleukin-6 receptor blockade on the balance between regulatory T cells and T helper type 17 cells in rheumatoid arthritis patients. Clin Exp Immunol. (2013) 171:237–42. doi: 10.1111/cei.12017, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+102.
+Schett G, Elewaut D, McInnes I, Dayer JM, Neurath MF. How cytokine networks fuel inflammation: toward a cytokine-based disease taxonomy. Nat Med. (2013) 19:822–4. https://doi:10.1038/nm.3260. doi: 10.1038/nm.3260, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+103.
+Gremese E, Tolusso B, Petricca L, Di Mario C, Gigante MR, Ferraccioli G, et al. Peripheral blood CD4
+pos
+CD25
+pos
+FoxP3
+pos
+ cells and inflammatory cytokines as biomarkers of response in rheumatoid arthritis patients treated with CTLA4-Ig. Arthritis Res Ther. (2022) 15;24:143. doi: 10.1186/s13075-022-02827-5, Erratum in: Arthritis Res Ther. 2022 Jul 25;24(1):177
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+104.
+Nagy G, Roodenrijs NMT, Welsing PM, Kedves M, Hamar A, van der Goes MC, et al. EULAR definition of difficult-to-treat rheumatoid arthritis. Ann Rheum Dis. (2021) 80:31–5. doi: 10.1136/annrheumdis-2020-217344, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+105.
+van de Donk NWCJ. Sequencing multiple myeloma therapies with and after antibody therapies. Hematol Am Soc Hematol Educ Program. (2020) 2020:248–58. doi: 10.1182/hematology.2020000109, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+106.
+Shen F, Verma AH, Volk A, Jones B, Coleman BM, Loza MJ, et al. Combined blockade of TNF-α and IL-17A alleviates progression of collagen-induced arthritis without causing serious infections in mice. J Immunol. (2019) 202:2017–26. doi: 10.4049/jimmunol.1801436, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+107.
+Roeleveld DM, Marijnissen RJ, Walgreen B, Helsen MM, van den Bersselaar L, van de Loo FA, et al. Higher efficacy of anti-IL-6/IL-21 combination therapy compared to monotherapy in the induction phase of Th17-driven experimental arthritis. PLoS One. (2017) 12:e0171757. doi: 10.1371/journal.pone.0171757, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+108.
+Rivellese F, Surace AEA, Goldmann K, Sciacca E, Cubuk C, Giorli G, et al. Rituximab versus tocilizumab in rheumatoid arthritis: synovial biopsy-based biomarker analysis of the phase 4 R4RA randomized trial. Nat Med. (2022) 28:1256–68. doi: 10.1038/s41591-022-01789-0, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+109.
+Gharavi NM, Alva JA, Mouillesseaux KP, Lai C, Yeh M, Yeung W, et al. Role of the Jak/STAT pathway in the regulation of interleukin-8 transcription by oxidized phospholipids in vitro and in atherosclerosis in vivo. J Biol Chem. (2007) 282:31460–8. doi: 10.1074/jbc.M704267200, PMID: 
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+110.
+Xu M, Tchkonia T, Ding H, Ogrodnik M, Lubbers ER, Pirtskhalava T, et al. JAK inhibition alleviates the cellular senescence-associated secretory phenotype and frailty in old age. Proc Natl Acad Sci U S A. (2015) 112:E6301–10. doi: 10.1073/pnas.1515386112, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+111.
+Diller M, Hasseli R, Hülser ML, Aykara I, Frommer K, Rehart S, et al. Targeting activated synovial fibroblasts in rheumatoid arthritis by Peficitinib. Front Immunol. (2019) 10:541. doi: 10.3389/fimmu.2019.00541, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+112.
+Alivernini S, Tolusso B, Petricca L, Bui L, Di Mario C, Gigante MR, et al. Synovial predictors of differentiation to definite arthritis in patients with Seronegative undifferentiated peripheral inflammatory arthritis: microRNA signature, histological, and ultrasound features. Front Med. (2018) 5:186. doi: 10.3389/fmed.2018.00186, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+113.
+Alivernini S, Firenstein GS, McInnes IB. The pathogenesis of rheumatoid arthritis. Immunity. (2022) 55:2255–70. doi: 10.1016/j.immuni.2022.11.009
+ [
+DOI
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+114.
+Glatt S, Taylor PC, McInnes IB, Schett G, Landewé R, Baeten D, et al. Efficacy and safety of bimekizumab as add-on therapy for rheumatoid arthritis in patients with inadequate response to certolizumab pegol: a proof-of-concept study. Ann Rheum Dis. (2019) 78:1033–40. doi: 10.1136/annrheumdis-2018-214943, PMID: 
+ [
+DOI
+] [
+PMC free article
+] [
+PubMed
+] [
+Google Scholar
+]
+
+
+
+
+Articles from Frontiers in Medicine are provided here courtesy of 
+Frontiers Media SA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View on publisher site
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PDF (752.0 KB)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Permalink
+
+
+
+
+
+
+
+
+PERMALINK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RESOURCES
+
+
+
+
+
+
+
+                            Similar articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                             Cited by other articles
+                        
+
+
+
+
+
+
+
+
+
+
+
+                                 Links to NCBI Databases
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Download .nbib
+
+
+.nbib
+
+
+
+
+
+
+
+
+
+
+Format:
+
+
+
+
+
+        AMA
+      
+
+
+
+        APA
+      
+
+
+
+        MLA
+      
+
+
+
+        NLM
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Add to Collections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create a new collection
+
+
+
+
+
+
+
+
+Add to an existing collection
+
+
+
+
+
+
+
+
+
+
+
+                Name your collection
+               
+*
+
+
+
+
+
+
+
+
+
+
+
+                Choose a collection
+              
+
+
+
+
+
+
+
+                Unable to load your collection due to an error
+
+
+Please try again
+
+
+
+
+
+
+
+
+
+
+
+          Add
+        
+
+
+
+          Cancel
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                Follow NCBI
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on LinkedIn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI on GitHub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NCBI RSS feed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            Connect with NLM
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on X (formerly known as Twitter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+NLM on YouTube
+
+
+
+
+
+
+
+
+
+
+
+
+National Library of Medicine
+            
+ 8600 Rockville Pike
+ Bethesda, MD 20894
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Web Policies
+
+    
+
+
+
+
+
+
+
+
+    
+
+    FOIA
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS Vulnerability Disclosure
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    Help
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Accessibility
+
+    
+
+
+
+
+
+
+
+
+    
+
+    Careers
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    NLM
+
+    
+
+
+
+
+
+
+
+
+    
+
+    NIH
+
+    
+
+
+
+
+
+
+
+
+    
+
+    HHS
+
+    
+
+
+
+
+
+
+
+
+    
+
+    USA.gov
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Back to Top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

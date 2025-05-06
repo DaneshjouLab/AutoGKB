@@ -7,8 +7,12 @@
     - describe the scenarios in which you send messages. 
     - you also have the ability to send the information directly to dspy, and let that handle it, 
     - 
-    structure of the message should be a json message repsons
+    structure of the message should be a json message repsonse 
+
+
  """
+
+
 
 from typing import Protocol
 
@@ -23,7 +27,7 @@ class messageHandler(Protocol):
         Protocol (_type_): _description_
     """
 
-class message(Protocol):
+class Message(Protocol):
     """
     this class is supposed to create the messaging protocol and then communicate form ti, 
 
@@ -31,4 +35,6 @@ class message(Protocol):
     """
     def __init__(self, content: str) -> None:
         self.content = content
-    
+    def send(arg1:dict)-> dict:
+        "something"
+
