@@ -8,11 +8,11 @@
 
 Goals:
 1. Fetch annotated articles from variantAnnotations stored in PharmGKB API
-2. Extract drug related variants annotations from an article. Associations in which the variant affects a drug dose, response, metabolism, etc.
-3. Create a general benchmark for an extraction system that can output a score for an extraction system
+2. Create a general benchmark for an extraction system that can output a score for an extraction system
 Given: Article, Ground Truth Variants (Manually extracted and recorded in var_drug_ann.tsv:)
 Input: Extraction System or Extracted Variants
 Output: Score 
+3. System for extracting drug related variants annotations from an article. Associations in which the variant affects a drug dose, response, metabolism, etc.
 4. Continously fetch new pharmacogenomic articles
 
 ## Description
