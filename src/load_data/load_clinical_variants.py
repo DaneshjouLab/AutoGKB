@@ -49,7 +49,7 @@ def download_and_extract_variant_annotations(override: bool = False) -> str:
     return extract_dir
 
 
-def load_variant_annotations_tsv(override: bool = False) -> pd.DataFrame:
+def load_raw_variant_annotations(override: bool = False) -> pd.DataFrame:
     """
     Loads the variant annotations tsv file.
     If the file does not exist, it will be downloaded and extracted.
@@ -112,7 +112,7 @@ def load_unique_variants(save_results: bool = True) -> dict:
         logger.info(
             f"Unique variants not found at {unique_variants_path}. Loading from tsv file..."
         )
-        df = load_variant_annotations_tsv()
+        df = load_raw_variant_annotations()
         unique_values_per_column = unique_variants(df)
         if save_results:
             logger.info(f"Saving unique variants to {unique_variants_path}")
@@ -132,13 +132,12 @@ def get_pmid_list(override: bool = False) -> list:
         with open(pmid_list_path, "r") as f:
             pmid_list = json.load(f)
     else:
-        df = load_variant_annotations_tsv(override)
+        df = load_raw_variant_annotations(override)
         pmid_list = df["PMID"].unique().tolist()
         logger.info(f"Saving PMIDs to {pmid_list_path}")
         with open(pmid_list_path, "w") as f:
             json.dump(pmid_list, f)
     return pmid_list
-
 
 if __name__ == "__main__":
     pmid_list = get_pmid_list()

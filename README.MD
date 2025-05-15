@@ -10,7 +10,7 @@ Goals:
 1. Fetch annotated articles from variantAnnotations stored in PharmGKB API
 2. Create a general benchmark for an extraction system that can output a score for an extraction system
 Given: Article, Ground Truth Variants (Manually extracted and recorded in var_drug_ann.tsv:)
-Input: Extraction System or Extracted Variants
+Input: Extracted Variants
 Output: Score 
 3. System for extracting drug related variants annotations from an article. Associations in which the variant affects a drug dose, response, metabolism, etc.
 4. Continously fetch new pharmacogenomic articles
@@ -26,6 +26,15 @@ This repository contains Python scripts for running and building a Pharmacogenom
 | Download the zip of variants from pharmgkb | ✅  |
 | Get a PMID list from the variants tsv (column PMID) | ✅ |
 | Convert the PMID to PMCID | ✅ |
-| Update to use non-official pmid to pmcid | |
+| Update to use non-official pmid to pmcid (aaron's method) | |
 | Fetch the content from the PMCID | ✅ |
-| Create pairing of annotations to article | |
+| Create pairings of annotations to articles | |
+| Create a niave score of number of matches | |
+| Create group wise score | |
+| Look into advanced scoring based on distance from truth per term | |
+
+
+## Notes
+### 5/15
+Current state of the repo:
+- 

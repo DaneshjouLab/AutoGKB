@@ -9,7 +9,7 @@ This module handles the loading and preprocessing of PharmGKB clinical variants 
    - Saves data to `saved_data/variantAnnotations/`
    - Can override existing downloads if needed
 
-2. **`load_variant_annotations_tsv(override: bool = False)`**
+2. **`load_raw_variant_annotations(override: bool = False)`**
    - Loads the variant annotations TSV file into a pandas DataFrame
    - Automatically downloads data if not present
    - Returns the DataFrame containing variant-drug annotations
