@@ -36,8 +36,3 @@ This repository contains Python scripts for running and building a Pharmacogenom
 |                  | Document on individual annotation meanings | |
 |                  | Delegate annotation groupings to team members | |
 
-
-## Notes
-### 5/15
-Current state of the repo:
-- 
