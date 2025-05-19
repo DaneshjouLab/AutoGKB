@@ -35,4 +35,5 @@ This repository contains Python scripts for running and building a Pharmacogenom
 | Workflows        | Integrate Aaron's current approach | |
 |                  | Document on individual annotation meanings | |
 |                  | Delegate annotation groupings to team members | |
+| New Article Fetching | Replicate PharGKB current workflow | |
 
