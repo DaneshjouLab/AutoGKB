@@ -19,9 +19,12 @@ __pycache__
 .env
 
 # data
-src/load_data/saved_data/
-src/fetch_articles/saved_data/downloaded_pmcids.json
-src/fetch_articles/saved_data/articles/
+data/articles/
+data/variantAnnotations/
+data/unique_pmcids.json
+data/pmid_list.json
+data/downloaded_pmcids.json
+
 *.zip
 *.tar.gz
 *.tar.bz2
@@ -32,8 +35,3 @@ src/fetch_articles/saved_data/articles/
 
 .DS_Store
 
-data/articles/
-data/variantAnnotations/
-data/unique_pmcids.json
-data/pmid_list.json
-data/downloaded_pmcids.json
