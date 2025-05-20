@@ -8,6 +8,7 @@ import pandas as pd
 import json
 
 from src.utils.file_paths import get_project_root
+
 """
 This file contains functions to load the clinical variants data from the PharmGKB API.
 The key function is get_pmid_list(), which loads the PMIDs from the variant annotations tsv file and saves them to a json file.
@@ -112,6 +113,7 @@ def get_pmid_list(override: bool = False) -> list:
             json.dump(pmid_list, f)
     return pmid_list
 
+
 def variant_annotations_pipeline():
     """
     Loads the variant annotations tsv file and saves the unique PMIDs to a json file.
@@ -128,6 +130,7 @@ def variant_annotations_pipeline():
     logger.info("Getting PMIDs...")
     pmid_list = get_pmid_list()
     logger.info(f"Number of unique PMIDs: {len(pmid_list)}")
+
 
 if __name__ == "__main__":
     variant_annotations_pipeline()

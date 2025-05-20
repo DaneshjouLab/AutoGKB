@@ -5,6 +5,7 @@ from src.load_variants import load_raw_variant_annotations
 Denotes a class for a variant annotation (row in var_drug_ann.tsv)
 """
 
+
 class VariantAnnotation(BaseModel):
     variant_annotation_id: str
     variant_haplotypes: str
@@ -35,12 +36,10 @@ class VariantAnnotation(BaseModel):
     multiple_phenotypes_or_diseases_and_or: str
     comparison_alleles_or_genotypes: str
     comparison_metabolizer_types: str
-    
 
-    
+
 """
 1. Load the ground truth variants
 2. Load the extracted variants
 3. Calculate the niave difference between an extracted variant and the ground truth variant on Variant Annotation ID
 """
-

@@ -37,3 +37,6 @@ This repository contains Python scripts for running and building a Pharmacogenom
 |                  | Delegate annotation groupings to team members | |
 | New Article Fetching | Replicate PharGKB current workflow | |
 
+## System Overview
+![Annotations Diagram](assets/annotations_diagram.svg)
+

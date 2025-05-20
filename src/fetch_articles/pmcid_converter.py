@@ -23,19 +23,16 @@ from loguru import logger
 from typing import List, Set, Dict, Optional
 
 
-
-
-
 def load_saved_pmcid_mapping() -> Dict[str, Optional[str]]:
     """
     Load the saved PMCID mapping from the json file.
     """
     project_root = get_project_root()
     results_path = project_root / "data" / "pmcid_mapping.json"
-    
+
     # Create data directory if it doesn't exist
     os.makedirs(project_root / "data", exist_ok=True)
-    
+
     if os.path.exists(results_path):
         with open(results_path, "r") as f:
             existing_results = json.load(f)
@@ -51,7 +48,10 @@ def load_saved_pmcid_mapping() -> Dict[str, Optional[str]]:
 
 
 def batch_pmid_to_pmcid(
-    pmids: List[str], email: str = os.getenv("NCBI_EMAIL"), batch_size: int = 100, delay: float = 0.4
+    pmids: List[str],
+    email: str = os.getenv("NCBI_EMAIL"),
+    batch_size: int = 100,
+    delay: float = 0.4,
 ) -> Dict[str, Optional[str]]:
     """
     Convert a list of PMIDs to PMCIDs using NCBI's ID Converter API.
@@ -120,10 +120,10 @@ def batch_pmid_to_pmcid(
     # Save updated results
     project_root = get_project_root()
     results_path = project_root / "data" / "pmcid_mapping.json"
-    
+
     # Create data directory if it doesn't exist
     os.makedirs(project_root / "data", exist_ok=True)
-    
+
     with open(results_path, "w") as f:
         json.dump(existing_results, f)
     logger.info(f"Updated PMCID mappings saved to {results_path}")
@@ -138,13 +138,13 @@ def get_unique_pmcids() -> List[str]:
     Currently function returns the pre-existing unique PMCIDs if they exist or regenerates the list from the mapping.
     """
     project_root = get_project_root()
-    
+
     # Load the unique PMCIDs if they've already been saved
     unique_pmcids_path = project_root / "data" / "unique_pmcids.json"
-    
+
     # Create data directory if it doesn't exist
     os.makedirs(project_root / "data", exist_ok=True)
-    
+
     if os.path.exists(unique_pmcids_path):
         with open(unique_pmcids_path, "r") as f:
             try:
@@ -161,14 +161,16 @@ def get_unique_pmcids() -> List[str]:
 
     # Load from pmcid_mapping.json if unique pmcids haven't been saved
     results_path = project_root / "data" / "pmcid_mapping.json"
-    
+
     if not os.path.exists(results_path):
-        logger.error(f"No PMCID mapping found at {results_path}. Cannot generate unique PMCIDs.")
+        logger.error(
+            f"No PMCID mapping found at {results_path}. Cannot generate unique PMCIDs."
+        )
         return []
-        
+
     with open(results_path, "r") as f:
         existing_results = json.load(f)
-    
+
     # Get the unique pmcids (remove None values)
     pmcids = [value for value in existing_results.values() if value is not None]
     pmcids = list(set(pmcids))
