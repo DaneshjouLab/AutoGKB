@@ -4,8 +4,8 @@
 Given a PMID, fetch the paper from PubMed. Ignore papers where there are paywall issues.
 
 ## Process Overview
-1. Download the zip of variants from pharmgkb (handled in load_data module)
-2. Get a PMID list from the variants tsv (column PMID) (handled in load_data module)
+1. Download the zip of variants from pharmgkb (handled in load_variants module)
+2. Get a PMID list from the variants tsv (column PMID) (handled in load_variants module)
 3. Convert the PMID to PMCID 
 4. Fetch the content from the PMCID
 
@@ -54,7 +54,7 @@ Given a PMID, fetch the paper from PubMed. Ignore papers where there are paywall
 
 ```python
 from src.fetch_articles.pmcid_converter import batch_pmid_to_pmcid
-from src.load_data import get_pmid_list
+from src.load_variants import get_pmid_list
 import os
 from dotenv import load_dotenv
 
@@ -131,7 +131,7 @@ To run the complete pipeline (convert PMIDs to PMCIDs and download articles):
 # Full pipeline from PMIDs to downloaded articles
 from src.fetch_articles.pmcid_converter import batch_pmid_to_pmcid
 from src.fetch_articles.article_downloader import download_articles
-from src.load_data import get_pmid_list
+from src.load_variants import get_pmid_list
 import os
 from dotenv import load_dotenv
 

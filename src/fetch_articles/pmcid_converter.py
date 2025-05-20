@@ -5,7 +5,7 @@ from Bio import Entrez
 from tqdm import tqdm
 from dotenv import load_dotenv
 import os
-from src.load_data import get_pmid_list
+from src.load_variants import get_pmid_list
 import json
 from src.utils.file_paths import get_project_root
 

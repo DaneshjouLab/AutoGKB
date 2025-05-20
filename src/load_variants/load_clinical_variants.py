@@ -95,30 +95,6 @@ def unique_variants(df: pd.DataFrame) -> dict:
     return {col: df[col].unique().tolist() for col in df.columns}
 
 
-def load_unique_variants(save_results: bool = True) -> dict:
-    """
-    Loads the unique variants from the variant annotations tsv file and saves them to a json file.
-    If the json file already exists, it will be loaded from the file.
-    NOTE: Don't think this function is needed anymore. get_pmid_list() is used instead.
-    """
-    unique_variants_path = os.path.join(get_project_root(), "data", "unique_variants.json")
-    if os.path.exists(unique_variants_path):
-        logger.info(f"Loading unique variants from {unique_variants_path}")
-        with open(unique_variants_path, "r") as f:
-            unique_values_per_column = json.load(f)
-    else:
-        logger.info(
-            f"Unique variants not found at {unique_variants_path}. Loading from tsv file..."
-        )
-        df = load_raw_variant_annotations()
-        unique_values_per_column = unique_variants(df)
-        if save_results:
-            logger.info(f"Saving unique variants to {unique_variants_path}")
-            with open(unique_variants_path, "w") as f:
-                json.dump(unique_values_per_column, f)
-    return unique_values_per_column
-
-
 def get_pmid_list(override: bool = False) -> list:
     """
     Loads the pmid list from the variant annotations tsv file.
@@ -136,6 +112,22 @@ def get_pmid_list(override: bool = False) -> list:
             json.dump(pmid_list, f)
     return pmid_list
 
-if __name__ == "__main__":
+def variant_annotations_pipeline():
+    """
+    Loads the variant annotations tsv file and saves the unique PMIDs to a json file.
+    """
+    # Download and extract the variant annotations
+    logger.info("Downloading and extracting variant annotations...")
+    download_and_extract_variant_annotations()
+
+    # Load the variant annotations
+    logger.info("Loading variant annotations...")
+    df = load_raw_variant_annotations()
+
+    # Get the PMIDs
+    logger.info("Getting PMIDs...")
     pmid_list = get_pmid_list()
-    print(f"Number of unique PMIDs: {len(pmid_list)}")
+    logger.info(f"Number of unique PMIDs: {len(pmid_list)}")
+
+if __name__ == "__main__":
+    variant_annotations_pipeline()

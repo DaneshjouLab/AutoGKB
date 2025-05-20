@@ -8,7 +8,7 @@ This directory contains the primary data files used by the AutoGKB project.
 
 - **variantAnnotations/** - Contains clinical variant annotations and related data:
   - `var_drug_ann.tsv` - Variant-drug annotations. This is what is used in this repo.
-  - This can be downloaded using download_and_extract_variant_annotations from the load_data module
+  - This can be downloaded using download_and_extract_variant_annotations from the load_variants module
 
 - **Support Files**:
   - `pmcid_mapping.json` - Maps between PMIDs and PMCIDs

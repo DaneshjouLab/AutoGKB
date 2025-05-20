@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from src.load_data import load_raw_variant_annotations
+from src.load_variants import load_raw_variant_annotations
 
 """
 Denotes a class for a variant annotation (row in var_drug_ann.tsv)
