@@ -7,6 +7,7 @@ from loguru import logger
 import pandas as pd
 import json
 
+from src.utils.file_paths import get_project_root
 """
 This file contains functions to load the clinical variants data from the PharmGKB API.
 The key function is get_pmid_list(), which loads the PMIDs from the variant annotations tsv file and saves them to a json file.
@@ -24,8 +25,7 @@ def download_and_extract_variant_annotations(override: bool = False) -> str:
     """
     url = "https://api.pharmgkb.org/v1/download/file/data/variantAnnotations.zip"
 
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    save_dir = os.path.join(base_dir, "saved_data")
+    save_dir = os.path.join(get_project_root(), "data")
     extract_dir = os.path.join(save_dir, "variantAnnotations")
 
     if os.path.exists(extract_dir):
@@ -58,9 +58,8 @@ def load_raw_variant_annotations(override: bool = False) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The loaded variant annotations tsv file.
     """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
     tsv_path = os.path.join(
-        base_dir, "saved_data", "variantAnnotations", "var_drug_ann.tsv"
+        get_project_root(), "data", "variantAnnotations", "var_drug_ann.tsv"
     )
 
     if not os.path.exists(tsv_path):
@@ -102,8 +101,7 @@ def load_unique_variants(save_results: bool = True) -> dict:
     If the json file already exists, it will be loaded from the file.
     NOTE: Don't think this function is needed anymore. get_pmid_list() is used instead.
     """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    unique_variants_path = os.path.join(base_dir, "saved_data", "unique_variants.json")
+    unique_variants_path = os.path.join(get_project_root(), "data", "unique_variants.json")
     if os.path.exists(unique_variants_path):
         logger.info(f"Loading unique variants from {unique_variants_path}")
         with open(unique_variants_path, "r") as f:
@@ -125,8 +123,7 @@ def get_pmid_list(override: bool = False) -> list:
     """
     Loads the pmid list from the variant annotations tsv file.
     """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    pmid_list_path = os.path.join(base_dir, "saved_data", "pmid_list.json")
+    pmid_list_path = os.path.join(get_project_root(), "data", "pmid_list.json")
     if os.path.exists(pmid_list_path):
         logger.info(f"Loading PMIDs from {pmid_list_path}")
         with open(pmid_list_path, "r") as f:

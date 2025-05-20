@@ -31,3 +31,9 @@ src/fetch_articles/saved_data/articles/
 *.tar.lzo
 
 .DS_Store
+
+data/articles/
+data/variantAnnotations/
+data/unique_pmcids.json
+data/pmid_list.json
+data/downloaded_pmcids.json

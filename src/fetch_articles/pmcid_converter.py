@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 from src.load_data import get_pmid_list
 import json
+from src.utils.file_paths import get_project_root
 
 load_dotenv()
 # Email for NCBI
@@ -22,12 +23,19 @@ from loguru import logger
 from typing import List, Set, Dict, Optional
 
 
+
+
+
 def load_saved_pmcid_mapping() -> Dict[str, Optional[str]]:
     """
     Load the saved PMCID mapping from the json file.
     """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    results_path = os.path.join(base_dir, "pmcid_mapping.json")
+    project_root = get_project_root()
+    results_path = project_root / "data" / "pmcid_mapping.json"
+    
+    # Create data directory if it doesn't exist
+    os.makedirs(project_root / "data", exist_ok=True)
+    
     if os.path.exists(results_path):
         with open(results_path, "r") as f:
             existing_results = json.load(f)
@@ -43,7 +51,7 @@ def load_saved_pmcid_mapping() -> Dict[str, Optional[str]]:
 
 
 def batch_pmid_to_pmcid(
-    pmids: List[str], email: str, batch_size: int = 100, delay: float = 0.4
+    pmids: List[str], email: str = os.getenv("NCBI_EMAIL"), batch_size: int = 100, delay: float = 0.4
 ) -> Dict[str, Optional[str]]:
     """
     Convert a list of PMIDs to PMCIDs using NCBI's ID Converter API.
@@ -110,8 +118,12 @@ def batch_pmid_to_pmcid(
     existing_results.update(results)
 
     # Save updated results
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    results_path = os.path.join(base_dir, "pmcid_mapping.json")
+    project_root = get_project_root()
+    results_path = project_root / "data" / "pmcid_mapping.json"
+    
+    # Create data directory if it doesn't exist
+    os.makedirs(project_root / "data", exist_ok=True)
+    
     with open(results_path, "w") as f:
         json.dump(existing_results, f)
     logger.info(f"Updated PMCID mappings saved to {results_path}")
@@ -125,9 +137,14 @@ def get_unique_pmcids() -> List[str]:
     NOTE: Could add functionality to check for new PMCIDs in mapping and update the unique_pmcids.json file
     Currently function returns the pre-existing unique PMCIDs if they exist or regenerates the list from the mapping.
     """
+    project_root = get_project_root()
+    
     # Load the unique PMCIDs if they've already been saved
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    unique_pmcids_path = os.path.join(base_dir, "saved_data", "unique_pmcids.json")
+    unique_pmcids_path = project_root / "data" / "unique_pmcids.json"
+    
+    # Create data directory if it doesn't exist
+    os.makedirs(project_root / "data", exist_ok=True)
+    
     if os.path.exists(unique_pmcids_path):
         with open(unique_pmcids_path, "r") as f:
             try:
@@ -143,14 +160,20 @@ def get_unique_pmcids() -> List[str]:
         return pmcids
 
     # Load from pmcid_mapping.json if unique pmcids haven't been saved
-    results_path = os.path.join(base_dir, "saved_data", "pmcid_mapping.json")
+    results_path = project_root / "data" / "pmcid_mapping.json"
+    
+    if not os.path.exists(results_path):
+        logger.error(f"No PMCID mapping found at {results_path}. Cannot generate unique PMCIDs.")
+        return []
+        
     with open(results_path, "r") as f:
         existing_results = json.load(f)
-    # get the unique pmcids
-    pmcids = list(set(existing_results.values()))
+    
+    # Get the unique pmcids (remove None values)
+    pmcids = [value for value in existing_results.values() if value is not None]
+    pmcids = list(set(pmcids))
 
     # Save the unique pmcids to a json file
-    unique_pmcids_path = os.path.join(base_dir, "saved_data", "unique_pmcids.json")
     with open(unique_pmcids_path, "w") as f:
         json.dump(pmcids, f)
     logger.info(f"Unique PMCIDs saved to {unique_pmcids_path}")
@@ -158,8 +181,8 @@ def get_unique_pmcids() -> List[str]:
 
 
 if __name__ == "__main__":
-    # pmid_list = get_pmid_list()
-    # results = batch_pmid_to_pmcid(pmid_list, os.getenv("NCBI_EMAIL"))
-    # logger.info(f"PMCID mapping complete. {len(results)} PMIDs mapped to PMCIDs.")
+    pmid_list = get_pmid_list()
+    results = batch_pmid_to_pmcid(pmid_list, os.getenv("NCBI_EMAIL"))
+    logger.info(f"PMCID mapping complete. {len(results)} PMIDs mapped to PMCIDs.")
     pmcids = get_unique_pmcids()
     logger.info(f"Number of unique PMCIDs: {len(pmcids)}")
