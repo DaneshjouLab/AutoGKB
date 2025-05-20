@@ -7,6 +7,8 @@ from loguru import logger
 import pandas as pd
 import json
 
+from src.utils.file_paths import get_project_root
+
 """
 This file contains functions to load the clinical variants data from the PharmGKB API.
 The key function is get_pmid_list(), which loads the PMIDs from the variant annotations tsv file and saves them to a json file.
@@ -24,8 +26,7 @@ def download_and_extract_variant_annotations(override: bool = False) -> str:
     """
     url = "https://api.pharmgkb.org/v1/download/file/data/variantAnnotations.zip"
 
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    save_dir = os.path.join(base_dir, "saved_data")
+    save_dir = os.path.join(get_project_root(), "data")
     extract_dir = os.path.join(save_dir, "variantAnnotations")
 
     if os.path.exists(extract_dir):
@@ -49,7 +50,7 @@ def download_and_extract_variant_annotations(override: bool = False) -> str:
     return extract_dir
 
 
-def load_variant_annotations_tsv(override: bool = False) -> pd.DataFrame:
+def load_raw_variant_annotations(override: bool = False) -> pd.DataFrame:
     """
     Loads the variant annotations tsv file.
     If the file does not exist, it will be downloaded and extracted.
@@ -58,9 +59,8 @@ def load_variant_annotations_tsv(override: bool = False) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The loaded variant annotations tsv file.
     """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
     tsv_path = os.path.join(
-        base_dir, "saved_data", "variantAnnotations", "var_drug_ann.tsv"
+        get_project_root(), "data", "variantAnnotations", "var_drug_ann.tsv"
     )
 
     if not os.path.exists(tsv_path):
@@ -96,43 +96,17 @@ def unique_variants(df: pd.DataFrame) -> dict:
     return {col: df[col].unique().tolist() for col in df.columns}
 
 
-def load_unique_variants(save_results: bool = True) -> dict:
-    """
-    Loads the unique variants from the variant annotations tsv file and saves them to a json file.
-    If the json file already exists, it will be loaded from the file.
-    NOTE: Don't think this function is needed anymore. get_pmid_list() is used instead.
-    """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    unique_variants_path = os.path.join(base_dir, "saved_data", "unique_variants.json")
-    if os.path.exists(unique_variants_path):
-        logger.info(f"Loading unique variants from {unique_variants_path}")
-        with open(unique_variants_path, "r") as f:
-            unique_values_per_column = json.load(f)
-    else:
-        logger.info(
-            f"Unique variants not found at {unique_variants_path}. Loading from tsv file..."
-        )
-        df = load_variant_annotations_tsv()
-        unique_values_per_column = unique_variants(df)
-        if save_results:
-            logger.info(f"Saving unique variants to {unique_variants_path}")
-            with open(unique_variants_path, "w") as f:
-                json.dump(unique_values_per_column, f)
-    return unique_values_per_column
-
-
 def get_pmid_list(override: bool = False) -> list:
     """
     Loads the pmid list from the variant annotations tsv file.
     """
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    pmid_list_path = os.path.join(base_dir, "saved_data", "pmid_list.json")
+    pmid_list_path = os.path.join(get_project_root(), "data", "pmid_list.json")
     if os.path.exists(pmid_list_path):
         logger.info(f"Loading PMIDs from {pmid_list_path}")
         with open(pmid_list_path, "r") as f:
             pmid_list = json.load(f)
     else:
-        df = load_variant_annotations_tsv(override)
+        df = load_raw_variant_annotations(override)
         pmid_list = df["PMID"].unique().tolist()
         logger.info(f"Saving PMIDs to {pmid_list_path}")
         with open(pmid_list_path, "w") as f:
@@ -140,6 +114,23 @@ def get_pmid_list(override: bool = False) -> list:
     return pmid_list
 
 
-if __name__ == "__main__":
+def variant_annotations_pipeline():
+    """
+    Loads the variant annotations tsv file and saves the unique PMIDs to a json file.
+    """
+    # Download and extract the variant annotations
+    logger.info("Downloading and extracting variant annotations...")
+    download_and_extract_variant_annotations()
+
+    # Load the variant annotations
+    logger.info("Loading variant annotations...")
+    df = load_raw_variant_annotations()
+
+    # Get the PMIDs
+    logger.info("Getting PMIDs...")
     pmid_list = get_pmid_list()
-    print(f"Number of unique PMIDs: {len(pmid_list)}")
+    logger.info(f"Number of unique PMIDs: {len(pmid_list)}")
+
+
+if __name__ == "__main__":
+    variant_annotations_pipeline()
