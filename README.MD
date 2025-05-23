@@ -26,6 +26,8 @@ pixi run update-download-map
 pixi run download-articles
 ```
 The download-articles step takes the longest and can be skipped by unzipping data/articles.zip, creating a list of XMLs at the directory data/articles.
+If you are running download-articles, make sure to create a .env at the root with your email using the format
+NCBI_EMAIL=YOUR_EMAIL@SCHOOL.EDU
 
 ## Description
 
