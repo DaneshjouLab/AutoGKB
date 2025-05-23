@@ -15,6 +15,18 @@ Output: Score
 3. System for extracting drug related variants annotations from an article. Associations in which the variant affects a drug dose, response, metabolism, etc.
 4. Continously fetch new pharmacogenomic articles
 
+## Setup
+To get started, you need to sources of data locally:
+1. The annotations for the articles (data/variantAnnotations/var_drug_ann.tsv)
+2. the articles themselves (data/articles)
+These can be populated using the following commands:
+```
+pixi run download-variants
+pixi run update-download-map
+pixi run download-articles
+```
+The download-articles step takes the longest and can be skipped by unzipping data/articles.zip, creating a list of XMLs at the directory data/articles.
+
 ## Description
 
 This repository contains Python scripts for running and building a Pharmacogenomic Agentic system to annotate and label genetic variants based on their phenotypical associations from journal articles. 
