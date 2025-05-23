@@ -16,7 +16,7 @@ Output: Score
 4. Continously fetch new pharmacogenomic articles
 
 ## Setup
-To get started, you need to sources of data locally:
+To get started, you need two sources of data locally:
 1. The annotations for the articles (data/variantAnnotations/var_drug_ann.tsv)
 2. the articles themselves (data/articles)
 These can be populated using the following commands:
