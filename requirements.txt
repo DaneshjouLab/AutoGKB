@@ -1,2 +1,10 @@
 # SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
 # SPDX-License-Identifier: Apache-2.0
+
+requests
+pandas
+openai
+biopython
+beautifulsoup4
+tqdm
+matplotlib
