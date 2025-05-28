@@ -49,10 +49,8 @@ Checks for previously processed PMIDs to avoid redundant API calls.
 Parses XML content using BeautifulSoup to extract the article title and full text.
 Stores results in a dictionary and updates processed_pmids and processed_data for caching.
 
-
-
-## data_processing.py
-This module handles loading and initial processing of the variant annotation dataset.
+## processing.py
+This module handles interactions with the OpenAI API to extract structured genetic variant data.
 
 `clean_enum_list(enum_list)`:
 
@@ -73,11 +71,6 @@ Processes a subset of the DataFrame (limited to num_rows if specified) to fetch 
 Uses tqdm for progress tracking during row processing.
 Calls process_row from ncbi_fetch.py to fetch PMCID and content.
 Combines the original DataFrame with fetched data and returns the result.
-
-
-
-## processing.py
-This module handles interactions with the OpenAI API to extract structured genetic variant data.
 
 `create_schema(enum_values)`:
 
@@ -135,8 +128,6 @@ Attaches gene names to star alleles and processes complex notations (e.g., CYP2C
 `match_row(row)`:
 Compares ground truth and predicted variants for a single row.
 Returns Exact Match, Partial Match, or No Match based on set intersections.
-
-
 
 
 `align_and_compare_datasets(df_new, flattened_df)`:
