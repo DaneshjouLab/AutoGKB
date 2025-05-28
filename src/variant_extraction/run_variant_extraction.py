@@ -3,12 +3,12 @@ import pandas as pd
 from openai import OpenAI
 import os
 from config import (
-    CLINICAL_VARIANTS_URL, VARIANT_ANNOTATIONS_URL, VAR_DRUG_ANN_PATH,
-    CHECKPOINT_PATH, OUTPUT_CSV_PATH, DF_NEW_CSV_PATH, WHOLE_CSV_PATH, SCHEMA_TEXT
+    VAR_DRUG_ANN_PATH, CHECKPOINT_PATH, OUTPUT_CSV_PATH, 
+    DF_NEW_CSV_PATH, WHOLE_CSV_PATH, SCHEMA_TEXT
 )
-from data_download import download_and_extract_zip
-from data_processing import load_and_prepare_data, process_dataframe
-from api_processing import create_schema, process_responses
+
+from ..load_variants import download_annotations_pipeline, load_clinical_variants
+from processing import load_and_prepare_data, process_dataframe, create_schema, process_responses
 from variant_matching import align_and_compare_datasets
 from visualization import plot_match_rates, plot_pie_charts, plot_grouped_match_rates, plot_attribute_match_rates
 from ncbi_fetch import setup_entrez
@@ -18,8 +18,8 @@ def main():
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     # Download data
-    download_and_extract_zip(CLINICAL_VARIANTS_URL, "clinicalVariants")
-    download_and_extract_zip(VARIANT_ANNOTATIONS_URL, "variantAnnotations")
+    load_clinical_variants()
+    download_annotations_pipeline()
 
     # Load and prepare data
     df_var_drug_ann, enum_values = load_and_prepare_data(VAR_DRUG_ANN_PATH)
