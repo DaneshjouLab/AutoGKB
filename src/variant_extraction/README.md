@@ -2,24 +2,22 @@
 
 This is organized into the following Python modules, each handling a specific aspect of the workflow:
 
-config.py: Stores configuration variables, such as URLs, file paths, and API settings.
-ncbi_fetch.py: Manages fetching PMCID and content from NCBI using the Entrez API.
-processing.py: Loads and processes the variant annotation dataset, including enumeration cleaning and DataFrame processing. Also interacts with the OpenAI API to extract structured genetic variant data from publication content.
-variant_matching.py: Compares extracted data with ground truth for accuracy evaluation.
-visualization.py: Generates visualizations to summarize match rates and analysis results.
-run_variant_extraction.py: Orchestrates the entire workflow, integrating all modules.
+- **config.py**: Stores configuration variables, such as URLs, file paths, and API settings.
+- **ncbi_fetch.py**: Manages fetching PMCID and content from NCBI using the Entrez API.
+- **processing.py**: Loads and processes the variant annotation dataset, including enumeration cleaning and DataFrame processing. Also interacts with the OpenAI API to extract structured genetic variant data from publication content.
+- **variant_matching.py**: Compares extracted data with ground truth for accuracy evaluation.
+- **visualization.py**: Generates visualizations to summarize match rates and analysis results.
+- **run_variant_extraction.py**: Orchestrates the entire workflow, integrating all modules.
 
-## Methods
-Below is a detailed description of the methods implemented in each module.
-config.py
+## config.py
 This module centralizes configuration settings to avoid hardcoding values in the codebase.
 
-Variables:
-URLs for downloading PharmGKB data (CLINICAL_VARIANTS_URL, VARIANT_ANNOTATIONS_URL).
-File paths for input and output data (VAR_DRUG_ANN_PATH, CHECKPOINT_PATH, OUTPUT_CSV_PATH, DF_NEW_CSV_PATH, WHOLE_CSV_PATH).
-NCBI Entrez email (ENTREZ_EMAIL) for API compliance.
-OpenAI model name (OPENAI_MODEL) and JSON schema (SCHEMA_TEXT) for structured API responses.
-System message template (SYSTEM_MESSAGE_TEMPLATE) for API prompts.
+**Variables**:
+- URLs for downloading PharmGKB data (CLINICAL_VARIANTS_URL, VARIANT_ANNOTATIONS_URL).
+- File paths for input and output data (VAR_DRUG_ANN_PATH, CHECKPOINT_PATH, OUTPUT_CSV_PATH, DF_NEW_CSV_PATH, WHOLE_CSV_PATH).
+- NCBI Entrez email (ENTREZ_EMAIL) for API compliance.
+- OpenAI model name (OPENAI_MODEL) and JSON schema (SCHEMA_TEXT) for structured API responses.
+- System message template (SYSTEM_MESSAGE_TEMPLATE) for API prompts.
 
 
 ## ncbi_fetch.py
@@ -78,7 +76,7 @@ Combines the original DataFrame with fetched data and returns the result.
 
 
 
-## api_processing.py
+## processing.py
 This module handles interactions with the OpenAI API to extract structured genetic variant data.
 
 `create_schema(enum_values)`:
@@ -182,30 +180,17 @@ Returns a DataFrame summarizing the match statistics for inclusion in reports or
 This module orchestrates the entire workflow.
 
 `main()`:
-Initializes the OpenAI client with the API key from the environment.
-Downloads and extracts PharmGKB data using data_download.download_and_extract_zip.
-Loads and prepares the variant annotation dataset using data_processing.load_and_prepare_data.
-Processes a subset of the DataFrame (e.g., 5 rows) to fetch NCBI data using data_processing.process_dataframe.
-Creates a JSON schema using api_processing.create_schema.
-Processes API responses to extract gene data using api_processing.process_responses.
-Aligns and compares datasets using variant_matching.align_and_compare_datasets.
-Calculates match statistics for various fields and grouped match rates by PMID.
-Saves output DataFrames to CSV files (DF_NEW_CSV_PATH, OUTPUT_CSV_PATH).
-Generates visualizations using visualization module functions.
-Prints match statistics and attribute match table to the console.
-
-
-
-## Setup and Running
-
-### Install Dependencies:
-`pip install -r requirements.txt`
-
-
-### Set Environment Variable:
-
-Set the OPENAI_API_KEY environment variable with your OpenAI API key.
-
+- Initializes the OpenAI client with the API key from the environment.
+- Downloads and extracts PharmGKB data using data_download.download_and_extract_zip.
+- Loads and prepares the variant annotation dataset using data_processing.load_and_prepare_data.
+- Processes a subset of the DataFrame (e.g., 5 rows) to fetch NCBI data using data_processing.process_dataframe.
+- Creates a JSON schema using processing.create_schema.
+- Processes API responses to extract gene data using processing.process_responses.
+- Aligns and compares datasets using variant_matching.align_and_compare_datasets.
+- Calculates match statistics for various fields and grouped match rates by PMID.
+- Saves output DataFrames to CSV files (DF_NEW_CSV_PATH, OUTPUT_CSV_PATH).
+- Generates visualizations using visualization module functions.
+- Prints match statistics and attribute match table to the console.
 
 ## Run the Project:
 `python main.py`
