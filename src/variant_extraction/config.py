@@ -6,11 +6,11 @@ CLINICAL_VARIANTS_URL = "https://api.pharmgkb.org/v1/download/file/data/clinical
 VARIANT_ANNOTATIONS_URL = "https://api.pharmgkb.org/v1/download/file/data/variantAnnotations.zip"
 
 # File paths
-VAR_DRUG_ANN_PATH = "/content/variantAnnotations/var_drug_ann.tsv"
-CHECKPOINT_PATH = "/content/api_processing_checkpoint.json"
-OUTPUT_CSV_PATH = "/content/merged_first100.csv"
-DF_NEW_CSV_PATH = "/content/df_new.csv"
-WHOLE_CSV_PATH = "/content/wholecsv.csv"
+VAR_DRUG_ANN_PATH = "./data/variantAnnotations/var_drug_ann.tsv"
+CHECKPOINT_PATH = "./data/api_processing_checkpoint.json"
+OUTPUT_CSV_PATH = "./data/variant_extraction/merged.csv"
+DF_NEW_CSV_PATH = "./data/variant_extraction/df_new.csv"
+WHOLE_CSV_PATH = "./data/variant_extraction/wholecsv.csv"
 
 # NCBI email
 ENTREZ_EMAIL = "aron7628@gmail.com"

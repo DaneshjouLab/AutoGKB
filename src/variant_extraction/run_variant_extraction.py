@@ -2,42 +2,33 @@
 import pandas as pd
 from openai import OpenAI
 import os
-from config import (
+import sys
+
+from src.variant_extraction.config import (
     VAR_DRUG_ANN_PATH, CHECKPOINT_PATH, OUTPUT_CSV_PATH, 
     DF_NEW_CSV_PATH, WHOLE_CSV_PATH, SCHEMA_TEXT
 )
 
-from ..load_variants import download_annotations_pipeline, load_clinical_variants
-from processing import load_and_prepare_data, process_dataframe, create_schema, process_responses
-from variant_matching import align_and_compare_datasets
-from visualization import plot_match_rates, plot_pie_charts, plot_grouped_match_rates, plot_attribute_match_rates
-from ncbi_fetch import setup_entrez
+from src.variant_extraction.processing import load_and_prepare_data, create_schema, process_responses
+from src.variant_extraction.variant_matching import align_and_compare_datasets
+from src.variant_extraction.visualization import plot_match_rates, plot_pie_charts, plot_grouped_match_rates, plot_attribute_match_rates
 
 def main():
     # Initialize OpenAI client
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    # Download data
-    load_clinical_variants()
-    download_annotations_pipeline()
-
     # Load and prepare data
     df_var_drug_ann, enum_values = load_and_prepare_data(VAR_DRUG_ANN_PATH)
-
-    # Process initial DataFrame
-    test_df = process_dataframe(df_var_drug_ann, num_rows=5)
-    test_df.dropna(subset=['Content'], inplace=True)
-    test_df.reset_index(drop=True, inplace=True)
 
     # Create schema
     schema = create_schema(enum_values)
 
     # Process API responses
-    flattened_results = process_responses(test_df, client, SCHEMA_TEXT, schema, CHECKPOINT_PATH)
+    flattened_results = process_responses(df_var_drug_ann, client, SCHEMA_TEXT, schema, CHECKPOINT_PATH)
     flattened_df = pd.DataFrame(flattened_results)
 
     # Align and compare datasets
-    df_aligned = align_and_compare_datasets(test_df, flattened_df)
+    df_aligned = align_and_compare_datasets(df_var_drug_ann, flattened_df)
 
     # Calculate match statistics
     match_stats = {
@@ -66,7 +57,7 @@ def main():
         'drug(s)': lambda x: set().union(*x.apply(normalize_split))
     }).reset_index()
 
-    grouped_drug = test_df.groupby('PMID').agg({
+    grouped_drug = df_var_drug_ann.groupby('PMID').agg({
         'Gene': lambda x: set().union(*x.apply(normalize_split)),
         'Variant/Haplotypes': lambda x: set().union(*x.apply(normalize_split)),
         'Drug(s)': lambda x: set().union(*x.apply(normalize_split))
@@ -86,14 +77,14 @@ def main():
     average_drug_match_rate = sum(drug_matches) / len(drug_matches)
 
     # Save outputs
-    test_df.to_csv(DF_NEW_CSV_PATH, index=False)
+    df_var_drug_ann.to_csv(DF_NEW_CSV_PATH, index=False)
     flattened_df.to_csv(OUTPUT_CSV_PATH, index=False)
 
     # Visualizations
     plot_match_rates(match_stats)
     plot_pie_charts(match_stats)
     plot_grouped_match_rates(average_gene_match_rate, average_drug_match_rate, average_variant_match_rate)
-    wholecsv = pd.read_csv(WHOLE_CSV_PATH)
+
     table_data = plot_attribute_match_rates(wholecsv)
 
     # Print results
@@ -108,5 +99,4 @@ def main():
     print(table_data)
 
 if __name__ == "__main__":
-    setup_entrez()
     main()

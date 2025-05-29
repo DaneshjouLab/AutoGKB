@@ -1,11 +1,11 @@
 # processing.py
+import os
 import pandas as pd
 import tqdm
-from ncbi_fetch import process_row
 import json
 from openai import OpenAI
 from tqdm import tqdm
-from config import SCHEMA_TEXT, SYSTEM_MESSAGE_TEMPLATE, OPENAI_MODEL
+from src.variant_extraction.config import SCHEMA_TEXT, SYSTEM_MESSAGE_TEMPLATE, OPENAI_MODEL
 
 def clean_enum_list(enum_list):
     """Clean and normalize enumeration lists."""
@@ -26,16 +26,6 @@ def load_and_prepare_data(file_path):
         'metabolizer_types': metabolizer_types_enum,
         'specialty_population': specialty_population_enum
     }
-
-def process_dataframe(df, num_rows=None):
-    """Process DataFrame rows to fetch NCBI data."""
-    if num_rows:
-        df = df.head(num_rows)
-    processed_pmids = set()
-    processed_data = {}
-    tqdm.pandas(desc="Processing rows")
-    result_df = df.progress_apply(lambda row: process_row(row, processed_pmids, processed_data), axis=1)
-    return pd.concat([df, result_df], axis=1)
 
 def create_schema(enum_values):
     """Create JSON schema for API calls."""
@@ -105,6 +95,7 @@ def process_responses(df, client, schema_text, schema, checkpoint_path, custom_t
         pmid = row['PMID']
         if pmid in processed_pmids:
             continue
+        print(row)
         content_text = row['Content_text']
         try:
             messages = create_messages(content_text, schema_text, custom_template)

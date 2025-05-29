@@ -1,5 +1,5 @@
 from loguru import logger
-from src.load_variants.load_clinical_variants import download_and_extract_variant_annotations, load_raw_annotations, get_pmid_list
+from src.load_variants.load_clinical_variants import download_and_extract_variant_annotations, load_raw_variant_annotations, get_pmid_list
 
 def variant_annotations_pipeline():
     """
@@ -11,7 +11,7 @@ def variant_annotations_pipeline():
 
     # Load the variant annotations
     logger.info("Loading variant annotations...")
-    df = load_raw_annotations()
+    df = load_raw_variant_annotations()
 
     # Get the PMIDs
     logger.info("Getting PMIDs...")

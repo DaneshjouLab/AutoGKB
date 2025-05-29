@@ -19,36 +19,6 @@ This module centralizes configuration settings to avoid hardcoding values in the
 - OpenAI model name (OPENAI_MODEL) and JSON schema (SCHEMA_TEXT) for structured API responses.
 - System message template (SYSTEM_MESSAGE_TEMPLATE) for API prompts.
 
-
-## ncbi_fetch.py
-This module interacts with the NCBI Entrez API to fetch publication metadata and content.
-
-`setup_entrez()`:
-
-Configures the Entrez API with the email address specified in config.py to comply with NCBI requirements.
-
-
-`get_pmcid_from_pmid(pmid, retries=3)`:
-
-Queries the Entrez API to retrieve the PMCID associated with a given PMID.
-Implements a retry mechanism with exponential backoff (with jitter) to handle transient errors.
-Returns the PMCID if found, otherwise None.
-
-
-`fetch_pmc_content(pmcid)`:
-
-Fetches the full XML content of a publication from the PMC database using the PMCID.
-Returns the raw XML content or None if an error occurs.
-
-
-`process_row(row, processed_pmids, processed_data)`:
-
-Processes a single DataFrame row to fetch PMCID and content.
-Introduces a random delay (0.4–0.9 seconds) to avoid API throttling.
-Checks for previously processed PMIDs to avoid redundant API calls.
-Parses XML content using BeautifulSoup to extract the article title and full text.
-Stores results in a dictionary and updates processed_pmids and processed_data for caching.
-
 ## processing.py
 This module handles interactions with the OpenAI API to extract structured genetic variant data.
 
@@ -64,13 +34,6 @@ Loads the variant annotation TSV file into a pandas DataFrame.
 Extracts unique values for Phenotype Category, Significance, Metabolizer types, and Population types to create enumeration lists.
 Returns the DataFrame and a dictionary of cleaned enumeration values.
 
-
-`process_dataframe(df, num_rows=None)`:
-
-Processes a subset of the DataFrame (limited to num_rows if specified) to fetch NCBI data for each row.
-Uses tqdm for progress tracking during row processing.
-Calls process_row from ncbi_fetch.py to fetch PMCID and content.
-Combines the original DataFrame with fetched data and returns the result.
 
 `create_schema(enum_values)`:
 
@@ -183,5 +146,5 @@ This module orchestrates the entire workflow.
 - Generates visualizations using visualization module functions.
 - Prints match statistics and attribute match table to the console.
 
-## Run the Project:
-`python main.py`
+## Run the variant extraction:
+`python -m src.variant_extraction.run_variant_extraction`

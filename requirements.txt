@@ -8,3 +8,5 @@ biopython
 beautifulsoup4
 tqdm
 matplotlib
+loguru
+dotenv

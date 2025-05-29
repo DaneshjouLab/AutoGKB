@@ -1,11 +1,13 @@
 from loguru import logger
 from src.fetch_articles.pmcid_converter import get_unique_pmcids
 from src.utils.file_paths import get_project_root
+from src.variant_extraction.config import ENTREZ_EMAIL
 from Bio import Entrez
 import os
 import json
 from tqdm import tqdm
 
+Entrez.email = ENTREZ_EMAIL
 
 def fetch_pmc_content(pmcid):
     """
