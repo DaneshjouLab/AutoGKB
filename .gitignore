@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 .vscode
-
+.venv
 # pixi environments
 .pixi
 *.egg-info
@@ -18,6 +18,20 @@ __pycache__
 .pyenv
 .env
 
-todo.md
-.venv
-.conda
+# data
+data/articles/
+data/variantAnnotations/
+data/unique_pmcids.json
+data/pmid_list.json
+data/downloaded_pmcids.json
+
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.lzma
+*.tar.lz
+*.tar.lzo
+
+.DS_Store
+
