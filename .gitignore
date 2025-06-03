@@ -36,3 +36,5 @@ data/downloaded_pmcids.json
 .DS_Store
 
 todo.md
+
+pmc_fulltexts/
