@@ -24,6 +24,7 @@ data/variantAnnotations/
 data/unique_pmcids.json
 data/pmid_list.json
 data/downloaded_pmcids.json
+data/markdown
 
 *.zip
 *.tar.gz

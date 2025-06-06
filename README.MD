@@ -28,11 +28,11 @@ This repository contains Python scripts for running and building a Pharmacogenom
 |                  | Convert the PMID to PMCID | ✅ |
 |                  | Update to use non-official pmid to pmcid (aaron's method) | |
 |                  | Fetch the content from the PMCID | ✅ |
-| Benchmark        | Create pairings of annotations to articles | |
+| Benchmark        | Create pairings of annotations to articles | ✅ |
 |                  | Create a niave score of number of matches | |
 |                  | Create group wise score | |
 |                  | Look into advanced scoring based on distance from truth per term | |
-| Workflows        | Integrate Aaron's current approach | |
+| Workflows        | Integrate Aaron's current approach | ✅ |
 |                  | Document on individual annotation meanings | |
 |                  | Delegate annotation groupings to team members | |
 | New Article Fetching | Replicate PharGKB current workflow | |
