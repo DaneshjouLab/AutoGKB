@@ -7,9 +7,8 @@ import json
 from typing import Dict, List, Any, Tuple, Optional, Union
 from dataclasses import dataclass
 from difflib import SequenceMatcher
-import logging
+from loguru import logger
 
-logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -21,6 +20,17 @@ class FieldScore:
     predicted: Any
     expected: Any
     error_type: Optional[str] = None
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for JSON serialization."""
+        return {
+            'field_name': self.field_name,
+            'exact_match': self.exact_match,
+            'score': self.score,
+            'predicted': self.predicted,
+            'expected': self.expected,
+            'error_type': self.error_type
+        }
 
 
 @dataclass
@@ -30,6 +40,15 @@ class SampleScore:
     field_scores: List[FieldScore]
     overall_score: float
     weighted_score: float
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for JSON serialization."""
+        return {
+            'pmcid': self.pmcid,
+            'field_scores': [fs.to_dict() for fs in self.field_scores],
+            'overall_score': self.overall_score,
+            'weighted_score': self.weighted_score
+        }
 
 
 class EvaluationMetrics:

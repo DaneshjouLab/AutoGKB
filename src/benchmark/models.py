@@ -7,9 +7,8 @@ import time
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
-import logging
+from loguru import logger
 
-logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -79,6 +78,8 @@ class OpenAIModel(LanguageModelInterface):
     
     def is_available(self) -> bool:
         """Check if OpenAI API is available."""
+        if not self.api_key:
+            return False
         try:
             self.client.models.list()
             return True
@@ -128,6 +129,8 @@ class AnthropicModel(LanguageModelInterface):
     
     def is_available(self) -> bool:
         """Check if Anthropic API is available."""
+        if not self.api_key:
+            return False
         try:
             # Simple test call
             self.client.messages.create(

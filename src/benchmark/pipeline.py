@@ -6,7 +6,8 @@ import json
 import time
 from pathlib import Path
 from typing import Dict, List, Any, Optional
-import logging
+from loguru import logger
+
 
 from .config import BenchmarkConfig
 from .data_loader import BenchmarkDataLoader, BenchmarkSample
@@ -14,9 +15,6 @@ from .metrics import EvaluationMetrics
 from .models import create_model, LanguageModelInterface
 from .evaluator import BenchmarkEvaluator, EvaluationResult
 from .reporting import BenchmarkReporter
-
-logger = logging.getLogger(__name__)
-
 
 class BenchmarkPipeline:
     """Main pipeline for running benchmarks."""
@@ -217,7 +215,7 @@ class BenchmarkPipeline:
             "model": model_config.get("name", "unknown"),
             "prediction": prediction,
             "ground_truth": sample.annotation,
-            "scores": sample_score.__dict__ if sample_score else None,
+            "scores": sample_score.to_dict() if sample_score else None,
             "article_content_preview": sample.article_content[:1000] + "..."
         }
         
@@ -255,12 +253,16 @@ class BenchmarkPipeline:
             validation_report["issues"].append(f"Data loading error: {e}")
             validation_report["data_available"] = False
         
-        # Test model configurations
-        test_configs = [
-            {"name": "mock", "model_name": "mock"},
-            {"name": "gpt-4", "model_name": "gpt-4"},
-            {"name": "claude-3-sonnet", "model_name": "claude-3-sonnet-20240229"}
-        ]
+        # Test model configurations - only test models with available API keys
+        import os
+        test_configs = [{"name": "mock", "model_name": "mock"}]
+        
+        # Only test models if their API keys are available
+        if os.getenv("OPENAI_API_KEY"):
+            test_configs.append({"name": "gpt-4", "model_name": "gpt-4", "api_key": os.getenv("OPENAI_API_KEY")})
+        
+        if os.getenv("ANTHROPIC_API_KEY"):
+            test_configs.append({"name": "claude-3-sonnet", "model_name": "claude-3-sonnet-20240229", "api_key": os.getenv("ANTHROPIC_API_KEY")})
         
         for config in test_configs:
             try:
@@ -268,7 +270,7 @@ class BenchmarkPipeline:
                 is_available = model.is_available()
                 validation_report["models_accessible"][config["name"]] = is_available
                 
-                if not is_available:
+                if not is_available and config["name"] != "mock":
                     validation_report["issues"].append(f"Model {config['name']} not accessible")
                     
             except Exception as e:

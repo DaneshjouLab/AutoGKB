@@ -6,13 +6,12 @@ import json
 import re
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
-import logging
+from loguru import logger
 
 from .data_loader import BenchmarkSample
 from .metrics import EvaluationMetrics, SampleScore
 from .models import LanguageModelInterface, PharmacogenomicPromptBuilder
 
-logger = logging.getLogger(__name__)
 
 
 @dataclass

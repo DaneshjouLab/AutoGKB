@@ -22,19 +22,13 @@ Usage examples:
 """
 
 import os
-import logging
 from pathlib import Path
-
+from loguru import logger
 from src.benchmark import BenchmarkPipeline, BenchmarkConfig
+from dotenv import load_dotenv
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-
-logger = logging.getLogger(__name__)
-
+load_dotenv()
+logger.add("benchmark_example.log", rotation="10 MB")
 
 def main():
     """Main example demonstrating benchmark usage."""
@@ -45,7 +39,7 @@ def main():
         articles_dir=Path("data/articles"),
         benchmark_dir=Path("data/benchmark"),
         output_dir=Path("benchmark_results"),
-        model_name="mock",  # Start with mock model for testing
+        model_name="claude-3-sonnet",  # Start with mock model for testing
         max_articles=10,    # Limit for example
         batch_size=5
     )
@@ -75,8 +69,11 @@ def main():
     # 5. Run benchmark on test models
     model_configs = [
         {
-            "name": "mock_model",
-            "model_name": "mock"
+            "name": "claude-3-sonnet",
+            "model_name": "claude-3-sonnet-20240229",
+            "api_key": os.getenv("ANTHROPIC_API_KEY"),
+            "temperature": 0.0,
+            "max_tokens": 4000
         }
     ]
     

@@ -7,11 +7,9 @@ import csv
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from datetime import datetime
-import logging
+from loguru import logger
 
 from .evaluator import EvaluationResult
-
-logger = logging.getLogger(__name__)
 
 
 class BenchmarkReporter:
