@@ -1,6 +1,7 @@
 # Load Data Module
 
 This module handles the loading and preprocessing of PharmGKB clinical variants data.
+TODO: Update this to use PubMedDownloader
 
 ## Methods
 
@@ -25,4 +26,5 @@ This module handles the loading and preprocessing of PharmGKB clinical variants 
    - Used as input for PMCID conversion
 
 The module handles all data downloading, extraction, and preprocessing steps needed to get the PMID list for subsequent steps in the pipeline.
+
 
