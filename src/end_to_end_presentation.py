@@ -165,7 +165,7 @@ class GroundTruthManager:
     def get(self, pmid):
         return self.grouped.get(pmid, [])
 
-def pmid_to_pmcid_batch(pmids, email="aron7628@gmail.com"):
+def pmid_to_pmcid_batch(pmids, email=""):
     """Convert a list of PMIDs to a dictionary of PMID → PMCID using Entrez eLink."""
     base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi"
     out_map = {}
