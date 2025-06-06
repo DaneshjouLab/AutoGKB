@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Two-Pane Markdown Interface</title>
+  <link rel="stylesheet" href="/static/css/annotation_interface.css" />
+  <!-- ok so you have the following that should be imported in the following scenarios -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="two-pane-layout">
+    <div id="markdown-pane" data-pane="left" class="pane markdown">
+
+
+    </div>
+    <div id="right-pane" class="pane right">
+      <!-- You can put interactive UI here -->
+      <h2>Fake mock Annotation </h2>
+      
+     <div data-annotation="selection">
+
+        <!-- this should display the selected entity,  -->
+        <!-- should be able to inject the table details and then move to rendering the left markdown...  -->
+    </div> 
+      <div data-annotation="table">
+        <!-- inject the following you will have a table that is drop down,  -->
+
+
+    </div>
+    </div>
+  </div>
+
+  <script src="/static/js/loadMarkdown.js" defer></script>
+</body>
+</html>
+
+
+
