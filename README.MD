@@ -19,6 +19,10 @@ Output: Score
 
 This repository contains Python scripts for running and building a Pharmacogenomic Agentic system to annotate and label genetic variants based on their phenotypical associations from journal articles. 
 
+## Dependencies
+We manage a few repos externally:
+ - [PubMed Downloader](https://github.com/shloknatarajan/PubMed-Downloader): This repo is used to download all the markdown files from the PMIDs represented in `var_drug_ann.tsv` 
+ - [Huggingface/AutoGKB](https://huggingface.co/datasets/shlokn/autogkb): This converts the annotations and article text into a dataset format for benchmarking
 
 ## Progress Tracker
 | Category | Task | Status |
