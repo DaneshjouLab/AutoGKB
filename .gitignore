@@ -39,3 +39,4 @@ data/markdown
 *.log
 
 benchmark_results/
+test_outputs/

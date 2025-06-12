@@ -26,36 +26,6 @@ class PromptGenerator:
     def generate_prompt(self) -> str:
         return self.prompt_template.format(**self.replacements)
     
-    def remove_references(self) -> str:
-        """Remove references from the prompt."""
-        return re.sub(r'\[[0-9]+\]', '', self.prompt)
-    
-    def remove_references_section(self) -> str:
-        """
-        Removes the references section from article text.
-            
-        Returns:
-            str: Article text with references section removed
-            (Looks for ## References section and removes it and everything after)
-        """
-        # Split the text into sections
-        sections = self.prompt.split("##")
-        
-        # Find the index of the References section
-        ref_index = -1
-        for i, section in enumerate(sections):
-            if section.strip().startswith("References"):
-                ref_index = i
-                break
-        
-        # If references section found, remove it and everything after
-        if ref_index != -1:
-            sections = sections[:ref_index]
-            return "##".join(sections)
-        
-        return self.prompt
-
-    
     def get_prompt(self) -> str:
         return self.prompt
 
