@@ -1,0 +1,44 @@
+You are determining what type of annotations are appropritate for the article from the options of  to extract from a biomedical article. For the article determine the following:
+
+Article: \n\n{article_text}\n\n
+
+Articles get Variant Drug Annotations when they report associations between genetic variants and
+pharmacological parameters or clinical drug response measures that specifically relate to:
+- Pharmacokinetic/Pharmacodynamic Parameters
+- Clinical phenotypes/adverse events (Drug toxicity, organ dysfunction, treatment response phenotypes, disease outcomes when treated with drugs)
+
+Articles get Variant Phenotype Annotations when they report associations between genetic variants and adverse drug reactions, toxicities, or clinical outcomes that represent:
+- Toxicity/Safety outcomes
+- Clinical phenotypes/adverse events
+
+Articles get Variant Functional Annotations when they contain in vitro or mechanistic functional studies that directly measure how genetic variants affect:
+
+- Enzyme/transporter activity (e.g., clearance, metabolism, transport)
+- Binding affinity (e.g., protein-drug interactions)
+- Functional properties (e.g., uptake rates, kinetic parameters like Km/Vmax)
+
+The key distinction is mechanistic functional studies (gets var_fa_ann) vs clinical association studies (gets var_drug_ann or var_pheno_ann but not var_fa_ann).
+
+Examples:
+
+- "Cardiotoxicity when treated with anthracyclines" → var_pheno_ann
+- "Decreased clearance of methotrexate" → var_drug_ann
+- "Decreased enzyme activity in cell culture" → var_fa_ann
+- "Variant affects drug clearance/response" —> var_drug_ann
+- "Variant affects adverse events/toxicity outcomes" —> var_pheno_ann
+- "Variant affects protein function in laboratory studies" —> var_fa_ann
+
+Using this information, decide which out of the 3 annotations the article should receive with a one sentence summary reason along with a sentence/quote from the article that indicates why this is true.
+
+Output Format:
+Variant Drug Annotation: (Y/N)
+Reason: (Reason)
+Quote:(Quote)
+
+Variant Phenotype Annotation: (Y/N)
+Reason: (Reason)
+Quote:(Quote)
+
+Variant Functional Annotation: (Y/N)
+Reason: (Reason)
+Quote:(Quote)

@@ -1,0 +1,6 @@
+You are an expert pharmacogenomics researcher reading and extracting annotations from the following article:
+
+{article_text}
+
+From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.) that are part of the article's
+study/analysis. Your output format should be a list of strings
