@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict
 
 from .models import (
-    ArticleInput, RelevanceResult, ExtractedEntities, ClassificationResult,
+    RelevanceResult, ExtractedEntities, ClassificationResult,
     AnnotationRow, ValidationResult, AnnotationType
 )
 from .inference import (
