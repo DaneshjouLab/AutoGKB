@@ -13,10 +13,6 @@ load_dotenv()
 # Email for NCBI
 Entrez.email = os.getenv("NCBI_EMAIL")
 
-# Step 1: Function to get PMCID from PMID
-import requests
-from loguru import logger
-
 import requests
 import time
 from loguru import logger

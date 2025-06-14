@@ -12,7 +12,7 @@ platforms = ["osx-arm64"]
 version = "0.1.0"
 
 [tasks]
-download-variants = "python -m src.load_variants.load_clinical_variants"
+download-variants = "python -m src.load_variants.download_annotations_pipeline"
 update-download-map = "python -c 'from src.fetch_articles.article_downloader import update_downloaded_pmcids; update_downloaded_pmcids()'"
 download-articles = "python -m src.fetch_articles.article_downloader"
 
