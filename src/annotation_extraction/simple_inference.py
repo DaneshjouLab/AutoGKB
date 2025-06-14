@@ -53,8 +53,8 @@ class SimpleLLM(LLMInterface):
 class Variant(BaseModel):
     """Variant."""
     variant_id: str
-    gene: str
-    allele: str
+    gene: str | None = None
+    allele: str | None = None
 
     # TODO: Add field validation for gene and allele
 

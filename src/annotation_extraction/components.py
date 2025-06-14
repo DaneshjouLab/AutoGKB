@@ -15,7 +15,7 @@ Gene: The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11, etc.)
 Allele: Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del, etc.)
 """
 
-def extract_variants_list(article_text: str = None, pmcid: str = None) -> VariantList:
+def extract_variants_list(article_text: str = None, pmcid: str = None, model: str = "gpt-4o", temperature: float = 0.1, debug: bool = False) -> VariantList:
     """Extract a list of variants from an article.
     Args:
         article_text: The text of the article.
@@ -34,7 +34,11 @@ def extract_variants_list(article_text: str = None, pmcid: str = None) -> Varian
     if article_text is None:
         article_text = ArticleParser(pmcid=pmcid).get_article_text()
 
-    model = SimpleLLM()
+    if debug:
+        logger.debug(f"Model: {model}, Temperature: {temperature}")
+        logger.debug(f"PMCID: {pmcid}")
+
+    model = SimpleLLM(model=model, temperature=temperature)
     prompt_generator = PromptGenerator(VARIANT_LIST_PROMPT, {"article_text": article_text})
     prompt = prompt_generator.get_prompt()
     output = model.generate(prompt, response_format=VariantList)
