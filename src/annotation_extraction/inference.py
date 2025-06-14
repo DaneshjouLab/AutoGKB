@@ -1,7 +1,6 @@
 from typing import Dict
 from loguru import logger
 import litellm
-from .inference import LLMInterface
 import re
 import os
 from dotenv import load_dotenv
@@ -34,6 +33,15 @@ class PromptGenerator:
     def get_prompt_template(self) -> str:
         return self.prompt_template
     
+class LLMInterface:
+    """LLM interface."""
+    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.1):
+        self.model = model
+        self.temperature = temperature
+
+    def generate(self, prompt: str, temperature: float = None) -> str:
+        raise NotImplementedError("Subclasses must implement this method.")
+
 class SimpleLLM(LLMInterface):
     """Simple LLM interface that just returns as response to the prompt."""
     debug_mode = False

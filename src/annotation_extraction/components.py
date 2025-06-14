@@ -1,4 +1,4 @@
-from src.annotation_extraction.simple_inference import Variant, VariantList, SimpleLLM, PromptGenerator
+from src.annotation_extraction.inference import Variant, VariantList, SimpleLLM, PromptGenerator
 from src.annotation_extraction.article_parser import ArticleParser
 from loguru import logger
 import json
@@ -8,8 +8,7 @@ You are an expert pharmacogenomics researcher reading and extracting annotations
 
 {article_text}
 
-From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.) that are part of the article's
-study/analysis. Include information on the gene group and allele (if present). Your output format should be a list of the variants with the following attributes:
+From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.). Include information on the gene group and allele (if present). Your output format should be a list of the variants with the following attributes:
 Variant: The Variant / Haplotypes (ex. rs2909451, CYP2C19*1, CYP2C19*2, *1/*18, etc.)
 Gene: The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11, etc.)
 Allele: Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del, etc.)
