@@ -63,7 +63,7 @@ def test_extract_function(pmcids: List[str] | str, verbose: bool = False):
 
     # calculate final metrics
     precision, recall, f1_score = calc_metrics(running_contingencies)
-    logger.info(f"Final Metrics: Precision: {precision}, Recall: {recall}, F1 Score: {f1_score}")
+    print(f"Final Metrics: Precision: {precision}, Recall: {recall}, F1 Score: {f1_score}")
 
 if __name__ == "__main__":
     test_extract_function("PMC11730665", verbose=True)
