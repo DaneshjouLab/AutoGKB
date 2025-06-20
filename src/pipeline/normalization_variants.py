@@ -17,14 +17,14 @@ see the possible values that it can be noramlizned
 # RefSeqGene (NG) genomic HGVS
 
 
-#genomic HGVS
+# genomic HGVS
 
 
-#transcript HGVS
+# transcript HGVS
 
 # protein HGVS
 
-#RefseqGene HGVSno
+# RefseqGene HGVSno
 # 
 # 
 # 
@@ -137,3 +137,8 @@ gnomAD/Ensembl Variant Keys:
 
 
 # for the instance that we are trying to do tyou 
+
+
+# essentially call dspy, the following things that should be done in this case, 
+# t
+
