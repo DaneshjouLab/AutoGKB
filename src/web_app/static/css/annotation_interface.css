@@ -51,14 +51,15 @@ th, td {
   background-color: #eef;
 }
 
-/* Highlight in markdown */
-.highlighted {
+
+.evidence-anchor {
   background-color: yellow;
+  transition: background-color 0.3s;
 }
 
-/* Markdown evidence injection */
-.evidence-anchor {
-  transition: background-color 0.5s ease;
+/* Highlight in markdown */
+.highlighted {
+  background-color: orange !important;
 }
 
 /* Floating clipboard button */
@@ -72,3 +73,5 @@ th, td {
   position: absolute;
   padding: 4px 6px;
 }
+
+

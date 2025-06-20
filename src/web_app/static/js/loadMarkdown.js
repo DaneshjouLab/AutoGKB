@@ -2,13 +2,12 @@ const markdownPane = document.querySelector('[data-pane="left"]');
 const selectionBox = document.querySelector('[data-annotation="selection"]');
 const tableWrapper = document.querySelector('[data-annotation="table"]');
 
-// --- Table Data ---
 const tableData = [
   {
     gene: {
       text: 'EGFR',
       evidence: [
-        'EGFR mutations are commonly found in non-smoking patients with lung adenocarcinoma.',
+        '2 μM of VX-445',
         'EGFR L858R is a well-characterized sensitizing mutation associated with response to tyrosine kinase inhibitors.'
       ]
     },
@@ -52,20 +51,12 @@ const tableData = [
   }
 ];
 
-// --- Raw Markdown ---
 let markdownText = `
 # Clinical Case Summary
 
 A 63-year-old Asian female with no smoking history presented with a persistent cough and mild dyspnea. Chest CT revealed a 2.3 cm spiculated lesion in the left upper lobe.
-blabalbblas
+
 EGFR mutations are commonly found in non-smoking patients with lung adenocarcinoma.
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
 
 EGFR L858R is a well-characterized sensitizing mutation associated with response to tyrosine kinase inhibitors.
 
@@ -74,15 +65,6 @@ The patient’s tumor harbored an EGFR L858R mutation identified via next-genera
 Sensitizing mutations in EGFR typically respond well to osimertinib.
 
 TP53 mutations are frequent in smokers and often co-occur with other driver mutations.
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
 
 Loss-of-function variants in TP53, such as R175H, are associated with genomic instability.
 
@@ -93,7 +75,6 @@ TP53 R175H is classified as a pathogenic variant in COSMIC and ClinVar.
 Pathogenic mutations in TP53 are known to negatively impact prognosis.
 `;
 
-// --- Inject Evidence Anchors ---
 const evidenceMap = {};
 let evidenceIdCounter = 0;
 
@@ -113,43 +94,132 @@ tableData.forEach(row => {
   });
 });
 
-// --- Render Markdown ---
-markdownPane.innerHTML = marked.parse(markdownText);
+async function loadAndRenderMarkdown() {
+  const mdValue = document.body.dataset.md;
+  const markdownPane = document.querySelector('[data-pane="left"]');
+  let contentHTML = "";
 
-// --- Build Table ---
-const headers = ['Gene', 'Variant', 'Interpretation'];
-const table = document.createElement('table');
+  if (mdValue === "3") {
+    try {
+      const response = await fetch("/markdown/nih");
+      const fetchedMarkdown = await response.text();
+      contentHTML = marked.parse(fetchedMarkdown);
 
-const headerRow = document.createElement('tr');
-headers.forEach(header => {
-  const th = document.createElement('th');
-  th.textContent = header;
-  headerRow.appendChild(th);
-});
-table.appendChild(headerRow);
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = contentHTML;
 
-tableData.forEach(row => {
-  const tr = document.createElement('tr');
+      let titleNode = null;
+      let startFound = false;
+      const finalContent = [];
 
-  headers.forEach(header => {
-    const key = header.toLowerCase();
-    const cell = row[key];
+      for (const node of tempDiv.childNodes) {
+        if (!titleNode && node.nodeType === Node.ELEMENT_NODE && node.tagName === "H1") {
+          titleNode = node.cloneNode(true);
+        }
 
-    const td = document.createElement('td');
-    td.textContent = cell.text;
-    td.classList.add('clickable');
+        if (!startFound && node.textContent.includes("PMID")) {
+          startFound = true;
+        }
 
-    td.addEventListener('click', () => {
-      renderEvidence(cell.evidence, cell.text);
+        if (startFound) {
+          finalContent.push(node.cloneNode(true));
+        }
+      }
+
+      markdownPane.innerHTML = "";
+      if (titleNode) {
+        markdownPane.appendChild(titleNode);
+      }
+      finalContent.forEach(el => markdownPane.appendChild(el));
+
+    } catch (err) {
+      console.error("NIH Markdown load error:", err);
+      markdownPane.innerHTML = "<p style='color: red;'>Failed to load NIH article.</p>";
+      return;
+    }
+  } else {
+    contentHTML = marked.parse(markdownText);
+    markdownPane.innerHTML = contentHTML;
+  }
+
+  // --- Insert evidence spans into the rendered DOM
+  Object.keys(evidenceMap).forEach(evidence => {
+    const id = evidenceMap[evidence];
+    const walker = document.createTreeWalker(markdownPane, NodeFilter.SHOW_TEXT, null, false);
+    const textNodes = [];
+
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (node.nodeValue.includes(evidence)) {
+        textNodes.push(node);
+      }
+    }
+
+    textNodes.forEach(node => {
+      const parts = node.nodeValue.split(evidence);
+      if (parts.length < 2) return;
+
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < parts.length; i++) {
+        if (parts[i]) {
+          fragment.appendChild(document.createTextNode(parts[i]));
+        }
+
+        if (i < parts.length - 1) {
+          const span = document.createElement('span');
+          span.id = id;
+          span.className = 'evidence-anchor';
+          span.textContent = evidence;
+          fragment.appendChild(span);
+        }
+      }
+
+      node.replaceWith(fragment);
     });
-
-    tr.appendChild(td);
   });
 
-  table.appendChild(tr);
-});
+  buildEvidenceTable();
+}
 
-tableWrapper.appendChild(table);
+
+// --- Build Table ---
+function buildEvidenceTable() {
+  const headers = ['Gene', 'Variant', 'Interpretation'];
+  const table = document.createElement('table');
+
+  const headerRow = document.createElement('tr');
+  headers.forEach(header => {
+    const th = document.createElement('th');
+    th.textContent = header;
+    headerRow.appendChild(th);
+  });
+  table.appendChild(headerRow);
+
+  tableData.forEach(row => {
+    const tr = document.createElement('tr');
+
+    headers.forEach(header => {
+      const key = header.toLowerCase();
+      const cell = row[key];
+
+      const td = document.createElement('td');
+      td.textContent = cell.text;
+      td.classList.add('clickable');
+
+      td.addEventListener('click', () => {
+        renderEvidence(cell.evidence, cell.text);
+      });
+
+      tr.appendChild(td);
+    });
+
+    table.appendChild(tr);
+  });
+
+  tableWrapper.innerHTML = '';
+  tableWrapper.appendChild(table);
+}
 
 // --- Render Evidence in Right Pane ---
 function renderEvidence(evidenceList, entity = "Entity") {
@@ -221,3 +291,7 @@ window.copyToClipboard = function(text) {
     .then(() => console.log('Copied:', text))
     .catch(err => console.error('Clipboard copy failed', err));
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadAndRenderMarkdown();
+});

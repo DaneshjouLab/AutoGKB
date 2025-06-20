@@ -24,10 +24,10 @@ const fakeDict = {
 };
 
 
-fetch(url_in_question).then(res=> res.text()).then(htmlText=>document.querySelector('[data-]')
+fetch(url_in_question).then(res=> res.text()).then(htmlText=>document.querySelector('[data-]')),
 async function name(params) {
 
-const something = ;
+const something = 1;
 
 
 }

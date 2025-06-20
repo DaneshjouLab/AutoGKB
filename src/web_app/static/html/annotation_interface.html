@@ -9,7 +9,7 @@
   <!-- ok so you have the following that should be imported in the following scenarios -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body>
+<body data-md="{{ md }}">
   <div class="two-pane-layout">
     <div id="markdown-pane" data-pane="left" class="pane markdown">
 
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <script src="/static/js/loadMarkdown.js" defer></script>
+  <script src="{{ url_for('static', path='js/loadMarkdown.js') }}" defer></script>
 </body>
 </html>
 
