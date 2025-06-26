@@ -1,4 +1,5 @@
-from src.annotation_extraction.inference import Variant, VariantList, SimpleLLM, PromptGenerator
+from src.annotation_extraction.inference import Variant, VariantList, SimpleLLM
+from src.annotation_extraction.prompts import PromptGenerator
 from src.annotation_extraction.article_parser import ArticleParser
 from loguru import logger
 import json
