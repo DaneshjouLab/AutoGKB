@@ -1,6 +1,6 @@
 from src.annotation_extraction.inference import Variant, VariantList, SimpleLLM
 from src.annotation_extraction.prompts import PromptGenerator
-from src.annotation_extraction.article_parser import ArticleParser
+from src.annotation_extraction.article_parser import MarkdownParser
 from loguru import logger
 import json
 
@@ -32,7 +32,7 @@ def extract_variants_list(article_text: str = None, pmcid: str = None, model: st
         logger.warning("Both article_text and PMCID are provided. Using article_text.")
 
     if article_text is None:
-        article_text = ArticleParser(pmcid=pmcid).get_article_text()
+        article_text = MarkdownParser(pmcid=pmcid).get_article_text()
 
     if debug:
         logger.debug(f"Model: {model}, Temperature: {temperature}")

@@ -10,8 +10,9 @@ class ArticleInput:
     pmid: str
     pmcid: Optional[str] = None
 
-class ArticleParser:
-    """Convert Markdown article text or PMCID to ArticleInput.
+class MarkdownParser:
+    """
+    Convert Markdown article text or PMCID to ArticleInput.
     
     Args:
         text: Optional[str] = None
