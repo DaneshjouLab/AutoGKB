@@ -10,6 +10,7 @@ from pydantic import BaseModel
 from src.utils import get_article_text
 from loguru import logger
 
+
 class AssociationType(BaseModel):
     """
     Association type.
@@ -25,9 +26,16 @@ class AssociationType(BaseModel):
     functional_association_explanation: str
     functional_association_quote: str
 
+class AssociationTypeList(BaseModel):
+    """
+    List of association types for structured output.
+    """
+    association_types: List[AssociationType]
+
 
 KEY_QUESTION = """
-For the variant {variant_id}, determine what type of association(s) is being studied by the article. The options are Drug, Phenotype, and Functional.
+For the following variants, determine what type of association(s) is being studied by the article. The options are Drug, Phenotype, and Functional.
+Variants: {variants}
 
 A variant has a Drug association when the article reports associations between the genetic variant and
 pharmacological parameters or clinical drug response measures that specifically relate to:
@@ -57,6 +65,7 @@ Examples:
 OUTPUT_QUEUES = """
 Using this information, decide which out of the 3 annotations the variant should receive with a one sentence summary explanation for the decision along with a sentence/quote from the article that indicates why this is true. It is possible there is more than one Annotation/association per variant
 
+Variant Object: (variant)
 Variant Drug Association: (Y/N)
 Explanation: (Reason)
 Quote:(Quote)
@@ -69,15 +78,16 @@ Variant Functional Association: (Y/N)
 Explanation: (Reason)
 """
 
-def determine_association_type(variant: Variant, article_text: str = None, pmcid: str = None) -> AssociationType:
+def get_association_types(variants: List[Variant], article_text: str = None, pmcid: str = None) -> List[AssociationType]:
     article_text = get_article_text(pmcid=pmcid, article_text=article_text)
+    variant_id_list = [variant.variant_id for variant in variants]
     prompt_variables = PromptVariables(
         article_text=article_text,
-        key_question=KEY_QUESTION.format(variant_id=variant.variant_id),
+        key_question=KEY_QUESTION.format(variants=variants),
         output_queues=OUTPUT_QUEUES,
-        output_format_structure=AssociationType,
+        output_format_structure=AssociationTypeList,
     )
-    logger.info(f"Determining association type for variant {variant.variant_id}")
+    logger.info(f"Determining association type for variants {variant_id_list}")
     prompt_generator = GeneratorPrompt(prompt_variables)
     generator_prompt = prompt_generator.hydrate_prompt()
     
@@ -89,25 +99,33 @@ def determine_association_type(variant: Variant, article_text: str = None, pmcid
     parser = Parser(model="gpt-4o-mini", temperature=0.1)
     parser_prompt = ParserPrompt(
         input_prompt=response, 
-        output_format_structure=AssociationType, 
+        output_format_structure=AssociationTypeList, 
         system_prompt=generator_prompt.system_prompt
     )
     parsed_response = parser.prompted_generate(parser_prompt)
     
-    # Parse the string response into an AssociationType object
+    # Parse the string response into AssociationType objects
     try:
         import json
-        parsed_dict = json.loads(parsed_response)
-        # Add the variant to the parsed data
-        parsed_dict['variant'] = variant
-        return AssociationType(**parsed_dict)
+        parsed_data = json.loads(parsed_response)
+        
+        # Handle different response formats
+        if isinstance(parsed_data, dict) and 'association_types' in parsed_data:
+            association_data = parsed_data['association_types']
+        elif isinstance(parsed_data, list):
+            association_data = parsed_data
+        else:
+            association_data = [parsed_data]
+            
+        # Convert to AssociationType objects
+        return [AssociationType(**item) for item in association_data]
+        
     except (json.JSONDecodeError, TypeError) as e:
-        logger.error(f"Failed to parse response for variant {variant.variant_id}: {e}")
+        logger.error(f"Failed to parse response for variants {variants}: {e}")
         return None
 
 def list_association_types(association_type: AssociationType, debug: bool = False) -> List[str]:
     association_types = []
-    logger.info(f"Variant: {association_type.variant.variant_id}")
     if association_type.drug_association:
         association_types.append("Drug")
         if debug:
@@ -126,4 +144,5 @@ def list_association_types(association_type: AssociationType, debug: bool = Fals
             logger.debug(f"Functional Association: {association_type.functional_association}")
             logger.debug(f"Functional Association Explanation: {association_type.functional_association_explanation}")
             logger.debug(f"Functional Association Quote: {association_type.functional_association_quote}")
+    logger.info(f"Variant: {association_type.variant.variant_id} has association types: {association_types}")
     return association_types

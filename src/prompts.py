@@ -1,4 +1,4 @@
-from typing import Dict, Optional, Type
+from typing import Optional, Type, List, Union
 from loguru import logger
 from pydantic import BaseModel
 
@@ -12,7 +12,7 @@ The variables that go into the prompt template are:
 - output format
 """
 
-PROMPT_TEMPLATE = """
+GENERATOR_PROMPT_TEMPLATE = """
 You are an expert pharmacogenomics researcher reading and extracting key information from the following article:
 
 {article_text}
@@ -38,7 +38,7 @@ class PromptVariables(BaseModel):
     key_question: str
     output_queues: Optional[str] = None
     system_prompt: Optional[str] = None
-    output_format_structure: Optional[Type[BaseModel]] = None
+    output_format_structure: Optional[Union[Type[BaseModel], List[Type[BaseModel]]]] = None
 
 
 class HydratedPrompt(BaseModel):
@@ -51,7 +51,7 @@ class HydratedPrompt(BaseModel):
 
 class GeneratorPrompt:
     def __init__(self, prompt_variables: PromptVariables):
-        self.prompt_template = PROMPT_TEMPLATE
+        self.prompt_template = GENERATOR_PROMPT_TEMPLATE
         self.prompt_variables = prompt_variables
 
     def hydrate_prompt(self) -> HydratedPrompt:
@@ -70,7 +70,7 @@ class ParserPrompt():
         self.output_format_structure = output_format_structure
         self.system_prompt = system_prompt
         if self.system_prompt is None or self.system_prompt == "":
-            self.system_prompt = "Your job is to parse the response into a structured output. Please provide your response in the exact format specified by the output_format_structure parameter."
+            self.system_prompt = "Your job is to parse the response into a structured output. Please provide your response in the exact format specified. If something is not clear, leave the value as None"
         if self.input_prompt is None or self.input_prompt == "":
             logger.error("Input prompt is required for parser prompt.")
             raise ValueError("Input prompt is required for parser prompt.")
