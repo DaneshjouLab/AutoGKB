@@ -49,12 +49,16 @@ class Generator(LLMInterface):
             ]
         else:
             messages = [{"role": "user", "content": prompt}]
-        response = litellm.completion(
-            model=self.model,
-            messages=messages,
-            response_format=response_format,
-            temperature=temp,
-        )
+        try:
+            response = litellm.completion(
+                model=self.model,
+                messages=messages,
+                response_format=response_format,
+                temperature=temp,
+            )
+        except Exception as e:
+            logger.error(f"Error generating response: {e}")
+            raise e
         return response.choices[0].message.content
 
 
@@ -64,6 +68,7 @@ class Variant(BaseModel):
     variant_id: str
     gene: str | None = None
     allele: str | None = None
+    evidence: str | None = None
 
     # TODO: Add field validation for gene and allele
 

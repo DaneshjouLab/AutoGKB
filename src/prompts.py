@@ -50,6 +50,6 @@ class PromptGenerator:
         """Hydrate the prompt."""
         return HydratedPrompt(
             system_prompt=self.prompt_variables.system_prompt,
-            input_prompt=self.prompt_template.format(**self.prompt_variables),
+            input_prompt=self.prompt_template.format(**self.prompt_variables.model_dump()),
             output_format_structure=self.prompt_variables.output_format_structure,
         )
