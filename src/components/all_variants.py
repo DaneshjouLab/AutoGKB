@@ -1,6 +1,6 @@
-from src.annotation_extraction.inference import Variant, VariantList, Generator
-from src.annotation_extraction.prompts import PromptGenerator
-from src.annotation_extraction.article_parser import MarkdownParser
+from src.inference import Variant, VariantList, Generator
+from src.prompts import PromptGenerator
+from src.article_parser import MarkdownParser
 from loguru import logger
 import json
 
