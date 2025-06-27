@@ -1,4 +1,4 @@
-from src.annotation_extraction.inference import Variant, VariantList, SimpleLLM
+from src.annotation_extraction.inference import Variant, VariantList, Generator
 from src.annotation_extraction.prompts import PromptGenerator
 from src.annotation_extraction.article_parser import MarkdownParser
 from loguru import logger
@@ -38,7 +38,7 @@ def extract_variants_list(article_text: str = None, pmcid: str = None, model: st
         logger.debug(f"Model: {model}, Temperature: {temperature}")
         logger.debug(f"PMCID: {pmcid}")
 
-    model = SimpleLLM(model=model, temperature=temperature)
+    model = Generator(model=model, temperature=temperature)
     prompt_generator = PromptGenerator(VARIANT_LIST_PROMPT, {"article_text": article_text})
     prompt = prompt_generator.get_prompt()
     output = model.generate(prompt, response_format=VariantList)

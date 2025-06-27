@@ -17,7 +17,7 @@ class LLMInterface:
     def generate(self, prompt: str, temperature: float = None) -> str:
         raise NotImplementedError("Subclasses must implement this method.")
 
-class SimpleLLM(LLMInterface):
+class Generator(LLMInterface):
     """Simple LLM interface that just returns as response to the prompt."""
     debug_mode = False
     
@@ -28,9 +28,19 @@ class SimpleLLM(LLMInterface):
         if self.debug_mode:
             litellm.set_verbose = True
         
-    def generate(self, prompt: str, temperature: float = None, response_format: BaseModel = None) -> str:
+    def generate(self, prompt: str, system_prompt: str = None, temperature: float = None, response_format: BaseModel = None) -> str:
         temp = temperature if temperature is not None else self.temperature
-        response = litellm.completion(model=self.model, messages=[{"role": "user", "content": prompt}], response_format=response_format, temperature=temp)
+        # Check if system prompt is provided
+        if system_prompt is not None and system_prompt != "":
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ]
+        else:
+            messages = [
+                {"role": "user", "content": prompt}
+            ]
+        response = litellm.completion(model=self.model, messages=messages, response_format=response_format, temperature=temp)
         return response.choices[0].message.content
 
 class Variant(BaseModel):
