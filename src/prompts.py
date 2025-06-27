@@ -1,6 +1,7 @@
 from typing import Dict, Optional, Type
 from loguru import logger
 from pydantic import BaseModel
+
 """
 This module is used to generate prompts for the LLM.
 The variables that go into the prompt template are:
@@ -20,19 +21,25 @@ You are an expert pharmacogenomics researcher reading and extracting key informa
 
 {output_queues}
 """
+
+
 class PromptVariables(BaseModel):
     """Input variables for prompt generation."""
+
     article_text: str
     key_question: str
     output_queues: Optional[str] = None
     system_prompt: Optional[str] = None
     output_format_structure: Optional[Type[BaseModel]] = None
 
+
 class HydratedPrompt(BaseModel):
     """Final prompt with system and input components."""
+
     system_prompt: Optional[str] = None
     input_prompt: str
     output_format_structure: Optional[Type[BaseModel]] = None
+
 
 class PromptGenerator:
     def __init__(self, prompt_variables: PromptVariables):
@@ -44,5 +51,5 @@ class PromptGenerator:
         return HydratedPrompt(
             system_prompt=self.prompt_variables.system_prompt,
             input_prompt=self.prompt_template.format(**self.prompt_variables),
-            output_format_structure=self.prompt_variables.output_format_structure
+            output_format_structure=self.prompt_variables.output_format_structure,
         )

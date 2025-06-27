@@ -15,7 +15,14 @@ Gene: The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11, etc.)
 Allele: Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del, etc.)
 """
 
-def extract_variants_list(article_text: str = None, pmcid: str = None, model: str = "gpt-4o", temperature: float = 0.1, debug: bool = False) -> VariantList:
+
+def extract_variants_list(
+    article_text: str = None,
+    pmcid: str = None,
+    model: str = "gpt-4o",
+    temperature: float = 0.1,
+    debug: bool = False,
+) -> VariantList:
     """Extract a list of variants from an article.
     Args:
         article_text: The text of the article.
@@ -27,7 +34,7 @@ def extract_variants_list(article_text: str = None, pmcid: str = None, model: st
     if article_text is None and pmcid is None:
         logger.error("Either article_text or pmcid must be provided.")
         raise ValueError("Either article_text or pmcid must be provided.")
-    
+
     if article_text is not None and pmcid is not None:
         logger.warning("Both article_text and PMCID are provided. Using article_text.")
 
@@ -39,9 +46,11 @@ def extract_variants_list(article_text: str = None, pmcid: str = None, model: st
         logger.debug(f"PMCID: {pmcid}")
 
     model = Generator(model=model, temperature=temperature)
-    prompt_generator = PromptGenerator(VARIANT_LIST_PROMPT, {"article_text": article_text})
+    prompt_generator = PromptGenerator(
+        VARIANT_LIST_PROMPT, {"article_text": article_text}
+    )
     prompt = prompt_generator.get_prompt()
     output = model.generate(prompt, response_format=VariantList)
-    variant_list = json.loads(output)['variant_list']
+    variant_list = json.loads(output)["variant_list"]
     # variant_list_strs = [i['variant_id'] for i in variant_list]
     return variant_list
