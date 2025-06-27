@@ -2,7 +2,7 @@
 Given a list of variants and the article text, determine the type of association (drug, phenotype, functional association)
 """
 
-from src.components.all_variants import Variant
+from src.variants import Variant
 from typing import List
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
@@ -13,7 +13,18 @@ from loguru import logger
 
 class AssociationType(BaseModel):
     """
-    Association type.
+    Variant Association Type
+    Members:
+    - variant: Variant
+    - drug_association: bool
+    - drug_association_explanation: str
+    - drug_association_quote: str
+    - phenotype_association: bool
+    - phenotype_association_explanation: str
+    - phenotype_association_quote: str
+    - functional_association: bool
+    - functional_association_explanation: str
+    - functional_association_quote: str
     """
 
     variant: Variant

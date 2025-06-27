@@ -3,7 +3,6 @@ from loguru import logger
 import json
 from typing import List
 from termcolor import colored
-from src.inference import Variant
 from src.article_parser import MarkdownParser
 
 
@@ -92,9 +91,6 @@ def get_article_text(pmcid: str = None, article_text: str = None):
     if article_text is None and pmcid is None:
         logger.error("Either article_text or pmcid must be provided.")
         raise ValueError("Either article_text or pmcid must be provided.")
-
-    if article_text is not None and pmcid is not None:
-        logger.warning("Both article_text and PMCID are provided. Using article_text.")
 
     if article_text is None:
         article_text = MarkdownParser(pmcid=pmcid).get_article_text()
