@@ -1,3 +1,7 @@
-# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
-#
-# SPDX-License-Identifier: Apache-2.0
+"""
+Annotation extraction module for pharmacogenomic variant annotations.
+
+This module implements a multi-stage LLM pipeline for extracting structured
+pharmacogenomic variant annotations from biomedical articles.
+"""
+
