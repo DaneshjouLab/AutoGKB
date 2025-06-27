@@ -1,8 +1,9 @@
 from loguru import logger
-from src.annotation_extraction.components import extract_variants_list
+from src.components.all_variants import extract_all_variants
 import json
 from typing import List
-from tests.utils import compare_lists
+from src.utils import compare_lists
+from typing import List
 
 def load_ground_truth(pmcid: str):
     try:
@@ -51,7 +52,7 @@ def test_extract_function(pmcids: List[str] | str, verbose: bool = False):
     for pmcid in pmcids:
         logger.info(f"Testing PMCID: {pmcid}")
         ground_truth = parse_variant_list(load_ground_truth(pmcid))
-        extracted = parse_variant_list(extract_variants_list(pmcid))
+        extracted = parse_variant_list(extract_all_variants(pmcid))
         contingencies = calc_contingencies(ground_truth, extracted)
         # update running contingencies
         running_contingencies["true_positives"] += contingencies["true_positives"]
