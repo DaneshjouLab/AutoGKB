@@ -663,3 +663,47 @@ Extracted Output: (output)
 Reason: (one sentence justification)
 Quote: (sentence from the article that demonstrates why)
 ```
+
+### Extract Association for Single Variant
+```
+Article: \n\n{article_text}\n\n
+
+For the variant {variant_id}, determine what type of association(s) is being studied by the article. The options are Drug, Phenotype, and Functional.
+
+A variant has a Drug association when the article reports associations between the genetic variant and
+pharmacological parameters or clinical drug response measures that specifically relate to:
+- Pharmacokinetic/Pharmacodynamic Parameters
+- Clinical phenotypes/adverse events (Drug toxicity, organ dysfunction, treatment response phenotypes, disease outcomes when treated with drugs)
+
+A variant has a Phenotype association when the article reports associations between genetic variants and adverse drug reactions, toxicities, or clinical outcomes that represent:
+- Toxicity/Safety outcomes
+- Clinical phenotypes/adverse events
+
+A variant has a Functional association when the article contains in vitro or mechanistic functional studies that directly measure how the variant affects:
+- Enzyme/transporter activity (e.g., clearance, metabolism, transport)
+- Binding affinity (e.g., protein-drug interactions)
+- Functional properties (e.g., uptake rates, kinetic parameters like Km/Vmax)
+
+The key distinction is mechanistic functional studies typically get Functional associations vs clinical association studies get Phenotype and Drug associations but Functional.
+Examples:
+- "Cardiotoxicity when treated with anthracyclines" → Phenotype
+- "Decreased clearance of methotrexate" → Drug
+- "Decreased enzyme activity in cell culture" → Functional
+- "Variant affects drug clearance/response" —> Drug
+- "Variant affects adverse events/toxicity outcomes" —> Phenotype
+- "Variant affects protein function in laboratory studies" —> Functional
+
+Using this information, decide which out of the 3 annotations the variant should receive with a one sentence summary explanation for the decision along with a sentence/quote from the article that indicates why this is true. It is possible there is more than one Annotation/association per variant
+
+Output Format:
+Variant Drug Association: (Y/N)
+Explanation: (Reason)
+Quote:(Quote)
+
+Variant Phenotype Association: (Y/N)
+Explanation: (Reason)
+Quote:(Quote)
+
+Variant Functional Association: (Y/N)
+Explanation: (Reason)
+```

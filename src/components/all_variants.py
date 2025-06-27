@@ -1,5 +1,5 @@
 from src.inference import Variant, VariantList, Generator
-from src.prompts import PromptGenerator, PromptVariables
+from src.prompts import GeneratorPrompt, PromptVariables
 from src.article_parser import MarkdownParser
 from loguru import logger
 import json
@@ -55,10 +55,10 @@ def extract_all_variants(
         output_queues=VARIANT_LIST_OUTPUT_QUEUES,
         output_format_structure=VariantList
     )
-    prompt_generator = PromptGenerator(prompt_variables)
+    prompt_generator = GeneratorPrompt(prompt_variables)
     hydrated_prompt = prompt_generator.hydrate_prompt()
     logger.info(f"Extracting all variants")
-    output = model.generate(hydrated_prompt.input_prompt, response_format=VariantList)
+    output = model.prompted_generate(hydrated_prompt)
     if debug:
         logger.debug(f"Raw LLM output: {output}")
     parsed_output = json.loads(output)
