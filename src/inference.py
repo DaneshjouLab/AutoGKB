@@ -16,13 +16,15 @@ class LLMInterface(ABC):
         self.model = model
         self.temperature = temperature
 
-    def prompted_generate(self, hydrated_prompt: HydratedPrompt, temperature: float = None) -> str:
+    def prompted_generate(
+        self, hydrated_prompt: HydratedPrompt, temperature: float = None
+    ) -> str:
         temp = temperature if temperature is not None else self.temperature
         return self.generate(
-            hydrated_prompt.input_prompt, 
-            hydrated_prompt.system_prompt, 
-            temp, 
-            hydrated_prompt.output_format_structure
+            hydrated_prompt.input_prompt,
+            hydrated_prompt.system_prompt,
+            temp,
+            hydrated_prompt.output_format_structure,
         )
 
     @abstractmethod
@@ -101,9 +103,14 @@ class Parser(LLMInterface):
                 {"role": "user", "content": prompt},
             ]
         else:
-            logger.warning("No system prompt provided. Using default system prompt. System prompts recommended for parsing.")
+            logger.warning(
+                "No system prompt provided. Using default system prompt. System prompts recommended for parsing."
+            )
             messages = [
-                {"role": "system", "content": "Your job is to parse the response into a structured output. Please provide your response in the exact format specified by the response_format parameter."},
+                {
+                    "role": "system",
+                    "content": "Your job is to parse the response into a structured output. Please provide your response in the exact format specified by the response_format parameter.",
+                },
                 {"role": "user", "content": prompt},
             ]
         try:
@@ -118,7 +125,6 @@ class Parser(LLMInterface):
             raise e
         return response.choices[0].message.content
 
-            
 
 class Variant(BaseModel):
     """Variant."""
@@ -133,6 +139,3 @@ class VariantList(BaseModel):
     """List of variants."""
 
     variant_list: List[Variant]
-
-
-

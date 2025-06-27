@@ -15,6 +15,7 @@ class AssociationType(BaseModel):
     """
     Association type.
     """
+
     variant: Variant
     drug_association: bool
     drug_association_explanation: str
@@ -26,10 +27,12 @@ class AssociationType(BaseModel):
     functional_association_explanation: str
     functional_association_quote: str
 
+
 class AssociationTypeList(BaseModel):
     """
     List of association types for structured output.
     """
+
     association_types: List[AssociationType]
 
 
@@ -78,7 +81,10 @@ Variant Functional Association: (Y/N)
 Explanation: (Reason)
 """
 
-def get_association_types(variants: List[Variant], article_text: str = None, pmcid: str = None) -> List[AssociationType]:
+
+def get_association_types(
+    variants: List[Variant], article_text: str = None, pmcid: str = None
+) -> List[AssociationType]:
     article_text = get_article_text(pmcid=pmcid, article_text=article_text)
     variant_id_list = [variant.variant_id for variant in variants]
     prompt_variables = PromptVariables(
@@ -90,59 +96,81 @@ def get_association_types(variants: List[Variant], article_text: str = None, pmc
     logger.info(f"Determining association type for variants {variant_id_list}")
     prompt_generator = GeneratorPrompt(prompt_variables)
     generator_prompt = prompt_generator.hydrate_prompt()
-    
+
     # Step 1: Generate the analysis
     generator = Generator(model="gpt-4o-mini", temperature=0.1)
     response = generator.prompted_generate(generator_prompt)
-    
+
     # Step 2: Parse the response into structured format
     parser = Parser(model="gpt-4o-mini", temperature=0.1)
     parser_prompt = ParserPrompt(
-        input_prompt=response, 
-        output_format_structure=AssociationTypeList, 
-        system_prompt=generator_prompt.system_prompt
+        input_prompt=response,
+        output_format_structure=AssociationTypeList,
+        system_prompt=generator_prompt.system_prompt,
     )
     parsed_response = parser.prompted_generate(parser_prompt)
-    
+
     # Parse the string response into AssociationType objects
     try:
         import json
+
         parsed_data = json.loads(parsed_response)
-        
+
         # Handle different response formats
-        if isinstance(parsed_data, dict) and 'association_types' in parsed_data:
-            association_data = parsed_data['association_types']
+        if isinstance(parsed_data, dict) and "association_types" in parsed_data:
+            association_data = parsed_data["association_types"]
         elif isinstance(parsed_data, list):
             association_data = parsed_data
         else:
             association_data = [parsed_data]
-            
+
         # Convert to AssociationType objects
         return [AssociationType(**item) for item in association_data]
-        
+
     except (json.JSONDecodeError, TypeError) as e:
         logger.error(f"Failed to parse response for variants {variants}: {e}")
         return None
 
-def list_association_types(association_type: AssociationType, debug: bool = False) -> List[str]:
+
+def list_association_types(
+    association_type: AssociationType, debug: bool = False
+) -> List[str]:
     association_types = []
     if association_type.drug_association:
         association_types.append("Drug")
         if debug:
             logger.debug(f"Drug Association: {association_type.drug_association}")
-            logger.debug(f"Drug Association Explanation: {association_type.drug_association_explanation}")
-            logger.debug(f"Drug Association Quote: {association_type.drug_association_quote}")
+            logger.debug(
+                f"Drug Association Explanation: {association_type.drug_association_explanation}"
+            )
+            logger.debug(
+                f"Drug Association Quote: {association_type.drug_association_quote}"
+            )
     if association_type.phenotype_association:
         association_types.append("Phenotype")
         if debug:
-            logger.debug(f"Phenotype Association: {association_type.phenotype_association}")
-            logger.debug(f"Phenotype Association Explanation: {association_type.phenotype_association_explanation}")
-            logger.debug(f"Phenotype Association Quote: {association_type.phenotype_association_quote}")
+            logger.debug(
+                f"Phenotype Association: {association_type.phenotype_association}"
+            )
+            logger.debug(
+                f"Phenotype Association Explanation: {association_type.phenotype_association_explanation}"
+            )
+            logger.debug(
+                f"Phenotype Association Quote: {association_type.phenotype_association_quote}"
+            )
     if association_type.functional_association:
         association_types.append("Functional")
         if debug:
-            logger.debug(f"Functional Association: {association_type.functional_association}")
-            logger.debug(f"Functional Association Explanation: {association_type.functional_association_explanation}")
-            logger.debug(f"Functional Association Quote: {association_type.functional_association_quote}")
-    logger.info(f"Variant: {association_type.variant.variant_id} has association types: {association_types}")
+            logger.debug(
+                f"Functional Association: {association_type.functional_association}"
+            )
+            logger.debug(
+                f"Functional Association Explanation: {association_type.functional_association_explanation}"
+            )
+            logger.debug(
+                f"Functional Association Quote: {association_type.functional_association_quote}"
+            )
+    logger.info(
+        f"Variant: {association_type.variant.variant_id} has association types: {association_types}"
+    )
     return association_types

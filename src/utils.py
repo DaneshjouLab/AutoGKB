@@ -6,6 +6,7 @@ from termcolor import colored
 from src.inference import Variant
 from src.article_parser import MarkdownParser
 
+
 def extractVariantsRegex(text):
     # Note, seems to extract a ton of variants, not just the ones that are being studied
     # Think it might only be applicable to rsIDs
@@ -22,10 +23,13 @@ def save_output(prompt, output, filename):
         f.write(output)
     logger.info(f"Saved output to {filename}.txt")
 
-def compare_lists(experimental_list: List[str], ground_truth_list: List[str], pmcid: str):
+
+def compare_lists(
+    experimental_list: List[str], ground_truth_list: List[str], pmcid: str
+):
     """
     Compare experimental list with ground truth list and calculate performance metrics.
-    
+
     Args:
     experimental_list (list): List of predicted/experimental values
     ground_truth_list (list): List of actual/ground truth values
@@ -37,40 +41,41 @@ def compare_lists(experimental_list: List[str], ground_truth_list: List[str], pm
     # Convert lists to sets for efficient comparison
     experimental_set = set(experimental_list)
     ground_truth_set = set(ground_truth_list)
-    
+
     # Calculate performance metrics
     true_positives = len(experimental_set.intersection(ground_truth_set))
     false_positives = len(experimental_set - ground_truth_set)
     false_negatives = len(ground_truth_set - experimental_set)
     true_negatives = 0  # Not applicable in this context
-    
+
     # Color-code the lists
     colored_experimental = []
     colored_ground_truth = []
-    
+
     # Color experimental list
     for item in experimental_list:
         if item in ground_truth_set:
-            colored_experimental.append(colored(item, 'green'))
+            colored_experimental.append(colored(item, "green"))
         else:
-            colored_experimental.append(colored(item, 'red'))
-    
+            colored_experimental.append(colored(item, "red"))
+
     # Color ground truth list
     for item in ground_truth_list:
         if item in experimental_set:
-            colored_ground_truth.append(colored(item, 'green'))
+            colored_ground_truth.append(colored(item, "green"))
         else:
-            colored_ground_truth.append(colored(item, 'red'))
-    
+            colored_ground_truth.append(colored(item, "red"))
+
     # Print colored lists
     print(f"================= {pmcid} =================")
     print("Experimental List:")
-    print(' '.join(map(str, colored_experimental)))
+    print(" ".join(map(str, colored_experimental)))
     print("\nGround Truth List:")
-    print(' '.join(map(str, colored_ground_truth)))
-    
+    print(" ".join(map(str, colored_ground_truth)))
+
     # Return performance metrics
     return true_positives, true_negatives, false_positives, false_negatives
+
 
 def get_true_variants(pmcid):
     """

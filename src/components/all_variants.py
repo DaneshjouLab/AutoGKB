@@ -45,7 +45,7 @@ def extract_all_variants(
         article_text=article_text,
         key_question=VARIANT_LIST_KEY_QUESTION,
         output_queues=VARIANT_LIST_OUTPUT_QUEUES,
-        output_format_structure=VariantList
+        output_format_structure=VariantList,
     )
     prompt_generator = GeneratorPrompt(prompt_variables)
     hydrated_prompt = prompt_generator.hydrate_prompt()
@@ -56,20 +56,23 @@ def extract_all_variants(
     parsed_output = json.loads(output)
     if debug:
         logger.debug(f"Parsed output: {parsed_output}")
-    variant_list = [Variant(**variant_data) for variant_data in parsed_output["variant_list"]]
+    variant_list = [
+        Variant(**variant_data) for variant_data in parsed_output["variant_list"]
+    ]
     logger.info(f"Found {len(variant_list)} variants")
     return variant_list
 
-def main(pmcid: str, model: str = "gpt-4o", temperature: float = 0.1, output: str = None):
+
+def main(
+    pmcid: str, model: str = "gpt-4o", temperature: float = 0.1, output: str = None
+):
     """Main function to demonstrate variant extraction functionality."""
     try:
         # Extract variants
         variants = extract_all_variants(
-            pmcid=pmcid,
-            model=model,
-            temperature=temperature
+            pmcid=pmcid, model=model, temperature=temperature
         )
-        
+
         # Print results
         print(f"Found {len(variants)} variants:")
         for i, variant in enumerate(variants, 1):
@@ -78,13 +81,13 @@ def main(pmcid: str, model: str = "gpt-4o", temperature: float = 0.1, output: st
             print(f"   Allele: {variant.allele}")
             print(f"   Evidence: {variant.evidence}")
             print()
-        
+
         # Save to file if output path specified
         if output:
-            with open(output, 'w') as f:
+            with open(output, "w") as f:
                 json.dump({"variants": variants}, f, indent=2)
             print(f"Results saved to {output}")
-            
+
     except Exception as e:
         logger.error(f"Error extracting variants: {e}")
         raise

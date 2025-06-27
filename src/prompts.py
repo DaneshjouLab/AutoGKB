@@ -38,7 +38,9 @@ class PromptVariables(BaseModel):
     key_question: str
     output_queues: Optional[str] = None
     system_prompt: Optional[str] = None
-    output_format_structure: Optional[Union[Type[BaseModel], List[Type[BaseModel]]]] = None
+    output_format_structure: Optional[Union[Type[BaseModel], List[Type[BaseModel]]]] = (
+        None
+    )
 
 
 class HydratedPrompt(BaseModel):
@@ -58,14 +60,22 @@ class GeneratorPrompt:
         """Hydrate the prompt."""
         return HydratedPrompt(
             system_prompt=self.prompt_variables.system_prompt,
-            input_prompt=self.prompt_template.format(**self.prompt_variables.model_dump()),
+            input_prompt=self.prompt_template.format(
+                **self.prompt_variables.model_dump()
+            ),
             output_format_structure=self.prompt_variables.output_format_structure,
         )
 
-class ParserPrompt():
+
+class ParserPrompt:
     """Parser prompt generator."""
 
-    def __init__(self, input_prompt: str, output_format_structure: Type[BaseModel], system_prompt: str = None):
+    def __init__(
+        self,
+        input_prompt: str,
+        output_format_structure: Type[BaseModel],
+        system_prompt: str = None,
+    ):
         self.input_prompt = input_prompt
         self.output_format_structure = output_format_structure
         self.system_prompt = system_prompt
