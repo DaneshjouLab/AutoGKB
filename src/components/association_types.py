@@ -7,6 +7,8 @@ from typing import List
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
 from pydantic import BaseModel
+from src.utils import get_article_text
+from loguru import logger
 
 class AssociationType(BaseModel):
     """
@@ -67,18 +69,61 @@ Variant Functional Association: (Y/N)
 Explanation: (Reason)
 """
 
-def determine_association_type(variant: Variant, article_text: str) -> AssociationType:
+def determine_association_type(variant: Variant, article_text: str = None, pmcid: str = None) -> AssociationType:
+    article_text = get_article_text(pmcid=pmcid, article_text=article_text)
     prompt_variables = PromptVariables(
         article_text=article_text,
-        key_question=KEY_QUESTION,
+        key_question=KEY_QUESTION.format(variant_id=variant.variant_id),
         output_queues=OUTPUT_QUEUES,
         output_format_structure=AssociationType,
     )
+    logger.info(f"Determining association type for variant {variant.variant_id}")
     prompt_generator = GeneratorPrompt(prompt_variables)
     generator_prompt = prompt_generator.hydrate_prompt()
+    
+    # Step 1: Generate the analysis
     generator = Generator(model="gpt-4o-mini", temperature=0.1)
     response = generator.prompted_generate(generator_prompt)
+    
+    # Step 2: Parse the response into structured format
     parser = Parser(model="gpt-4o-mini", temperature=0.1)
-    parser_prompt = ParserPrompt(input_prompt=response, output_format_structure=AssociationType, system_prompt=generator_prompt.system_prompt)
+    parser_prompt = ParserPrompt(
+        input_prompt=response, 
+        output_format_structure=AssociationType, 
+        system_prompt=generator_prompt.system_prompt
+    )
     parsed_response = parser.prompted_generate(parser_prompt)
-    return parsed_response
+    
+    # Parse the string response into an AssociationType object
+    try:
+        import json
+        parsed_dict = json.loads(parsed_response)
+        # Add the variant to the parsed data
+        parsed_dict['variant'] = variant
+        return AssociationType(**parsed_dict)
+    except (json.JSONDecodeError, TypeError) as e:
+        logger.error(f"Failed to parse response for variant {variant.variant_id}: {e}")
+        return None
+
+def list_association_types(association_type: AssociationType, debug: bool = False) -> List[str]:
+    association_types = []
+    logger.info(f"Variant: {association_type.variant.variant_id}")
+    if association_type.drug_association:
+        association_types.append("Drug")
+        if debug:
+            logger.debug(f"Drug Association: {association_type.drug_association}")
+            logger.debug(f"Drug Association Explanation: {association_type.drug_association_explanation}")
+            logger.debug(f"Drug Association Quote: {association_type.drug_association_quote}")
+    if association_type.phenotype_association:
+        association_types.append("Phenotype")
+        if debug:
+            logger.debug(f"Phenotype Association: {association_type.phenotype_association}")
+            logger.debug(f"Phenotype Association Explanation: {association_type.phenotype_association_explanation}")
+            logger.debug(f"Phenotype Association Quote: {association_type.phenotype_association_quote}")
+    if association_type.functional_association:
+        association_types.append("Functional")
+        if debug:
+            logger.debug(f"Functional Association: {association_type.functional_association}")
+            logger.debug(f"Functional Association Explanation: {association_type.functional_association_explanation}")
+            logger.debug(f"Functional Association Quote: {association_type.functional_association_quote}")
+    return association_types

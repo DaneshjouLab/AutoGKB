@@ -4,6 +4,7 @@ import json
 from typing import List
 from termcolor import colored
 from src.inference import Variant
+from src.article_parser import MarkdownParser
 
 def extractVariantsRegex(text):
     # Note, seems to extract a ton of variants, not just the ones that are being studied
@@ -77,3 +78,20 @@ def get_true_variants(pmcid):
     """
     true_variant_list = json.load(open("data/benchmark/true_variant_list.json"))
     return true_variant_list[pmcid]
+
+
+def get_article_text(pmcid: str = None, article_text: str = None):
+    """
+    Get the article text for a given PMCID or return the article text if it is already provided.
+    """
+    if article_text is None and pmcid is None:
+        logger.error("Either article_text or pmcid must be provided.")
+        raise ValueError("Either article_text or pmcid must be provided.")
+
+    if article_text is not None and pmcid is not None:
+        logger.warning("Both article_text and PMCID are provided. Using article_text.")
+
+    if article_text is None:
+        article_text = MarkdownParser(pmcid=pmcid).get_article_text()
+
+    return article_text

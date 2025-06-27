@@ -1,6 +1,6 @@
 from src.inference import Variant, VariantList, Generator
 from src.prompts import GeneratorPrompt, PromptVariables
-from src.article_parser import MarkdownParser
+from src.utils import get_article_text
 from loguru import logger
 import json
 from typing import List
@@ -34,15 +34,7 @@ def extract_all_variants(
     Returns:
         A list of variants.
     """
-    if article_text is None and pmcid is None:
-        logger.error("Either article_text or pmcid must be provided.")
-        raise ValueError("Either article_text or pmcid must be provided.")
-
-    if article_text is not None and pmcid is not None:
-        logger.warning("Both article_text and PMCID are provided. Using article_text.")
-
-    if article_text is None:
-        article_text = MarkdownParser(pmcid=pmcid).get_article_text()
+    article_text = get_article_text(pmcid=pmcid, article_text=article_text)
 
     if debug:
         logger.debug(f"Model: {model}, Temperature: {temperature}")
