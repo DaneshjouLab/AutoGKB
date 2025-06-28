@@ -95,7 +95,9 @@ Explanation: (Reason)
 
 
 def get_association_types(
-    variants: List[Variant], article_text: Optional[str] = None, pmcid: Optional[str] = None
+    variants: List[Variant],
+    article_text: Optional[str] = None,
+    pmcid: Optional[str] = None,
 ) -> Optional[List[AssociationType]]:
     article_text = get_article_text(pmcid=pmcid, article_text=article_text)
     variant_id_list = [variant.variant_id for variant in variants]

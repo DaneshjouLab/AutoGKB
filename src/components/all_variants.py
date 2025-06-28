@@ -65,7 +65,10 @@ def extract_all_variants(
 
 
 def main(
-    pmcid: str, model: str = "gpt-4o", temperature: float = 0.1, output: Optional[str] = None
+    pmcid: str,
+    model: str = "gpt-4o",
+    temperature: float = 0.1,
+    output: Optional[str] = None,
 ):
     """Main function to demonstrate variant extraction functionality."""
     try:

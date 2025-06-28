@@ -84,22 +84,26 @@ def get_true_variants(pmcid: str) -> List[str]:
     Uses module-level caching to load the JSON file only once.
     """
     global _true_variant_cache
-    
+
     if _true_variant_cache is None:
         try:
             with open("data/benchmark/true_variant_list.json", "r") as f:
                 _true_variant_cache = json.load(f)
         except FileNotFoundError:
-            logger.error("True variant list file not found: data/benchmark/true_variant_list.json")
+            logger.error(
+                "True variant list file not found: data/benchmark/true_variant_list.json"
+            )
             _true_variant_cache = {}
         except json.JSONDecodeError as e:
             logger.error(f"Error parsing true variant list JSON: {e}")
             _true_variant_cache = {}
-    
+
     return _true_variant_cache.get(pmcid, []) if _true_variant_cache else []
 
 
-def get_article_text(pmcid: Optional[str] = None, article_text: Optional[str] = None) -> str:
+def get_article_text(
+    pmcid: Optional[str] = None, article_text: Optional[str] = None
+) -> str:
     """
     Get the article text for a given PMCID or return the article text if it is already provided.
     """
