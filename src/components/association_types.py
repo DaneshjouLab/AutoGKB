@@ -3,7 +3,7 @@ Given a list of variants and the article text, determine the type of association
 """
 
 from src.variants import Variant
-from typing import List
+from typing import List, Optional
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
 from pydantic import BaseModel
@@ -95,8 +95,8 @@ Explanation: (Reason)
 
 
 def get_association_types(
-    variants: List[Variant], article_text: str = None, pmcid: str = None
-) -> List[AssociationType]:
+    variants: List[Variant], article_text: Optional[str] = None, pmcid: Optional[str] = None
+) -> Optional[List[AssociationType]]:
     article_text = get_article_text(pmcid=pmcid, article_text=article_text)
     variant_id_list = [variant.variant_id for variant in variants]
     prompt_variables = PromptVariables(
@@ -120,7 +120,7 @@ def get_association_types(
         output_format_structure=AssociationTypeList,
         system_prompt=generator_prompt.system_prompt,
     )
-    parsed_response = parser.prompted_generate(parser_prompt)
+    parsed_response = parser.prompted_generate(parser_prompt.hydrate_prompt())
 
     # Parse the string response into AssociationType objects
     try:

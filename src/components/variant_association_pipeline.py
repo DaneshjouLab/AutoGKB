@@ -30,7 +30,7 @@ class VariantAssociationPipeline:
         self.temperature = temperature
 
     def process_article(
-        self, article_text: str = None, pmcid: str = None
+        self, article_text: Optional[str] = None, pmcid: Optional[str] = None
     ) -> Dict[str, List[Variant]]:
         """
         Process an article to extract variants and determine their association types.
@@ -145,8 +145,8 @@ class VariantAssociationPipeline:
 
 
 def run_variant_association_pipeline(
-    article_text: str = None,
-    pmcid: str = None,
+    article_text: Optional[str] = None,
+    pmcid: Optional[str] = None,
     model: str = "gpt-4o-mini",
     temperature: float = 0.1,
 ) -> Dict[str, List[Variant]]:

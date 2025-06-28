@@ -4,7 +4,7 @@ from src.prompts import GeneratorPrompt, PromptVariables
 from src.utils import get_article_text
 from loguru import logger
 import json
-from typing import List
+from typing import List, Optional
 from src.config import DEBUG
 
 VARIANT_LIST_KEY_QUESTION = """From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.). Include information on the gene group and allele (if present).
@@ -22,8 +22,8 @@ IMPORTANT: You MUST include the evidence field for every variant. Do not leave i
 
 
 def extract_all_variants(
-    article_text: str = None,
-    pmcid: str = None,
+    article_text: Optional[str] = None,
+    pmcid: Optional[str] = None,
     model: str = "gpt-4o",
     temperature: float = 0.1,
 ) -> List[Variant]:
@@ -41,7 +41,7 @@ def extract_all_variants(
         logger.debug(f"Model: {model}, Temperature: {temperature}")
         logger.debug(f"PMCID: {pmcid}")
 
-    model = Generator(model=model, temperature=temperature)
+    generator = Generator(model=model, temperature=temperature)
     prompt_variables = PromptVariables(
         article_text=article_text,
         key_question=VARIANT_LIST_KEY_QUESTION,
@@ -51,7 +51,7 @@ def extract_all_variants(
     prompt_generator = GeneratorPrompt(prompt_variables)
     hydrated_prompt = prompt_generator.hydrate_prompt()
     logger.info(f"Extracting all variants")
-    output = model.prompted_generate(hydrated_prompt)
+    output = generator.prompted_generate(hydrated_prompt)
     if DEBUG:
         logger.debug(f"Raw LLM output: {output}")
     parsed_output = json.loads(output)
@@ -65,7 +65,7 @@ def extract_all_variants(
 
 
 def main(
-    pmcid: str, model: str = "gpt-4o", temperature: float = 0.1, output: str = None
+    pmcid: str, model: str = "gpt-4o", temperature: float = 0.1, output: Optional[str] = None
 ):
     """Main function to demonstrate variant extraction functionality."""
     try:

@@ -74,7 +74,7 @@ class ParserPrompt:
         self,
         input_prompt: str,
         output_format_structure: Type[BaseModel],
-        system_prompt: str = None,
+        system_prompt: Optional[str] = None,
     ):
         self.input_prompt = input_prompt
         self.output_format_structure = output_format_structure

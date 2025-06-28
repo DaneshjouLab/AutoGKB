@@ -1,6 +1,6 @@
 from loguru import logger
 import litellm
-from typing import List
+from typing import List, Optional
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from abc import ABC, abstractmethod
@@ -17,7 +17,7 @@ class LLMInterface(ABC):
         self.temperature = temperature
 
     def prompted_generate(
-        self, hydrated_prompt: HydratedPrompt, temperature: float = None
+        self, hydrated_prompt: HydratedPrompt, temperature: Optional[float] = None
     ) -> str:
         temp = temperature if temperature is not None else self.temperature
         return self.generate(
@@ -31,9 +31,9 @@ class LLMInterface(ABC):
     def generate(
         self,
         prompt: str,
-        system_prompt: str = None,
-        temperature: float = None,
-        response_format: BaseModel = None,
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        response_format: Optional[BaseModel] = None,
     ) -> str:
         """Generate a response from the LLM."""
         pass
@@ -52,9 +52,9 @@ class Generator(LLMInterface):
     def generate(
         self,
         prompt: str,
-        system_prompt: str = None,
-        temperature: float = None,
-        response_format: BaseModel = None,
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        response_format: Optional[BaseModel] = None,
     ) -> str:
         temp = temperature if temperature is not None else self.temperature
         # Check if system prompt is provided
@@ -91,9 +91,9 @@ class Parser(LLMInterface):
     def generate(
         self,
         prompt: str,
-        system_prompt: str = None,
-        temperature: float = None,
-        response_format: BaseModel = None,
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        response_format: Optional[BaseModel] = None,
     ) -> str:
         temp = temperature if temperature is not None else self.temperature
         # Check if system prompt is provided
