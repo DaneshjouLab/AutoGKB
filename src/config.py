@@ -18,13 +18,13 @@ if DEBUG:
 def set_debug(debug: bool) -> NoReturn:
     """
     Set the debug mode globally.
-    
+
     Args:
         debug: Boolean flag to enable/disable debug mode
     """
     global DEBUG
     DEBUG = debug
-    
+
     if DEBUG:
         logger.debug("Debug mode enabled")
     else:
@@ -34,19 +34,14 @@ def set_debug(debug: bool) -> NoReturn:
 def save_logs(save: bool = False) -> NoReturn:
     """
     Configure logging to save logs to a file.
-    
+
     Args:
         save: Boolean flag to enable/disable log file saving (default: False)
     """
     if save:
         # Remove default console handler and add file handler
         logger.remove()
-        logger.add(
-            "autogkb.log",
-            rotation="10 MB",
-            retention="7 days",
-            level="DEBUG"
-        )
+        logger.add("autogkb.log", rotation="10 MB", retention="7 days", level="DEBUG")
         logger.info("Logs will be saved to autogkb.log")
     else:
         # Remove all handlers and add back console handler

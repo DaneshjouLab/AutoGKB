@@ -11,6 +11,7 @@ from src.utils import get_article_text
 from loguru import logger
 from src.config import DEBUG
 
+
 class AssociationType(BaseModel):
     """
     Variant Association Type
@@ -143,9 +144,7 @@ def get_association_types(
         return None
 
 
-def list_association_types(
-    association_type: AssociationType
-) -> List[str]:
+def list_association_types(association_type: AssociationType) -> List[str]:
     association_types = []
     if association_type.drug_association:
         association_types.append("Drug")
