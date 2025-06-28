@@ -1,0 +1,10 @@
+You are an expert pharmacogenomics researcher reading and extracting annotations from the following article
+
+\n\n{article_text}\n\n
+
+From this article, extract a list of all variants described in the paper along with their gene group and allele (if present). 
+For each variant, output the following:
+Variant: The Variant / Haplotypes (ex. rs2909451, CYP2C19*1, CYP2C19*2, *1/*18, etc.)
+Gene: The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11, etc.)
+Allele: Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del, etc.)
+Sentence: The sentence from the article that contains the mention of the variant. This should be a quote from the article, not something you inferred.

@@ -36,3 +36,7 @@ data/markdown
 
 .DS_Store
 
+*.log
+
+benchmark_results/
+test_outputs/

@@ -1,0 +1,167 @@
+You are an expert pharmacogenomics researcher reading and extracting annotations from the following article
+
+\n\n{article_text}\n\n
+
+From this article:
+- Briefly summarize the methods and results of the study
+- Create a list of extract all variants that have a studied described effect on drug response.
+Make sure for each variant <-> drug relationship in the list
+1. The (variant, drug(s)) pair
+2. The Variant / Haplotypes (ex. rs2909451, CYP2C19*1, CYP2C19*2, *1/*18 )
+3. The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11)
+4. Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del)
+5. Describe the drug(s) in this relationship
+6. Describe the outcome/affect found from the variant (drug efficacy, metabolism, toxicity, dosage, etc.)
+7. Describe the statistical analysis used and the reported p-values
+8. Describe the population of the study participants for this variant
+9. Describe any other useful information included on this variant to understanding the study results.
+
+
+Term: Variant/Haplotypes
+- Content: The specific genetic variant mentioned in the study
+- Manual Process: Look for SNP IDs (rs numbers), star alleles (CYP2D6*4), or genotype combinations
+- Example: rs2909451, CYP2C19*1, CYP2C19*2, *1/*18
+
+Term: Gene
+- Content: Gene symbol associated with the variant
+- Manual Process: Find the gene name near the variant mention, use standard HUGO symbols
+- Example: DPP4, CYP2C19, KCNJ11
+
+Term: Drug(s)
+- Content: Generic drug name(s) studied
+- Manual Process: Extract drug names from methods/results, use generic names, separate multiple drugs with commas
+- Example: sitagliptin, clopidogrel, aspirin
+
+Term: Phenotype Category
+- Content: Type of clinical outcome studied
+- Manual Process: Categorize based on what was measured:
+    - Efficacy: Treatment response, clinical improvement
+    - Metabolism/PK: Drug levels, clearance, half-life
+    - Toxicity: Adverse events, side effects
+    - Dosage: Dose requirements, dose adjustments
+    - Other: Everything else
+- Example: Efficacy (for HbA1c improvement study)
+
+Term: Significance
+- Content: Whether the association was statistically significant
+- Manual Process: Look for p-values, confidence intervals:
+    - yes: p < 0.05 or explicitly stated as significant
+    - no: p ≥ 0.05 or stated as non-significant
+    - not stated: No statistical testing mentioned
+- Example: yes (P < .001 in sitagliptin study)
+
+Term: Notes
+- Content: Key study details, methodology, or important context
+- Manual Process: Extract relevant quotes showing statistical results, study design, or important caveats
+- Example: "Patients with the rs2909451 TT genotype in the study group exhibited a median HbA1c improvement of 0.57..."
+
+Term: Standardized Sentence
+
+- Content: Standardized description of the genetic association
+- Manual Process: Write in format: "[Genotype/Allele] is [associated with/not associated with] [increased/decreased]
+[outcome] [drug context] [population context]"
+- Example: "Genotype TT is associated with decreased response to sitagliptin in people with Diabetes Mellitus, Type 2."
+
+Term: Alleles
+
+- Content: Specific allele or genotype if different from Variant/Haplotypes field
+- Manual Process: Extract the exact genotype mentioned (AA, TT, CC, del/del, etc.)
+- Example: TT, *1/*18, del/del
+
+Term: Metabolizer types
+
+- Content: CYP enzyme phenotype categories
+- Manual Process: Look for metabolizer classifications in CYP studies:
+    - poor metabolizer, intermediate metabolizer, extensive metabolizer, ultrarapid metabolizer
+- Example: intermediate metabolizer
+
+Term: Comparison Allele(s) or Genotype(s)
+
+- Content: Reference genotype used for comparison
+- Manual Process: Find what the study variant was compared against
+- Example: *1/*1, C (for wild-type comparisons)
+
+Term: Comparison Metabolizer types
+
+- Content: Reference metabolizer status for comparison
+- Manual Process: Extract the comparison metabolizer phenotype
+- Example: normal metabolizer
+
+Term: Specialty Population
+
+- Content: Age-specific populations
+- Manual Process: Check if study specifically focused on:
+    - Pediatric: Children/adolescents
+    - Geriatric: Elderly patients
+    - Leave empty for general adult populations
+
+Term: Population types
+- Content: Descriptor of study population
+- Manual Process: Look for population descriptors, usually "in people with" or ethnicity information
+- Example: in people with
+
+Term: Population Phenotypes or diseases
+- Content: Disease/condition context with standardized prefix
+- Manual Process: Find the medical condition studied, add appropriate prefix:
+    - Disease: for established diseases
+    - Other: for conditions/traits
+    - Side Effect: for adverse events
+- Example: Other:Diabetes Mellitus, Type 2
+
+Term: isPlural
+- Content: Grammar helper for sentence construction
+- Manual Process: Use Is for singular subjects, Are for plural
+- Example: Is
+
+Term: Is/Is Not associated
+- Content: Direction of association
+- Manual Process: Determine if association was:
+    - Associated with: Positive association found
+    - Not associated with: No association found
+- Example: Associated with
+
+Term: Direction of effect
+
+- Content: Whether the effect increases or decreases the outcome
+- Manual Process: Look for directional language:
+    - increased: Higher levels, better response, more effect
+    - decreased: Lower levels, worse response, less effect
+    - Leave empty if no clear direction
+- Example: decreased
+
+Term: PD/PK terms
+
+- Content: Pharmacological outcome descriptor
+- Manual Process: Extract the specific outcome measured:
+    - response to, concentrations of, metabolism of, clearance of, dose of
+- Example: response to
+
+Term: Multiple drugs And/or
+
+- Content: Logical connector for multiple drugs
+- Manual Process: If multiple drugs mentioned:
+    - and: All drugs together
+    - or: Any of the drugs
+    - Leave empty for single drug
+
+Term: Multiple phenotypes or diseases And/or
+
+- Content: Logical connector for multiple conditions
+- Manual Process: Similar to drugs, use and/or for multiple conditions
+- Leave empty for single condition
+
+General recommended strategies
+
+1. Scan for genetic variants: Look for "rs" numbers, gene names with asterisks, or phrases like "genotype," "allele,"
+"polymorphism"
+2. Identify drug context: Find drug names in methods, results, or discussion sections
+3. Locate outcome measures: Look for clinical endpoints, lab values, response rates, adverse events
+4. Find statistical associations: Search for p-values, odds ratios, significant differences between genotype groups
+5. Extract population details: Note the study population, disease context, and inclusion criteria
+6. Standardize the relationship: Convert the finding into the standardized sentence format following the association pattern
+
+For each term, the output should be of the format:
+
+Extracted Output: (output)
+Reason: (one sentence justification)
+Quote: (quote from the article that demonstrates why)

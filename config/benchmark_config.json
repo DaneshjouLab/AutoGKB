@@ -1,0 +1,51 @@
+{
+  "data_dir": "data",
+  "articles_dir": "data/articles", 
+  "benchmark_dir": "data/benchmark",
+  "output_dir": "benchmark_results",
+  
+  "model_name": "claude-3-sonnet-20240229",
+  "model_params": {},
+  "max_tokens": 4000,
+  "temperature": 0.0,
+  
+  "batch_size": 10,
+  "max_articles": null,
+  "random_seed": 42,
+  
+  "exact_match_fields": [
+    "gene",
+    "drugs", 
+    "significance",
+    "direction_of_effect",
+    "phenotype_category",
+    "specialty_population"
+  ],
+  
+  "fuzzy_match_fields": [
+    "variant_haplotypes",
+    "alleles",
+    "population_phenotypes_or_diseases"
+  ],
+  
+  "semantic_match_fields": [
+    "sentence",
+    "notes"
+  ],
+  
+  "field_weights": {
+    "gene": 1.0,
+    "drugs": 1.0,
+    "variant_haplotypes": 0.8,
+    "significance": 1.2,
+    "direction_of_effect": 1.2,
+    "phenotype_category": 1.0,
+    "sentence": 0.8,
+    "alleles": 0.8,
+    "specialty_population": 0.6,
+    "population_phenotypes_or_diseases": 0.6
+  },
+  
+  "save_predictions": true,
+  "save_detailed_results": true
+}
