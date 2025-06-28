@@ -44,3 +44,8 @@ We manage a few repos externally:
 ## System Overview
 ![Annotations Diagram](assets/annotations_diagram.svg)
 
+## Downloading the data
+```
+pixi run gdown —-id 1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9
+unzip autogkb-data.zip
+```
