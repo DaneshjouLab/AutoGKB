@@ -17,6 +17,10 @@ from loguru import logger
 from src.components.all_variants import extract_all_variants
 from src.components.association_types import get_association_types, AssociationType
 from src.components.drug_annotation_extraction import extract_drug_annotations
+from src.components.phenotype_annotation_extraction import extract_phenotype_annotations
+from src.components.functional_annotation_extraction import (
+    extract_functional_annotations,
+)
 from src.utils import get_article_text
 from src.variants import Variant
 
@@ -60,6 +64,8 @@ class VariantAssociationPipeline:
                 "phenotype_associations": [],
                 "functional_associations": [],
                 "drug_annotations": [],
+                "phenotype_annotations": [],
+                "functional_annotations": [],
             }
 
         # Step 2: Determine association types for all variants
@@ -73,6 +79,8 @@ class VariantAssociationPipeline:
                 "phenotype_associations": [],
                 "functional_associations": [],
                 "drug_annotations": [],
+                "phenotype_annotations": [],
+                "functional_annotations": [],
             }
 
         # Step 3: Categorize variants by association type
@@ -80,20 +88,45 @@ class VariantAssociationPipeline:
         result = self._categorize_variants(variants, association_types_result)
 
         drug_annotations = []
+        phenotype_annotations = []
+        functional_annotations = []
+
         if result["drug_associations"]:
-            logger.info("Step 4: Extracting detailed drug annotations")
+            logger.info("Step 4a: Extracting detailed drug annotations")
             drug_annotations = extract_drug_annotations(
                 result["drug_associations"], article_text, pmcid
             )
             logger.info(f"Extracted {len(drug_annotations)} detailed drug annotations")
 
+        if result["phenotype_associations"]:
+            logger.info("Step 4b: Extracting detailed phenotype annotations")
+            phenotype_annotations = extract_phenotype_annotations(
+                result["phenotype_associations"], article_text, pmcid
+            )
+            logger.info(
+                f"Extracted {len(phenotype_annotations)} detailed phenotype annotations"
+            )
+
+        if result["functional_associations"]:
+            logger.info("Step 4c: Extracting detailed functional annotations")
+            functional_annotations = extract_functional_annotations(
+                result["functional_associations"], article_text, pmcid
+            )
+            logger.info(
+                f"Extracted {len(functional_annotations)} detailed functional annotations"
+            )
+
         result["drug_annotations"] = drug_annotations
+        result["phenotype_annotations"] = phenotype_annotations
+        result["functional_annotations"] = functional_annotations
 
         logger.info(
             f"Final categorization: {len(result['drug_associations'])} drug, "
             f"{len(result['phenotype_associations'])} phenotype, "
             f"{len(result['functional_associations'])} functional associations, "
-            f"{len(result['drug_annotations'])} detailed drug annotations"
+            f"{len(result['drug_annotations'])} detailed drug annotations, "
+            f"{len(result['phenotype_annotations'])} detailed phenotype annotations, "
+            f"{len(result['functional_annotations'])} detailed functional annotations"
         )
 
         return result
