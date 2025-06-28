@@ -5,7 +5,7 @@ Simple test to verify the new annotation components can be imported and instanti
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def test_imports():
     """Test that all new components can be imported successfully."""
