@@ -9,7 +9,7 @@ from src.inference import Generator, Parser
 from pydantic import BaseModel
 from src.utils import get_article_text
 from loguru import logger
-
+from src.config import DEBUG
 
 class AssociationType(BaseModel):
     """
@@ -144,12 +144,12 @@ def get_association_types(
 
 
 def list_association_types(
-    association_type: AssociationType, debug: bool = False
+    association_type: AssociationType
 ) -> List[str]:
     association_types = []
     if association_type.drug_association:
         association_types.append("Drug")
-        if debug:
+        if DEBUG:
             logger.debug(f"Drug Association: {association_type.drug_association}")
             logger.debug(
                 f"Drug Association Explanation: {association_type.drug_association_explanation}"
@@ -159,7 +159,7 @@ def list_association_types(
             )
     if association_type.phenotype_association:
         association_types.append("Phenotype")
-        if debug:
+        if DEBUG:
             logger.debug(
                 f"Phenotype Association: {association_type.phenotype_association}"
             )
@@ -171,7 +171,7 @@ def list_association_types(
             )
     if association_type.functional_association:
         association_types.append("Functional")
-        if debug:
+        if DEBUG:
             logger.debug(
                 f"Functional Association: {association_type.functional_association}"
             )

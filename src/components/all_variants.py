@@ -5,6 +5,7 @@ from src.utils import get_article_text
 from loguru import logger
 import json
 from typing import List
+from src.config import DEBUG
 
 VARIANT_LIST_KEY_QUESTION = """From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.). Include information on the gene group and allele (if present).
 Make sure they variant has a studied association (likely discussed in the methodology or results section), not simply mentioned as background information.
@@ -25,7 +26,6 @@ def extract_all_variants(
     pmcid: str = None,
     model: str = "gpt-4o",
     temperature: float = 0.1,
-    debug: bool = False,
 ) -> List[Variant]:
     """Extract a list of variants from an article.
     Args:
@@ -37,7 +37,7 @@ def extract_all_variants(
     """
     article_text = get_article_text(pmcid=pmcid, article_text=article_text)
 
-    if debug:
+    if DEBUG:
         logger.debug(f"Model: {model}, Temperature: {temperature}")
         logger.debug(f"PMCID: {pmcid}")
 
@@ -52,10 +52,10 @@ def extract_all_variants(
     hydrated_prompt = prompt_generator.hydrate_prompt()
     logger.info(f"Extracting all variants")
     output = model.prompted_generate(hydrated_prompt)
-    if debug:
+    if DEBUG:
         logger.debug(f"Raw LLM output: {output}")
     parsed_output = json.loads(output)
-    if debug:
+    if DEBUG:
         logger.debug(f"Parsed output: {parsed_output}")
     variant_list = [
         Variant(**variant_data) for variant_data in parsed_output["variant_list"]

@@ -19,6 +19,7 @@ from src.components.association_types import get_association_types, AssociationT
 from src.utils import get_article_text
 from src.variants import Variant
 
+from src.config import DEBUG
 
 class VariantAssociationPipeline:
     """Pipeline to extract variants and determine their association types from an article."""
@@ -72,7 +73,7 @@ class VariantAssociationPipeline:
         
         # Step 3: Categorize variants by association type
         logger.info("Step 3: Categorizing variants by association type")
-        result = self._categorize_variants(variants, association_types_result.association_types)
+        result = self._categorize_variants(variants, association_types_result)
         
         logger.info(f"Final categorization: {len(result['drug_associations'])} drug, "
                    f"{len(result['phenotype_associations'])} phenotype, "
@@ -114,15 +115,18 @@ class VariantAssociationPipeline:
             # Categorize based on association types
             if association.drug_association:
                 drug_associations.append(variant)
-                logger.debug(f"Variant {variant.variant_id} has drug association: {association.drug_association_explanation}")
+                if DEBUG:
+                    logger.debug(f"Variant {variant.variant_id} has drug association: {association.drug_association_explanation}")
             
             if association.phenotype_association:
                 phenotype_associations.append(variant)
-                logger.debug(f"Variant {variant.variant_id} has phenotype association: {association.phenotype_association_explanation}")
+                if DEBUG:
+                    logger.debug(f"Variant {variant.variant_id} has phenotype association: {association.phenotype_association_explanation}")
             
             if association.functional_association:
                 functional_associations.append(variant)
-                logger.debug(f"Variant {variant.variant_id} has functional association: {association.functional_association_explanation}")
+                if DEBUG:
+                    logger.debug(f"Variant {variant.variant_id} has functional association: {association.functional_association_explanation}")
         
         return {
             "drug_associations": drug_associations,
