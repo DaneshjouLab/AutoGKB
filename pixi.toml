@@ -15,6 +15,7 @@ version = "0.1.0"
 download-variants = "python -m src.load_variants.load_clinical_variants"
 update-download-map = "python -c 'from src.fetch_articles.article_downloader import update_downloaded_pmcids; update_downloaded_pmcids()'"
 download-articles = "python -m src.fetch_articles.article_downloader"
+download-data = "gdown --id 1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9 && unzip autogkb-data.zip"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"
