@@ -26,15 +26,15 @@ def test_drug_annotation_extraction():
         Variant(variant_id="HLA-B*15:02", gene="HLA-B", allele="*15:02", evidence="Significant association")
     ]
     
-    print("Testing drug annotation extraction...")
+    print("Testing drug annotation extraction (individual variant processing)...")
     print(f"Sample variants: {[v.variant_id for v in sample_variants]}")
     
     try:
         annotations = extract_drug_annotations(sample_variants, sample_article_text)
-        print(f"Successfully extracted {len(annotations)} drug annotations")
+        print(f"Successfully extracted {len(annotations)} drug annotations from {len(sample_variants)} variants")
         
         for i, annotation in enumerate(annotations):
-            print(f"\nAnnotation {i+1}:")
+            print(f"\nAnnotation {i+1} (processed individually):")
             print(f"  Variant: {annotation.variant_haplotypes}")
             print(f"  Gene: {annotation.gene}")
             print(f"  Drug: {annotation.drugs}")

@@ -4,6 +4,7 @@ Extract detailed drug annotation information for variants with drug associations
 
 from typing import List
 from loguru import logger
+from pydantic import BaseModel
 from src.variants import Variant, DrugAnnotation, DrugAnnotationList
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
@@ -120,6 +121,7 @@ def extract_drug_annotations(
 ) -> List[DrugAnnotation]:
     """
     Extract detailed drug annotation information for variants with drug associations.
+    Processes each variant individually for better control and cleaner extraction.
 
     Args:
         variants: List of variants that have drug associations
@@ -132,50 +134,74 @@ def extract_drug_annotations(
     article_text = get_article_text(pmcid=pmcid, article_text=article_text)
     variant_id_list = [variant.variant_id for variant in variants]
 
-    prompt_variables = PromptVariables(
-        article_text=article_text,
-        key_question=KEY_QUESTION.format(variants=variants),
-        output_queues=OUTPUT_QUEUES,
-        output_format_structure=DrugAnnotationList,
+    logger.info(
+        f"Extracting drug annotations for {len(variants)} variants individually: {variant_id_list}"
     )
 
-    logger.info(f"Extracting drug annotations for variants {variant_id_list}")
-    prompt_generator = GeneratorPrompt(prompt_variables)
-    generator_prompt = prompt_generator.hydrate_prompt()
+    all_annotations = []
 
-    generator = Generator(model="gpt-4o-mini", temperature=0.1)
-    response = generator.prompted_generate(generator_prompt)
+    for variant in variants:
+        logger.info(f"Processing variant: {variant.variant_id}")
 
-    parser = Parser(model="gpt-4o-mini", temperature=0.1)
-    parser_prompt = ParserPrompt(
-        input_prompt=response,
-        output_format_structure=DrugAnnotationList,
-        system_prompt=generator_prompt.system_prompt,
-    )
-    parsed_response = parser.prompted_generate(parser_prompt)
+        class SingleDrugAnnotation(BaseModel):
+            drug_annotation: DrugAnnotation
 
-    try:
-        parsed_data = json.loads(parsed_response)
+        prompt_variables = PromptVariables(
+            article_text=article_text,
+            key_question=KEY_QUESTION.format(variants=[variant]),
+            output_queues=OUTPUT_QUEUES,
+            output_format_structure=SingleDrugAnnotation,
+        )
 
-        if isinstance(parsed_data, dict) and "drug_annotations" in parsed_data:
-            annotation_data = parsed_data["drug_annotations"]
-        elif isinstance(parsed_data, list):
-            annotation_data = parsed_data
-        else:
-            annotation_data = [parsed_data]
+        prompt_generator = GeneratorPrompt(prompt_variables)
+        generator_prompt = prompt_generator.hydrate_prompt()
 
-        annotations = []
-        for item in annotation_data:
-            if "variant_annotation_id" not in item or not item["variant_annotation_id"]:
-                item["variant_annotation_id"] = int(
+        generator = Generator(model="gpt-4o-mini", temperature=0.1)
+        response = generator.prompted_generate(generator_prompt)
+
+        parser = Parser(model="gpt-4o-mini", temperature=0.1)
+        parser_prompt = ParserPrompt(
+            input_prompt=response,
+            output_format_structure=SingleDrugAnnotation,
+            system_prompt=generator_prompt.system_prompt,
+        )
+        parsed_response = parser.prompted_generate(parser_prompt)
+
+        try:
+            parsed_data = json.loads(parsed_response)
+
+            # Handle different response formats
+            if isinstance(parsed_data, dict) and "drug_annotation" in parsed_data:
+                annotation_data = parsed_data["drug_annotation"]
+            elif isinstance(parsed_data, dict):
+                annotation_data = parsed_data
+            else:
+                logger.warning(
+                    f"Unexpected response format for variant {variant.variant_id}: {parsed_data}"
+                )
+                continue
+
+            if (
+                "variant_annotation_id" not in annotation_data
+                or not annotation_data["variant_annotation_id"]
+            ):
+                annotation_data["variant_annotation_id"] = int(
                     str(int(time.time())) + str(random.randint(100000, 999999))
                 )
-            annotations.append(DrugAnnotation(**item))
 
-        return annotations
+            annotation = DrugAnnotation(**annotation_data)
+            all_annotations.append(annotation)
+            logger.info(
+                f"Successfully extracted annotation for variant {variant.variant_id}"
+            )
 
-    except (json.JSONDecodeError, TypeError) as e:
-        logger.error(
-            f"Failed to parse drug annotation response for variants {variants}: {e}"
-        )
-        return []
+        except (json.JSONDecodeError, TypeError, ValueError) as e:
+            logger.error(
+                f"Failed to parse drug annotation response for variant {variant.variant_id}: {e}"
+            )
+            continue
+
+    logger.info(
+        f"Successfully extracted {len(all_annotations)} drug annotations from {len(variants)} variants"
+    )
+    return all_annotations
