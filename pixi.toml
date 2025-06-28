@@ -15,7 +15,7 @@ version = "0.1.0"
 download-variants = "python -m src.load_variants.load_clinical_variants"
 update-download-map = "python -c 'from src.fetch_articles.article_downloader import update_downloaded_pmcids; update_downloaded_pmcids()'"
 download-articles = "python -m src.fetch_articles.article_downloader"
-download-data = "gdown --fuzzy https://drive.google.com/file/d/1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9/view && unzip autogkb-data.zip"
+download-data = "gdown --fuzzy https://drive.google.com/file/d/1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9/view && unzip autogkb-data.zip && rm autogkb-data.zip"
 setup-repo = "pixi install && pixi run download-data"
 
 [dependencies]
