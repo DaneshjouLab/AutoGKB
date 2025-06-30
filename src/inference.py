@@ -1,6 +1,6 @@
 from loguru import logger
 import litellm
-from typing import List, Optional
+from typing import List, Optional, Union
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from abc import ABC, abstractmethod
@@ -8,7 +8,14 @@ from src.prompts import HydratedPrompt
 
 load_dotenv()
 
+"""
+TODO:
+Refactor this. Things that change from inference to inference are
+- system prompt
+- whether or not previous_responses are taken
 
+Look into Archon fomratting for taking in previous responses
+"""
 class LLMInterface(ABC):
     """LLM Interface implemented by Generator and Parser classes"""
 
@@ -31,16 +38,38 @@ class LLMInterface(ABC):
             hydrated_prompt.output_format_structure,
         )
 
-    @abstractmethod
     def generate(
         self,
-        prompt: str,
+        input_prompt: str,
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
     ) -> str:
         """Generate a response from the LLM."""
-        pass
+        temp = temperature if temperature is not None else self.temperature
+        # Check if system prompt is provided
+        if system_prompt is not None and system_prompt != "":
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": input_prompt},
+            ]
+        else:
+            logger.warning("No system prompt provided. Using default value")
+            messages = [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": input_prompt},
+            ]
+        try:
+            response = litellm.completion(
+                model=self.model,
+                messages=messages,
+                response_format=response_format,
+                temperature=temp,
+            )
+        except Exception as e:
+            logger.error(f"Error generating response: {e}")
+            raise e
+        return response.choices[0].message.content
 
 
 class Generator(LLMInterface):
@@ -53,9 +82,9 @@ class Generator(LLMInterface):
         if self.debug_mode:
             litellm.set_verbose = True
 
-    def generate(
+    def _generate_single(
         self,
-        prompt: str,
+        input_prompt: str,
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
@@ -65,12 +94,13 @@ class Generator(LLMInterface):
         if system_prompt is not None and system_prompt != "":
             messages = [
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt},
+                {"role": "user", "content": input_prompt},
             ]
         else:
             messages = [
                 {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt}]
+                {"role": "user", "content": input_prompt},
+            ]
         try:
             response = litellm.completion(
                 model=self.model,
@@ -82,6 +112,27 @@ class Generator(LLMInterface):
             logger.error(f"Error generating response: {e}")
             raise e
         return response.choices[0].message.content
+
+    def generate(
+        self,
+        input_prompt: str,
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        response_format: Optional[BaseModel] = None,
+        samples: Optional[int] = 1,
+    ) -> Union[List[Union[str, BaseModel]], Union[str, BaseModel]]
+        responses = []
+        for n in samples:
+            responses += self._generate_single(
+                input_prompt=input_prompt,
+                system_prompt=system_prompt,
+                temperature=temperature,
+                response_format=response_format,
+            )
+        if len(responses) == 1:
+            return responses[0]
+
+        return responses
 
 
 class Parser(LLMInterface):
@@ -153,13 +204,11 @@ class Fuser(LLMInterface):
                 {"role": "user", "content": input_prompt},
             ]
         else:
-            logger.warning(
-                ""
-            )
+            logger.warning("")
             messages = [
                 {
                     "role": "system",
-                    "content": "You are a helpful assistant who fuses multiple answers",
+                    "content": "You are a helpful assistant who fuses multiple responses into a comprehensive final response",
                 },
                 {"role": "user", "content": input_prompt},
             ]

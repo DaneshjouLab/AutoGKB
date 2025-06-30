@@ -9,6 +9,7 @@ from src.config import DEBUG
 from pydantic import BaseModel
 import enum
 
+
 class AssocationType(enum.ENUM):
     DRUG = "Drug Association"
     PHENOTYPE = "Phenotype Association"
