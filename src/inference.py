@@ -19,6 +19,10 @@ class LLMInterface(ABC):
     def prompted_generate(
         self, hydrated_prompt: HydratedPrompt, temperature: Optional[float] = None
     ) -> str:
+        """
+        Added by default to all subclasses. Converts the general generate method into one
+        that accepts a HydratedPrompt.
+        """
         temp = temperature if temperature is not None else self.temperature
         return self.generate(
             hydrated_prompt.input_prompt,
@@ -64,7 +68,9 @@ class Generator(LLMInterface):
                 {"role": "user", "content": prompt},
             ]
         else:
-            messages = [{"role": "user", "content": prompt}]
+            messages = [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}]
         try:
             response = litellm.completion(
                 model=self.model,
@@ -103,15 +109,59 @@ class Parser(LLMInterface):
                 {"role": "user", "content": prompt},
             ]
         else:
+            messages = [
+                {
+                    "role": "system",
+                    "content": "You are a helpful assistant whose job is to parse the response into a structured output.",
+                },
+                {"role": "user", "content": prompt},
+            ]
+        try:
+            response = litellm.completion(
+                model=self.model,
+                messages=messages,
+                response_format=response_format,
+                temperature=temp,
+            )
+        except Exception as e:
+            logger.error(f"Error generating response: {e}")
+            raise e
+        return response.choices[0].message.content
+
+
+class Fuser(LLMInterface):
+
+    debug_mode = False
+
+    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.1):
+        super().__init__(model, temperature)
+        if self.debug_mode:
+            litellm.set_verbose = True
+
+    def generate(
+        self,
+        input_prompt: str,
+        system_prompt: Optional[str] = None,
+        temperature: Optional[float] = None,
+        response_format: Optional[BaseModel] = None,
+    ) -> str:
+        temp = temperature if temperature is not None else self.temperature
+        # Check if system prompt is provided
+        if system_prompt is not None and system_prompt != "":
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": input_prompt},
+            ]
+        else:
             logger.warning(
-                "No system prompt provided. Using default system prompt. System prompts recommended for parsing."
+                ""
             )
             messages = [
                 {
                     "role": "system",
-                    "content": "Your job is to parse the response into a structured output. Please provide your response in the exact format specified by the response_format parameter.",
+                    "content": "You are a helpful assistant who fuses multiple answers",
                 },
-                {"role": "user", "content": prompt},
+                {"role": "user", "content": input_prompt},
             ]
         try:
             response = litellm.completion(

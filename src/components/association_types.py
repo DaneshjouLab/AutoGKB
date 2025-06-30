@@ -29,15 +29,9 @@ class AssociationType(BaseModel):
     """
 
     variant: Variant
-    drug_association: bool
-    drug_association_explanation: str
-    drug_association_quote: str
-    phenotype_association: bool
-    phenotype_association_explanation: str
-    phenotype_association_quote: str
-    functional_association: bool
-    functional_association_explanation: str
-    functional_association_quote: str
+    association_type: List[str]
+    explanation: str
+    quotes: List[str]
 
 
 class AssociationTypeList(BaseModel):

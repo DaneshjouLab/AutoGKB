@@ -40,8 +40,7 @@ class PromptVariables(BaseModel):
     system_prompt: Optional[str] = None
     output_format_structure: Optional[Union[Type[BaseModel], List[Type[BaseModel]]]] = (
         None
-    )
-
+    )    
 
 class HydratedPrompt(BaseModel):
     """Final prompt with system and input components."""
@@ -93,5 +92,31 @@ class ParserPrompt:
         return HydratedPrompt(
             system_prompt=self.system_prompt,
             input_prompt=self.input_prompt,
+            output_format_structure=self.output_format_structure,
+        )
+
+class FuserPrompt:
+    def __init__(
+            self,
+            previous_responses: List[str],
+            input_prompt: Optional[str] = None,
+            output_format_structure: Optional[Type[BaseModel]] = None,
+            system_prompt: Optional[str] = None,
+        ):
+        self.previous_responses = previous_responses
+        self.input_prompt = input_prompt
+        self.output_format_structure = output_format_structure
+        self.system_prompt = system_prompt
+        self.complete_prompt = ""
+    
+    def hydrate_prompt(self) -> HydratedPrompt:
+        for i, response in enumerate(self.previous_responses):
+            self.complete_prompt += f"Response {i}\n"
+            self.complete_prompt += response
+        if self.input_prompt:
+            self.complete_prompt += self.input_prompt
+        return HydratedPrompt(
+            system_prompt=self.system_prompt,
+            input_prompt=self.complete_prompt,
             output_format_structure=self.output_format_structure,
         )
