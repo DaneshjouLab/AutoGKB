@@ -8,6 +8,7 @@ from typing import Optional
 from loguru import logger
 from pathlib import Path
 
+
 class AnnotationPipeline:
     def __init__(self, pmcid: str):
         if not is_pmcid(pmcid):
@@ -65,9 +66,10 @@ class AnnotationPipeline:
             file_path = Path.joinpath(save_path, f"{self.pmcid}.json")
             import os
             import json
+
             os.makedirs(file_path, exist_ok=True)
             try:
-                with open(file_path, 'w') as f:
+                with open(file_path, "w") as f:
                     json.dump(final_structure, f, indent=4)
                 logger.info("Saved annotations to {file_path}")
             except Exception as e:
