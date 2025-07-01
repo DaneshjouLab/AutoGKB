@@ -79,7 +79,7 @@ def get_all_associations(article_text: str) -> List[VariantAssociation]:
             output_queues=VARIANT_LIST_OUTPUT_QUEUES,
         ),
         output_format_structure=VariantAssociationList,
-    ).hydrate_prompt()
+    ).get_hydrated_prompt()
     generator = Generator(model="gpt-4o")
     return generator.generate(prompt)
 
@@ -96,7 +96,7 @@ def test_all_associations():
     file_path = f"data/extractions/all_associations/{pmcid}.json"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
-        json.dump(associations.model_dump(), f, indent=4)
+        json.dump(associations, f, indent=4)
     logger.info(f"Saved to file {file_path}")
 
 if __name__ == "__main__":
