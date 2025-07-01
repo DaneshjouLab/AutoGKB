@@ -1,6 +1,6 @@
 from src.inference import Generator
 from src.variants import QuotedStr
-from src.prompts import GeneratorPrompt, PromptVariables
+from src.prompts import GeneratorPrompt, ArticlePrompt
 from src.utils import get_article_text
 from loguru import logger
 import json
@@ -9,8 +9,7 @@ from src.config import DEBUG
 from pydantic import BaseModel
 import enum
 
-
-class AssocationType(enum.ENUM):
+class AssociationType(enum.Enum):
     DRUG = "Drug Association"
     PHENOTYPE = "Phenotype Association"
     FUNCTIONAL = "Functional Analysis"
@@ -19,11 +18,11 @@ class VariantAssociation(BaseModel):
     variant: QuotedStr
     gene: QuotedStr | None = None
     allele: QuotedStr | None = None
-    association_type: AssocationType
+    association_type: AssociationType
     association_summary: str
 
 class VariantAssociationList(BaseModel):
-    association_list = List[VariantAssociation]
+    association_list: List[VariantAssociation]
 
 VARIANT_LIST_KEY_QUESTION = """
 In this article, find all studied associations between genetic variants (ex. rs113993960, CYP1A1*1, etc.) and a drug, phenotype, or functional analysis result. 
@@ -67,3 +66,35 @@ Examples:
 - "Variant affects adverse events/toxicity outcomes" —> Phenotype
 - "Variant affects protein function in laboratory studies" —> Functional
 """
+
+def get_all_associations(article_text: str) -> List[VariantAssociation]:
+    """
+    Extract all variant associations from the article
+    """
+    prompt = GeneratorPrompt(
+        input_prompt=ArticlePrompt(
+            article_text=article_text,
+            key_question=VARIANT_LIST_KEY_QUESTION,
+            output_queues=VARIANT_LIST_OUTPUT_QUEUES,
+        ),
+        output_format_structure=VariantAssociationList,
+    ).hydrate_prompt()
+    generator = Generator(model="gpt-4o")
+    return generator.generate(prompt)
+
+
+def test_all_associations():
+    """
+    Output the extracted variant associations to a file
+    """
+    pmcid = "PMC5712579"
+    article_text = get_article_text(pmcid)
+    logger.info(f"Got article text {pmcid}")
+    associations = get_all_associations(article_text)
+    logger.info("Extracted associations")
+    with open(f"data/extractions/all_associations/{pmcid}.json", "w") as f:
+        json.dump(associations, f, indent=4)
+    logger.info(f"Saved to file data/extractions/all_associations/{pmcid}.json")
+
+if __name__ == "__main__":
+    test_all_associations()

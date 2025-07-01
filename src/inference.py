@@ -51,7 +51,7 @@ class LLMInterface(ABC):
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
-    ) -> str:
+    ) -> LMResponse:
         """Generate a response from the LLM."""
         temp = temperature if temperature is not None else self.temperature
         # Check if system prompt is provided
