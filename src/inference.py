@@ -162,7 +162,7 @@ class Parser(LLMInterface):
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
-    ) -> str:
+    ) -> LMResponse:
         temp = temperature if temperature is not None else self.temperature
         # Check if system prompt is provided
         if system_prompt is not None and system_prompt != "":
@@ -206,7 +206,7 @@ class Fuser(LLMInterface):
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
-    ) -> str:
+    ) -> LMResponse:
         temp = temperature if temperature is not None else self.temperature
         # Check if system prompt is provided
         if system_prompt is not None and system_prompt != "":
