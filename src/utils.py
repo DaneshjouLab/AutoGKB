@@ -1,9 +1,11 @@
 import re
 from loguru import logger
 import json
-from typing import List
+from typing import List, Optional
 from termcolor import colored
 from src.article_parser import MarkdownParser
+
+_true_variant_cache: Optional[dict] = None
 
 
 def extractVariantsRegex(text):
@@ -76,15 +78,32 @@ def compare_lists(
     return true_positives, true_negatives, false_positives, false_negatives
 
 
-def get_true_variants(pmcid):
+def get_true_variants(pmcid: str) -> List[str]:
     """
     Get the actual annotated variants for a given PMCID.
+    Uses module-level caching to load the JSON file only once.
     """
-    true_variant_list = json.load(open("data/benchmark/true_variant_list.json"))
-    return true_variant_list[pmcid]
+    global _true_variant_cache
+
+    if _true_variant_cache is None:
+        try:
+            with open("data/benchmark/true_variant_list.json", "r") as f:
+                _true_variant_cache = json.load(f)
+        except FileNotFoundError:
+            logger.error(
+                "True variant list file not found: data/benchmark/true_variant_list.json"
+            )
+            _true_variant_cache = {}
+        except json.JSONDecodeError as e:
+            logger.error(f"Error parsing true variant list JSON: {e}")
+            _true_variant_cache = {}
+
+    return _true_variant_cache.get(pmcid, []) if _true_variant_cache else []
 
 
-def get_article_text(pmcid: str = None, article_text: str = None):
+def get_article_text(
+    pmcid: Optional[str] = None, article_text: Optional[str] = None
+) -> str:
     """
     Get the article text for a given PMCID or return the article text if it is already provided.
     """
@@ -96,3 +115,17 @@ def get_article_text(pmcid: str = None, article_text: str = None):
         article_text = MarkdownParser(pmcid=pmcid).get_article_text()
 
     return article_text
+
+
+def is_pmcid(text: str):
+    if text.startswith("PMC") and len(text) < 20:
+        return True
+    return False
+
+
+def get_title(markdown_text: str):
+    # get the title from the markdown text
+    title = markdown_text.split("\n")[0]
+    # remove the # from the title
+    title = title.replace("# ", "")
+    return title

@@ -1,0 +1,38 @@
+GWAS: Genome-Wide Association Study; analyzes genetic variants across genomes to find associations with traits or diseases.
+Case/control: Compares individuals with a condition (cases) to those without (controls) to identify associated factors.
+Cohort: Observes a group over time to study incidence, causes, and prognosis of disease; can be prospective or retrospective.
+Clinical trial: Interventional study where participants are assigned treatments and outcomes are measured.
+Case series: Descriptive study tracking patients with a known exposure or treatment; no control group.
+Cross sectional: Observational study measuring exposure and outcome simultaneously in a population.
+Meta-analysis: Combines results from multiple studies to identify overall trends using statistical techniques.
+Linkage: Genetic study mapping loci associated with traits by analyzing inheritance patterns in families.
+Trios: Genetic study involving parent-offspring trios to identify de novo mutations.
+Unknown: Unclassified or missing study type.
+
+Prospective: Study designed to follow subjects forward in time.
+Retrospective: Uses existing records to look backward at exposures and outcomes.
+Replication: Repeating a study to confirm findings.
+
+Composite examples:
+Case/control, GWAS: A GWAS using a case/control design.
+Clinical trial, GWAS: GWAS performed within a clinical trial.
+Cohort, GWAS: GWAS performed within a cohort study.
+Case/control, meta-analysis: Meta-analysis of case/control studies.
+Cohort, meta-analysis: Meta-analysis of cohort studies.
+Case/control, clinical trial: Clinical trial data analyzed using case/control logic.
+Cohort, clinical trial: Cohort study derived from or embedded in a clinical trial.
+Case/control, replication: Replication analysis within a case/control design.
+Cohort, replication: Replication analysis using cohort data.
+Clinical trial, replication: Replication of findings using clinical trial data.
+Meta-analysis, GWAS: Meta-analysis combining GWAS data.
+Cohort, prospective: Forward-looking cohort study.
+Cohort, retrospective: Historical cohort study.
+Prospective, retrospective: Studies using both forward-looking and retrospective components.
+Case/control, prospective/retrospective: Case/control design with a time dimension.
+Meta-analysis, replication: Meta-analysis focused on replicated findings.
+Linkage, trios: Linkage analysis involving family trios.
+Retrospective, linkage, trios: Combined design using retrospective data, linkage, and trios.
+Case series, trios: Trio-based case series.
+Cohort, case/control: Study combining cohort and case/control features.
+Cohort, case/control, replication: Cohort-based case/control study with replication.
+Clinical trial, meta-analysis, replication: Meta-analysis of clinical trials with replication.

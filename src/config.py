@@ -5,7 +5,7 @@ This module handles debug mode configuration and logging setup.
 """
 
 from loguru import logger
-from typing import NoReturn
+from typing import NoReturn, Optional
 import sys
 
 # Global debug flag
@@ -15,7 +15,7 @@ if DEBUG:
     logger.debug("Debug mode is enabled")
 
 
-def set_debug(debug: bool) -> NoReturn:
+def set_debug(debug: bool) -> None:
     """
     Set the debug mode globally.
 
@@ -31,7 +31,7 @@ def set_debug(debug: bool) -> NoReturn:
         logger.debug("Debug mode disabled")
 
 
-def save_logs(save: bool = False) -> NoReturn:
+def save_logs(save: bool = False) -> None:
     """
     Configure logging to save logs to a file.
 
