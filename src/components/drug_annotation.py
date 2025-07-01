@@ -121,7 +121,7 @@ def test_drug_annotations():
     """
     Output the extracted variant associations to a file
     """
-    pmcid = "PMC4737107"
+    pmcid = "PMC11730665"
     article_text = get_article_text(pmcid)
     logger.info(f"Got article text {pmcid}")
     associations = get_all_associations(article_text)
@@ -133,7 +133,7 @@ def test_drug_annotations():
         json.dump(associations, f, indent=4)
     logger.info(f"Saved to file {file_path}")
 
-    logger.info("Extracted associations")
+    logger.info(f"Found {len(associations)} associations")
     associations = [VariantAssociation(**association) for association in associations]
     drug_annotations = []
     for association in associations:
@@ -141,7 +141,7 @@ def test_drug_annotations():
             drug_annotation = get_drug_annotation(association)
             drug_annotations.append(drug_annotation)
     
-    logger.info(f"Got drug annotation for {len(drug_annotations)} variants")
+    logger.info(f"Got drug annotations for {len(drug_annotations)} associations")
     file_path = f"data/extractions/{pmcid}/drug_annotation.jsonl"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
