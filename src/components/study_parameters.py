@@ -1,6 +1,12 @@
 from pydantic import BaseModel
 from src.variants import QuotedStr
 from typing import List
+from src.prompts import GeneratorPrompt, ArticlePrompt
+from src.inference import Generator
+from src.utils import get_article_text
+from loguru import logger
+import os
+import json
 
 
 class StudyParameters(BaseModel):
@@ -61,3 +67,38 @@ OUTPUT_QUEUES = """
 Provide info for these terms explaining your reasoning and providing quotes directly from the article to support your claim. Quotes are not needed for the summary
 and Additional Resource Links. Make sure to follow the output schema carefully.
 """
+
+
+def get_study_parameters(article_text):
+    prompt = GeneratorPrompt(
+        input_prompt=ArticlePrompt(
+            article_text=article_text,
+            key_question=KEY_QUESTION,
+            output_queues=OUTPUT_QUEUES,
+        ),
+        output_format_structure=StudyParameters,
+    ).get_hydrated_prompt()
+    generator = Generator(model="gpt-4o")
+    return generator.generate(prompt)
+
+
+def test_study_parameters():
+    """
+    Output the extracted variant associations to a file
+    """
+    pmcid = "PMC11730665"
+    article_text = get_article_text(pmcid)
+    logger.info(f"Got article text {pmcid}")
+
+    study_parameters = get_study_parameters(article_text=article_text)
+
+    # Save associations
+    file_path = f"data/extractions/{pmcid}/study_parameters.jsonl"
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    with open(file_path, "w") as f:
+        json.dump(study_parameters, f, indent=4)
+    logger.info(f"Saved to file {file_path}")
+
+
+if __name__ == "main":
+    test_study_parameters()
