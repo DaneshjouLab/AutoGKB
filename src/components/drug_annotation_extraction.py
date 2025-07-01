@@ -35,7 +35,7 @@ class DrugAnnotation(BaseModel):
     sentence_summary: str
     notes: Optional[str]
 
-def get_variant_background_prompt(variant_association: VariantAssociation):
+def get_association_background_prompt(variant_association: VariantAssociation):
     background_prompt = ""
     background_prompt += f"Variant ID: {variant_association.variant.content}\n"
     background_prompt += f"Association Summary: {variant_association.association_summary.content}\n"
@@ -55,12 +55,14 @@ is reported to affect the gene's expression or otherwise associated with the gen
 """
 
 KEY_QUESTION = """
-For the following genetic variant-related association, use the article the find the following additional information 
-for us to get a complete undestanding of the findings:
+This article contains information on the following variant association:
+{association_background}
+
+For this association, use the article the find the following additional information for us to get a complete undestanding of the findings:
 
 Term: Drug(s)
-- Content: Nme(s) of the drug(s) associated with the variant if any.
-- Example: sitagliptin, clopidogrel, aspirin
+- Content: Nme(s) of the drug(s) associated with the variant as part of this association along with a one sentence
+description of the results. Convert the drug names to their generic before outputting if possible but include the original term in parentheses. 
 
 Term: Phenotype Category
 - Content: Type of clinical outcome studied (EXACTLY ONE: "Efficacy", "Metabolism/PK", "Toxicity", "Dosage", "Other")
