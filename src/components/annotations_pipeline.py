@@ -6,7 +6,7 @@ from src.components.study_parameters import get_study_parameters
 from src.utils import get_article_text, is_pmcid, get_title
 from typing import Optional
 from loguru import logger
-
+from pathlib import Path
 
 class AnnotationPipeline:
     def __init__(self, pmcid: str):
@@ -60,4 +60,16 @@ class AnnotationPipeline:
 
         final_structure = self.generate_final_structure()
         logger.info("Generated complete annotation")
+
+        if save_path:
+            file_path = Path.joinpath(save_path, f"{self.pmcid}.json")
+            import os
+            import json
+            os.makedirs(file_path, exist_ok=True)
+            try:
+                with open(file_path, 'w') as f:
+                    json.dump(final_structure, f, indent=4)
+                logger.info("Saved annotations to {file_path}")
+            except Exception as e:
+                logger.error(f"Error saving annotations: {e}")
         return final_structure
