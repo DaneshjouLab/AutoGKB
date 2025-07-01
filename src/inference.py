@@ -5,13 +5,11 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from abc import ABC, abstractmethod
 from src.prompts import HydratedPrompt
+import json
 
 load_dotenv()
 
-# Type aliases for better readability
-ResponseType = Union[str, BaseModel]
-ResponseList = List[ResponseType]
-LMResponse = Union[ResponseList, ResponseType]
+LMResponse = str | BaseModel | List[str] | List[BaseModel]
 
 """
 TODO:
@@ -20,6 +18,8 @@ Refactor this. Things that change from inference to inference are
 - whether or not previous_responses are taken
 
 Look into Archon fomratting for taking in previous responses
+ 
+Add retry for connection errors
 """
 
 
@@ -91,11 +91,18 @@ class Generator(LLMInterface):
 
     def _generate_single(
         self,
-        input_prompt: str,
+        input_prompt: str | HydratedPrompt,
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
-        response_format: Optional[BaseModel] = None,
+        response_format: LMResponse = None,
     ) -> str:
+        if isinstance(input_prompt, HydratedPrompt):
+            if input_prompt.system_prompt is not None and input_prompt.system_prompt != "":
+                system_prompt = input_prompt.system_prompt
+            if input_prompt.output_format_structure is not None and response_format is None:
+                response_format = input_prompt.output_format_structure
+            input_prompt = input_prompt.input_prompt
+
         temp = temperature if temperature is not None else self.temperature
         # Check if system prompt is provided
         if system_prompt is not None and system_prompt != "":
@@ -118,7 +125,13 @@ class Generator(LLMInterface):
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             raise e
-        return response.choices[0].message.content
+        response_content = response.choices[0].message.content
+        if isinstance(response_content, str) and response_format is not None:
+            try:
+                response_content = json.loads(response_content)
+            except:
+                logger.warning(f"Response content was not a valid JSON string. Returning string")
+        return response_content
 
     def generate(
         self,

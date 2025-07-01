@@ -8,6 +8,7 @@ from typing import List, Optional
 from src.config import DEBUG
 from pydantic import BaseModel
 import enum
+import os
 
 class AssociationType(enum.Enum):
     DRUG = "Drug Association"
@@ -92,9 +93,11 @@ def test_all_associations():
     logger.info(f"Got article text {pmcid}")
     associations = get_all_associations(article_text)
     logger.info("Extracted associations")
-    with open(f"data/extractions/all_associations/{pmcid}.json", "w") as f:
-        json.dump(associations, f, indent=4)
-    logger.info(f"Saved to file data/extractions/all_associations/{pmcid}.json")
+    file_path = f"data/extractions/all_associations/{pmcid}.json"
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    with open(file_path, "w") as f:
+        json.dump(associations.model_dump(), f, indent=4)
+    logger.info(f"Saved to file {file_path}")
 
 if __name__ == "__main__":
     test_all_associations()
