@@ -27,11 +27,12 @@ Terms:
 Explain your reasoning step by step by including the term, a one sentence explanation, and an exact quote from the article that details where
 """
 
-class PhenotypeAnnotation(BaseModel):
+class FunctionalAnnotation(BaseModel):
     associated_drugs: QuotedList
     association_significance: QuotedStr
-    meatbolizer_info: Optional[QuotedStr]
     specialty_populations: QuotedStr
+    assay_type: QuotedStr
+    cell_type: QuotedStr
     sentence_summary: str
     notes: Optional[str]
 
@@ -45,26 +46,29 @@ KEY_QUESTION = """
 This article contains information on the following variant association:
 {association_background}
 
-For this association, use the article the find the following additional information for us to get a complete undestanding of the findings:
+We are interested in completing a Functional Annotation report that is specifically interested in associations between genetic variants 
+and in-vitro outcomes such as:
+- Enzyme/transporter activity (e.g., clearance, metabolism, transport)
+- Binding affinity (e.g., protein-drug interactions)
+- Functional properties (e.g., uptake rates, kinetic parameters like Km/Vmax)
 
 Term: Drug(s)
 - Content: Nme(s) of the drug(s) associated with the variant as part of this association along with a one sentence
 description of the results. Convert the drug names to their generic before outputting if possible but include the original term in parentheses. 
 
 Term: Phenotype Category
-- Content: Type of clinical outcome studied (EXACTLY ONE: "Efficacy", "Metabolism/PK", "Toxicity", "Dosage", "Other")
-- Example: Efficacy
+- Content: Type of clinical outcome studied (EXACTLY ONE: "Efficacy", "Metabolism/PK", "Toxicity", "Dosage", "Other: <short description>")
 
-Term: Metabolizer Info (Optional)
-- Content: If the study describes a metabolism relationship, describe the CYP enzyme phenotype categories and how they were created/defined.
-For example, if the study references a "poor metabolizer" define poor metabolizer as well as the reference metabolizer types. If
-the study is not metabolism related, output None or ignore this term.
+Term: Assay Type
+- Content: Laboratory method or experimental system used to measure this association.
+- Example: hydroxylation assay, crystal structure prediction, etc.
+
+Term: Cell Type
+- Content: The cell type(s) used in the assay for this association. Include species context if available
+- Example: insect microsomes, human hepatocytes, E. coli DH5alpha, etc.
 
 Term: Significance
 - Content: Was this association statistically significant? Describe the author's reported p-value or relevant statistical values.
-
-Term: Specialty Population
-- Content: Was an age-specific population studied as part of this association? (EXACTLY ONE: "Pediatric", "Geriatric", "No", or "Unknown")
 
 Term: Sentence
 - Content: One sentence summary of the association. Make sure to include the following information roughly by following this 
@@ -73,7 +77,7 @@ rough format: "[Genotype/Allele/Variant] is [associated with/not associated with
 
 Term: Notes
 - Content: Any additional key study details, methodology, or important context
-- Example: "Patients with the rs2909451 TT genotype in the study group exhibited a median HbA1c improvement of 0.57..."
+- Example: "TPMT protein levels were comparable between TPMT*3C and TPMT*1 when expressed in yeast. Comparable results were seen in COS-1 cells. mRNA levels were comparable between *3C and *1 in yeast."
 """
 
 OUTPUT_QUEUES = """
@@ -84,91 +88,3 @@ For each variant, provide:
 - Ensure controlled vocabulary compliance for categorical fields
 - Extract direct quotes from the article to support the annotations
 """
-
-
-def extract_drug_annotations(
-    variants: List[Variant], article_text: str = None, pmcid: str = None
-) -> List[DrugAnnotation]:
-    """
-    Extract detailed drug annotation information for variants with drug associations.
-    Processes each variant individually for better control and cleaner extraction.
-
-    Args:
-        variants: List of variants that have drug associations
-        article_text: The text of the article
-        pmcid: The PMCID of the article
-
-    Returns:
-        List of DrugAnnotation objects with detailed information
-    """
-    article_text = get_article_text(pmcid=pmcid, article_text=article_text)
-    variant_id_list = [variant.variant_id for variant in variants]
-
-    logger.info(
-        f"Extracting drug annotations for {len(variants)} variants individually: {variant_id_list}"
-    )
-
-    all_annotations = []
-
-    for variant in variants:
-        logger.info(f"Processing variant: {variant.variant_id}")
-
-        prompt_variables = PromptVariables(
-            article_text=article_text,
-            key_question=KEY_QUESTION.format(variants=[variant]),
-            output_queues=OUTPUT_QUEUES,
-            output_format_structure=DrugAnnotation,
-        )
-
-        prompt_generator = GeneratorPrompt(prompt_variables)
-        generator_prompt = prompt_generator.hydrate_prompt()
-
-        generator = Generator(model="gpt-4o-mini", temperature=0.1)
-        response = generator.prompted_generate(generator_prompt)
-
-        parser = Parser(model="gpt-4o-mini", temperature=0.1)
-        parser_prompt = ParserPrompt(
-            input_prompt=response,
-            output_format_structure=DrugAnnotation,
-            system_prompt=generator_prompt.system_prompt,
-        )
-        parsed_response = parser.prompted_generate(parser_prompt)
-
-        try:
-            parsed_data = json.loads(parsed_response)
-
-            # Handle different response formats
-            if isinstance(parsed_data, dict) and "drug_annotation" in parsed_data:
-                annotation_data = parsed_data["drug_annotation"]
-            elif isinstance(parsed_data, dict):
-                annotation_data = parsed_data
-            else:
-                logger.warning(
-                    f"Unexpected response format for variant {variant.variant_id}: {parsed_data}"
-                )
-                continue
-
-            if (
-                "variant_annotation_id" not in annotation_data
-                or not annotation_data["variant_annotation_id"]
-            ):
-                annotation_data["variant_annotation_id"] = int(
-                    str(int(time.time())) + str(random.randint(100000, 999999))
-                )
-
-            annotation = DrugAnnotation(**annotation_data)
-            all_annotations.append(annotation)
-            logger.info(
-                f"Successfully extracted annotation for variant {variant.variant_id}"
-            )
-
-        except (json.JSONDecodeError, TypeError, ValueError) as e:
-            logger.error(
-                f"Failed to parse drug annotation response for variant {variant.variant_id}: {e}"
-            )
-            continue
-
-    logger.info(
-        f"Successfully extracted {len(all_annotations)} drug annotations from {len(variants)} variants"
-    )
-    return all_annotations
