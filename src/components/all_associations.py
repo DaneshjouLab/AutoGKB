@@ -1,5 +1,5 @@
 from src.inference import Generator
-from src.variants import Variant, VariantList
+from src.variants import QuotedStr
 from src.prompts import GeneratorPrompt, PromptVariables
 from src.utils import get_article_text
 from loguru import logger
@@ -17,26 +17,34 @@ class AssocationType(enum.ENUM):
 
 
 class VariantAssociation(BaseModel):
-    variant: str
-    gene: str | None = None
-    allele: str | None = None
+    variant: QuotedStr
+    gene: QuotedStr | None = None
+    allele: QuotedStr | None = None
     association_type: List[AssocationType]
     quotes: List[str]
 
+class VariantAssociationList(BaseModel):
+    association_list = List[VariantAssociation]
 
 VARIANT_LIST_KEY_QUESTION = """
 In this article, find all studied associations between genetic variants (ex. rs113993960, CYP1A1*1, etc.) and a drug, phenotype, or functional analysis result. 
 Include information on the gene group and allele (if present).
-Make sure they variant has a studied association (likely discussed in the methodology or results section), not simply mentioned as background information.
 """
 
-VARIANT_LIST_OUTPUT_QUEUES = """Your output format should be a list of the variants with the following attributes:
+VARIANT_LIST_OUTPUT_QUEUES = """
+Your output format should be a list of the variants with the following attributes:
 Variant: The Variant / Haplotypes (ex. rs2909451, CYP2C19*1, CYP2C19*2, *1/*18, etc.)
 Gene: The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11, etc.)
 Allele: Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del, etc.).
 Association Type: The type(s) of associations the variant has in the article from the options Drug, Phenotype, or Functional. More information on how to determine this below.
+Summary: One sentence summary of the association finding for this variant.
 Quotes: REQUIRED - A direct quote from the article that mentions this specific variant and its found association. Output the exact text where this variant is discussed (ideally in the methodology, abstract, or results section).
 More than one quote can be outputted if that would be helpful but try to keep the total number fewer than 3.
+
+For each term make sure to keep track of and output the exact quote where that information is found. If there isn't an exact quote but you still believe the extraction 
+to be correct, simply write "Explanation: <explanation" in the quote field.
+
+To determine the Association Type:
 
 A variant has a Drug association when the article reports associations between the genetic variant and
 pharmacological parameters or clinical drug response measures that specifically relate to:
@@ -68,7 +76,7 @@ def extract_all_associations(
     pmcid: Optional[str] = None,
     model: str = "gpt-4o",
     temperature: float = 0.1,
-) -> List[Variant]:
+) -> List[VariantAssociation]:
     """Extract a list of variants from an article.
     Args:
         article_text: The text of the article.
@@ -88,7 +96,7 @@ def extract_all_associations(
         article_text=article_text,
         key_question=VARIANT_LIST_KEY_QUESTION,
         output_queues=VARIANT_LIST_OUTPUT_QUEUES,
-        output_format_structure=VariantList,
+        output_format_structure=VariantAssociationList,
     )
     prompt_generator = GeneratorPrompt(prompt_variables)
     hydrated_prompt = prompt_generator.hydrate_prompt()
@@ -100,7 +108,7 @@ def extract_all_associations(
     if DEBUG:
         logger.debug(f"Parsed output: {parsed_output}")
     variant_list = [
-        Variant(**variant_data) for variant_data in parsed_output["variant_list"]
+        VariantAssociation(**variant_data) for variant_data in parsed_output["variant_list"]
     ]
     logger.info(f"Found {len(variant_list)} variants")
     return variant_list

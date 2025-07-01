@@ -7,7 +7,8 @@ import json
 from typing import List, Optional
 from src.config import DEBUG
 
-VARIANT_LIST_KEY_QUESTION = """From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.). Include information on the gene group and allele (if present).
+VARIANT_LIST_KEY_QUESTION = """
+From this article, note down ALL discussed variants/haplotypes (ex. rs113993960, CYP1A1*1, etc.). Include information on the gene group and allele (if present).
 Make sure they variant has a studied association (likely discussed in the methodology or results section), not simply mentioned as background information.
 """
 

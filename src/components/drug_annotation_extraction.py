@@ -5,7 +5,7 @@ Extract detailed drug annotation information for variants with drug associations
 from typing import List
 from loguru import logger
 from pydantic import BaseModel
-from src.variants import Variant, DrugAnnotation, DrugAnnotationList
+from src.variants import Variant, QuotedStr, QuotedList
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
 from src.utils import get_article_text
@@ -14,24 +14,43 @@ import json
 import time
 import random
 
+"""
+Terms:
+- Drug(s): 
+- Phenotype Category
+- Association Significane
+- Sentence Summary (get examples)
+- Specialty Populations
+- Notes: 3-4 sentence summary of the results of the study in relation to these variant and the found association.
 
-KEY_QUESTION = """
-For the following variants that have been identified as having drug associations, extract detailed pharmacogenomic annotation information.
+Explain your reasoning step by step by including the term, a one sentence explanation, and an exact quote from the article that details where
+"""
 
-Variants: {variants}
+class DrugAnnotation(BaseModel):
+    associated_drugs: QuotedList
+    association_significance: QuotedStr
+    sentence_summary: QuotedStr
+    specialty_populations: QuotedStr
+    notes: str
 
-Extract the following information for each variant:
-
+"""
+Old Terms
 Term: Variant/Haplotypes
 - Content: The specific genetic variant mentioned in the study
-- Example: rs2909451, CYP2C19*1, CYP2C19*2, *1/*18
+- Exampls: rs2909451, CYP2C19*1, CYP2C19*2, *1/*18
 
 Term: Gene
-- Content: Gene symbol associated with the variant
-- Example: DPP4, CYP2C19, KCNJ11
+- Content: HGNC symbol for the gene involved in the association. Typically the variants will be within the gene
+boundaries, but occasionally this will not be true. E.g. the variant in the annotation may be upstream of the gene but
+is reported to affect the gene's expression or otherwise associated with the gene.
+- Exampls: DPP4, CYP2C19, KCNJ11
+"""
+
+KEY_QUESTION = """
+For the variant {variant}, extract the following information using evidence from the provided article.
 
 Term: Drug(s)
-- Content: Generic drug name(s) studied
+- Content: Nme(s) of the drug(s) associated with the variant 
 - Example: sitagliptin, clopidogrel, aspirin
 
 Term: Phenotype Category
@@ -107,7 +126,7 @@ Term: Comparison Metabolizer types
 """
 
 OUTPUT_QUEUES = """
-For each variant, extract all the above information and provide it in structured format. Generate a unique Variant Annotation ID using timestamp + random numbers.
+For each variant, extract all the above information and provide it in structured format
 
 For each variant, provide:
 - All required fields filled with appropriate values or left empty if not applicable

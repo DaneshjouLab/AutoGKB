@@ -2,6 +2,16 @@ from pydantic import BaseModel
 from typing import List
 
 
+
+class QuotedStr(BaseModel):
+    extracted_term: str
+    explanation: str
+    quotes: List[str]
+
+class QuotedList(BaseModel):
+    extracted_terms: List[str]
+    explanation: str
+    quotes: List[str]
 class Variant(BaseModel):
     """Variant."""
 
