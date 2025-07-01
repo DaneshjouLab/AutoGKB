@@ -9,8 +9,7 @@ import json
 
 load_dotenv()
 
-LMResponse = str | BaseModel | List[str] | List[BaseModel]
-
+LMResponse = str | dict | List[str] | List[dict]
 """
 TODO:
 Refactor this. Things that change from inference to inference are
