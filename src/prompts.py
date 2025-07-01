@@ -103,19 +103,17 @@ class GeneratorPrompt:
 
     def get_hydrated_prompt(self) -> HydratedPrompt:
         """Hydrate the prompt."""
-        if isinstance(self.input_prompt, ArticlePrompt):
+        if isinstance(self.input_prompt, PromptHydrator):
             hydrated = self.input_prompt.get_hydrated_prompt()
-            input_prompt = hydrated.input_prompt
+            self.input_prompt = hydrated.input_prompt
             if not self.system_prompt and hydrated.system_prompt:
                 self.system_prompt = hydrated.system_prompt
             if not self.output_format_structure and hydrated.output_format_structure:
                 self.output_format_structure = hydrated.output_format_structure
-        else:
-            input_prompt = self.input_prompt
 
         return HydratedPrompt(
             system_prompt=self.system_prompt,
-            input_prompt=input_prompt,
+            input_prompt=self.input_prompt,
             output_format_structure=self.output_format_structure,
         )
 

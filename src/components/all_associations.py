@@ -4,7 +4,7 @@ from src.prompts import GeneratorPrompt, ArticlePrompt
 from src.utils import get_article_text
 from loguru import logger
 import json
-from typing import List, Optional
+from typing import List, Optional, Dict
 from src.config import DEBUG
 from pydantic import BaseModel
 import enum
@@ -68,7 +68,7 @@ Examples:
 - "Variant affects protein function in laboratory studies" —> Functional
 """
 
-def get_all_associations(article_text: str) -> List[VariantAssociation]:
+def get_all_associations(article_text: str) -> List[Dict]:
     """
     Extract all variant associations from the article
     """
@@ -81,19 +81,20 @@ def get_all_associations(article_text: str) -> List[VariantAssociation]:
         output_format_structure=VariantAssociationList,
     ).get_hydrated_prompt()
     generator = Generator(model="gpt-4o")
-    return generator.generate(prompt)
+    response = generator.generate(prompt)
+    return response['association_list']
 
 
 def test_all_associations():
     """
     Output the extracted variant associations to a file
     """
-    pmcid = "PMC5712579"
+    pmcid = "PMC4737107"
     article_text = get_article_text(pmcid)
     logger.info(f"Got article text {pmcid}")
     associations = get_all_associations(article_text)
     logger.info("Extracted associations")
-    file_path = f"data/extractions/all_associations/{pmcid}.json"
+    file_path = f"data/extractions/all_associations/{pmcid}.jsonl"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
         json.dump(associations, f, indent=4)
