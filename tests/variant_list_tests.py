@@ -1,5 +1,5 @@
 from loguru import logger
-from src.components.all_variants import extract_all_variants
+from src.components.deprecated.all_variants import extract_all_variants
 import json
 from typing import List
 from src.utils import compare_lists
