@@ -8,6 +8,11 @@ from src.prompts import HydratedPrompt
 
 load_dotenv()
 
+# Type aliases for better readability
+ResponseType = Union[str, BaseModel]
+ResponseList = List[ResponseType]
+LMResponse = Union[ResponseList, ResponseType]
+
 """
 TODO:
 Refactor this. Things that change from inference to inference are
@@ -16,6 +21,8 @@ Refactor this. Things that change from inference to inference are
 
 Look into Archon fomratting for taking in previous responses
 """
+
+
 class LLMInterface(ABC):
     """LLM Interface implemented by Generator and Parser classes"""
 
@@ -120,15 +127,19 @@ class Generator(LLMInterface):
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
         samples: Optional[int] = 1,
-    ) -> Union[List[Union[str, BaseModel]], Union[str, BaseModel]]
+    ) -> LMResponse:
+        """
+        Generate a response from the LLM.
+        """
         responses = []
-        for n in samples:
-            responses += self._generate_single(
+        for _ in range(samples):
+            response = self._generate_single(
                 input_prompt=input_prompt,
                 system_prompt=system_prompt,
                 temperature=temperature,
                 response_format=response_format,
             )
+            responses.append(response)
         if len(responses) == 1:
             return responses[0]
 
