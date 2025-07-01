@@ -2,10 +2,11 @@
 Extract detailed drug annotation information for variants with drug associations.
 """
 
-from typing import List
+from typing import List, Optional
 from loguru import logger
 from pydantic import BaseModel
 from src.variants import Variant, QuotedStr, QuotedList
+from src.components.all_associations import VariantAssociation
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
 from src.utils import get_article_text
@@ -29,9 +30,16 @@ Explain your reasoning step by step by including the term, a one sentence explan
 class DrugAnnotation(BaseModel):
     associated_drugs: QuotedList
     association_significance: QuotedStr
-    sentence_summary: QuotedStr
+    meatbolizer_info: Optional[QuotedStr]
     specialty_populations: QuotedStr
-    notes: str
+    sentence_summary: str
+    notes: Optional[str]
+
+def get_variant_background_prompt(variant_association: VariantAssociation):
+    background_prompt = ""
+    background_prompt += f"Variant ID: {variant_association.variant.content}\n"
+    background_prompt += f"Association Summary: {variant_association.association_summary.content}\n"
+    return background_prompt
 
 """
 Old Terms
@@ -47,82 +55,36 @@ is reported to affect the gene's expression or otherwise associated with the gen
 """
 
 KEY_QUESTION = """
-For the variant {variant}, extract the following information using evidence from the provided article.
+For the following genetic variant-related association, use the article the find the following additional information 
+for us to get a complete undestanding of the findings:
 
 Term: Drug(s)
-- Content: Nme(s) of the drug(s) associated with the variant 
+- Content: Nme(s) of the drug(s) associated with the variant if any.
 - Example: sitagliptin, clopidogrel, aspirin
 
 Term: Phenotype Category
 - Content: Type of clinical outcome studied (EXACTLY ONE: "Efficacy", "Metabolism/PK", "Toxicity", "Dosage", "Other")
 - Example: Efficacy
 
+Term: Metabolizer Info (Optional)
+- Content: If the study describes a metabolism relationship, describe the CYP enzyme phenotype categories and how they were created/defined.
+For example, if the study references a "poor metabolizer" define poor metabolizer as well as the reference metabolizer types. If
+the study is not metabolism related, output None or ignore this term.
+
 Term: Significance
-- Content: Whether the association was statistically significant (EXACTLY ONE: "yes", "no", "not stated")
-- Example: yes
-
-Term: Notes
-- Content: Key study details, methodology, or important context
-- Example: "Patients with the rs2909451 TT genotype in the study group exhibited a median HbA1c improvement of 0.57..."
-
-Term: Sentence
-- Content: Standardized description of the genetic association
-- Format: "[Genotype/Allele] is [associated with/not associated with] [increased/decreased] [outcome] [drug context] [population context]"
-- Example: "Genotype TT is associated with decreased response to sitagliptin in people with Diabetes Mellitus, Type 2."
-
-Term: Alleles
-- Content: Specific allele or genotype if different from Variant/Haplotypes field
-- Example: TT, *1/*18, del/del
+- Content: Was this association statistically significant? Describe the author's reported p-value or relevant statistical values.
 
 Term: Specialty Population
-- Content: Age-specific populations (EXACTLY ONE: "Pediatric", "Geriatric", or leave empty)
+- Content: Was an age-specific population studied as part of this association? (EXACTLY ONE: "Pediatric", "Geriatric", "No", or "Unknown")
 
-Term: Metabolizer types
-- Content: CYP enzyme phenotype categories
-- Example: intermediate metabolizer, poor metabolizer
+Term: Sentence
+- Content: One sentence summary of the association. Make sure to include the following information roughly by following this 
+rough format: "[Genotype/Allele/Variant] is [associated with/not associated with] [increased/decreased] [outcome] [drug context] [population context]"
+- Example: "Genotype TT is associated with decreased response to sitagliptin in people with Diabetes Mellitus, Type 2."
 
-Term: Is/Is Not associated
-- Content: Direction of association (EXACTLY ONE: "Associated with", "Not associated with")
-
-Term: Direction of effect
-- Content: Whether the effect increases or decreases the outcome (EXACTLY ONE: "increased", "decreased", or leave empty)
-
-Term: Side effect/efficacy/other
-- Content: Specific outcome descriptor
-- Example: response to, risk of, likelihood of
-
-Term: Phenotype
-- Content: Primary phenotype with standardized prefix
-- Example: Side Effect:Maculopapular Exanthema, Disease:Epilepsy
-
-Term: Multiple phenotypes And/or
-- Content: Logical connector for multiple phenotypes (EXACTLY ONE: "and", "or", or leave empty)
-
-Term: When treated with/exposed to/when assayed with
-- Content: Drug administration context
-- Example: when treated with, when exposed to
-
-Term: Multiple drugs And/or
-- Content: Logical connector for multiple drugs (EXACTLY ONE: "and", "or", or leave empty)
-
-Term: Population types
-- Content: Descriptor of study population
-- Example: in people with
-
-Term: Population Phenotypes or diseases
-- Content: Disease/condition context with standardized prefix
-- Example: Disease:Epilepsy, Other:Diabetes Mellitus, Type 2
-
-Term: Multiple phenotypes or diseases And/or
-- Content: Logical connector for multiple conditions (EXACTLY ONE: "and", "or", or leave empty)
-
-Term: Comparison Allele(s) or Genotype(s)
-- Content: Reference genotype used for comparison
-- Example: *1/*1, C
-
-Term: Comparison Metabolizer types
-- Content: Reference metabolizer status for comparison
-- Example: normal metabolizer
+Term: Notes
+- Content: Any additional key study details, methodology, or important context
+- Example: "Patients with the rs2909451 TT genotype in the study group exhibited a median HbA1c improvement of 0.57..."
 """
 
 OUTPUT_QUEUES = """
@@ -162,14 +124,11 @@ def extract_drug_annotations(
     for variant in variants:
         logger.info(f"Processing variant: {variant.variant_id}")
 
-        class SingleDrugAnnotation(BaseModel):
-            drug_annotation: DrugAnnotation
-
         prompt_variables = PromptVariables(
             article_text=article_text,
             key_question=KEY_QUESTION.format(variants=[variant]),
             output_queues=OUTPUT_QUEUES,
-            output_format_structure=SingleDrugAnnotation,
+            output_format_structure=DrugAnnotation,
         )
 
         prompt_generator = GeneratorPrompt(prompt_variables)
@@ -181,7 +140,7 @@ def extract_drug_annotations(
         parser = Parser(model="gpt-4o-mini", temperature=0.1)
         parser_prompt = ParserPrompt(
             input_prompt=response,
-            output_format_structure=SingleDrugAnnotation,
+            output_format_structure=DrugAnnotation,
             system_prompt=generator_prompt.system_prompt,
         )
         parsed_response = parser.prompted_generate(parser_prompt)

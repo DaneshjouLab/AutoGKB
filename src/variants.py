@@ -4,12 +4,12 @@ from typing import List
 
 
 class QuotedStr(BaseModel):
-    extracted_term: str
+    content: str
     explanation: str
     quotes: List[str]
 
 class QuotedList(BaseModel):
-    extracted_terms: List[str]
+    contents: List[str]
     explanation: str
     quotes: List[str]
 class Variant(BaseModel):

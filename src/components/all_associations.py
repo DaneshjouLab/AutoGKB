@@ -15,13 +15,12 @@ class AssocationType(enum.ENUM):
     PHENOTYPE = "Phenotype Association"
     FUNCTIONAL = "Functional Analysis"
 
-
 class VariantAssociation(BaseModel):
     variant: QuotedStr
     gene: QuotedStr | None = None
     allele: QuotedStr | None = None
-    association_type: List[AssocationType]
-    quotes: List[str]
+    association_type: AssocationType
+    association_summary: str
 
 class VariantAssociationList(BaseModel):
     association_list = List[VariantAssociation]
@@ -32,17 +31,16 @@ Include information on the gene group and allele (if present).
 """
 
 VARIANT_LIST_OUTPUT_QUEUES = """
-Your output format should be a list of the variants with the following attributes:
+Your output format should be a list of associations with the following attributes:
 Variant: The Variant / Haplotypes (ex. rs2909451, CYP2C19*1, CYP2C19*2, *1/*18, etc.)
+Summary: One sentence summary of the association finding for this variant.
 Gene: The gene group of the variant (ex. DPP4, CYP2C19, KCNJ11, etc.)
 Allele: Specific allele or genotype if different from variant (ex. TT, *1/*18, del/del, etc.).
-Association Type: The type(s) of associations the variant has in the article from the options Drug, Phenotype, or Functional. More information on how to determine this below.
-Summary: One sentence summary of the association finding for this variant.
-Quotes: REQUIRED - A direct quote from the article that mentions this specific variant and its found association. Output the exact text where this variant is discussed (ideally in the methodology, abstract, or results section).
+Association Type: The type of associations the variant has in the article from the options Drug, Phenotype, or Functional. One variant may have multiple association types. More information on how to determine this below.
+Quotes: A direct quote from the article that mentions this specific variant and its found association. Output the exact text where this variant is discussed (ideally in the methodology, abstract, or results section).
 More than one quote can be outputted if that would be helpful but try to keep the total number fewer than 3.
 
-For each term make sure to keep track of and output the exact quote where that information is found. If there isn't an exact quote but you still believe the extraction 
-to be correct, simply write "Explanation: <explanation" in the quote field.
+For each term except for Summary make sure to keep track of and output the exact quotes where that information is found/can be deduced.
 
 To determine the Association Type:
 
