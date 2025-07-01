@@ -27,6 +27,7 @@ Terms:
 Explain your reasoning step by step by including the term, a one sentence explanation, and an exact quote from the article that details where
 """
 
+
 class PhenotypeAnnotation(BaseModel):
     associated_drugs: QuotedList
     association_significance: QuotedStr
@@ -35,11 +36,15 @@ class PhenotypeAnnotation(BaseModel):
     sentence_summary: str
     notes: Optional[str]
 
+
 def get_association_background_prompt(variant_association: VariantAssociation):
     background_prompt = ""
     background_prompt += f"Variant ID: {variant_association.variant.content}\n"
-    background_prompt += f"Association Summary: {variant_association.association_summary.content}\n"
+    background_prompt += (
+        f"Association Summary: {variant_association.association_summary.content}\n"
+    )
     return background_prompt
+
 
 KEY_QUESTION = """
 This article contains information on the following variant association:
@@ -82,4 +87,3 @@ For each variant, provide:
 - Ensure controlled vocabulary compliance for categorical fields
 - Extract direct quotes from the article to support the annotations
 """
-

@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from src.variants import QuotedStr
 from typing import List
 
+
 class StudyParameters(BaseModel):
     summary: str
     study_type: QuotedStr
@@ -60,4 +61,3 @@ OUTPUT_QUEUES = """
 Provide info for these terms explaining your reasoning and providing quotes directly from the article to support your claim. Quotes are not needed for the summary
 and Additional Resource Links. Make sure to follow the output schema carefully.
 """
-

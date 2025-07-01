@@ -10,10 +10,12 @@ from pydantic import BaseModel
 import enum
 import os
 
+
 class AssociationType(enum.Enum):
     DRUG = "Drug Association"
     PHENOTYPE = "Phenotype Association"
     FUNCTIONAL = "Functional Analysis"
+
 
 class VariantAssociation(BaseModel):
     variant: QuotedStr
@@ -22,8 +24,10 @@ class VariantAssociation(BaseModel):
     association_type: AssociationType
     association_summary: str
 
+
 class VariantAssociationList(BaseModel):
     association_list: List[VariantAssociation]
+
 
 VARIANT_LIST_KEY_QUESTION = """
 In this article, find all studied associations between genetic variants (ex. rs113993960, CYP1A1*1, etc.) and a drug, phenotype, or functional analysis result. 
@@ -68,6 +72,7 @@ Examples:
 - "Variant affects protein function in laboratory studies" —> Functional
 """
 
+
 def get_all_associations(article_text: str) -> List[Dict]:
     """
     Extract all variant associations from the article
@@ -82,7 +87,7 @@ def get_all_associations(article_text: str) -> List[Dict]:
     ).get_hydrated_prompt()
     generator = Generator(model="gpt-4o")
     response = generator.generate(prompt)
-    return response['association_list']
+    return response["association_list"]
 
 
 def test_all_associations():
@@ -99,6 +104,7 @@ def test_all_associations():
     with open(file_path, "w") as f:
         json.dump(associations, f, indent=4)
     logger.info(f"Saved to file {file_path}")
+
 
 if __name__ == "__main__":
     test_all_associations()

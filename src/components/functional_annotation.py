@@ -7,7 +7,11 @@ import os
 from loguru import logger
 from pydantic import BaseModel
 from src.variants import Variant, QuotedStr, QuotedList
-from src.components.all_associations import VariantAssociation, get_all_associations, AssociationType
+from src.components.all_associations import (
+    VariantAssociation,
+    get_all_associations,
+    AssociationType,
+)
 from src.prompts import PromptHydrator, GeneratorPrompt
 from src.inference import Generator
 from src.utils import get_article_text
@@ -26,6 +30,7 @@ Terms:
 Explain your reasoning step by step by including the term, a one sentence explanation, and an exact quote from the article that details where
 """
 
+
 class FunctionalAnnotation(BaseModel):
     associated_drugs: QuotedList
     association_significance: QuotedStr
@@ -35,11 +40,15 @@ class FunctionalAnnotation(BaseModel):
     sentence_summary: str
     notes: Optional[str]
 
+
 def get_association_background_prompt(variant_association: VariantAssociation):
     background_prompt = ""
     background_prompt += f"Variant ID: {variant_association.variant.content}\n"
-    background_prompt += f"Association Summary: {variant_association.association_summary.content}\n"
+    background_prompt += (
+        f"Association Summary: {variant_association.association_summary.content}\n"
+    )
     return background_prompt
+
 
 KEY_QUESTION = """
 This article contains information on the following variant association:
@@ -88,6 +97,7 @@ For each variant, provide:
 - Extract direct quotes from the article to support the annotations
 """
 
+
 def get_functional_annotation(variant_association: VariantAssociation | Dict):
     if isinstance(variant_association, dict):
         variant_association = VariantAssociation(**variant_association)
@@ -95,7 +105,9 @@ def get_functional_annotation(variant_association: VariantAssociation | Dict):
         input_prompt=PromptHydrator(
             prompt_template=KEY_QUESTION,
             prompt_variables={
-                "association_background": get_association_background_prompt(variant_association),
+                "association_background": get_association_background_prompt(
+                    variant_association
+                ),
             },
             system_prompt=None,
             output_format_structure=FunctionalAnnotation,
@@ -104,6 +116,7 @@ def get_functional_annotation(variant_association: VariantAssociation | Dict):
     ).get_hydrated_prompt()
     generator = Generator(model="gpt-4o")
     return generator.generate(prompt)
+
 
 def test_drug_annotations():
     """
@@ -128,10 +141,10 @@ def test_drug_annotations():
         if association.association_type == AssociationType.FUNCTIONAL:
             drug_annotation = get_functional_annotation(association)
             drug_annotations.append(drug_annotation)
-    
+
     logger.info(f"Got drug annotations for {len(drug_annotations)} associations")
     file_path = f"data/extractions/{pmcid}/functional_annotation.jsonl"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
-        json.dump(drug_annotations, f, indent=4)        
+        json.dump(drug_annotations, f, indent=4)
     logger.info(f"Saved to file {file_path}")

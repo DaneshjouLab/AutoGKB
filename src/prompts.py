@@ -23,12 +23,14 @@ You are an expert pharmacogenomics researcher reading and extracting key informa
 {output_queues}
 """
 
+
 class HydratedPrompt(BaseModel):
     """Final prompt with system and input components."""
 
     system_prompt: Optional[str] = None
     input_prompt: str
     output_format_structure: Optional[Type[BaseModel]] = None
+
 
 class PromptHydrator(BaseModel):
     """Prompt hydrator."""
@@ -52,6 +54,7 @@ class PromptHydrator(BaseModel):
             output_format_structure=self.output_format_structure,
         )
 
+
 class ArticlePrompt(PromptHydrator):
     """Input variables for prompt generation.
 
@@ -60,29 +63,32 @@ class ArticlePrompt(PromptHydrator):
         key_question: The key question to answer.
         output_queues: The output queues to use.
     """
+
     def __init__(
-        self, 
-        article_text: str, 
-        key_question: str, 
-        output_queues: Optional[str] = None, 
-        system_prompt: Optional[str] = None, 
-        output_format_structure: Optional[Type[BaseModel]] = None
+        self,
+        article_text: str,
+        key_question: str,
+        output_queues: Optional[str] = None,
+        system_prompt: Optional[str] = None,
+        output_format_structure: Optional[Type[BaseModel]] = None,
     ) -> None:
         # First initialize the parent class with base attributes
         super().__init__(
             prompt_template=ARTICLE_PROMPT_TEMPLATE,
             prompt_variables={},  # Start with empty dict
             system_prompt=system_prompt,
-            output_format_structure=output_format_structure
+            output_format_structure=output_format_structure,
         )
-        
+
         # Set article text and update prompt variables
         self._article_text = article_text
-        self.prompt_variables.update({
-            "article_text": self.article_text,
-            "key_question": key_question,
-            "output_queues": output_queues or "",
-        })
+        self.prompt_variables.update(
+            {
+                "article_text": self.article_text,
+                "key_question": key_question,
+                "output_queues": output_queues or "",
+            }
+        )
 
     @property
     def article_text(self) -> str:
@@ -95,8 +101,14 @@ class ArticlePrompt(PromptHydrator):
         """Get the hydrated prompt with resolved article text."""
         return super().get_hydrated_prompt()
 
+
 class GeneratorPrompt:
-    def __init__(self, input_prompt: str | ArticlePrompt, output_format_structure: Type[BaseModel], system_prompt: Optional[str] = None):
+    def __init__(
+        self,
+        input_prompt: str | ArticlePrompt,
+        output_format_structure: Type[BaseModel],
+        system_prompt: Optional[str] = None,
+    ):
         self.input_prompt = input_prompt
         self.output_format_structure = output_format_structure
         self.system_prompt = system_prompt
@@ -116,6 +128,7 @@ class GeneratorPrompt:
             input_prompt=self.input_prompt,
             output_format_structure=self.output_format_structure,
         )
+
 
 class ParserPrompt:
     """Parser prompt generator."""
@@ -145,6 +158,7 @@ class ParserPrompt:
             input_prompt=self.input_prompt,
             output_format_structure=self.output_format_structure,
         )
+
 
 class FuserPrompt:
     def __init__(

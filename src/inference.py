@@ -96,9 +96,15 @@ class Generator(LLMInterface):
         response_format: LMResponse = None,
     ) -> str:
         if isinstance(input_prompt, HydratedPrompt):
-            if input_prompt.system_prompt is not None and input_prompt.system_prompt != "":
+            if (
+                input_prompt.system_prompt is not None
+                and input_prompt.system_prompt != ""
+            ):
                 system_prompt = input_prompt.system_prompt
-            if input_prompt.output_format_structure is not None and response_format is None:
+            if (
+                input_prompt.output_format_structure is not None
+                and response_format is None
+            ):
                 response_format = input_prompt.output_format_structure
             input_prompt = input_prompt.input_prompt
 
@@ -129,7 +135,9 @@ class Generator(LLMInterface):
             try:
                 response_content = json.loads(response_content)
             except:
-                logger.warning(f"Response content was not a valid JSON string. Returning string")
+                logger.warning(
+                    f"Response content was not a valid JSON string. Returning string"
+                )
         return response_content
 
     def generate(
