@@ -87,7 +87,10 @@ def get_all_associations(article_text: str) -> List[Dict]:
     ).get_hydrated_prompt()
     generator = Generator(model="gpt-4o")
     response = generator.generate(prompt)
-    return response["association_list"]
+    if isinstance(response, dict):
+        response = VariantAssociationList(**response)
+        return response.association_list
+    return response
 
 
 def test_all_associations():

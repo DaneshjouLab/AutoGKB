@@ -44,7 +44,7 @@ class AnnotationPipeline:
         logger.info("Getting Study Parameters")
         self.study_parameters = get_study_parameters(self.article_text)
 
-        logger.info("Getting all associations")
+        logger.info("Getting All Associations")
         self.all_associations = get_all_associations(self.article_text)
 
         for association in self.all_associations:
@@ -63,15 +63,20 @@ class AnnotationPipeline:
         logger.info("Generated complete annotation")
 
         if save_path:
-            file_path = Path.joinpath(save_path, f"{self.pmcid}.json")
+            file_path = Path(save_path) / f"{self.pmcid}.json"
             import os
             import json
 
-            os.makedirs(file_path, exist_ok=True)
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
             try:
                 with open(file_path, "w") as f:
                     json.dump(final_structure, f, indent=4)
-                logger.info("Saved annotations to {file_path}")
+                logger.info(f"Saved annotations to {file_path}")
             except Exception as e:
                 logger.error(f"Error saving annotations: {e}")
         return final_structure
+
+
+if __name__ == "__main__":
+    pipeline = AnnotationPipeline("PMC11730665")
+    pipeline.run()

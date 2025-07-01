@@ -118,7 +118,7 @@ def get_article_text(
 
 
 def is_pmcid(text: str):
-    if text.startswith("PMC") and len(text) < 10:
+    if text.startswith("PMC") and len(text) < 20:
         return True
     return False
 
