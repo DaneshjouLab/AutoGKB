@@ -2,18 +2,21 @@
 Extract detailed drug annotation information for variants with drug associations.
 """
 
-from typing import List, Optional
+from typing import List, Optional, Dict
 from loguru import logger
 from pydantic import BaseModel
 from src.variants import Variant, QuotedStr, QuotedList
-from src.components.all_associations import VariantAssociation
-from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
+from src.components.all_associations import (
+    VariantAssociation,
+    get_all_associations,
+    AssociationType,
+)
+from src.prompts import PromptHydrator, GeneratorPrompt
 from src.inference import Generator, Parser
 from src.utils import get_article_text
 from src.config import DEBUG
 import json
-import time
-import random
+import os
 
 """
 Terms:
@@ -87,3 +90,59 @@ For each variant, provide:
 - Ensure controlled vocabulary compliance for categorical fields
 - Extract direct quotes from the article to support the annotations
 """
+
+
+def get_phenotype_annotation(variant_association: VariantAssociation | Dict):
+    if isinstance(variant_association, dict):
+        variant_association = VariantAssociation(**variant_association)
+    prompt = GeneratorPrompt(
+        input_prompt=PromptHydrator(
+            prompt_template=KEY_QUESTION,
+            prompt_variables={
+                "association_background": get_association_background_prompt(
+                    variant_association
+                ),
+            },
+            system_prompt=None,
+            output_format_structure=PhenotypeAnnotation,
+        ),
+        output_format_structure=PhenotypeAnnotation,
+    ).get_hydrated_prompt()
+    generator = Generator(model="gpt-4o")
+    return generator.generate(prompt)
+
+
+def test_phenotype_annotations():
+    """
+    Output the extracted variant associations to a file
+    """
+    pmcid = "PMC11730665"
+    article_text = get_article_text(pmcid)
+    logger.info(f"Got article text {pmcid}")
+    associations = get_all_associations(article_text)
+
+    # Save associations
+    file_path = f"data/extractions/{pmcid}/associations.jsonl"
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    with open(file_path, "w") as f:
+        json.dump(associations, f, indent=4)
+    logger.info(f"Saved to file {file_path}")
+
+    logger.info(f"Found {len(associations)} associations")
+    associations = [VariantAssociation(**association) for association in associations]
+    phenotype_annotations = []
+    for association in associations:
+        if association.association_type == AssociationType.PHENOTYPE:
+            phenotype_annotation = get_phenotype_annotation(association)
+            phenotype_annotations.append(phenotype_annotation)
+
+    logger.info(f"Got drug annotations for {len(phenotype_annotations)} associations")
+    file_path = f"data/extractions/{pmcid}/phenotype_annotation.jsonl"
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    with open(file_path, "w") as f:
+        json.dump(phenotype_annotations, f, indent=4)
+    logger.info(f"Saved to file {file_path}")
+
+
+if __name__ == "main":
+    test_phenotype_annotations()

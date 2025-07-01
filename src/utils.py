@@ -115,3 +115,17 @@ def get_article_text(
         article_text = MarkdownParser(pmcid=pmcid).get_article_text()
 
     return article_text
+
+
+def is_pmcid(text: str):
+    if text.startswith("PMC") and len(text) < 10:
+        return True
+    return False
+
+
+def get_title(markdown_text: str):
+    # get the title from the markdown text
+    title = markdown_text.split("\n")[0]
+    # remove the # from the title
+    title = title.replace("# ", "")
+    return title

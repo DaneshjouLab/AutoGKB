@@ -2,7 +2,7 @@
 Extract detailed drug annotation information for variants with drug associations.
 """
 
-from typing import List, Optional
+from typing import List, Optional, Dict
 import os
 from loguru import logger
 from pydantic import BaseModel
@@ -118,7 +118,7 @@ def get_functional_annotation(variant_association: VariantAssociation | Dict):
     return generator.generate(prompt)
 
 
-def test_drug_annotations():
+def test_functional_annotations():
     """
     Output the extracted variant associations to a file
     """
@@ -136,15 +136,19 @@ def test_drug_annotations():
 
     logger.info(f"Found {len(associations)} associations")
     associations = [VariantAssociation(**association) for association in associations]
-    drug_annotations = []
+    functional_annotations = []
     for association in associations:
         if association.association_type == AssociationType.FUNCTIONAL:
-            drug_annotation = get_functional_annotation(association)
-            drug_annotations.append(drug_annotation)
+            functional_annotation = get_functional_annotation(association)
+            functional_annotations.append(functional_annotation)
 
-    logger.info(f"Got drug annotations for {len(drug_annotations)} associations")
+    logger.info(f"Got drug annotations for {len(functional_annotations)} associations")
     file_path = f"data/extractions/{pmcid}/functional_annotation.jsonl"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
-        json.dump(drug_annotations, f, indent=4)
+        json.dump(functional_annotations, f, indent=4)
     logger.info(f"Saved to file {file_path}")
+
+
+if __name__ == "main":
+    test_functional_annotations()
