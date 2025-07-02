@@ -1,4 +1,4 @@
-from src.inference import Generator
+from src.inference import Generator, Fuser
 from src.variants import QuotedStr
 from src.prompts import GeneratorPrompt, ArticlePrompt
 from src.utils import get_article_text
@@ -86,11 +86,15 @@ def get_all_associations(article_text: str) -> List[Dict]:
         output_format_structure=VariantAssociationList,
     ).get_hydrated_prompt()
     generator = Generator(model="gpt-4o")
-    response = generator.generate(prompt)
-    if isinstance(response, dict):
-        response = VariantAssociationList(**response)
-        return response.association_list
-    return response
+    responses = generator.generate(prompt, samples=10)
+
+    fuser = Fuser(model="gpt-4o", temperature=0.1)
+    fused_response = fuser.generate(responses, response_format=VariantAssociationList)
+
+    if isinstance(fused_response, dict):
+        fused_response = VariantAssociationList(**fused_response)
+        return fused_response.association_list
+    return fused_response
 
 
 def test_all_associations():

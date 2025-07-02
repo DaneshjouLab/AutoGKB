@@ -4,6 +4,7 @@ import json
 from typing import List, Optional
 from termcolor import colored
 from src.article_parser import MarkdownParser
+from pydantic import BaseModel, ValidationError
 
 _true_variant_cache: Optional[dict] = None
 
@@ -129,3 +130,32 @@ def get_title(markdown_text: str):
     # remove the # from the title
     title = title.replace("# ", "")
     return title
+
+
+def parse_structured_response(raw_response: str | List[str], response_format: BaseModel):
+    """
+    Parse a raw response into a Pydantic model.
+    """
+    
+    if isinstance(raw_response, list):
+        try:
+            parsed_items = []
+            for item in raw_response:
+                if isinstance(item, dict):
+                    # If item is already a dict, validate it directly
+                    parsed_items.append(response_format.model_validate(item))
+                elif isinstance(item, str):
+                    # If item is a string, parse as JSON
+                    parsed_items.append(response_format.model_validate_json(item))
+                else:
+                    # Convert to JSON string then parse
+                    parsed_items.append(response_format.model_validate_json(json.dumps(item)))
+            return parsed_items
+        except ValidationError as e:
+            logger.error(f"Error parsing response list: {e}. Returning raw response list.")
+            return raw_response
+    try:
+        return response_format.model_validate_json(raw_response)
+    except ValidationError as e:
+        logger.error(f"Error parsing response: {e}. Returning raw response.")
+        return raw_response
