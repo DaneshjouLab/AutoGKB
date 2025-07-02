@@ -132,10 +132,12 @@ def get_title(markdown_text: str):
     return title
 
 
-def parse_structured_response(raw_response: str | List[str], response_format: BaseModel):
+def parse_structured_response(raw_response: str | List[str], response_format: Optional[BaseModel]):
     """
     Parse a raw response into a Pydantic model.
     """
+    if response_format is None:
+        return raw_response
     
     if isinstance(raw_response, list):
         try:

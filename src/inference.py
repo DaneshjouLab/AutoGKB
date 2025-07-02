@@ -135,14 +135,7 @@ class Generator(LLMInterface):
             logger.error(f"Error generating response: {e}")
             raise e
         response_content = response.choices[0].message.content
-        if isinstance(response_content, str) and response_format is not None:
-            try:
-                response_content = json.loads(response_content)
-            except:
-                logger.warning(
-                    f"Response content was not a valid JSON string. Returning string"
-                )
-        return response_content
+        return parse_structured_response(response_content, response_format)
 
     def generate(
         self,
@@ -252,12 +245,14 @@ class Fuser(LLMInterface):
             {"role": "user", "content": f"Here are the responses: {input_prompt}"},
         ]
         try:
-            response = litellm.completion(
-                model=self.model,
-                messages=messages,
-                response_format=response_format,
-                temperature=temp,
-            )
+            completion_kwargs = {
+                "model": self.model,
+                "messages": messages,
+                "temperature": temp,
+            }
+            if response_format is not None:
+                completion_kwargs["response_format"] = response_format
+            response = litellm.completion(**completion_kwargs)
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             raise e
