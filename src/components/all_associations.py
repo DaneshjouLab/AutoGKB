@@ -1,4 +1,4 @@
-from src.inference import Generator
+from src.inference import Generator, Fuser
 from src.variants import QuotedStr
 from src.prompts import GeneratorPrompt, ArticlePrompt
 from src.utils import get_article_text
@@ -85,12 +85,14 @@ def get_all_associations(article_text: str) -> List[Dict]:
         ),
         output_format_structure=VariantAssociationList,
     ).get_hydrated_prompt()
-    generator = Generator(model="gpt-4o")
-    response = generator.generate(prompt)
-    if isinstance(response, dict):
-        response = VariantAssociationList(**response)
-        return response.association_list
-    return response
+    generator = Generator(model="gpt-4o", samples=2)
+    responses = generator.generate(prompt)
+    logger.info(f"Fusing {len(responses)} Responses")
+
+    fuser = Fuser(model="gpt-4o", temperature=0.1)
+    fused_response = fuser.generate(responses, response_format=VariantAssociationList)
+
+    return fused_response.association_list
 
 
 def test_all_associations():
@@ -105,7 +107,9 @@ def test_all_associations():
     file_path = f"data/extractions/all_associations/{pmcid}.jsonl"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
-        json.dump(associations, f, indent=4)
+        json.dump(
+            [assoc.model_dump(mode="json") for assoc in associations], f, indent=4
+        )
     logger.info(f"Saved to file {file_path}")
 
 

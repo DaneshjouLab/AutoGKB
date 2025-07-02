@@ -1,3 +1,4 @@
+import enum
 from loguru import logger
 import litellm
 from typing import List, Optional, Union
@@ -6,6 +7,8 @@ from pydantic import BaseModel
 from abc import ABC, abstractmethod
 from src.prompts import HydratedPrompt
 import json
+from src.utils import parse_structured_response
+from tqdm import tqdm
 
 load_dotenv()
 
@@ -83,10 +86,13 @@ class Generator(LLMInterface):
 
     debug_mode = False
 
-    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.1):
+    def __init__(
+        self, model: str = "gpt-4o-mini", temperature: float = 0.1, samples: int = 1
+    ):
         super().__init__(model, temperature)
         if self.debug_mode:
             litellm.set_verbose = True
+        self.samples = samples
 
     def _generate_single(
         self,
@@ -131,14 +137,7 @@ class Generator(LLMInterface):
             logger.error(f"Error generating response: {e}")
             raise e
         response_content = response.choices[0].message.content
-        if isinstance(response_content, str) and response_format is not None:
-            try:
-                response_content = json.loads(response_content)
-            except:
-                logger.warning(
-                    f"Response content was not a valid JSON string. Returning string"
-                )
-        return response_content
+        return parse_structured_response(response_content, response_format)
 
     def generate(
         self,
@@ -146,13 +145,12 @@ class Generator(LLMInterface):
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
-        samples: Optional[int] = 1,
     ) -> LMResponse:
         """
         Generate a response from the LLM.
         """
         responses = []
-        for _ in range(samples):
+        for _ in tqdm(range(self.samples), desc=f"Generating {self.samples} Responses"):
             response = self._generate_single(
                 input_prompt=input_prompt,
                 system_prompt=system_prompt,
@@ -163,7 +161,7 @@ class Generator(LLMInterface):
         if len(responses) == 1:
             return responses[0]
 
-        return responses
+        return parse_structured_response(responses, response_format)
 
 
 class Parser(LLMInterface):
@@ -208,10 +206,15 @@ class Parser(LLMInterface):
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             raise e
-        return response.choices[0].message.content
+        raw_response = response.choices[0].message.content
+        return parse_structured_response(raw_response, response_format)
 
 
 class Fuser(LLMInterface):
+    """
+    Fuser Class
+    Used to fuse multiple responses into a final set of responses, removing duplicates and unreasonable responses
+    """
 
     debug_mode = False
 
@@ -220,37 +223,40 @@ class Fuser(LLMInterface):
         if self.debug_mode:
             litellm.set_verbose = True
 
+        self.system_prompt = (
+            "You are a helpful assistant who fuses multiple responses into a comprehensive final response. You will "
+            "be given a list of responses and you will merge the responses into a final set of responses while removing "
+            "duplicates, responses that are extremely similar, and responses that are not reasonable."
+        )
+
     def generate(
         self,
-        input_prompt: str,
+        input_prompt: str | List[str],
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         response_format: Optional[BaseModel] = None,
     ) -> LMResponse:
         temp = temperature if temperature is not None else self.temperature
-        # Check if system prompt is provided
         if system_prompt is not None and system_prompt != "":
-            messages = [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": input_prompt},
-            ]
-        else:
-            logger.warning("")
-            messages = [
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant who fuses multiple responses into a comprehensive final response",
-                },
-                {"role": "user", "content": input_prompt},
-            ]
+            self.system_prompt = system_prompt
+        messages = [
+            {
+                "role": "system",
+                "content": self.system_prompt,
+            },
+            {"role": "user", "content": f"Here are the responses: {input_prompt}"},
+        ]
         try:
-            response = litellm.completion(
-                model=self.model,
-                messages=messages,
-                response_format=response_format,
-                temperature=temp,
-            )
+            completion_kwargs = {
+                "model": self.model,
+                "messages": messages,
+                "temperature": temp,
+            }
+            if response_format is not None:
+                completion_kwargs["response_format"] = response_format
+            response = litellm.completion(**completion_kwargs)
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             raise e
-        return response.choices[0].message.content
+        raw_response = response.choices[0].message.content
+        return parse_structured_response(raw_response, response_format)
