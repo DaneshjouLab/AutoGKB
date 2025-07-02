@@ -70,7 +70,7 @@ class AnnotationPipeline:
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             try:
                 with open(file_path, "w") as f:
-                    json.dump(final_structure, f, indent=4)
+                    json.dump(final_structure, f, indent=4, default=lambda obj: obj.model_dump() if hasattr(obj, 'model_dump') else str(obj))
                 logger.info(f"Saved annotations to {file_path}")
             except Exception as e:
                 logger.error(f"Error saving annotations: {e}")
