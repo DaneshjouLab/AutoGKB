@@ -107,7 +107,9 @@ def test_all_associations():
     file_path = f"data/extractions/all_associations/{pmcid}.jsonl"
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as f:
-        json.dump([assoc.model_dump(mode='json') for assoc in associations], f, indent=4)
+        json.dump(
+            [assoc.model_dump(mode="json") for assoc in associations], f, indent=4
+        )
     logger.info(f"Saved to file {file_path}")
 
 

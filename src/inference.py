@@ -86,12 +86,14 @@ class Generator(LLMInterface):
 
     debug_mode = False
 
-    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.1, samples: int = 1):
+    def __init__(
+        self, model: str = "gpt-4o-mini", temperature: float = 0.1, samples: int = 1
+    ):
         super().__init__(model, temperature)
         if self.debug_mode:
             litellm.set_verbose = True
         self.samples = samples
-        
+
     def _generate_single(
         self,
         input_prompt: str | HydratedPrompt,
