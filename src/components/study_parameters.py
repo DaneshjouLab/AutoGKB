@@ -41,7 +41,32 @@ Prospective: Study designed to follow subjects forward in time.
 Retrospective: Uses existing records to look backward at exposures and outcomes.
 Replication: Repeating a study to confirm findings.
 
-- Example: case/control, replication (Replication analysis within a case/control design)
+Here are composite examples:
+Composite examples:
+Case/control, GWAS: A GWAS using a case/control design.
+Clinical trial, GWAS: GWAS performed within a clinical trial.
+Cohort, GWAS: GWAS performed within a cohort study.
+Case/control, meta-analysis: Meta-analysis of case/control studies.
+Cohort, meta-analysis: Meta-analysis of cohort studies.
+Case/control, clinical trial: Clinical trial data analyzed using case/control logic.
+Cohort, clinical trial: Cohort study derived from or embedded in a clinical trial.
+Case/control, replication: Replication analysis within a case/control design.
+Cohort, replication: Replication analysis using cohort data.
+Clinical trial, replication: Replication of findings using clinical trial data.
+Meta-analysis, GWAS: Meta-analysis combining GWAS data.
+Cohort, prospective: Forward-looking cohort study.
+Cohort, retrospective: Historical cohort study.
+Prospective, retrospective: Studies using both forward-looking and retrospective components.
+Case/control, prospective/retrospective: Case/control design with a time dimension.
+Meta-analysis, replication: Meta-analysis focused on replicated findings.
+Linkage, trios: Linkage analysis involving family trios.
+Retrospective, linkage, trios: Combined design using retrospective data, linkage, and trios.
+Case series, trios: Trio-based case series.
+Cohort, case/control: Study combining cohort and case/control features.
+Cohort, case/control, replication: Cohort-based case/control study with replication.
+Clinical trial, meta-analysis, replication: Meta-analysis of clinical trials with replication.
+
+Try to use an example from the composite examples if applicable.
 
 Term: Participant Information
 - Content: Details about the participants, including age, gender, ethnicity, pre-existing conditions and any other relevant characteristics.
