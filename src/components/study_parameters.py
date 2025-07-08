@@ -21,6 +21,8 @@ class StudyParameters(BaseModel):
 
 KEY_QUESTION = """
 We are interested in creating a summary of the study design of this article. From the article, we want to extract the following information:
+Term: Summary
+- Content: A short 2-3 sentence summary of the study motivation, design, and results.
 
 Term: Study Type
 - Content: The type of study conducted (e.g., case-control, cohort, cross-sectional, GWAS etc.) as well as if the study was
