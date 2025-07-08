@@ -85,7 +85,7 @@ def get_all_associations(article_text: str) -> List[Dict]:
         ),
         output_format_structure=VariantAssociationList,
     ).get_hydrated_prompt()
-    generator = Generator(model="gpt-4o", samples=2)
+    generator = Generator(model="gpt-4o", samples=5)
     responses = generator.generate(prompt)
     logger.info(f"Fusing {len(responses)} Responses")
 

@@ -7,7 +7,7 @@ from src.utils import get_article_text, is_pmcid, get_title
 from typing import Optional
 from loguru import logger
 from pathlib import Path
-
+import os
 
 class AnnotationPipeline:
     def __init__(self, pmcid: str):
@@ -76,7 +76,27 @@ class AnnotationPipeline:
                 logger.error(f"Error saving annotations: {e}")
         return final_structure
 
+def copy_markdown(pmcid: str):
+    file_path = Path(f"data/articles/{pmcid}.md")
+    with open(file_path, "r") as f:
+        data = f.read()
+    
+    new_file_path = Path(f"data/markdown/{pmcid}.md")
+    os.makedirs(os.path.dirname(new_file_path), exist_ok=True)
+    with open(new_file_path, "w") as f:
+        f.write(data)
 
 if __name__ == "__main__":
-    pipeline = AnnotationPipeline("PMC11730665")
-    pipeline.run()
+    pmcids = [
+        "PMC5728534",
+        # "PMC11730665",
+        # "PMC5712579",
+        # "PMC4737107",
+        # "PMC5749368"
+    ]
+    for pmcid in pmcids:
+        logger.info(f"Processing {pmcid}")
+        pipeline = AnnotationPipeline(pmcid)
+        pipeline.run()
+    # for pmcid in pmcids:
+    #     copy_markdown(pmcid)

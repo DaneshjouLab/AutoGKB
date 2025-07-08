@@ -25,7 +25,7 @@ Term: Summary
 - Content: A short 2-3 sentence summary of the study motivation, design, and results.
 
 Term: Study Type
-- Content: The type of study conducted (e.g., case-control, cohort, cross-sectional, GWAS etc.) as well as if the study was
+- Content: A short description of the type of study conducted with attributes separated by commas (e.g., case-control, cohort, cross-sectional, GWAS etc.) as well as if the study was
 prospective, retrospective, a meta-analysis, a replication study, or a combination of these.
 Here are descriptions of the major types:
 GWAS: Genome-Wide Association Study; analyzes genetic variants across genomes to find associations with traits or diseases.
@@ -68,7 +68,7 @@ Cohort, case/control: Study combining cohort and case/control features.
 Cohort, case/control, replication: Cohort-based case/control study with replication.
 Clinical trial, meta-analysis, replication: Meta-analysis of clinical trials with replication.
 
-Try to use an example from the composite examples if applicable.
+Your output should be a string similar to the composite examples (ex. "case/control, GWAS", "Cohort, replication", etc.).
 
 Term: Participant Information
 - Content: Details about the participants, including age, gender, ethnicity, pre-existing conditions and any other relevant characteristics.
