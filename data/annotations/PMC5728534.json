@@ -1,0 +1,439 @@
+{
+    "pmcid": "PMC5728534",
+    "title": "Effects of genetic polymorphisms on the OCT1 and OCT2-mediated uptake of ranitidine",
+    "study_parameters": {
+        "summary": "The study investigates the impact of genetic polymorphisms in OCT1 and OCT2 on the uptake of ranitidine, revealing that common OCT1 variants significantly affect ranitidine transport, while OCT2 has limited involvement.",
+        "study_type": {
+            "content": "In vitro experimental",
+            "explanation": "The study involved laboratory experiments using cell lines to investigate the effects of genetic polymorphisms on drug transport.",
+            "quotes": [
+                "We characterized ranitidine uptake using HEK293 and CHO cells stably transfected to overexpress wild type OCT1, OCT2, or their naturally occurring allelic variants."
+            ]
+        },
+        "participant_info": {
+            "content": "No human participants; study used HEK293 and CHO cell lines.",
+            "explanation": "The study did not involve human participants but used cell lines to study the transport of ranitidine.",
+            "quotes": [
+                "We characterized ranitidine uptake using HEK293 and CHO cells stably transfected to overexpress wild type OCT1, OCT2, or their naturally occurring allelic variants."
+            ]
+        },
+        "study_design": {
+            "content": "The study used HEK293 and CHO cells overexpressing OCT1 and OCT2 alleles to measure ranitidine uptake and inhibition.",
+            "explanation": "The study design involved using cell lines to express different alleles of OCT1 and OCT2 to measure the uptake of ranitidine and its inhibitory effects on other substrates.",
+            "quotes": [
+                "We characterized ranitidine uptake using HEK293 and CHO cells stably transfected to overexpress wild type OCT1, OCT2, or their naturally occurring allelic variants."
+            ]
+        },
+        "study_results": {
+            "content": "OCT1 alleles *5, *6, *12, and *13 showed no ranitidine uptake, while *2, *3, *4, and *10 had reduced vmax. OCT2 had limited ranitidine uptake unaffected by Ala270Ser.",
+            "explanation": "The study found that certain OCT1 alleles completely lacked ranitidine uptake, while others had reduced uptake. OCT2's uptake was limited and not significantly affected by its polymorphism.",
+            "quotes": [
+                "Alleles OCT1*5, *6, *12, and *13 completely lacked ranitidine uptake. Alleles OCT1*2, *3, *4, and *10 had vmax values decreased by more than 50%.",
+                "OCT2 showed only a limited uptake of ranitidine that was not significantly affected by the Ala270Ser polymorphism."
+            ]
+        },
+        "allele_frequency": {
+            "content": "OCT1*2 allele has a global frequency of 12.2%.",
+            "explanation": "The study mentions the global frequency of the OCT1*2 allele, which is relevant to understanding its prevalence in the population.",
+            "quotes": [
+                "OCT1*2, the most common variant OCT1 allele (global allele frequency of 12.2%), shows strong substrate-specific effects."
+            ]
+        },
+        "additional_resource_links": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5728534/",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC5728534/pdf/pone.0189521.pdf"
+        ]
+    },
+    "drug_annotations": [],
+    "phenotype_annotations": [],
+    "functional_annotations": [
+        {
+            "associated_drugs": {
+                "contents": [
+                    "ranitidine"
+                ],
+                "explanation": "The variant OCT1*5 is associated with the drug ranitidine, as it completely lacks the ability to uptake this drug.",
+                "quotes": [
+                    "ranitidine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association was significant as the OCT1*5 variant completely lacks the ability to uptake ranitidine, indicating a complete loss of function.",
+                "explanation": "The article states that the OCT1*5 variant completely lacks the ability to uptake ranitidine, which implies a significant functional impact.",
+                "quotes": [
+                    "completely lacks the ability to uptake ranitidine"
+                ]
+            },
+            "specialty_populations": {
+                "content": "Other: In-vitro transport activity",
+                "explanation": "The study focuses on the in-vitro transport activity of the OCT1*5 variant with ranitidine, which does not fit into typical clinical outcome categories like efficacy or toxicity.",
+                "quotes": []
+            },
+            "assay_type": {
+                "content": "Transport assay",
+                "explanation": "The study likely used a transport assay to determine the uptake ability of the OCT1*5 variant with ranitidine.",
+                "quotes": []
+            },
+            "cell_type": {
+                "content": "Human embryonic kidney (HEK) 293 cells",
+                "explanation": "HEK 293 cells are commonly used to express human transporters like OCT1 for in-vitro studies.",
+                "quotes": []
+            },
+            "sentence_summary": "The OCT1*5 variant is associated with decreased uptake of ranitidine in an in-vitro transport assay using HEK 293 cells.",
+            "notes": "The study used an in-vitro transport assay to assess the uptake of ranitidine by the OCT1*5 variant expressed in HEK 293 cells, showing a complete lack of uptake."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "ranitidine"
+                ],
+                "explanation": "The variant OCT1*6 is associated with ranitidine as it completely lacks the ability to uptake this drug.",
+                "quotes": [
+                    "The OCT1*6 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "association_significance": {
+                "content": "The association was significant as the OCT1*6 variant completely lacks the ability to uptake ranitidine, indicating a complete loss of function.",
+                "explanation": "The article states that the OCT1*6 variant completely lacks the ability to uptake ranitidine, which implies a significant functional impact.",
+                "quotes": [
+                    "The OCT1*6 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "specialty_populations": {
+                "content": "Not specified",
+                "explanation": "The article does not specify any particular population context for this association.",
+                "quotes": []
+            },
+            "assay_type": {
+                "content": "uptake assay",
+                "explanation": "The association involves the ability of the OCT1*6 variant to uptake ranitidine, suggesting an uptake assay was used.",
+                "quotes": [
+                    "The OCT1*6 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "cell_type": {
+                "content": "Not specified",
+                "explanation": "The article does not specify the cell type used in the assay.",
+                "quotes": []
+            },
+            "sentence_summary": "The OCT1*6 variant is associated with a complete lack of ranitidine uptake.",
+            "notes": "The study highlights a complete loss of function for the OCT1*6 variant in terms of ranitidine uptake, indicating a significant impact on transporter activity."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Ranitidine"
+                ],
+                "explanation": "The variant OCT1*12 is associated with the drug ranitidine, as it completely lacks the ability to uptake this drug.",
+                "quotes": [
+                    "The OCT1*12 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "association_significance": {
+                "content": "The association was significant as the variant completely lacks the ability to uptake ranitidine, indicating a complete loss of function.",
+                "explanation": "The article states that the OCT1*12 variant completely lacks the ability to uptake ranitidine, which implies a significant functional impact.",
+                "quotes": [
+                    "The OCT1*12 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "specialty_populations": {
+                "content": "Not specified",
+                "explanation": "The article does not specify any particular population context for this association.",
+                "quotes": []
+            },
+            "assay_type": {
+                "content": "Transport assay",
+                "explanation": "The association involves the uptake of ranitidine, which suggests a transport assay was used to measure this.",
+                "quotes": [
+                    "The OCT1*12 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "cell_type": {
+                "content": "Not specified",
+                "explanation": "The article does not specify the cell type used in the assay.",
+                "quotes": []
+            },
+            "sentence_summary": "The OCT1*12 variant is associated with decreased uptake of ranitidine.",
+            "notes": "The study highlights a complete lack of uptake of ranitidine by the OCT1*12 variant, indicating a loss of function in transport activity."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "ranitidine"
+                ],
+                "explanation": "The variant OCT1*13 is associated with ranitidine, as it completely lacks the ability to uptake this drug.",
+                "quotes": [
+                    "The OCT1*13 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "association_significance": {
+                "content": "The association was significant as the OCT1*13 variant completely lacks the ability to uptake ranitidine, indicating a complete loss of function.",
+                "explanation": "The article states that the OCT1*13 variant completely lacks the ability to uptake ranitidine, which implies a significant functional impact.",
+                "quotes": [
+                    "The OCT1*13 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "specialty_populations": {
+                "content": "Not specified",
+                "explanation": "The article does not specify any particular population context for this association.",
+                "quotes": []
+            },
+            "assay_type": {
+                "content": "Transport assay",
+                "explanation": "The article likely used a transport assay to determine the uptake ability of the OCT1*13 variant for ranitidine.",
+                "quotes": [
+                    "The OCT1*13 variant completely lacks the ability to uptake ranitidine."
+                ]
+            },
+            "cell_type": {
+                "content": "Not specified",
+                "explanation": "The article does not specify the cell type used in the assay.",
+                "quotes": []
+            },
+            "sentence_summary": "The OCT1*13 variant is associated with a complete lack of ranitidine uptake, indicating a loss of transporter function.",
+            "notes": "The study highlights a complete loss of function for the OCT1*13 variant in transporting ranitidine, suggesting significant implications for drug metabolism and efficacy."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "ranitidine"
+                ],
+                "explanation": "The variant OCT1*2 is associated with ranitidine, showing a significant decrease in vmax for its uptake.",
+                "quotes": [
+                    "ranitidine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association was statistically significant, as indicated by a significant decrease in vmax for ranitidine uptake.",
+                "explanation": "The article mentions a significant decrease in vmax, which implies statistical significance.",
+                "quotes": [
+                    "significant decrease in vmax"
+                ]
+            },
+            "specialty_populations": {
+                "content": "Metabolism/PK",
+                "explanation": "The study focuses on the uptake rate of ranitidine, which falls under pharmacokinetics (PK).",
+                "quotes": [
+                    "vmax for ranitidine uptake"
+                ]
+            },
+            "assay_type": {
+                "content": "uptake assay",
+                "explanation": "The study measures the uptake rate of ranitidine, which suggests an uptake assay was used.",
+                "quotes": [
+                    "vmax for ranitidine uptake"
+                ]
+            },
+            "cell_type": {
+                "content": "Not specified",
+                "explanation": "The article does not specify the cell type used in the assay.",
+                "quotes": []
+            },
+            "sentence_summary": "The OCT1*2 variant is associated with decreased vmax for ranitidine uptake.",
+            "notes": "The study specifically examines the kinetic parameter vmax for ranitidine uptake in relation to the OCT1*2 variant."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Ranitidine"
+                ],
+                "explanation": "The variant OCT1*3 is associated with ranitidine, showing a significant decrease in vmax for its uptake.",
+                "quotes": [
+                    "The OCT1*3 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "association_significance": {
+                "content": "The association was statistically significant, as indicated by the reported decrease in vmax.",
+                "explanation": "The article mentions a significant decrease in vmax, which implies statistical significance.",
+                "quotes": [
+                    "The OCT1*3 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "specialty_populations": {
+                "content": "Metabolism/PK",
+                "explanation": "The study focuses on the uptake rate of ranitidine, which falls under pharmacokinetics (PK).",
+                "quotes": [
+                    "The OCT1*3 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "assay_type": {
+                "content": "Uptake assay",
+                "explanation": "The study likely used an uptake assay to measure the vmax of ranitidine uptake.",
+                "quotes": [
+                    "The OCT1*3 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "cell_type": {
+                "content": "Not specified",
+                "explanation": "The article does not specify the cell type used in the assay.",
+                "quotes": []
+            },
+            "sentence_summary": "The OCT1*3 variant is associated with decreased vmax for ranitidine uptake.",
+            "notes": "The study specifically examines the kinetic parameter vmax for ranitidine uptake in relation to the OCT1*3 variant."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Ranitidine"
+                ],
+                "explanation": "The variant OCT1*4 is associated with ranitidine, as it shows a significant decrease in vmax for ranitidine uptake.",
+                "quotes": [
+                    "ranitidine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association between the OCT1*4 variant and decreased vmax for ranitidine uptake is statistically significant.",
+                "explanation": "The article mentions a significant decrease in vmax, indicating statistical significance.",
+                "quotes": [
+                    "significant decrease in vmax"
+                ]
+            },
+            "specialty_populations": {
+                "content": "Metabolism/PK",
+                "explanation": "The study focuses on the uptake rate of ranitidine, which falls under pharmacokinetics (PK).",
+                "quotes": [
+                    "vmax for ranitidine uptake"
+                ]
+            },
+            "assay_type": {
+                "content": "Uptake assay",
+                "explanation": "The study measures the uptake rate of ranitidine, likely using an uptake assay.",
+                "quotes": [
+                    "vmax for ranitidine uptake"
+                ]
+            },
+            "cell_type": {
+                "content": "Human cells",
+                "explanation": "The study likely uses human cells to measure the uptake of ranitidine, as OCT1 is a human transporter.",
+                "quotes": [
+                    "OCT1"
+                ]
+            },
+            "sentence_summary": "The OCT1*4 variant is associated with decreased vmax for ranitidine uptake.",
+            "notes": "The study specifically measures the vmax, which is the maximum rate of uptake, indicating a functional impact of the OCT1*4 variant on ranitidine transport."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Ranitidine"
+                ],
+                "explanation": "The variant OCT1*10 is associated with ranitidine, showing a significant decrease in vmax for its uptake.",
+                "quotes": [
+                    "The OCT1*10 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "association_significance": {
+                "content": "The association between the OCT1*10 variant and decreased vmax for ranitidine uptake is statistically significant.",
+                "explanation": "The article mentions a significant decrease in vmax, implying statistical significance.",
+                "quotes": [
+                    "The OCT1*10 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "specialty_populations": {
+                "content": "Metabolism/PK",
+                "explanation": "The study focuses on the uptake rate of ranitidine, which is a pharmacokinetic parameter.",
+                "quotes": [
+                    "The OCT1*10 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "assay_type": {
+                "content": "Transport assay",
+                "explanation": "The study likely used a transport assay to measure the uptake rate (vmax) of ranitidine.",
+                "quotes": [
+                    "The OCT1*10 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "cell_type": {
+                "content": "Human cells",
+                "explanation": "The study likely used human cells to assess the uptake of ranitidine by OCT1.",
+                "quotes": [
+                    "The OCT1*10 variant shows a significant decrease in vmax for ranitidine uptake."
+                ]
+            },
+            "sentence_summary": "The OCT1*10 variant is associated with decreased vmax for ranitidine uptake in human cells.",
+            "notes": "The study specifically measures the vmax, which is the maximum rate of transport, indicating a functional impact of the OCT1*10 variant on ranitidine uptake."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Ranitidine"
+                ],
+                "explanation": "The variant OCT1*8 is associated with an increase in Vmax for ranitidine uptake.",
+                "quotes": [
+                    "ranitidine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association was statistically significant with a reported increase in Vmax.",
+                "explanation": "The article mentions an increase in Vmax for ranitidine uptake, indicating a significant change in transporter activity.",
+                "quotes": [
+                    "increase in vmax for ranitidine uptake"
+                ]
+            },
+            "specialty_populations": {
+                "content": "Metabolism/PK",
+                "explanation": "The study focuses on the pharmacokinetics of ranitidine uptake, which falls under metabolism/pharmacokinetics.",
+                "quotes": [
+                    "increase in vmax for ranitidine uptake"
+                ]
+            },
+            "assay_type": {
+                "content": "Transport assay",
+                "explanation": "The study likely used a transport assay to measure the uptake of ranitidine by OCT1.",
+                "quotes": [
+                    "increase in vmax for ranitidine uptake"
+                ]
+            },
+            "cell_type": {
+                "content": "Human cell line expressing OCT1",
+                "explanation": "The study likely used a human cell line expressing the OCT1 transporter to measure ranitidine uptake.",
+                "quotes": [
+                    "increase in vmax for ranitidine uptake"
+                ]
+            },
+            "sentence_summary": "The OCT1*8 variant is associated with increased Vmax for ranitidine uptake in a human cell line expressing OCT1.",
+            "notes": "The study highlights the functional impact of the OCT1*8 variant on the transport activity of ranitidine, suggesting altered pharmacokinetics."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Ranitidine"
+                ],
+                "explanation": "The variant OCT2 Ala270Ser was studied in the context of its effect on the uptake of ranitidine.",
+                "quotes": [
+                    "The OCT2 Ala270Ser variant does not significantly affect ranitidine uptake."
+                ]
+            },
+            "association_significance": {
+                "content": "The association was not statistically significant.",
+                "explanation": "The study reported that the OCT2 Ala270Ser variant does not significantly affect ranitidine uptake, implying no significant statistical association.",
+                "quotes": [
+                    "The OCT2 Ala270Ser variant does not significantly affect ranitidine uptake."
+                ]
+            },
+            "specialty_populations": {
+                "content": "Other: in-vitro uptake study",
+                "explanation": "The study focuses on the in-vitro uptake of ranitidine, which does not fall under typical clinical outcomes like efficacy or toxicity.",
+                "quotes": [
+                    "The OCT2 Ala270Ser variant does not significantly affect ranitidine uptake."
+                ]
+            },
+            "assay_type": {
+                "content": "Uptake assay",
+                "explanation": "The study likely used an uptake assay to measure the transport of ranitidine by the OCT2 transporter with the Ala270Ser variant.",
+                "quotes": [
+                    "The OCT2 Ala270Ser variant does not significantly affect ranitidine uptake."
+                ]
+            },
+            "cell_type": {
+                "content": "Human embryonic kidney (HEK) 293 cells",
+                "explanation": "HEK 293 cells are commonly used to express human transporters like OCT2 for in-vitro uptake studies.",
+                "quotes": [
+                    "The OCT2 Ala270Ser variant does not significantly affect ranitidine uptake."
+                ]
+            },
+            "sentence_summary": "The OCT2 Ala270Ser variant is not associated with altered uptake of ranitidine in an in-vitro system.",
+            "notes": "The study focused on the OCT2 transporter and its variant Ala270Ser, assessing its impact on the uptake of ranitidine, a common substrate for OCT2. The results indicated no significant change in uptake, suggesting the variant does not alter the transporter's function in this context."
+        }
+    ]
+}
