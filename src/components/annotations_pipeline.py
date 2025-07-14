@@ -40,7 +40,7 @@ class AnnotationPipeline:
             "functional_annotations": self.functional_annotations,
         }
 
-    def run(self, save_path: str = "data/extractions"):
+    def run(self, save_path: str = "data/annotations"):
         logger.info("Getting Study Parameters")
         self.study_parameters = get_study_parameters(self.article_text)
 
