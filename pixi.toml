@@ -17,6 +17,7 @@ update-download-map = "python -c 'from src.fetch_articles.article_downloader imp
 download-articles = "python -m src.fetch_articles.article_downloader"
 download-data = "gdown --fuzzy https://drive.google.com/file/d/1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9/view && unzip autogkb-data.zip && rm autogkb-data.zip"
 setup-repo = "pixi install && pixi run download-data"
+copy-markdown = "python -m src.copy_markdown"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"
