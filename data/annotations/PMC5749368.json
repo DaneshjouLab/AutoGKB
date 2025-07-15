@@ -1,0 +1,114 @@
+{
+    "pmcid": "PMC5749368",
+    "title": "Genetics and clinical response to warfarin and edoxaban in patients with venous thromboembolism",
+    "study_parameters": {
+        "summary": "This study investigated the impact of CYP2C9 and VKORC1 genetic variants on bleeding risk in patients with venous thromboembolism (VTE) treated with warfarin. It was a subanalysis of the Hokusai VTE trial, a randomized, double-blind, multinational clinical trial comparing edoxaban and warfarin. The study found that patients with sensitive or highly sensitive genotypes had increased bleeding risk with warfarin.",
+        "study_type": {
+            "content": "Clinical trial, replication",
+            "explanation": "The study is a subanalysis of the Hokusai VTE trial, which is a randomized, double-blind, multinational clinical trial. It replicates findings from a previous study (ENGAGE AF-TIMI 48) in a different population (patients with VTE).",
+            "quotes": [
+                "Hokusai-venous thromboembolism (Hokusai VTE), a randomised, multinational, double-blind, non-inferiority trial, evaluated the safety and efficacy of edoxaban versus warfarin in patients with VTE initially treated with heparin.",
+                "The present pharmacogenetic subanalysis of the Hokusai VTE trial was designed to confirm and extend the results of the previously reported ENGAGE AF-TIMI 48 pharmacogenetic analysis."
+            ]
+        },
+        "participant_info": {
+            "content": "The study included 3956 patients from the Hokusai VTE trial, with 1978 patients randomized to warfarin. Among these, 63.0% were normal responders, 34.1% were sensitive responders, and 2.8% were highly sensitive responders. A larger proportion of sensitive and highly sensitive responders were of Asian ancestry.",
+            "explanation": "The study provides detailed information about the participants, including their genotype-based classification and racial distribution.",
+            "quotes": [
+                "The analysis included 47.7% (3956/8292) of the patients in Hokusai VTE. Among 1978 patients randomised to warfarin, 63.0% (1247) were normal responders, 34.1% (675) were sensitive responders and 2.8% (56) were highly sensitive responders.",
+                "A larger proportion of sensitive and highly sensitive responders were of Asian ancestry relative to normal responders."
+            ]
+        },
+        "study_design": {
+            "content": "The study was a subanalysis of the Hokusai VTE trial, which was a randomized, double-blind, multinational trial comparing edoxaban and warfarin in patients with VTE. The subanalysis focused on patients genotyped for CYP2C9 and VKORC1 variants, dividing them into normal, sensitive, and highly sensitive responders based on their genotypes. The sample size for the subanalysis was 3956 patients.",
+            "explanation": "The study design is described as a subanalysis of a larger clinical trial, focusing on genetic variants and their impact on treatment outcomes.",
+            "quotes": [
+                "Hokusai-venous thromboembolism (Hokusai VTE), a randomised, multinational, double-blind, non-inferiority trial, evaluated the safety and efficacy of edoxaban versus warfarin in patients with VTE initially treated with heparin.",
+                "The analysis included 47.7% (3956/8292) of the patients in Hokusai VTE."
+            ]
+        },
+        "study_results": {
+            "content": "Sensitive and highly sensitive responders had an increased bleeding risk with warfarin compared to normal responders. Sensitive responders had a hazard ratio (HR) of 1.38 (95% CI 1.11 to 1.71, p=0.0035), and highly sensitive responders had an HR of 1.79 (95% CI 1.09 to 2.99, p=0.0252).",
+            "explanation": "The study results focus on the increased bleeding risk associated with genetic sensitivity to warfarin, quantified by hazard ratios and p-values.",
+            "quotes": [
+                "Compared with normal responders, sensitive and highly sensitive responders had an increased bleeding risk with warfarin (sensitive responders HR 1.38 [95% CI 1.11 to 1.71], p=0.0035; highly sensitive responders 1.79 [1.09 to 2.99]; p=0.0252)."
+            ]
+        },
+        "allele_frequency": {
+            "content": "The CYP2C9 and VKORC1 polymorphisms were in Hardy-Weinberg equilibrium for all three race groups examined (Caucasians, African Americans, and East Asians), and the observed allele frequencies were consistent with previously published findings.",
+            "explanation": "The study provides information on the allele frequencies and their consistency with known data, indicating the genetic distribution among the study population.",
+            "quotes": [
+                "The CYP2C9 and VKORC1 polymorphisms were in Hardy-Weinberg equilibrium for all three race groups examined (ie, Caucasians, African Americans and East Asians), and the observed allele frequencies within each race group were consistent with previously published findings."
+            ]
+        },
+        "additional_resource_links": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5749368/",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC5749368/pdf/heartjnl-2016-310901.pdf",
+            "https://clinicaltrials.gov/ct2/show/NCT00986154"
+        ]
+    },
+    "drug_annotations": [
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Warfarin"
+                ],
+                "explanation": "The variant CYP2C9 is associated with altered dosing and increased bleeding risk in patients treated with warfarin.",
+                "quotes": [
+                    "CYP2C9 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin."
+                ]
+            },
+            "association_significance": {
+                "content": "The association was statistically significant, with the authors reporting a p-value < 0.05 for the increased bleeding risk and altered dosing in patients with different CYP2C9 genotypes.",
+                "explanation": "The study found a statistically significant association between CYP2C9 genotypes and the clinical outcomes related to warfarin treatment.",
+                "quotes": [
+                    "CYP2C9 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin."
+                ]
+            },
+            "meatbolizer_info": {
+                "content": "The study describes CYP2C9 genotypes as identifying sensitive and highly sensitive responders, which implies different metabolizer statuses. Sensitive responders require lower doses of warfarin and experience more bleeding events compared to normal responders.",
+                "explanation": "The study categorizes patients based on their CYP2C9 genotype into different metabolizer statuses, affecting their response to warfarin.",
+                "quotes": [
+                    "CYP2C9 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin, identifying sensitive and highly sensitive responders who require lower doses and experience more bleeding events compared to normal responders."
+                ]
+            },
+            "specialty_populations": {
+                "content": "No",
+                "explanation": "The study does not specify an age-specific population, so it is assumed to be general.",
+                "quotes": []
+            },
+            "sentence_summary": "CYP2C9 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin.",
+            "notes": "The study highlights the importance of genotyping for CYP2C9 to optimize warfarin therapy and minimize bleeding risks in patients with VTE."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Warfarin"
+                ],
+                "explanation": "The variant VKORC1 is associated with altered dosing and increased bleeding risk in patients treated with warfarin.",
+                "quotes": [
+                    "VKORC1 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin."
+                ]
+            },
+            "association_significance": {
+                "content": "The association between VKORC1 genotypes and warfarin dosing/bleeding risk is statistically significant, as indicated by the study's reported p-values.",
+                "explanation": "The study reports statistically significant results regarding the association between VKORC1 genotypes and warfarin dosing/bleeding risk.",
+                "quotes": [
+                    "VKORC1 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin."
+                ]
+            },
+            "meatbolizer_info": null,
+            "specialty_populations": {
+                "content": "No",
+                "explanation": "The study does not specify an age-specific population, so it is assumed to be general.",
+                "quotes": [
+                    "VKORC1 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin."
+                ]
+            },
+            "sentence_summary": "VKORC1 genotypes are associated with increased bleeding risk and altered warfarin dosing in patients with VTE treated with warfarin.",
+            "notes": "The study identifies sensitive and highly sensitive responders who require lower doses and experience more bleeding events compared to normal responders."
+        }
+    ],
+    "phenotype_annotations": [],
+    "functional_annotations": []
+}

@@ -45,7 +45,7 @@ def get_association_background_prompt(variant_association: VariantAssociation):
     background_prompt = ""
     background_prompt += f"Variant ID: {variant_association.variant.content}\n"
     background_prompt += (
-        f"Association Summary: {variant_association.association_summary.content}\n"
+        f"Association Summary: {variant_association.association_summary}\n"
     )
     return background_prompt
 

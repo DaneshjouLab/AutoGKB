@@ -1,0 +1,166 @@
+{
+    "pmcid": "PMC5712579",
+    "title": "Association of HLA-A and HLA-B Alleles with Lamotrigine-Induced Cutaneous Adverse Drug Reactions in the Thai Population",
+    "study_parameters": {
+        "summary": "This study investigates the association between specific HLA alleles and lamotrigine-induced cutaneous adverse drug reactions (CADR) in the Thai population. It is a case-control study involving 15 patients with CADR and 50 lamotrigine-tolerant controls. The study found significant associations between HLA-A*02:07, HLA-B*15:02, and HLA-A*33:03 alleles and CADR, suggesting these alleles could be useful markers for screening before lamotrigine treatment.",
+        "study_type": {
+            "content": "Case/control",
+            "explanation": "The study compares individuals with lamotrigine-induced cutaneous adverse drug reactions (cases) to those without such reactions (controls) to identify associated HLA alleles.",
+            "quotes": [
+                "A case\u2013control study was performed at the Laboratory for Pharmacogenomics, Somdech Phra Debaratana Medical Center (SDMC), Ramathibodi Hospital, Thailand."
+            ]
+        },
+        "participant_info": {
+            "content": "The study involved 15 patients with lamotrigine-induced CADR (10 with maculopapular exanthema, 4 with Stevens\u2013Johnson syndrome, and 1 with drug reaction with eosinophilia and systemic symptoms) and 50 lamotrigine-tolerant controls. The mean age of the CADR patients was 35.2 years, and 73.3% were female. All participants were Thai.",
+            "explanation": "The article provides detailed demographic information about the participants, including age, gender, and ethnicity, as well as the specific conditions of the CADR patients.",
+            "quotes": [
+                "Fifteen LTG-induced CADR (4 cases of SJS, 1 case of DRESS, and 10 cases of MPE) were recruited... The mean age of the LTG-induced CADR patients was 35.2 \u00b1 22.1 and 73.3% were female."
+            ]
+        },
+        "study_design": {
+            "content": "The study was conducted at the Laboratory for Pharmacogenomics, Somdech Phra Debaratana Medical Center, Ramathibodi Hospital, Thailand. It included 15 patients with lamotrigine-induced CADR and 50 lamotrigine-tolerant controls. HLA-A and HLA-B genotyping was performed using PCR-SSO.",
+            "explanation": "The study design section describes the setting, sample size, and methods used for genotyping, which are key components of the study design.",
+            "quotes": [
+                "A case\u2013control study was performed at the Laboratory for Pharmacogenomics, Somdech Phra Debaratana Medical Center (SDMC), Ramathibodi Hospital, Thailand.",
+                "HLA-A and HLA-B genotyping was performed using polymerase chain reaction-sequence-specific oligonucleotides probes."
+            ]
+        },
+        "study_results": {
+            "content": "The study found that the HLA-A*02:07 and HLA-B*15:02 alleles were significantly more frequent in the CADR group compared to controls, with odds ratios of 7.83 (P = 0.013) and 4.89 (P = 0.014), respectively. HLA-A*33:03 was also associated with maculopapular exanthema, with an odds ratio of 8.27 (P = 0.005).",
+            "explanation": "The results section highlights the significant associations found between specific HLA alleles and lamotrigine-induced CADR, including the odds ratios and p-values.",
+            "quotes": [
+                "The proportion of HLA-A\u221702:07 and HLA-B\u221715:02 allele carriers were significantly higher in the LTG-induced CADR group than in the tolerant controls [odds ratio (OR): 7.83; 95% confidence interval (CI): 1.60\u201338.25; P = 0.013, and OR: 4.89; 95% CI: 1.28\u201318.67; P = 0.014].",
+                "In addition, subjects with HLA-A\u221733:03, HLA-B\u221715:02, and HLA-B\u221744:03 were significantly higher in the LTG-induced MPE group than in the tolerant controls (OR: 8.27; 95% CI: 1.83\u201337.41; P = 0.005, OR: 7.33; 95% CI: 1.63\u201333.02; P = 0.005; and OR: 10.29; 95% CI: 1.45\u201372.81; P = 0.029)."
+            ]
+        },
+        "allele_frequency": {
+            "content": "The HLA-B*15:02 allele was found in 40.0% of CADR patients and 12.0% of tolerant controls. HLA-A*02:07 was present in 33.3% of CADR patients, significantly higher than in controls.",
+            "explanation": "The allele frequency section provides specific frequencies of the HLA alleles in the CADR patients compared to the control group, highlighting the significant differences.",
+            "quotes": [
+                "We found the HLA-B\u221715:02 allele in 40.0% of patients who developed CADR and in 12.0% of the tolerant patients.",
+                "Compared with the HLA-B allele, HLA-A\u221702:07 was present in 33.3% of LTG-induced CADR patients and showed significantly higher frequencies than both the treatment control and general population groups."
+            ]
+        },
+        "additional_resource_links": [
+            "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5712579/",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC5712579/pdf/fphar-08-00879.pdf",
+            "https://www.frontiersin.org/articles/10.3389/fphar.2017.00879/full#supplementary-material"
+        ]
+    },
+    "drug_annotations": [],
+    "phenotype_annotations": [
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Lamotrigine"
+                ],
+                "explanation": "The variant HLA-A*02:07 is associated with cutaneous adverse drug reactions induced by lamotrigine in Thai patients.",
+                "quotes": [
+                    "lamotrigine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association was statistically significant with a reported p-value of less than 0.05.",
+                "explanation": "The article mentions that the association between HLA-A*02:07 and lamotrigine-induced CADR in Thai patients was statistically significant, indicating a meaningful correlation.",
+                "quotes": [
+                    "statistically significant"
+                ]
+            },
+            "meatbolizer_info": null,
+            "specialty_populations": {
+                "content": "No",
+                "explanation": "The study focused on Thai patients but did not specify an age-specific population such as pediatric or geriatric.",
+                "quotes": [
+                    "Thai patients"
+                ]
+            },
+            "sentence_summary": "HLA-A*02:07 is associated with increased risk of cutaneous adverse drug reactions when treated with lamotrigine in Thai patients.",
+            "notes": "The study specifically highlights the association in Thai patients, suggesting a potential ethnic or genetic predisposition to lamotrigine-induced CADR linked to the HLA-A*02:07 allele."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Lamotrigine"
+                ],
+                "explanation": "The variant HLA-B*15:02 is associated with lamotrigine-induced cutaneous adverse drug reactions (CADR) in Thai patients.",
+                "quotes": [
+                    "lamotrigine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association between HLA-B*15:02 and lamotrigine-induced CADR in Thai patients is statistically significant.",
+                "explanation": "The article mentions an association, which implies statistical significance, although specific p-values are not provided.",
+                "quotes": [
+                    "HLA-B*15:02 is associated with lamotrigine-induced cutaneous adverse drug reactions (CADR) in Thai patients."
+                ]
+            },
+            "meatbolizer_info": null,
+            "specialty_populations": {
+                "content": "No",
+                "explanation": "The study mentions Thai patients but does not specify an age-specific population.",
+                "quotes": [
+                    "in Thai patients"
+                ]
+            },
+            "sentence_summary": "HLA-B*15:02 is associated with increased risk of cutaneous adverse drug reactions when treated with lamotrigine in Thai patients.",
+            "notes": "The study focuses on the association of the HLA-B*15:02 allele with adverse drug reactions specifically in the Thai population, highlighting the importance of genetic screening in this demographic."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Lamotrigine"
+                ],
+                "explanation": "The variant HLA-A*33:03 is associated with lamotrigine-induced maculopapular exanthema (MPE).",
+                "quotes": [
+                    "lamotrigine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association between HLA-A*33:03 and lamotrigine-induced maculopapular exanthema (MPE) in Thai patients was statistically significant.",
+                "explanation": "The article states that there is an association between the variant and the adverse reaction, implying statistical significance.",
+                "quotes": [
+                    "HLA-A*33:03 is associated with lamotrigine-induced maculopapular exanthema (MPE) in Thai patients."
+                ]
+            },
+            "meatbolizer_info": null,
+            "specialty_populations": {
+                "content": "No",
+                "explanation": "The study mentions Thai patients but does not specify an age-specific population.",
+                "quotes": [
+                    "in Thai patients"
+                ]
+            },
+            "sentence_summary": "HLA-A*33:03 is associated with increased risk of maculopapular exanthema when treated with lamotrigine in Thai patients.",
+            "notes": "The study focuses on the association of HLA-A*33:03 with lamotrigine-induced maculopapular exanthema in a specific ethnic population (Thai patients)."
+        },
+        {
+            "associated_drugs": {
+                "contents": [
+                    "Lamotrigine"
+                ],
+                "explanation": "The variant HLA-B*44:03 is associated with lamotrigine-induced maculopapular exanthema (MPE).",
+                "quotes": [
+                    "lamotrigine"
+                ]
+            },
+            "association_significance": {
+                "content": "The association between HLA-B*44:03 and lamotrigine-induced maculopapular exanthema (MPE) in Thai patients was statistically significant.",
+                "explanation": "The article states that there is a significant association between the variant and the adverse reaction.",
+                "quotes": [
+                    "HLA-B*44:03 is associated with lamotrigine-induced maculopapular exanthema (MPE) in Thai patients."
+                ]
+            },
+            "meatbolizer_info": null,
+            "specialty_populations": {
+                "content": "No",
+                "explanation": "The study focused on Thai patients but did not specify an age-specific population.",
+                "quotes": [
+                    "in Thai patients"
+                ]
+            },
+            "sentence_summary": "HLA-B*44:03 is associated with increased risk of maculopapular exanthema when treated with lamotrigine in Thai patients.",
+            "notes": "The study specifically identifies the association in Thai patients, suggesting a potential ethnic or regional genetic predisposition."
+        }
+    ],
+    "functional_annotations": []
+}
