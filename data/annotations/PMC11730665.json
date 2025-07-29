@@ -2,38 +2,45 @@
     "pmcid": "PMC11730665",
     "title": "Comparative efficacy and safety of sitagliptin or gliclazide combined with metformin in treatment-naive patients with type 2 diabetes: A single-center, prospective, randomized, controlled, noninferiority study with genetic polymorphism analysis",
     "study_parameters": {
-        "summary": "This study compared the efficacy and safety of sitagliptin versus gliclazide, both combined with metformin, in treatment-naive patients with type 2 diabetes mellitus (T2DM) and glucotoxicity. It was a single-center, prospective, randomized, controlled, noninferiority trial. The study found that sitagliptin was noninferior to gliclazide in reducing glycated hemoglobin, with sitagliptin achieving faster glycemic targets and greater weight reductions.",
+        "summary": "This study compared the efficacy and safety of sitagliptin versus gliclazide, both combined with metformin, in treatment-naive patients with type 2 diabetes mellitus (T2DM) with glucotoxicity. It was a 12-week, single-center, prospective, randomized, controlled noninferiority trial. The study found that sitagliptin was noninferior to gliclazide in reducing glycated hemoglobin, with sitagliptin achieving faster glycemic targets and greater weight reductions. Genetic polymorphisms significantly affected drug efficacy, highlighting the importance of personalized medicine.",
         "study_type": {
-            "content": "Clinical trial, prospective",
-            "explanation": "The study is described as a 'single-center, prospective, randomized, controlled noninferiority trial,' which indicates it is a clinical trial with a prospective design.",
+            "content": "Clinical trial, prospective, noninferiority",
+            "explanation": "The study is described as a 'single-center, prospective, randomized, controlled noninferiority trial.' This indicates it is a clinical trial with a prospective design aimed at demonstrating noninferiority between two treatments.",
             "quotes": [
                 "In this single-center, randomized, controlled noninferiority trial, 129 treatment-naive patients with T2DM with glucotoxicity..."
             ]
         },
         "participant_info": {
             "content": "The study included 129 treatment-naive patients with type 2 diabetes mellitus (T2DM) with glucotoxicity. Participants were aged between 18 and 70 years, with a body mass index (BMI) ranging from 18 to 30 kg/m\u00b2. They had fasting plasma glucose (FPG) levels \u2265 200 mg/dL and glycated hemoglobin (HbA1c) \u2265 9.0%.",
-            "explanation": "The article provides specific inclusion criteria for the participants, including age, BMI, and specific glucose and HbA1c levels.",
+            "explanation": "The article provides specific inclusion criteria for participants, including age, BMI, and specific glucose and HbA1c levels, but does not specify gender or ethnicity.",
             "quotes": [
-                "Eligible subjects were randomized into the intervention or control group... newly diagnosed, treatment-naive individuals with T2DM; the age range is between 18 and 70 years, with a body mass index (BMI) ranging from 18 to 30 kg/m\u00b2; normal hepatic and renal function... fasting plasma glucose (FPG) levels \u2265 200 mg/dL (11.1 mmol/L) and glycated hemoglobin (HbA1c) \u2265 9.0%..."
+                "Eligible subjects were randomized into the intervention or control group...",
+                "The age range is between 18 and 70 years, with a body mass index (BMI) ranging from 18 to 30 kg/m\u00b2...",
+                "fasting plasma glucose (FPG) levels \u2265 200 mg/dL (11.1 mmol/L) and glycated hemoglobin (HbA1c) \u2265 9.0%..."
             ]
         },
         "study_design": {
-            "content": "The study was conducted at Nanfang Hospital of Southern Medical University and included 129 treatment-naive patients with T2DM. Participants were randomized to receive either sitagliptin plus metformin or gliclazide plus metformin for 12 weeks. The first 4 weeks involved combination therapy, followed by 8 weeks of metformin monotherapy. The primary endpoint was the change in HbA1c from baseline to week 12.",
-            "explanation": "The study design is detailed in the methods section, describing the randomization, intervention, and follow-up protocol.",
+            "content": "The study was conducted at Nanfang Hospital of Southern Medical University, involving 129 treatment-naive patients with T2DM. Participants were randomized to receive either sitagliptin plus metformin or gliclazide plus metformin for 12 weeks. The first 4 weeks involved combination therapy, followed by 8 weeks of metformin monotherapy. The primary endpoint was the change in HbA1c from baseline to week 12.",
+            "explanation": "The study design details include the location, sample size, randomization process, treatment regimen, and primary endpoint, which are all crucial elements of the study design.",
             "quotes": [
-                "In this single-center, randomized, controlled noninferiority trial, 129 treatment-naive patients with T2DM with glucotoxicity... were randomized to receive sitagliptin plus metformin (n = 66) or gliclazide plus metformin (n = 63) for 12 weeks. Sitagliptin and gliclazide were given for the first 4 weeks, followed by metformin monotherapy for 8 weeks."
+                "Participants were recruited from Nanfang Hospital of Southern Medical University...",
+                "129 treatment-naive patients with T2DM with glucotoxicity...",
+                "randomized to receive sitagliptin plus metformin (n = 66) or gliclazide plus metformin (n = 63) for 12 weeks.",
+                "The primary end point of the study was the change in HbA1c from baseline to week 12."
             ]
         },
         "study_results": {
-            "content": "After 12 weeks, the mean reduction in glycated hemoglobin was 4.03% in the sitagliptin group and 4.13% in the gliclazide group, confirming noninferiority with a mean difference of \u22120.097 (95% CI, \u22120.648 to 0.453). The sitagliptin group achieved faster glycemic targets and greater weight reductions, with a higher rate of FPG < 6.1 mmol/L (26.2% vs 5.7%; P = .012). No significant differences were observed in \u03b2-cell function or hypoglycemia incidence (P > .05).",
-            "explanation": "The results section provides detailed findings on the primary and secondary endpoints, including statistical measures such as mean differences and p-values.",
+            "content": "After 12 weeks, the mean reduction in HbA1c was 4.03% in the sitagliptin group and 4.13% in the gliclazide group, confirming noninferiority with a mean difference of \u22120.097 (95% CI, \u22120.648 to 0.453). The sitagliptin group achieved faster glycemic targets and greater weight reductions. Genetic analysis showed specific SNPs affected drug efficacy, with certain genotypes responding better to sitagliptin.",
+            "explanation": "The results section highlights the main findings, including the noninferiority result, specific reductions in HbA1c, and the impact of genetic polymorphisms on drug efficacy.",
             "quotes": [
-                "After 12 weeks, mean glycated hemoglobin reductions were 4.03% in the sitagliptin group and 4.13% in the gliclazide group, with a mean difference of \u22120.097 (95% confidence interval, \u22120.648 to 0.453), confirming noninferiority. Both groups showed significant FPG reductions at 4 weeks (P < .05). The sitagliptin group achieved faster glycemic targets, greater FPG and body weight reductions, and higher rates of FPG < 6.1 mmol/L (26.2% vs 5.7%; P = .012)."
+                "After 12 weeks, mean glycated hemoglobin reductions were 4.03% in the sitagliptin group and 4.13% in the gliclazide group, with a mean difference of \u22120.097 (95% confidence interval, \u22120.648 to 0.453), confirming noninferiority.",
+                "The sitagliptin group achieved faster glycemic targets, greater FPG and body weight reductions...",
+                "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy..."
             ]
         },
         "allele_frequency": {
-            "content": "The study identified specific single-nucleotide polymorphisms (SNPs) that affected drug efficacy. For example, the DPP-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin. However, specific allele frequencies are not provided in the text.",
-            "explanation": "The study discusses genetic polymorphisms affecting drug efficacy but does not provide specific allele frequencies.",
+            "content": "The study mentions genetic polymorphisms affecting drug efficacy but does not provide specific allele frequencies. It notes that DPP-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+            "explanation": "While the study discusses the impact of genetic polymorphisms on drug efficacy, it does not provide specific allele frequency data.",
             "quotes": [
                 "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin."
             ]
@@ -43,116 +50,118 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC11730665/pdf/medi-104-e41061.pdf"
         ]
     },
-    "drug_annotations": [
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Sitagliptin"
-                ],
-                "explanation": "The study focuses on the efficacy of sitagliptin (a DPP-4 inhibitor) in relation to the rs2909451 variant.",
-                "quotes": [
-                    "The rs2909451 TT genotype in the DPP4 gene is associated with lower efficacy of sitagliptin in reducing HbA1c."
+    "annotations": {
+        "relationships": [
+            {
+                "gene": "DPP-4",
+                "polymorphism": "rs2909451 TT",
+                "relationship_effect": "Patients with the TT genotype showed lower efficacy with sitagliptin (median HbA1c improvement 0.57) compared to gliclazide (median 1.11).",
+                "p_value": "<.001",
+                "citations": [
+                    "Specifically, individuals with specific genotypes, such as the TT genotype of rs2909451 and GG genotype of rs4664443, may experience lower efficacy of sitagliptin.^[52]^[[52](#R52)52] Moreover, a genome-wide association study identified a polymorphism in PRKD1 (rs57803087) that was associated with a more significant response to DPP-4 inhibitors such as sitagliptin in individuals with type 2 diabetes.^[53]^[[53](#R53)53] As a DPP-4 inhibitor, sitagliptin has been shown to regulate oxidative stress and autophagy, indicating its effectiveness in mitigating hypoxia-induced injury in various cells, including cardiomyocytes.^[54]^[[54](#R54)54] In addition, DPP-4 inhibitors, including sitagliptin, have demonstrated significant anti-inflammatory actions in both in vivo and in vitro models, further supporting their therapeutic potential.^[55]^[[55](#R55)55] Furthermore, DPP-4 inhibitors such as sitagliptin inhibit the degradation of GLP-1, thereby prolonging its effects, which can be beneficial in managing diabetes.^[56]^[[56](#R56)56] Sitagliptin has also been found to provide significant DPP-4 inhibition, crucial for its efficacy in treating diabetes.^[57]^[[57](#R57)57]\n\nThe CYP2C9 enzyme is crucial for the metabolism of gliclazide.",
+                    "Genetic polymorphisms, such as DPP-4 rs2909451 TT and rs4664443 GG, significantly influenced the efficacy of sitagliptin, highlighting the importance of personalized medicine.",
+                    "Genetic polymorphisms and therapeutic efficacy\n\nThe analysis revealed significant effects of DPP-4 gene polymorphisms on the efficacy of sitagliptin."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of < 0.05.",
-                "explanation": "The study reports a statistically significant association between the rs2909451 TT genotype and the efficacy of sitagliptin.",
-                "quotes": [
-                    "The association was statistically significant with a p-value of < 0.05."
+            {
+                "gene": "DPP-4",
+                "polymorphism": "rs4664443 GG",
+                "relationship_effect": "Patients with the GG genotype showed lower efficacy with sitagliptin (median HbA1c improvement 0.69) compared to gliclazide (median 1.25).",
+                "p_value": "<.001",
+                "citations": [
+                    "Specifically, individuals with specific genotypes, such as the TT genotype of rs2909451 and GG genotype of rs4664443, may experience lower efficacy of sitagliptin.^[52]^[[52](#R52)52] Moreover, a genome-wide association study identified a polymorphism in PRKD1 (rs57803087) that was associated with a more significant response to DPP-4 inhibitors such as sitagliptin in individuals with type 2 diabetes.^[53]^[[53](#R53)53] As a DPP-4 inhibitor, sitagliptin has been shown to regulate oxidative stress and autophagy, indicating its effectiveness in mitigating hypoxia-induced injury in various cells, including cardiomyocytes.^[54]^[[54](#R54)54] In addition, DPP-4 inhibitors, including sitagliptin, have demonstrated significant anti-inflammatory actions in both in vivo and in vitro models, further supporting their therapeutic potential.^[55]^[[55](#R55)55] Furthermore, DPP-4 inhibitors such as sitagliptin inhibit the degradation of GLP-1, thereby prolonging its effects, which can be beneficial in managing diabetes.^[56]^[[56](#R56)56] Sitagliptin has also been found to provide significant DPP-4 inhibition, crucial for its efficacy in treating diabetes.^[57]^[[57](#R57)57]\n\nThe CYP2C9 enzyme is crucial for the metabolism of gliclazide.",
+                    "Genetic polymorphisms, such as DPP-4 rs2909451 TT and rs4664443 GG, significantly influenced the efficacy of sitagliptin, highlighting the importance of personalized medicine.",
+                    "Genetic polymorphisms and therapeutic efficacy\n\nThe analysis revealed significant effects of DPP-4 gene polymorphisms on the efficacy of sitagliptin."
                 ]
             },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "No",
-                "explanation": "The study does not specify any age-specific population focus.",
-                "quotes": [
-                    "The study does not mention any specific age group such as pediatric or geriatric."
+            {
+                "gene": "GLP1R",
+                "polymorphism": "rs6923761 AA",
+                "relationship_effect": "Patients with the AA genotype had reduced glycemic response to sitagliptin (median HbA1c improvement 0.90) compared to gliclazide (median 1.41).",
+                "p_value": ".010",
+                "citations": [
+                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant."
                 ]
             },
-            "sentence_summary": "The rs2909451 TT genotype is associated with decreased efficacy of sitagliptin in reducing HbA1c in patients with Type 2 Diabetes.",
-            "notes": "The study highlights the potential for genetic testing to personalize diabetes treatment by identifying patients who may not respond well to sitagliptin due to their genetic makeup."
-        },
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Sitagliptin"
-                ],
-                "explanation": "The study focuses on the efficacy of sitagliptin (a DPP-4 inhibitor) in relation to the rs4664443 variant.",
-                "quotes": [
-                    "The rs4664443 GG genotype in the DPP4 gene is associated with lower efficacy of sitagliptin in reducing HbA1c."
+            {
+                "gene": "GLP1R",
+                "polymorphism": "rs3765467 AG",
+                "relationship_effect": "Patients with the AG genotype responded better to sitagliptin (median HbA1c improvement 1.42) than gliclazide (median 1.08).",
+                "p_value": ".023",
+                "citations": [
+                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of less than 0.05.",
-                "explanation": "The authors reported a statistically significant association between the rs4664443 GG genotype and the efficacy of sitagliptin.",
-                "quotes": [
-                    "The association was statistically significant with a p-value < 0.05."
+            {
+                "gene": "KCNQ1",
+                "polymorphism": "rs163184 GG",
+                "relationship_effect": "Patients with the GG allele had lower responsiveness to sitagliptin (median HbA1c improvement 0.81) and better response to gliclazide (median 1.16).",
+                "p_value": "<.001",
+                "citations": [
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant.",
+                    "This analysis enabled the correlation of genetic polymorphisms with drug efficacy and safety outcomes.",
+                    "# Comparative efficacy and safety of sitagliptin or gliclazide combined with metformin in treatment-naive patients with type 2 diabetes: A single-center, prospective, randomized, controlled, noninferiority study with genetic polymorphism analysis\n\n## Metadata\n**Authors:** Min Qin, Lingxi Chao, Shiqun Liu\n**Journal:** Medicine\n**Date:** 2025 Jan 10\n**DOI:** [10.1097/MD.0000000000041061](https://doi.org/10.1097/MD.0000000000041061)\n**PMID:** 39792745\n**PMCID:** PMC11730665\n**URL:** https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11730665/\n**PDF:** [https://pmc.ncbi.nlm.nih.gov/articles/PMC11730665/pdf/medi-104-e41061.pdf](https://pmc.ncbi.nlm.nih.gov/articles/PMC11730665/pdf/medi-104-e41061.pdf)\n\n## Abstract\n\n**Background::** \nThis study evaluates the efficacy and safety of sitagliptin versus gliclazide, combined with metformin, in treatment-naive patients with type 2 diabetes mellitus (T2DM) and glucotoxicity."
                 ]
             },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "No",
-                "explanation": "The study did not focus on a specific age-related population.",
-                "quotes": [
-                    "The study population was not limited to a specific age group."
+            {
+                "gene": "KCNJ11",
+                "polymorphism": "rs2285676 CC",
+                "relationship_effect": "Patients with the CC genotype responded better to sitagliptin (median HbA1c improvement 1.02) than gliclazide (median 1.31), indicating more substantial insulin secretion capability with sitagliptin.",
+                "p_value": "<.001",
+                "citations": [
+                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant."
                 ]
             },
-            "sentence_summary": "The rs4664443 GG genotype is associated with decreased efficacy of sitagliptin in reducing HbA1c in patients with Type 2 Diabetes.",
-            "notes": "The study involved a cohort of patients with Type 2 Diabetes and measured HbA1c levels before and after treatment with sitagliptin."
-        },
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Sitagliptin"
-                ],
-                "explanation": "The study found that the rs3765467 AG genotype in the GLP1R gene is associated with a better response to sitagliptin in reducing HbA1c levels.",
-                "quotes": [
-                    "sitagliptin (Januvia)"
+            {
+                "gene": "CDKAL1",
+                "polymorphism": "rs7754840 CG",
+                "relationship_effect": "Patients with the CG genotype had more significant HbA1c reduction with sitagliptin (median 1.44) than gliclazide (median 1.09).",
+                "p_value": ".053",
+                "citations": [
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of 0.03.",
-                "explanation": "The authors reported a p-value of 0.03, indicating statistical significance.",
-                "quotes": [
-                    "p-value = 0.03"
+            {
+                "gene": "CDKAL1",
+                "polymorphism": "rs756992 AG",
+                "relationship_effect": "Patients with the AG genotype had more significant HbA1c reduction with sitagliptin (median 1.43) than gliclazide (median 1.10).",
+                "p_value": ".081",
+                "citations": [
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine."
                 ]
             },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "No",
-                "explanation": "The study did not specify any age-specific population focus, such as pediatric or geriatric.",
-                "quotes": []
-            },
-            "sentence_summary": "The rs3765467 AG genotype is associated with a better response to sitagliptin in reducing HbA1c in patients with Type 2 Diabetes.",
-            "notes": "The study involved a cohort of 200 patients with Type 2 Diabetes, and the response to sitagliptin was measured over a 12-week period. The rs3765467 AG genotype showed a statistically significant improvement in HbA1c reduction compared to other genotypes."
-        },
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Sitagliptin"
-                ],
-                "explanation": "The study found that the rs2285676 CC genotype in the KCNJ11 gene is associated with a better response to sitagliptin in reducing HbA1c levels.",
-                "quotes": [
-                    "sitagliptin (Januvia)"
+            {
+                "gene": "CYP2C9",
+                "polymorphism": "rs1799853 TT",
+                "relationship_effect": "Patients with the TT genotype had lower efficacy with sitagliptin (median HbA1c improvement 0.70) compared to gliclazide (median 1.07), suggesting slower metabolism of gliclazide impacts efficacy.",
+                "p_value": "<.001",
+                "citations": [
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of < 0.05.",
-                "explanation": "The authors reported a statistically significant association between the rs2285676 CC genotype and the response to sitagliptin, with a p-value indicating significance.",
-                "quotes": [
-                    "p-value < 0.05"
+            {
+                "gene": "CYP2C9",
+                "polymorphism": "rs1057910 GG",
+                "relationship_effect": "Patients with the GG genotype had lower efficacy with sitagliptin (median HbA1c improvement 0.93) compared to gliclazide (median 1.20), but the difference was not statistically significant.",
+                "p_value": ".464",
+                "citations": [
+                    "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine.",
+                    "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine."
                 ]
-            },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "No",
-                "explanation": "The study did not specify any age-specific population such as pediatric or geriatric.",
-                "quotes": []
-            },
-            "sentence_summary": "The rs2285676 CC genotype is associated with a better response to sitagliptin in reducing HbA1c in patients with Diabetes Mellitus, Type 2.",
-            "notes": "The study focused on the KCNJ11 gene and its impact on the efficacy of sitagliptin in lowering HbA1c levels in patients with Type 2 Diabetes Mellitus."
-        }
-    ],
-    "phenotype_annotations": [],
-    "functional_annotations": []
+            }
+        ]
+    }
 }

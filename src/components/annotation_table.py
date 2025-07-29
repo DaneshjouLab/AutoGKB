@@ -9,6 +9,7 @@ class AnnotationRelationship(BaseModel):
     polymorphism: str = Field(description="Genetic polymorphism/variant")
     relationship_effect: str = Field(description="Relationship or effect description")
     p_value: str = Field(description="Statistical p-value")
+    citations: List[str] = Field(default=[], description="List of supporting sentences from the text")
 
 
 class AnnotationTable(BaseModel):

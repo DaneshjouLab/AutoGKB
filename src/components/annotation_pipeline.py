@@ -1,61 +1,49 @@
-from src.components.all_associations import get_all_associations, AssociationType
-from src.components.drug_annotation import get_drug_annotation
-from src.components.phenotype_annotation import get_phenotype_annotation
-from src.components.functional_annotation import get_functional_annotation
+from src.components.annotation_table import AnnotationTableGenerator
+from src.components.citation_generator import CitationGenerator
 from src.components.study_parameters import get_study_parameters
 from src.utils import get_article_text, is_pmcid, get_title
-from typing import Optional
 from loguru import logger
 from pathlib import Path
 import os
 
 class AnnotationPipeline:
-    def __init__(self, pmcid: str):
+    def __init__(self, pmcid: str, citation_approach: str = "lm"):
         if not is_pmcid(pmcid):
             logger.error(f"Invalid PMCID: {pmcid}")
         self.pmcid = pmcid
+        self.citation_approach = citation_approach
         self.article_text = get_article_text(pmcid)
         self.title = get_title(self.article_text)
-        self.all_associations = []
         self.study_parameters = {}
-        self.drug_annotations = []
-        self.phenotye_annotations = []
-        self.functional_annotations = []
+        self.annotations = None
 
     def print_info(self):
-        logger.info(f"Found {len(self.all_associations)} associations")
-        logger.info(f"Created {len(self.drug_annotations)} Drug Annotations")
-        logger.info(f"Created {len(self.phenotye_annotations)} Phenotype Annotations")
-        logger.info(
-            f"Created {len(self.functional_annotations)} Functional Annotations"
-        )
+        annotation_count = len(self.annotations.relationships) if self.annotations else 0
+        
+        logger.info(f"Created {annotation_count} Annotations")
 
     def generate_final_structure(self):
         return {
             "pmcid": self.pmcid,
             "title": self.title,
             "study_parameters": self.study_parameters,
-            "drug_annotations": self.drug_annotations,
-            "phenotype_annotations": self.phenotye_annotations,
-            "functional_annotations": self.functional_annotations,
+            "annotations": self.annotations,
         }
 
     def run(self, save_path: str = "data/annotations"):
         logger.info("Getting Study Parameters")
         self.study_parameters = get_study_parameters(self.article_text)
 
-        logger.info("Getting All Associations")
-        self.all_associations = get_all_associations(self.article_text)
+        # Generate annotations using AnnotationTableGenerator
+        annotation_generator = AnnotationTableGenerator(self.pmcid)
+        
+        logger.info("Generating Annotations")
+        self.annotations = annotation_generator.generate_table_json()
 
-        for association in self.all_associations:
-            if association.association_type == AssociationType.DRUG:
-                self.drug_annotations.append(get_drug_annotation(association))
-            if association.association_type == AssociationType.PHENOTYPE:
-                self.phenotye_annotations.append(get_phenotype_annotation(association))
-            if association.association_type == AssociationType.FUNCTIONAL:
-                self.functional_annotations.append(
-                    get_functional_annotation(association)
-                )
+        # Generate citations for annotations
+        citation_generator = CitationGenerator(self.pmcid, approach=self.citation_approach)
+        logger.info(f"Adding Citations to Annotations using {self.citation_approach} approach")
+        self.annotations = citation_generator.add_citations_to_annotations(self.annotations)
 
         self.print_info()
 
@@ -89,14 +77,14 @@ def copy_markdown(pmcid: str):
 if __name__ == "__main__":
     pmcids = [
         "PMC5728534",
-        # "PMC11730665",
-        # "PMC5712579",
-        # "PMC4737107",
-        # "PMC5749368"
+        "PMC11730665",
+        "PMC5712579",
+        "PMC4737107",
+        "PMC5749368"
     ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")
-        pipeline = AnnotationPipeline(pmcid)
+        pipeline = AnnotationPipeline(pmcid, citation_approach="local")
         pipeline.run()
-    # for pmcid in pmcids:
-    #     copy_markdown(pmcid)
+    for pmcid in pmcids:
+        copy_markdown(pmcid)
