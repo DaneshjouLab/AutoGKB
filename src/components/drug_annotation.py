@@ -66,7 +66,7 @@ KEY_QUESTION = """
 This article contains information on the following variant association:
 {association_background}
 
-We are trying to complete a Drug Annotation report that is speciically interested in associations between genetic variants and
+We are trying to complete a Drug Annotation report that is specifically interested in associations between genetic variants and
 pharmacological parameters or clinical drug response measures.
 
 For this association, use the article the find the following additional information for us to get a complete undestanding of the findings:
@@ -126,7 +126,7 @@ def get_drug_annotation(variant_association: VariantAssociation | Dict):
         ),
         output_format_structure=DrugAnnotation,
     ).get_hydrated_prompt()
-    generator = Generator(model="gpt-4o")
+    generator = Generator(model="gpt-4.1")
     return generator.generate(prompt)
 
 
