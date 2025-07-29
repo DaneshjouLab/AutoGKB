@@ -32,7 +32,7 @@ class AnnotationPipeline:
 
     def run(self, save_path: str = "data/annotations"):
         logger.info("Getting Study Parameters")
-        self.study_parameters = get_study_parameters(self.article_text)
+        self.study_parameters = get_study_parameters(self.pmcid)
 
         # Generate annotations using AnnotationTableGenerator
         annotation_generator = AnnotationTableGenerator(self.pmcid)
@@ -40,10 +40,13 @@ class AnnotationPipeline:
         logger.info("Generating Annotations")
         self.annotations = annotation_generator.generate_table_json()
 
-        # Generate citations for annotations
+        # Generate citations for annotations and study parameters
         citation_generator = CitationGenerator(self.pmcid, approach=self.citation_approach)
         logger.info(f"Adding Citations to Annotations using {self.citation_approach} approach")
         self.annotations = citation_generator.add_citations_to_annotations(self.annotations)
+        
+        logger.info(f"Adding Citations to Study Parameters using {self.citation_approach} approach")
+        self.study_parameters = citation_generator.add_citations_to_study_parameters(self.study_parameters)
 
         self.print_info()
 
@@ -76,11 +79,11 @@ def copy_markdown(pmcid: str):
 
 if __name__ == "__main__":
     pmcids = [
-        "PMC5728534",
+        # "PMC5728534",
         "PMC11730665",
-        "PMC5712579",
-        "PMC4737107",
-        "PMC5749368"
+        # "PMC5712579",
+        # "PMC4737107",
+        # "PMC5749368"
     ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")

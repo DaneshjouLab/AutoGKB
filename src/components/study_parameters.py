@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from src.inference import PMCIDGenerator
 from loguru import logger
 import os
@@ -14,6 +14,12 @@ class StudyParameters(BaseModel):
     study_results: str
     allele_frequency: str
     additional_resource_links: List[str]
+    summary_citations: Optional[List[str]] = None
+    study_type_citations: Optional[List[str]] = None
+    participant_info_citations: Optional[List[str]] = None
+    study_design_citations: Optional[List[str]] = None
+    study_results_citations: Optional[List[str]] = None
+    allele_frequency_citations: Optional[List[str]] = None
 
 
 
