@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from src.variants import ExplainedStr
 from typing import List
 from src.inference import PMCIDGenerator
 from loguru import logger
@@ -9,11 +8,11 @@ import json
 
 class StudyParameters(BaseModel):
     summary: str
-    study_type: ExplainedStr
-    participant_info: ExplainedStr
-    study_design: ExplainedStr  
-    study_results: ExplainedStr
-    allele_frequency: ExplainedStr
+    study_type: str
+    participant_info: str
+    study_design: str  
+    study_results: str
+    allele_frequency: str
     additional_resource_links: List[str]
 
 
@@ -42,7 +41,7 @@ class StudyParametersGenerator:
         prompt = "Provide a short 2-3 sentence summary of the study motivation, design, and results."
         return self.generator.generate(prompt)
     
-    def get_study_type(self) -> ExplainedStr:
+    def get_study_type(self) -> str:
         """Extract the study type with explanation."""
         prompt = """What type of study is this? Provide a short description of the type of study conducted with attributes separated by commas (e.g., case-control, cohort, cross-sectional, GWAS etc.) as well as if the study was prospective, retrospective, a meta-analysis, a replication study, or a combination of these.
         
@@ -63,51 +62,31 @@ class StudyParametersGenerator:
 
         Your output should be a string similar to these examples: "case/control, GWAS", "Cohort, replication", etc. Do not include a descriptor that's not included in the list above."""
         
-        response = self.generator.generate(
-            input_prompt=prompt,
-            response_format=ExplainedStr
-        )
-        return response
+        return self.generator.generate(prompt)
     
-    def get_participant_info(self) -> ExplainedStr:
+    def get_participant_info(self) -> str:
         """Extract participant information with explanation."""
-        prompt = """What are the details about the participants in this study? Include age, gender, ethnicity, pre-existing conditions and any other relevant characteristics. Also breakdown this information by study group if applicable. Don't use bullets points, use plain text."""
+        prompt = """What are the details about the participants in this study? Include age, gender, ethnicity, pre-existing conditions and any other relevant characteristics. Also breakdown this information by study group if applicable. Don't use bullets points, use plain text. Keep response length to one paragraph."""
         
-        response = self.generator.generate(
-            input_prompt=prompt,
-            response_format=ExplainedStr
-        )
-        return response
+        return self.generator.generate(prompt)
     
-    def get_study_design(self) -> ExplainedStr:
+    def get_study_design(self) -> str:
         """Extract study design information with explanation."""
-        prompt = """Describe the study design, including the study population, sample size, and any other relevant details about how the study was conducted. Don't use bullets points, use plain text."""
+        prompt = """Describe the study design, including the study population, sample size, and any other relevant details about how the study was conducted. Don't use bullets points, use plain text. Keep response length to one paragraph."""
         
-        response = self.generator.generate(
-            input_prompt=prompt,
-            response_format=ExplainedStr
-        )
-        return response
+        return self.generator.generate(prompt)
     
-    def get_study_results(self) -> ExplainedStr:
+    def get_study_results(self) -> str:
         """Extract study results with explanation."""
-        prompt = """What are the main study results and findings? Pay key attention to report any ratio statistics (hazard ratio, odds ratio, etc.) and p-values. Don't use bullets points, use plain text."""
+        prompt = """What are the main study results and findings? Pay key attention to report any ratio statistics (hazard ratio, odds ratio, etc.) and p-values. Don't use bullets points, use plain text. Keep response length to one paragraph."""
         
-        response = self.generator.generate(
-            input_prompt=prompt,
-            response_format=ExplainedStr
-        )
-        return response
+        return self.generator.generate(prompt)
     
-    def get_allele_frequency(self) -> ExplainedStr:
+    def get_allele_frequency(self) -> str:
         """Extract allele frequency information with explanation."""
-        prompt = """What information is provided about allele frequencies of variants in the study population? Include the allele frequency in the studied cohorts and experiments if relevant. Don't use bullets points, use plain text."""
+        prompt = """What information is provided about allele frequencies of variants in the study population? Include the allele frequency in the studied cohorts and experiments if relevant. Don't use bullets points, use plain text. Keep response length to one paragraph."""
         
-        response = self.generator.generate(
-            input_prompt=prompt,
-            response_format=ExplainedStr
-        )
-        return response
+        return self.generator.generate(prompt)
     
     def get_additional_resource_links(self) -> List[str]:
         """Extract additional resource links."""
@@ -161,24 +140,19 @@ def test_study_parameters():
         print(f"   {study_parameters.summary}")
         
         print(f"\n🧬 STUDY TYPE:")
-        print(f"   Content: {study_parameters.study_type.content}")
-        print(f"   Explanation: {study_parameters.study_type.explanation}")
+        print(f"   {study_parameters.study_type}")
         
         print(f"\n👥 PARTICIPANT INFO:")
-        print(f"   Content: {study_parameters.participant_info.content}")
-        print(f"   Explanation: {study_parameters.participant_info.explanation}")
+        print(f"   {study_parameters.participant_info}")
         
         print(f"\n🔬 STUDY DESIGN:")
-        print(f"   Content: {study_parameters.study_design.content}")
-        print(f"   Explanation: {study_parameters.study_design.explanation}")
+        print(f"   {study_parameters.study_design}")
         
         print(f"\n📊 STUDY RESULTS:")
-        print(f"   Content: {study_parameters.study_results.content}")
-        print(f"   Explanation: {study_parameters.study_results.explanation}")
+        print(f"   {study_parameters.study_results}")
         
         print(f"\n🧬 ALLELE FREQUENCY:")
-        print(f"   Content: {study_parameters.allele_frequency.content}")
-        print(f"   Explanation: {study_parameters.allele_frequency.explanation}")
+        print(f"   {study_parameters.allele_frequency}")
         
         print(f"\n🔗 ADDITIONAL RESOURCES:")
         if study_parameters.additional_resource_links:
