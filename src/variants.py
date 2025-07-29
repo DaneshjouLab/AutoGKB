@@ -2,17 +2,13 @@ from pydantic import BaseModel
 from typing import List
 
 
-class QuotedStr(BaseModel):
+class ExplainedStr(BaseModel):
     content: str
     explanation: str
-    quotes: List[str]
 
-
-class QuotedList(BaseModel):
+class ExplainedList(BaseModel):
     contents: List[str]
     explanation: str
-    quotes: List[str]
-
 
 class Variant(BaseModel):
     """Variant."""

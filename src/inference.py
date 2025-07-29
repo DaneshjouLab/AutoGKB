@@ -80,6 +80,7 @@ class LLMInterface(ABC):
             logger.error(f"Error generating response: {e}")
             raise e
         return response.choices[0].message.content
+
 class PMCIDGenerator(LLMInterface):
     """
     PMCIDGenerator Class

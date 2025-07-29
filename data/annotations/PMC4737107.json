@@ -2,43 +2,43 @@
     "pmcid": "PMC4737107",
     "title": "Thiopurine dose intensity and treatment outcome in childhood lymphoblastic leukaemia: the influence of thiopurine methyltransferase pharmacogenetics",
     "study_parameters": {
-        "summary": "This study investigated the impact of TPMT genotype on thiopurine dose intensity, myelosuppression, and treatment outcomes in childhood acute lymphoblastic leukemia (ALL). The study found that TPMT heterozygotes required more frequent dose adjustments due to cytopenias but had better event-free survival (EFS) compared to wild-type patients. The study concluded that thiopurine-induced cytopenias did not negatively affect treatment outcomes.",
+        "summary": "This study investigated the impact of TPMT genotype on thiopurine dose intensity, myelosuppression, and treatment outcomes in childhood ALL. It found that TPMT*1/*3A heterozygotes had better event-free survival than wild-type patients, and that thiopurine-induced cytopenias did not negatively affect treatment outcomes.",
         "study_type": {
-            "content": "Clinical trial, cohort",
-            "explanation": "The study was conducted as part of the UK childhood ALL trial ALL97, which was a randomized clinical trial comparing different treatments. It also involved a cohort of patients followed over time to assess outcomes related to TPMT genotype and thiopurine treatment.",
+            "content": "Clinical trial, cohort, prospective",
+            "explanation": "The study was conducted as part of the UK childhood ALL trial ALL97, which was a randomized clinical trial comparing different treatments. It followed participants over time, making it a prospective cohort study.",
             "quotes": [
                 "ALL97 [International Standard Randomized Controlled Trial Number (ISRCTN) registration number ISRCTN26727615] was a randomized comparison of dexamethasone versus prednisone and mercaptopurine versus thioguanine in patients aged 1 to 18 years.",
-                "The impact of thiopurine methyltransferase (TPMT) genotype on thiopurine dose intensity, myelosuppression and treatment outcome was investigated in the United Kingdom childhood acute lymphoblastic leukaemia (ALL) trial ALL97."
+                "The trial had an add\u2010on thiopurine biological study."
             ]
         },
         "participant_info": {
-            "content": "The study included 1334 patients with TPMT genotype data, of which 1160 were white and 174 belonged to other ethnic groups (71 Asian, 44 mixed race, 20 black, 6 Oriental, and 33 unknown or non-Caucasian). Participants were aged 1 to 18 years.",
-            "explanation": "The study provided detailed information about the ethnicity and age range of the participants, as well as the number of participants with TPMT genotype data.",
+            "content": "The study included 1334 patients with TPMT genotype data, aged 1 to 18 years, with 1160 being white and 174 from other ethnic groups (71 Asian, 44 mixed race, 20 black, 6 Oriental, 33 unknown or non-Caucasian).",
+            "explanation": "The study involved children aged 1 to 18 years with acute lymphoblastic leukemia, and it provided a breakdown of the ethnic composition of the participants.",
             "quotes": [
-                "TPMT genotype was available for 1334 patients (69% of patients entered onto ALL97); 1160 were white and 174 belonged to other ethnic groups (71 Asian (Indian sub-continent), 44 mixed race, 20 black, 6 Oriental and 33 unknown or non-Caucasian)."
+                "TPMT genotype was available for 1334 patients (69% of patients entered onto ALL97); 1160 were white and 174 belonged to other ethnic groups (71 Asian (Indian sub\u2010continent), 44 mixed race, 20 black, 6 Oriental and 33 unknown or non\u2010Caucasian)."
             ]
         },
         "study_design": {
-            "content": "The study was part of the ALL97 trial, a randomized clinical trial comparing dexamethasone versus prednisone and mercaptopurine versus thioguanine in children aged 1 to 18 years with ALL. TPMT genotype and thiopurine metabolite data were collected for 1334 patients.",
-            "explanation": "The study was embedded in a larger clinical trial (ALL97) and involved a cohort of patients with specific genetic and treatment data collected for analysis.",
+            "content": "The study was part of the ALL97 trial, a randomized clinical trial comparing dexamethasone versus prednisone and mercaptopurine versus thioguanine in children with ALL. TPMT genotype and thiopurine metabolite data were collected for 1334 patients.",
+            "explanation": "The study was embedded in a larger clinical trial (ALL97) and involved randomization and collection of genetic and metabolite data.",
             "quotes": [
                 "ALL97 [International Standard Randomized Controlled Trial Number (ISRCTN) registration number ISRCTN26727615] was a randomized comparison of dexamethasone versus prednisone and mercaptopurine versus thioguanine in patients aged 1 to 18 years.",
                 "TPMT genotype was available for 1334 patients (69% of patients entered onto ALL97)."
             ]
         },
         "study_results": {
-            "content": "TPMT heterozygotes had more frequent cytopenias and required dose adjustments more often than wild-type patients. However, TPMT*1/*3A heterozygotes had better 5-year EFS (88%) compared to TPMT*1/*1 (80%, P = 0.05) and TPMT*1/*3C (53%, P = 0.002) patients. Poor compliance was associated with worse EFS (P = 0.02).",
-            "explanation": "The study reported significant differences in EFS between different TPMT genotypes and highlighted the impact of compliance on outcomes.",
+            "content": "TPMT*1/*3A heterozygotes had a 5-year EFS of 88%, better than TPMT*1/*1 (80%, P = 0.05) and TPMT*1/*3C (53%, P = 0.002). Poor compliance was associated with worse EFS (P = 0.02).",
+            "explanation": "The study found significant differences in event-free survival based on TPMT genotype, with TPMT*1/*3A heterozygotes having better outcomes. Non-compliance was also linked to worse outcomes.",
             "quotes": [
-                "Event-free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5-year EFS 88%) was better than for both wild-type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002).",
+                "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002).",
                 "Poor compliance without subsequent clinician intervention was associated with a worse EFS (P = 0\u00b702)."
             ]
         },
         "allele_frequency": {
-            "content": "Among the 1334 patients with TPMT genotype data, 1206 were TPMT*1/*1, 99 were TPMT*1/*3A, and 17 were TPMT*1/*3C. Other less common alleles were also present.",
+            "content": "Among 1334 patients, 1206 were TPMT*1/*1, 99 were TPMT*1/*3A, and 17 were TPMT*1/*3C.",
             "explanation": "The study provided the distribution of TPMT genotypes among the participants, indicating the frequency of each allele.",
             "quotes": [
-                "1206 patients were homozygous wild-type TPMT*1/*1 and 128 patients had low activity variant alleles (99 TPMT*1/*3A; 17 TPMT*1/*3C)."
+                "1206 patients were homozygous wild\u2010type TPMT*1/*1 and 128 patients had low activity variant alleles (99 TPMT*1/*3A; 17 TPMT*1/*3C)."
             ]
         },
         "additional_resource_links": [
@@ -46,92 +46,107 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC4737107/pdf/BJH-169-228.pdf"
         ]
     },
-    "drug_annotations": [],
-    "phenotype_annotations": [
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Azathioprine",
-                    "Mercaptopurine"
-                ],
-                "explanation": "The TPMT*1/*3A genotype is often studied in the context of thiopurine drugs such as azathioprine and mercaptopurine, which are metabolized by the TPMT enzyme. The original article may have mentioned these drugs in relation to the genotype's effect on event-free survival.",
-                "quotes": [
-                    "azathioprine",
-                    "mercaptopurine"
+    "annotations": {
+        "relationships": [
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3A (heterozygote)",
+                "relationship_effect": "TPMT*1/*3A heterozygotes had significantly more frequent cytopenias and required dose adjustments below target levels more often than TPMT*1/*1 (wild-type) patients, although the average dose range was similar for both genotypes.",
+                "p_value": "Not explicitly stated for this comparison, but see Table 4: average dose (% of protocol) 70.1% vs 78.0%, P=0.0002; % time at no dose 21.3% vs 15.5%, P<0.0001.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "In conclusion, TPMT*1/*3A heterozygotes had a better EFS than TPMT wild\u2010type patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of less than 0.05.",
-                "explanation": "The article mentions that patients with the TPMT*1/*3A genotype had better event-free survival, implying a statistically significant finding, likely supported by a p-value.",
-                "quotes": [
-                    "better event-free survival"
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3A (heterozygote)",
+                "relationship_effect": "TPMT*1/*3A heterozygotes had a better 5-year event-free survival (EFS) than both wild-type TPMT*1/*1 and TPMT*1/*3C patients.",
+                "p_value": "EFS 88% vs 80% for TPMT*1/*1, P=0.05; vs 53% for TPMT*1/*3C, P=0.002.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "In conclusion, TPMT*1/*3A heterozygotes had a better EFS than TPMT wild\u2010type patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
                 ]
             },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "Unknown",
-                "explanation": "The article does not specify if a particular age group was studied, so it is marked as unknown.",
-                "quotes": []
-            },
-            "sentence_summary": "TPMT*1/*3A is associated with increased event-free survival when treated with azathioprine or mercaptopurine.",
-            "notes": "The study compared event-free survival among different TPMT genotypes, specifically TPMT*1/*1, TPMT*1/*3A, and TPMT*1/*3C, and found that TPMT*1/*3A had better outcomes."
-        },
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Azathioprine",
-                    "Mercaptopurine",
-                    "Thioguanine"
-                ],
-                "explanation": "The TPMT*1/*3C genotype is associated with worse event-free survival (EFS) in patients treated with thiopurine drugs such as azathioprine, mercaptopurine, and thioguanine.",
-                "quotes": [
-                    "thiopurine drugs such as azathioprine, mercaptopurine, and thioguanine"
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3C (heterozygote)",
+                "relationship_effect": "TPMT*1/*3C heterozygotes had significantly worse 5-year EFS compared to both TPMT*1/*3A heterozygotes and TPMT*1/*1 wild-type patients.",
+                "p_value": "EFS 53% vs 88% for TPMT*1/*3A, P=0.002; vs 80% for TPMT*1/*1, P=0.03.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "Poor compliance without subsequent clinician intervention was associated with a worse EFS (P = 0\u00b702) and such non\u2010compliance may have contributed to the poorer outcome for TPMT*1/*3C patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of less than 0.05.",
-                "explanation": "The authors reported a statistically significant association between the TPMT*1/*3C genotype and worse event-free survival, with a p-value indicating significance.",
-                "quotes": [
-                    "statistically significant association",
-                    "p-value of less than 0.05"
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3A (heterozygote)",
+                "relationship_effect": "TPMT*1/*3A heterozygotes accumulated higher thioguanine nucleotide (TGN) concentrations than TPMT*1/*1 wild-type patients when taking mercaptopurine.",
+                "p_value": "Median difference 394 pmol (326 to 466), P < 0.0001.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "In conclusion, TPMT*1/*3A heterozygotes had a better EFS than TPMT wild\u2010type patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
                 ]
             },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "Unknown",
-                "explanation": "The article does not specify if a particular age group was studied, so the population context is unknown.",
-                "quotes": []
-            },
-            "sentence_summary": "TPMT*1/*3C is associated with decreased event-free survival in patients treated with thiopurine drugs.",
-            "notes": "The study compared event-free survival among patients with different TPMT genotypes, specifically TPMT*1/*3C, TPMT*1/*3A, and TPMT*1/*1, and found that TPMT*1/*3C had worse outcomes."
-        },
-        {
-            "associated_drugs": {
-                "contents": [
-                    "Thiopurines"
-                ],
-                "explanation": "The TPMT*1/*1 genotype is associated with the use of thiopurines, which are metabolized by the TPMT enzyme. Patients with this genotype had worse event-free survival compared to those with the TPMT*1/*3A genotype when treated with thiopurines.",
-                "quotes": [
-                    "thiopurines"
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3A (heterozygote)",
+                "relationship_effect": "TPMT*1/*3A heterozygotes had lower methylmercaptopurine nucleotide (MeMPN) concentrations than TPMT*1/*1 wild-type patients when taking mercaptopurine.",
+                "p_value": "Median difference \u22125464 (\u22127278 to \u22123808), P < 0.0001.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "In conclusion, TPMT*1/*3A heterozygotes had a better EFS than TPMT wild\u2010type patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
                 ]
             },
-            "association_significance": {
-                "content": "The association was statistically significant with a reported p-value of less than 0.05.",
-                "explanation": "The article reports that the difference in event-free survival between the TPMT*1/*1 and TPMT*1/*3A genotypes was statistically significant, indicating a meaningful association.",
-                "quotes": [
-                    "statistically significant",
-                    "p-value < 0.05"
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3C (heterozygote) vs TPMT*1/*3A (heterozygote)",
+                "relationship_effect": "TPMT*1/*3C patients had significantly lower TGN concentrations than TPMT*1/*3A patients despite similar drug dosages and TPMT activities.",
+                "p_value": "Median difference 192 pmol (95% CI 10 to 425), P = 0.05.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "Poor compliance without subsequent clinician intervention was associated with a worse EFS (P = 0\u00b702) and such non\u2010compliance may have contributed to the poorer outcome for TPMT*1/*3C patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
                 ]
             },
-            "meatbolizer_info": null,
-            "specialty_populations": {
-                "content": "Unknown",
-                "explanation": "The article does not specify if the study was conducted on a specific age group, so it is marked as 'Unknown'.",
-                "quotes": []
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT*1/*3C (heterozygote) vs TPMT*1/*3A (heterozygote)",
+                "relationship_effect": "TPMT*1/*3C patients had lower MeMPN concentrations than TPMT*1/*3A patients.",
+                "p_value": "Median difference 2190 pmol (95% CI \u221254 to 5180), P = 0.06.",
+                "citations": [
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis.",
+                    "Poor compliance without subsequent clinician intervention was associated with a worse EFS (P = 0\u00b702) and such non\u2010compliance may have contributed to the poorer outcome for TPMT*1/*3C patients.",
+                    "1206 patients were homozygous wild\u2010type *TPMT*1/*1*TPMT*1/*1 and 128 patients had low activity variant alleles (99 *TPMT*1/*3A*TPMT*1/*3A; 17 *TPMT*1/*3C*TPMT*1/*3C; 4 *TPMT*1/*2*TPMT*1/*2; two children with the rare alleles *TPMT*1/*9*TPMT*1/*9,* TPMT*1/*21* TPMT*1/*21; three children with novel alleles *TPMT*1/*32, TPMT*1/*33, TPMT*1/*34*TPMT*1/*32, TPMT*1/*33, TPMT*1/*34; one compound heterozygote *TPMT*2/*3A*TPMT*2/*3A; one homozygous *TPMT*3A/*3A*TPMT*3A/*3A and one *TPMT*3C/*3C*TPMT*3C/*3C)."
+                ]
             },
-            "sentence_summary": "TPMT*1/*1 is associated with decreased event-free survival when treated with thiopurines.",
-            "notes": "The study compared event-free survival between patients with TPMT*1/*1 and TPMT*1/*3A genotypes, finding a significant difference favoring the TPMT*1/*3A genotype."
-        }
-    ],
-    "functional_annotations": []
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT heterozygotes (all) vs TPMT*1/*1 (wild-type)",
+                "relationship_effect": "TPMT heterozygotes tolerated a significantly lower average daily thiopurine dose than TPMT wild-type patients (70% vs 78% of protocol dose), and experienced more time with the dose withdrawn due to cytopenias (20.8% vs 15.5%).",
+                "p_value": "Average dose: P=0.0002; % time at no dose: P<0.001.",
+                "citations": [
+                    "# Thiopurine dose intensity and treatment outcome in childhood lymphoblastic leukaemia: the influence of thiopurine methyltransferase pharmacogenetics\n\n## Metadata\n**Authors:** Lynne Lennard, Cher S Cartwright, Rachel Wade, Ajay Vora\n**Journal:** British Journal of Haematology\n**Date:** 2014 Nov 29\n**DOI:** [10.1111/bjh.13240](https://doi.org/10.1111/bjh.13240)\n**PMID:** 25441457\n**PMCID:** PMC4737107\n**URL:** https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4737107/\n**PDF:** [https://pmc.ncbi.nlm.nih.gov/articles/PMC4737107/pdf/BJH-169-228.pdf](https://pmc.ncbi.nlm.nih.gov/articles/PMC4737107/pdf/BJH-169-228.pdf)\n\n## Abstract\n\nThe impact of thiopurine methyltransferase (TPMT) genotype on thiopurine dose intensity, myelosuppression and treatment outcome was investigated in the United Kingdom childhood acute lymphoblastic leukaemia (ALL) trial ALL97.",
+                    "TPMT heterozygotes had significantly more frequent cytopenias and therefore required dose adjustments below target levels significantly more often than TPMT wild\u2010type patients although the average dose range was similar for both genotypes.",
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis."
+                ]
+            },
+            {
+                "gene": "TPMT",
+                "polymorphism": "TPMT heterozygotes",
+                "relationship_effect": "TPMT heterozygosity was not associated with a higher rate of second cancers in this UK cohort, in contrast to some USA and Nordic trials.",
+                "p_value": "Not significant (P=0.41 for difference by thiopurine type).",
+                "citations": [
+                    "# Thiopurine dose intensity and treatment outcome in childhood lymphoblastic leukaemia: the influence of thiopurine methyltransferase pharmacogenetics\n\n## Metadata\n**Authors:** Lynne Lennard, Cher S Cartwright, Rachel Wade, Ajay Vora\n**Journal:** British Journal of Haematology\n**Date:** 2014 Nov 29\n**DOI:** [10.1111/bjh.13240](https://doi.org/10.1111/bjh.13240)\n**PMID:** 25441457\n**PMCID:** PMC4737107\n**URL:** https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4737107/\n**PDF:** [https://pmc.ncbi.nlm.nih.gov/articles/PMC4737107/pdf/BJH-169-228.pdf](https://pmc.ncbi.nlm.nih.gov/articles/PMC4737107/pdf/BJH-169-228.pdf)\n\n## Abstract\n\nThe impact of thiopurine methyltransferase (TPMT) genotype on thiopurine dose intensity, myelosuppression and treatment outcome was investigated in the United Kingdom childhood acute lymphoblastic leukaemia (ALL) trial ALL97.",
+                    "TPMT heterozygotes had significantly more frequent cytopenias and therefore required dose adjustments below target levels significantly more often than TPMT wild\u2010type patients although the average dose range was similar for both genotypes.",
+                    "Event\u2010free survival (EFS) for patients heterozygous for the more common TPMT*1/*3A variant allele (n = 99, 5\u2010year EFS 88%) was better than for both wild\u2010type TPMT*1/*1 (n = 1206, EFS 80%, P = 0\u00b705) and TPMT*1/*3C patients (n = 17, EFS 53%, P = 0\u00b7002); outcomes supported by a multivariate Cox regression analysis."
+                ]
+            }
+        ]
+    }
 }

@@ -40,7 +40,6 @@ class MarkdownParser:
             logger.error("Only one of text or pmcid can be provided.")
             raise ValueError("Only one of text or pmcid can be provided.")
         if self.pmcid:
-            logger.info(f"Getting article text from PMCID: {self.pmcid}")
             self.text = self.get_article_text()
         if self.remove_references:
             self.remove_references_section()
@@ -86,8 +85,6 @@ class MarkdownParser:
         if ref_index != -1:
             sections = sections[:ref_index]
             self.text = "##".join(sections)
-
-        logger.info(f"Removed References section from article text")
 
     def parse_pmid(self) -> str:
         """Parse the PMID from the markdown text."""
