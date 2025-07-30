@@ -52,18 +52,32 @@ class CitationGenerator:
     def _split_into_sentences(self, text: str) -> List[str]:
         """
         Split text into sentences using regex pattern.
+        Excludes markdown headers from the sentence list.
         
         Args:
             text: Input text to split
             
         Returns:
-            List of sentences
+            List of sentences with markdown headers excluded
         """
         # Basic sentence splitting - can be improved with more sophisticated NLP
         sentences = re.split(r'(?<=[.!?])\s+', text)
-        # Filter out very short sentences and clean up
-        sentences = [s.strip() for s in sentences if len(s.strip()) > 20]
-        return sentences
+        
+        # Filter out very short sentences, markdown headers, and clean up
+        filtered_sentences = []
+        for sentence in sentences:
+            sentence = sentence.strip()
+            # Skip if too short
+            if len(sentence) <= 20:
+                continue
+            # Skip if it's a markdown header (starts with # after stripping)
+            if re.match(r'^\s*#+\s', sentence):
+                continue
+            if "Keywords:" in sentence or "keywords:" in sentence:
+                continue
+            filtered_sentences.append(sentence)
+        
+        return filtered_sentences
     
     def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> Tuple[int, str]:
         """

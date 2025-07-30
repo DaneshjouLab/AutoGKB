@@ -69,27 +69,28 @@ class StudyParametersGenerator:
     
     def get_participant_info(self) -> str:
         """Extract participant information with explanation."""
-        prompt = """What are the details about the participants in this study? Include age, gender, ethnicity, pre-existing conditions and any other relevant characteristics. Also breakdown this information by study group if applicable. Don't use bullets points, use plain text. Keep response length to one paragraph."""
+        prompt = """What are the details about the participants in this study? Include age, gender, ethnicity, pre-existing conditions and any other relevant characteristics. Also breakdown this information by study group if applicable."""
+        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (4-5 sentences) maximum."
         
-        return self.generator.generate(prompt)
+        return self.generator.generate(prompt + output_queues)
     
     def get_study_design(self) -> str:
         """Extract study design information with explanation."""
-        prompt = """Describe the study design, including the study population, sample size, and any other relevant details about how the study was conducted. Don't use bullets points, use plain text. Keep response length to one paragraph."""
-        
-        return self.generator.generate(prompt)
+        prompt = """Describe the study design, including the study population, sample size, and any other relevant details about how the study was conducted."""
+        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (4-5 sentences) maximum."
+        return self.generator.generate(prompt + output_queues)
     
     def get_study_results(self) -> str:
         """Extract study results with explanation."""
-        prompt = """What are the main study results and findings? Pay key attention to report any ratio statistics (hazard ratio, odds ratio, etc.) and p-values. Don't use bullets points, use plain text. Keep response length to one paragraph."""
-        
-        return self.generator.generate(prompt)
+        prompt = """What are the main study results and findings? Pay key attention to report any ratio statistics (hazard ratio, odds ratio, etc.) and p-values."""
+        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (4-5 sentences) maximum."
+        return self.generator.generate(prompt + output_queues)
     
     def get_allele_frequency(self) -> str:
         """Extract allele frequency information with explanation."""
-        prompt = """What information is provided about allele frequencies of variants in the study population? Include the allele frequency in the studied cohorts and experiments if relevant. Don't use bullets points, use plain text. Keep response length to one paragraph."""
-        
-        return self.generator.generate(prompt)
+        prompt = """What information is provided about allele frequencies of variants in the study population? Include the allele frequency in the studied cohorts and experiments if relevant."""
+        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (2-3 sentences) maximum."
+        return self.generator.generate(prompt + output_queues)
     
     def get_additional_resource_links(self) -> List[str]:
         """Extract additional resource links."""
