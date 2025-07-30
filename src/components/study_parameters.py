@@ -6,23 +6,20 @@ import os
 import json
 
 
+class ParameterWithCitations(BaseModel):
+    """Model for a parameter with its content and citations"""
+    content: str
+    citations: Optional[List[str]] = None
+
+
 class StudyParameters(BaseModel):
-    summary: str
-    study_type: str
-    participant_info: str
-    study_design: str  
-    study_results: str
-    allele_frequency: str
+    summary: ParameterWithCitations
+    study_type: ParameterWithCitations
+    participant_info: ParameterWithCitations
+    study_design: ParameterWithCitations
+    study_results: ParameterWithCitations
+    allele_frequency: ParameterWithCitations
     additional_resource_links: List[str]
-    summary_citations: Optional[List[str]] = None
-    study_type_citations: Optional[List[str]] = None
-    participant_info_citations: Optional[List[str]] = None
-    study_design_citations: Optional[List[str]] = None
-    study_results_citations: Optional[List[str]] = None
-    allele_frequency_citations: Optional[List[str]] = None
-
-
-
 
 
 class StudyParametersGenerator:
@@ -111,12 +108,12 @@ class StudyParametersGenerator:
         logger.info(f"Extracting study parameters for {self.pmcid}")
         
         return StudyParameters(
-            summary=self.get_summary(),
-            study_type=self.get_study_type(),
-            participant_info=self.get_participant_info(),
-            study_design=self.get_study_design(),
-            study_results=self.get_study_results(),
-            allele_frequency=self.get_allele_frequency(),
+            summary=ParameterWithCitations(content=self.get_summary()),
+            study_type=ParameterWithCitations(content=self.get_study_type()),
+            participant_info=ParameterWithCitations(content=self.get_participant_info()),
+            study_design=ParameterWithCitations(content=self.get_study_design()),
+            study_results=ParameterWithCitations(content=self.get_study_results()),
+            allele_frequency=ParameterWithCitations(content=self.get_allele_frequency()),
             additional_resource_links=self.get_additional_resource_links()
         )
 
@@ -143,22 +140,22 @@ def test_study_parameters():
         print("=" * 60)
         
         print(f"\n📝 SUMMARY:")
-        print(f"   {study_parameters.summary}")
+        print(f"   {study_parameters.summary.content}")
         
         print(f"\n🧬 STUDY TYPE:")
-        print(f"   {study_parameters.study_type}")
+        print(f"   {study_parameters.study_type.content}")
         
         print(f"\n👥 PARTICIPANT INFO:")
-        print(f"   {study_parameters.participant_info}")
+        print(f"   {study_parameters.participant_info.content}")
         
         print(f"\n🔬 STUDY DESIGN:")
-        print(f"   {study_parameters.study_design}")
+        print(f"   {study_parameters.study_design.content}")
         
         print(f"\n📊 STUDY RESULTS:")
-        print(f"   {study_parameters.study_results}")
+        print(f"   {study_parameters.study_results.content}")
         
         print(f"\n🧬 ALLELE FREQUENCY:")
-        print(f"   {study_parameters.allele_frequency}")
+        print(f"   {study_parameters.allele_frequency.content}")
         
         print(f"\n🔗 ADDITIONAL RESOURCES:")
         if study_parameters.additional_resource_links:

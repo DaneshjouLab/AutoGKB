@@ -678,41 +678,42 @@ Format: Score: X, Reasoning: [your reasoning]
     def add_citations_to_study_parameters(self, study_parameters):
         """
         Add citations to study parameters by finding relevant sentences for each parameter.
+        Modifies the parameters to include citations nested within each parameter key.
         
         Args:
             study_parameters: StudyParameters object
             
         Returns:
-            StudyParameters object with citations added
+            StudyParameters object with citations nested in each parameter
         """
         logger.info("Adding citations to study parameters")
         
         # Create a new study parameters object with citations
-        updated_params = study_parameters.model_copy()
+        updated_params = study_parameters.model_copy(deep=True)
         
-        # Add citations for each parameter
-        updated_params.summary_citations = self._get_top_citations_for_parameter(
-            study_parameters.summary, 'summary'
+        # Add citations nested within each parameter
+        updated_params.summary.citations = self._get_top_citations_for_parameter(
+            study_parameters.summary.content, 'summary'
         )
         
-        updated_params.study_type_citations = self._get_top_citations_for_parameter(
-            study_parameters.study_type, 'study_type'
+        updated_params.study_type.citations = self._get_top_citations_for_parameter(
+            study_parameters.study_type.content, 'study_type'
         )
         
-        updated_params.participant_info_citations = self._get_top_citations_for_parameter(
-            study_parameters.participant_info, 'participant_info'
+        updated_params.participant_info.citations = self._get_top_citations_for_parameter(
+            study_parameters.participant_info.content, 'participant_info'
         )
         
-        updated_params.study_design_citations = self._get_top_citations_for_parameter(
-            study_parameters.study_design, 'study_design'
+        updated_params.study_design.citations = self._get_top_citations_for_parameter(
+            study_parameters.study_design.content, 'study_design'
         )
         
-        updated_params.study_results_citations = self._get_top_citations_for_parameter(
-            study_parameters.study_results, 'study_results'
+        updated_params.study_results.citations = self._get_top_citations_for_parameter(
+            study_parameters.study_results.content, 'study_results'
         )
         
-        updated_params.allele_frequency_citations = self._get_top_citations_for_parameter(
-            study_parameters.allele_frequency, 'allele_frequency'
+        updated_params.allele_frequency.citations = self._get_top_citations_for_parameter(
+            study_parameters.allele_frequency.content, 'allele_frequency'
         )
         
         logger.info("Completed adding citations to study parameters")
