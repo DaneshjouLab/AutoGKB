@@ -24,7 +24,7 @@ Article text:
 "{article_text}"
 
 If a table provides the support warranting of being in the top 3, return the table header (## Table X: ..., etc.) as your sentence. Make sure to include a sentence or table in your top 3 responses if it has the p-value for the relationship.
-Output the exact sentences from the article text in a numbered list with each sentence on a new line. You can combine sentences if multiple are needed together to be comprehensible. No other text.
+Output the exact sentences from the article text in a numbered list with each sentence on a new line. No other text.
 """
 
 study_parameters_citation_prompt = """
@@ -37,7 +37,7 @@ Article text:
 "{article_text}"
 
 If a table provides the support warranting of being in the top 3, return the table header (## Table X: ..., etc.) as your sentence.
-Output the exact sentences from the article text in a numbered list with each sentence on a new line. You can combine sentences if multiple are needed together to be comprehensible. No other text.
+Output the exact sentences from the article text in a numbered list with each sentence on a new line. No other text.
 """
 
 class OneShotCitations:
