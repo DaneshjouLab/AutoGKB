@@ -2,7 +2,7 @@ from loguru import logger
 from typing import Optional
 from dataclasses import dataclass
 from pathlib import Path
-
+from typing import List
 
 @dataclass
 class ArticleInput:
@@ -45,18 +45,9 @@ class MarkdownParser:
         if self.pmcid:
             self.text = self.get_article_text()
         if self.remove_references:
-            self.remove_section("References")
-            self.remove_section("Acknowledgments")
+            self.remove_sections(["References", "Acknowledgments"])
         if self.for_citations:
-            self.remove_section("Introduction")
-            self.remove_section("Background")
-            self.remove_section("Metadata")
-            self.remove_section("Abstract")
-            self.remove_section("Acknowledgements")
-            self.remove_section("References")
-            self.remove_section("Author Contributions")
-            self.remove_section("Contributor Information")
-            self.remove_section("Funding")
+            self.remove_sections(["Introduction", "Background", "Metadata", "Abstract", "Acknowledgements", "References", "Author Contributions", "Contributor Information", "Funding"])
 
     def get_article_text(self) -> str:
         """Get article text from PMCID."""
@@ -112,6 +103,13 @@ class MarkdownParser:
         else:
             # If no next section, just remove from intro to end
             self.text = "\n".join(lines[:intro_start])
+    
+    def remove_sections(self, section_names: List[str]):
+        """
+        Removes the sections from article text.
+        """
+        for section_name in section_names:
+            self.remove_section(section_name)
 
     def remove_acknowledgements(self):
         """
