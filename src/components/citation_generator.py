@@ -10,31 +10,46 @@ from src.utils import get_article_text
 from difflib import SequenceMatcher
 from tqdm import tqdm
 
-
+# Prompts
 annotation_citation_prompt = """
-Rate the relevance of this sentence to the pharmacogenomic relationship on a scale of 1-10.
-
 Pharmacogenomic Relationship:
 - Gene: {annotation.gene}
 - Polymorphism: {annotation.polymorphism}  
-- Effect: {annotation.relationship_effect}
+- Proposed Effect: {annotation.relationship_effect}
 - P-value: {annotation.p_value}
+
+Rate how strongly the following sentence supports the proposed effect of the pharmacogenomic relationship on a scale of 1-10.
+Sentence to evaluate:
+"{sentence}"
+
+Rate from 0-10 where:
+- 10: Sentence directly mentions this exact gene-polymorphism relationship and effect. Especially if it contains the mentioned p-value.
+- 7-9: Sentence mentions the gene and polymorphism with related effects
+- 4-6: Sentence mentions either the gene or polymorphism with some context
+- 1-3: Sentence has minimal relevance to this relationship
+- 0: Sentence has no relevance to this relationship
+
+Provide your score on a scale of 0-10 (one decimal place allowed). No other text.
+"""
+
+study_parameters_citation_prompt = """
+
+Parameter Type: {parameter_type}
+Proposed Parameter Value: {parameter_content}
+
+Rate how strongly the following sentence supports the proposed parameter value on a scale of 0-10.
 
 Sentence to evaluate:
 "{sentence}"
 
-Rate from 1-10 where:
-- 10: Sentence directly mentions this exact gene-polymorphism relationship and effect
-- 7-9: Sentence mentions the gene and polymorphism with related effects
-- 4-6: Sentence mentions either the gene or polymorphism with some context
-- 1-3: Sentence has minimal or no relevance to this relationship
+Rate from 0-10 where:
+- 10: Sentence directly supports or describes this parameter
+- 7-9: Sentence is closely related to this parameter
+- 4-6: Sentence has some relevance to this parameter
+- 1-3: Sentence has minimal relevance to this parameter
+- 0: Sentence has no relevance to this parameter
 
-Provide your score and a brief 1-sentence reasoning.
-Format: Score: X, Reasoning: [your reasoning]
-"""
-
-study_parameters_citation_prompt = """
-You are a helpful assistant who annotates study parameters.
+Provide your score on a scale of 0-10 (one decimal place allowed). No other text.
 """
 
 class SentenceRelevance(BaseModel):
@@ -252,7 +267,7 @@ class CitationGeneratorBase(ABC):
         
         sentence_scores = []
         
-        for i, sentence in tqdm(enumerate(candidate_sentences), total=len(candidate_sentences), desc="Scoring sentences"):
+        for i, sentence in tqdm(enumerate(candidate_sentences), total=len(candidate_sentences), desc=f"Scoring sentences using {self.model}"):
             score = self._score_sentence_relevance(sentence, annotation)
             sentence_scores.append((sentence, score))
         
@@ -710,7 +725,7 @@ class LMCitationGenerator(CitationGeneratorBase):
             Relevance score from 1-10
         """
         prompt = annotation_citation_prompt
-        
+        prompt = annotation_citation_prompt.format(annotation=annotation, sentence=sentence)
         try:
             completion_kwargs = {
                 "model": self.model,
@@ -722,18 +737,19 @@ class LMCitationGenerator(CitationGeneratorBase):
             response = completion(**completion_kwargs)
             response_text = response.choices[0].message.content.strip()
             
-            # Parse the response
-            if "Score:" in response_text:
-                score_part = response_text.split("Score:")[1].split("Reasoning:")[0] if "Reasoning:" in response_text else response_text.split("Score:")[1]
-                score_part = score_part.strip()
-                
-                # Extract numeric score
-                score = int(re.search(r'\d+', score_part).group())
-                score = max(1, min(10, score))  # Clamp between 1-10
-                
-                return score
-            else:
-                logger.warning(f"Unexpected response format: {response_text}")
+            # Parse the response - expect only numeric score (no reasoning)
+            try:
+                # Extract numeric score directly from response
+                score_match = re.search(r'\b(\d+(?:\.\d+)?)\b', response_text)
+                if score_match:
+                    score = float(score_match.group(1))
+                    score = max(0, min(10, score))  # Clamp between 0-10
+                    return int(score)
+                else:
+                    logger.warning(f"No numeric score found in response: {response_text}")
+                    return 1
+            except Exception as parse_error:
+                logger.warning(f"Error parsing score from response '{response_text}': {parse_error}")
                 return 1
                 
         except Exception as e:
@@ -752,23 +768,8 @@ class LMCitationGenerator(CitationGeneratorBase):
         Returns:
             Relevance score from 1-10
         """
-        prompt = f"""
-Rate the relevance of this sentence to the study parameter on a scale of 1-10.
-
-Parameter Type: {parameter_type}
-Parameter Content: {parameter_content}
-
-Sentence to evaluate:
-"{sentence}"
-
-Rate from 1-10 where:
-- 10: Sentence directly supports or describes this parameter
-- 7-9: Sentence is closely related to this parameter
-- 4-6: Sentence has some relevance to this parameter
-- 1-3: Sentence has minimal or no relevance to this parameter
-
-Format: Score: X
-"""
+        prompt = study_parameters_citation_prompt
+        prompt = study_parameters_citation_prompt.format(parameter_type=parameter_type, parameter_content=parameter_content, sentence=sentence)
         
         try:
             completion_kwargs = {
@@ -781,17 +782,19 @@ Format: Score: X
             response = completion(**completion_kwargs)
             response_text = response.choices[0].message.content.strip()
             
-            # Parse the response
-            if "Score:" in response_text:
-                score_part = response_text.split("Score:")[1].strip()
-                
-                # Extract numeric score
-                score = int(re.search(r'\d+', score_part).group())
-                score = max(1, min(10, score))  # Clamp between 1-10
-                
-                return score
-            else:
-                logger.warning(f"Unexpected response format: {response_text}")
+            # Parse the response - expect only numeric score (no reasoning)
+            try:
+                # Extract numeric score directly from response
+                score_match = re.search(r'\b(\d+(?:\.\d+)?)\b', response_text)
+                if score_match:
+                    score = float(score_match.group(1))
+                    score = max(0, min(10, score))  # Clamp between 0-10
+                    return int(score)
+                else:
+                    logger.warning(f"No numeric score found in response: {response_text}")
+                    return 1
+            except Exception as parse_error:
+                logger.warning(f"Error parsing score from response '{response_text}': {parse_error}")
                 return 1
                 
         except Exception as e:
@@ -852,7 +855,7 @@ def main():
     test_sentence = "Patients with the GG genotype had a trend toward lower efficacy of sitagliptin and higher efficacy of gliclazide, likely due to slower metabolism of gliclazide."
     
     # Create citation generator
-    generator = create_citation_generator(pmcid, model="gemini/gemini-2.0-flash")
+    generator = create_citation_generator(pmcid, model="gemini/gemini-2.5-flash-lite")
     
     # Create a mock annotation for testing
     from src.components.annotation_table import AnnotationRelationship

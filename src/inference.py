@@ -150,7 +150,7 @@ class PMCIDGenerator(LLMInterface):
         Generate a response from the LLM with PMCID article content automatically hydrated.
         """
         responses = []
-        for _ in tqdm(range(self.samples), desc=f"Generating {self.samples} Responses"):
+        for _ in range(self.samples):
             response = self._generate_single(
                 input_prompt=input_prompt,
                 system_prompt=system_prompt,

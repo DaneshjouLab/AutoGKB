@@ -87,7 +87,7 @@ if __name__ == "__main__":
     ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")
-        pipeline = AnnotationPipeline(pmcid, citation_model="gemini/gemini-2.0-flash")
+        pipeline = AnnotationPipeline(pmcid, citation_model="gemini/gemini-2.5-flash-lite")
         pipeline.run()
     for pmcid in pmcids:
         copy_markdown(pmcid)
