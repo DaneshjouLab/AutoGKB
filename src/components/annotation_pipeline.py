@@ -7,11 +7,11 @@ from pathlib import Path
 import os
 
 class AnnotationPipeline:
-    def __init__(self, pmcid: str, citation_approach: str = "lm"):
+    def __init__(self, pmcid: str, citation_model: str = "local"):
         if not is_pmcid(pmcid):
             logger.error(f"Invalid PMCID: {pmcid}")
         self.pmcid = pmcid
-        self.citation_approach = citation_approach
+        self.citation_model = citation_model
         self.article_text = get_article_text(pmcid)
         self.title = get_title(self.article_text)
         self.study_parameters = {}
@@ -41,11 +41,11 @@ class AnnotationPipeline:
         self.annotations = annotation_generator.generate_table_json()
 
         # Generate citations for annotations and study parameters
-        citation_generator = CitationGenerator(self.pmcid, approach=self.citation_approach)
-        logger.info(f"Adding Citations to Annotations using {self.citation_approach} approach")
+        citation_generator = CitationGenerator(self.pmcid, model=self.citation_model)
+        logger.info(f"Adding Citations to Annotations using model {self.citation_model}")
         self.annotations = citation_generator.add_citations_to_annotations(self.annotations)
         
-        logger.info(f"Adding Citations to Study Parameters using {self.citation_approach} approach")
+        logger.info(f"Adding Citations to Study Parameters using model {self.citation_model}")
         self.study_parameters = citation_generator.add_citations_to_study_parameters(self.study_parameters)
 
         self.print_info()
@@ -79,15 +79,15 @@ def copy_markdown(pmcid: str):
 
 if __name__ == "__main__":
     pmcids = [
-        "PMC5728534",
+        # "PMC5728534",
         "PMC11730665",
-        "PMC5712579",
-        "PMC4737107",
-        "PMC5749368"
+        # "PMC5712579",
+        # "PMC4737107",
+        # "PMC5749368"
     ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")
-        pipeline = AnnotationPipeline(pmcid, citation_approach="local")
+        pipeline = AnnotationPipeline(pmcid, citation_model="gemini/gemini-2.0-flash")
         pipeline.run()
     for pmcid in pmcids:
         copy_markdown(pmcid)

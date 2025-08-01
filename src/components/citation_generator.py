@@ -1,20 +1,46 @@
 import re
-from typing import List, Dict, Tuple, Literal
+from typing import List, Dict
 from pydantic import BaseModel, Field
 from loguru import logger
 from litellm import completion
 import os
+from abc import ABC, abstractmethod
 from src.components.annotation_table import AnnotationTable, AnnotationRelationship
 from src.utils import get_article_text
 from difflib import SequenceMatcher
-import hashlib
+from tqdm import tqdm
 
+
+annotation_citation_prompt = """
+Rate the relevance of this sentence to the pharmacogenomic relationship on a scale of 1-10.
+
+Pharmacogenomic Relationship:
+- Gene: {annotation.gene}
+- Polymorphism: {annotation.polymorphism}  
+- Effect: {annotation.relationship_effect}
+- P-value: {annotation.p_value}
+
+Sentence to evaluate:
+"{sentence}"
+
+Rate from 1-10 where:
+- 10: Sentence directly mentions this exact gene-polymorphism relationship and effect
+- 7-9: Sentence mentions the gene and polymorphism with related effects
+- 4-6: Sentence mentions either the gene or polymorphism with some context
+- 1-3: Sentence has minimal or no relevance to this relationship
+
+Provide your score and a brief 1-sentence reasoning.
+Format: Score: X, Reasoning: [your reasoning]
+"""
+
+study_parameters_citation_prompt = """
+You are a helpful assistant who annotates study parameters.
+"""
 
 class SentenceRelevance(BaseModel):
     """Model for sentence relevance scoring"""
     sentence: str = Field(description="The sentence text")
     relevance_score: int = Field(description="Relevance score from 1-10", ge=1, le=10)
-    reasoning: str = Field(description="Brief explanation of the relevance score")
 
 
 class AnnotationCitations(BaseModel):
@@ -24,30 +50,26 @@ class AnnotationCitations(BaseModel):
     citations: List[str] = Field(description="Top 3 most relevant sentences")
 
 
-class CitationGenerator:
+class CitationGeneratorBase(ABC):
     """
-    Generator for adding citations to annotations by finding the most relevant
-    sentences in the source text. Supports both LM-based scoring (using GPT-4o-mini)
-    and local similarity/regex-based scoring for offline usage.
+    Abstract base class for citation generators.
     """
     
-    def __init__(self, pmcid: str, model: str = "gpt-4o-mini", approach: Literal["lm", "local"] = "lm"):
+    def __init__(self, pmcid: str, model: str = "local"):
         """
-        Initialize the citation generator.
+        Initialize the citation generator base.
         
         Args:
             pmcid: PubMed Central ID
-            model: Model to use for relevance scoring (default: gpt-4o-mini)
-            approach: Approach to use for scoring - "lm" for language model or "local" for similarity/regex
+            model: Model to use for relevance scoring
         """
         self.pmcid = pmcid
         self.model = model
-        self.approach = approach
         self.article_text = get_article_text(pmcid)
         
         # Split article into sentences
         self.sentences = self._split_into_sentences(self.article_text)
-        logger.info(f"Split article into {len(self.sentences)} sentences using {approach} approach")
+        logger.info(f"Split article into {len(self.sentences)} sentences")
     
     def _split_into_sentences(self, text: str) -> List[str]:
         """
@@ -79,161 +101,34 @@ class CitationGenerator:
         
         return filtered_sentences
     
-    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> Tuple[int, str]:
+    @abstractmethod
+    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> int:
         """
-        Score how relevant a sentence is to a specific annotation using GPT-4o-mini via litellm.
+        Score how relevant a sentence is to a specific annotation.
         
         Args:
             sentence: The sentence to score
             annotation: The annotation to compare against
             
         Returns:
-            Tuple of (relevance_score, reasoning)
+            Relevance score from 1-10
         """
-        prompt = f"""
-Rate the relevance of this sentence to the pharmacogenomic relationship on a scale of 1-10.
-
-Pharmacogenomic Relationship:
-- Gene: {annotation.gene}
-- Polymorphism: {annotation.polymorphism}  
-- Effect: {annotation.relationship_effect}
-- P-value: {annotation.p_value}
-
-Sentence to evaluate:
-"{sentence}"
-
-Rate from 1-10 where:
-- 10: Sentence directly mentions this exact gene-polymorphism relationship and effect
-- 7-9: Sentence mentions the gene and polymorphism with related effects
-- 4-6: Sentence mentions either the gene or polymorphism with some context
-- 1-3: Sentence has minimal or no relevance to this relationship
-
-Provide your score and a brief 1-sentence reasoning.
-Format: Score: X, Reasoning: [your reasoning]
-"""
-        
-        try:
-            response = completion(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=100
-            )
-            response_text = response.choices[0].message.content.strip()
-            
-            # Parse the response
-            if "Score:" in response_text and "Reasoning:" in response_text:
-                parts = response_text.split("Reasoning:")
-                score_part = parts[0].replace("Score:", "").strip()
-                reasoning = parts[1].strip()
-                
-                # Extract numeric score
-                score = int(re.search(r'\d+', score_part).group())
-                score = max(1, min(10, score))  # Clamp between 1-10
-                
-                return score, reasoning
-            else:
-                logger.warning(f"Unexpected response format: {response_text}")
-                return 1, "Failed to parse response"
-                
-        except Exception as e:
-            logger.error(f"Error scoring sentence relevance: {e}")
-            return 1, f"Error: {str(e)}"
+        pass
     
-    def _score_sentence_similarity(self, sentence: str, annotation: AnnotationRelationship) -> Tuple[int, str]:
+    @abstractmethod
+    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
         """
-        Score how relevant a sentence is to a specific annotation using local similarity/regex.
+        Score how relevant a sentence is to a specific study parameter.
         
         Args:
             sentence: The sentence to score
-            annotation: The annotation to compare against
+            parameter_content: The content of the parameter to find citations for
+            parameter_type: The type of parameter (summary, study_type, etc.)
             
         Returns:
-            Tuple of (relevance_score, reasoning)
+            Relevance score from 1-10
         """
-        sentence_lower = sentence.lower()
-        score = 0
-        reasoning_parts = []
-        
-        # Check for exact gene match (higher weight)
-        gene_variants = [
-            annotation.gene.lower(),
-            annotation.gene.lower().replace('(', '').replace(')', ''),
-            annotation.gene.lower().replace('-', ''),
-            annotation.gene.lower().replace('_', '')
-        ]
-        
-        gene_found = False
-        for gene_variant in gene_variants:
-            if gene_variant in sentence_lower:
-                score += 4
-                gene_found = True
-                reasoning_parts.append(f"contains gene '{annotation.gene}'")
-                break
-        
-        # Check for polymorphism match
-        poly_found = False
-        if annotation.polymorphism:
-            poly_variants = [
-                annotation.polymorphism.lower(),
-                annotation.polymorphism.lower().replace('*', ''),
-                annotation.polymorphism.lower().split()[0] if ' ' in annotation.polymorphism else annotation.polymorphism.lower()
-            ]
-            
-            for poly_variant in poly_variants:
-                if poly_variant and poly_variant in sentence_lower:
-                    score += 3
-                    poly_found = True
-                    reasoning_parts.append(f"contains polymorphism '{annotation.polymorphism}'")
-                    break
-        
-        # Check for pharmacogenomic keywords
-        pharma_keywords = [
-            'metabolism', 'metabolize', 'drug', 'pharmacokinetic', 'pharmacodynamic',
-            'efficacy', 'response', 'dosing', 'therapeutic', 'adverse', 'reaction',
-            'toxicity', 'enzyme', 'inhibitor', 'inducer', 'substrate', 'variant',
-            'genotype', 'phenotype', 'allele', 'mutation', 'polymorphism'
-        ]
-        
-        keyword_matches = [kw for kw in pharma_keywords if kw in sentence_lower]
-        if keyword_matches:
-            score += min(2, len(keyword_matches))
-            reasoning_parts.append(f"contains pharmacogenomic terms: {', '.join(keyword_matches[:3])}")
-        
-        # Check for effect-related terms if we have effect information
-        if annotation.relationship_effect:
-            effect_terms = annotation.relationship_effect.lower().split()
-            effect_matches = [term for term in effect_terms if len(term) > 3 and term in sentence_lower]
-            if effect_matches:
-                score += 1
-                reasoning_parts.append(f"mentions effect terms: {', '.join(effect_matches[:2])}")
-        
-        # Check for statistical terms if we have p-value
-        if annotation.p_value:
-            stat_keywords = ['p-value', 'p<', 'p =', 'significant', 'correlation', 'association', 'odds ratio']
-            stat_matches = [kw for kw in stat_keywords if kw in sentence_lower]
-            if stat_matches:
-                score += 1
-                reasoning_parts.append("contains statistical terms")
-        
-        # Bonus for having both gene and polymorphism
-        if gene_found and poly_found:
-            score += 2
-            reasoning_parts.append("contains both gene and polymorphism")
-        
-        # Calculate similarity using sequence matcher for additional context
-        query = f"{annotation.gene} {annotation.polymorphism} {annotation.relationship_effect or ''}".lower()
-        similarity = SequenceMatcher(None, sentence_lower, query).ratio()
-        if similarity > 0.3:
-            score += int(similarity * 2)
-            reasoning_parts.append(f"high text similarity ({similarity:.2f})")
-        
-        # Clamp score between 1-10
-        score = max(1, min(10, score))
-        
-        reasoning = "; ".join(reasoning_parts) if reasoning_parts else "minimal relevance detected"
-        
-        return score, reasoning
+        pass
     
     def _is_citation_similar(self, citation1: str, citation2: str, threshold: float = 0.8) -> bool:
         """
@@ -286,22 +181,11 @@ Format: Score: X, Reasoning: [your reasoning]
             'findings suggest'
         ]
         
-        # Drug names that suggest general pharmacological background
-        general_drugs = [
-            'canagliflozin',
-            'empagliflozin',
-            'bifidobacterium',
-            'modified gangsimtang',
-            'jin-gui shen-qi wan',
-            'δ-tocotrienol'
-        ]
-        
         # Check for generic patterns
         generic_count = sum(1 for pattern in generic_patterns if pattern in sentence_lower)
-        drug_count = sum(1 for drug in general_drugs if drug in sentence_lower)
         
-        # Consider it generic if it has multiple generic patterns or mentions unrelated drugs
-        return generic_count >= 2 or drug_count >= 1
+        # Consider it generic if it has multiple generic patterns
+        return generic_count >= 2
     
     def _remove_duplicates_and_filter(self, citations: List[str]) -> List[str]:
         """
@@ -368,17 +252,9 @@ Format: Score: X, Reasoning: [your reasoning]
         
         sentence_scores = []
         
-        for i, sentence in enumerate(candidate_sentences):
-            if i % 10 == 0:  # Log progress every 10 sentences
-                logger.info(f"Processed {i}/{len(candidate_sentences)} candidate sentences")
-            
-            # Use appropriate scoring method based on approach
-            if self.approach == "lm":
-                score, reasoning = self._score_sentence_relevance(sentence, annotation)
-            else:  # local approach
-                score, reasoning = self._score_sentence_similarity(sentence, annotation)
-            
-            sentence_scores.append((sentence, score, reasoning))
+        for i, sentence in tqdm(enumerate(candidate_sentences), total=len(candidate_sentences), desc="Scoring sentences"):
+            score = self._score_sentence_relevance(sentence, annotation)
+            sentence_scores.append((sentence, score))
         
         # Sort by score descending and take more than needed for filtering
         sentence_scores.sort(key=lambda x: x[1], reverse=True)
@@ -395,7 +271,7 @@ Format: Score: X, Reasoning: [your reasoning]
         # If we don't have enough after filtering, add more non-generic ones
         if len(top_sentences) < top_k:
             remaining_needed = top_k - len(top_sentences)
-            for sentence, score, reasoning in sentence_scores[top_k * 3:]:
+            for sentence, score in sentence_scores[top_k * 3:]:
                 if not self._is_generic_background(sentence):
                     # Check if it's not already similar to existing ones
                     is_duplicate = any(self._is_citation_similar(sentence, existing) 
@@ -408,9 +284,9 @@ Format: Score: X, Reasoning: [your reasoning]
         
         # Log the scores for the final top sentences
         logger.info(f"Top scores for {annotation.gene}-{annotation.polymorphism} (after filtering):")
-        final_scores = [(s, score, reasoning) for s, score, reasoning in sentence_scores 
+        final_scores = [(s, score) for s, score in sentence_scores 
                        if s in top_sentences]
-        for i, (sentence, score, reasoning) in enumerate(final_scores[:top_k]):
+        for i, (sentence, score) in enumerate(final_scores[:top_k]):
             logger.info(f"  {i+1}. Score {score}: {sentence[:100]}...")
         
         return top_sentences
@@ -541,77 +417,6 @@ Format: Score: X, Reasoning: [your reasoning]
         
         return AnnotationTable(relationships=updated_relationships)
     
-    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> Tuple[int, str]:
-        """
-        Score how relevant a sentence is to a specific study parameter using local similarity/regex.
-        
-        Args:
-            sentence: The sentence to score
-            parameter_content: The content of the parameter to find citations for
-            parameter_type: The type of parameter (summary, study_type, etc.)
-            
-        Returns:
-            Tuple of (relevance_score, reasoning)
-        """
-        sentence_lower = sentence.lower()
-        parameter_lower = parameter_content.lower()
-        score = 0
-        reasoning_parts = []
-        
-        # Define keywords for each parameter type
-        parameter_keywords = {
-            'summary': ['study', 'research', 'investigation', 'analysis', 'examined', 'evaluated', 'assessed'],
-            'study_type': ['gwas', 'case-control', 'cohort', 'clinical trial', 'meta-analysis', 'cross-sectional', 'retrospective', 'prospective'],
-            'participant_info': ['participants', 'subjects', 'patients', 'age', 'gender', 'ethnicity', 'population', 'demographics'],
-            'study_design': ['design', 'methodology', 'sample size', 'recruitment', 'protocol', 'inclusion', 'exclusion'],
-            'study_results': ['results', 'findings', 'significant', 'p-value', 'odds ratio', 'hazard ratio', 'correlation', 'association'],
-            'allele_frequency': ['allele', 'frequency', 'genotype', 'variant', 'polymorphism', 'mutation', 'prevalence']
-        }
-        
-        # Check for parameter-specific keywords
-        if parameter_type in parameter_keywords:
-            keywords = parameter_keywords[parameter_type]
-            keyword_matches = [kw for kw in keywords if kw in sentence_lower]
-            if keyword_matches:
-                score += min(3, len(keyword_matches))
-                reasoning_parts.append(f"contains {parameter_type} keywords: {', '.join(keyword_matches[:3])}")
-        
-        # Check for direct overlap with parameter content
-        parameter_words = [word for word in parameter_lower.split() if len(word) > 3]
-        word_matches = [word for word in parameter_words if word in sentence_lower]
-        if word_matches:
-            score += min(4, len(word_matches))
-            reasoning_parts.append(f"shares words with {parameter_type}: {', '.join(word_matches[:3])}")
-        
-        # Calculate text similarity
-        similarity = SequenceMatcher(None, sentence_lower, parameter_lower).ratio()
-        if similarity > 0.2:
-            score += int(similarity * 3)
-            reasoning_parts.append(f"high text similarity ({similarity:.2f})")
-        
-        # Check for statistical terms if this is results
-        if parameter_type == 'study_results':
-            stat_keywords = ['p<', 'p =', 'p-value', 'significant', 'ci', 'confidence interval', 'odds ratio', 'hazard ratio']
-            stat_matches = [kw for kw in stat_keywords if kw in sentence_lower]
-            if stat_matches:
-                score += 2
-                reasoning_parts.append("contains statistical terms")
-        
-        # Check for study type indicators
-        if parameter_type == 'study_type':
-            type_indicators = ['study was', 'conducted', 'design', 'approach', 'method']
-            type_matches = [indicator for indicator in type_indicators if indicator in sentence_lower]
-            if type_matches:
-                score += 2
-                reasoning_parts.append("contains study type indicators")
-        
-        # Clamp score between 1-10
-        score = max(1, min(10, score))
-        
-        reasoning = "; ".join(reasoning_parts) if reasoning_parts else "minimal relevance detected"
-        
-        return score, reasoning
-    
     def _get_top_citations_for_parameter(self, parameter_content: str, parameter_type: str, top_k: int = 3) -> List[str]:
         """
         Find the top K most relevant sentences for a specific study parameter.
@@ -651,8 +456,8 @@ Format: Score: X, Reasoning: [your reasoning]
         sentence_scores = []
         
         for sentence in candidate_sentences:
-            score, reasoning = self._score_sentence_for_parameter(sentence, parameter_content, parameter_type)
-            sentence_scores.append((sentence, score, reasoning))
+            score = self._score_sentence_for_parameter(sentence, parameter_content, parameter_type)
+            sentence_scores.append((sentence, score))
         
         # Sort by score descending and take more than needed for filtering
         sentence_scores.sort(key=lambda x: x[1], reverse=True)
@@ -669,7 +474,7 @@ Format: Score: X, Reasoning: [your reasoning]
         # If we don't have enough after filtering, add more non-generic ones
         if len(top_sentences) < top_k:
             remaining_needed = top_k - len(top_sentences)
-            for sentence, score, reasoning in sentence_scores[top_k * 3:]:
+            for sentence, score in sentence_scores[top_k * 3:]:
                 if not self._is_generic_background(sentence):
                     # Check if it's not already similar to existing ones
                     is_duplicate = any(self._is_citation_similar(sentence, existing) 
@@ -682,9 +487,9 @@ Format: Score: X, Reasoning: [your reasoning]
         
         # Log the scores for the final top sentences
         logger.info(f"Top scores for {parameter_type} (after filtering):")
-        final_scores = [(s, score, reasoning) for s, score, reasoning in sentence_scores 
+        final_scores = [(s, score) for s, score in sentence_scores 
                        if s in top_sentences]
-        for i, (sentence, score, reasoning) in enumerate(final_scores[:top_k]):
+        for i, (sentence, score) in enumerate(final_scores[:top_k]):
             logger.info(f"  {i+1}. Score {score}: {sentence[:100]}...")
         
         return top_sentences
@@ -732,3 +537,348 @@ Format: Score: X, Reasoning: [your reasoning]
         
         logger.info("Completed adding citations to study parameters")
         return updated_params
+
+
+class LocalCitationGenerator(CitationGeneratorBase):
+    """
+    Citation generator using local similarity/regex-based scoring for offline usage.
+    """
+    
+    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> int:
+        """
+        Score how relevant a sentence is to a specific annotation using local similarity/regex.
+        
+        Args:
+            sentence: The sentence to score
+            annotation: The annotation to compare against
+            
+        Returns:
+            Relevance score from 1-10
+        """
+        sentence_lower = sentence.lower()
+        score = 0
+        
+        # Check for exact gene match (higher weight)
+        gene_variants = [
+            annotation.gene.lower(),
+            annotation.gene.lower().replace('(', '').replace(')', ''),
+            annotation.gene.lower().replace('-', ''),
+            annotation.gene.lower().replace('_', '')
+        ]
+        
+        gene_found = False
+        for gene_variant in gene_variants:
+            if gene_variant in sentence_lower:
+                score += 4
+                gene_found = True
+                break
+        
+        # Check for polymorphism match
+        poly_found = False
+        if annotation.polymorphism:
+            poly_variants = [
+                annotation.polymorphism.lower(),
+                annotation.polymorphism.lower().replace('*', ''),
+                annotation.polymorphism.lower().split()[0] if ' ' in annotation.polymorphism else annotation.polymorphism.lower()
+            ]
+            
+            for poly_variant in poly_variants:
+                if poly_variant and poly_variant in sentence_lower:
+                    score += 3
+                    poly_found = True
+                    break
+        
+        # Check for pharmacogenomic keywords
+        pharma_keywords = [
+            'metabolism', 'metabolize', 'drug', 'pharmacokinetic', 'pharmacodynamic',
+            'efficacy', 'response', 'dosing', 'therapeutic', 'adverse', 'reaction',
+            'toxicity', 'enzyme', 'inhibitor', 'inducer', 'substrate', 'variant',
+            'genotype', 'phenotype', 'allele', 'mutation', 'polymorphism'
+        ]
+        
+        keyword_matches = [kw for kw in pharma_keywords if kw in sentence_lower]
+        if keyword_matches:
+            score += min(2, len(keyword_matches))
+        
+        # Check for effect-related terms if we have effect information
+        if annotation.relationship_effect:
+            effect_terms = annotation.relationship_effect.lower().split()
+            effect_matches = [term for term in effect_terms if len(term) > 3 and term in sentence_lower]
+            if effect_matches:
+                score += 1
+        
+        # Check for statistical terms if we have p-value
+        if annotation.p_value:
+            stat_keywords = ['p-value', 'p<', 'p =', 'significant', 'correlation', 'association', 'odds ratio']
+            stat_matches = [kw for kw in stat_keywords if kw in sentence_lower]
+            if stat_matches:
+                score += 1
+        
+        # Bonus for having both gene and polymorphism
+        if gene_found and poly_found:
+            score += 2
+        
+        # Calculate similarity using sequence matcher for additional context
+        query = f"{annotation.gene} {annotation.polymorphism} {annotation.relationship_effect or ''}".lower()
+        similarity = SequenceMatcher(None, sentence_lower, query).ratio()
+        if similarity > 0.3:
+            score += int(similarity * 2)
+        
+        # Clamp score between 1-10
+        score = max(1, min(10, score))
+        
+        return score
+
+    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
+        """
+        Score how relevant a sentence is to a specific study parameter using local similarity/regex.
+        
+        Args:
+            sentence: The sentence to score
+            parameter_content: The content of the parameter to find citations for
+            parameter_type: The type of parameter (summary, study_type, etc.)
+            
+        Returns:
+            Relevance score from 1-10
+        """
+        sentence_lower = sentence.lower()
+        parameter_lower = parameter_content.lower()
+        score = 0
+        
+        # Define keywords for each parameter type
+        parameter_keywords = {
+            'summary': ['study', 'research', 'investigation', 'analysis', 'examined', 'evaluated', 'assessed'],
+            'study_type': ['gwas', 'case-control', 'cohort', 'clinical trial', 'meta-analysis', 'cross-sectional', 'retrospective', 'prospective'],
+            'participant_info': ['participants', 'subjects', 'patients', 'age', 'gender', 'ethnicity', 'population', 'demographics'],
+            'study_design': ['design', 'methodology', 'sample size', 'recruitment', 'protocol', 'inclusion', 'exclusion'],
+            'study_results': ['results', 'findings', 'significant', 'p-value', 'odds ratio', 'hazard ratio', 'correlation', 'association'],
+            'allele_frequency': ['allele', 'frequency', 'genotype', 'variant', 'polymorphism', 'mutation', 'prevalence']
+        }
+        
+        # Check for parameter-specific keywords
+        if parameter_type in parameter_keywords:
+            keywords = parameter_keywords[parameter_type]
+            keyword_matches = [kw for kw in keywords if kw in sentence_lower]
+            if keyword_matches:
+                score += min(3, len(keyword_matches))
+        
+        # Check for direct overlap with parameter content
+        parameter_words = [word for word in parameter_lower.split() if len(word) > 3]
+        word_matches = [word for word in parameter_words if word in sentence_lower]
+        if word_matches:
+            score += min(4, len(word_matches))
+        
+        # Calculate text similarity
+        similarity = SequenceMatcher(None, sentence_lower, parameter_lower).ratio()
+        if similarity > 0.2:
+            score += int(similarity * 3)
+        
+        # Check for statistical terms if this is results
+        if parameter_type == 'study_results':
+            stat_keywords = ['p<', 'p =', 'p-value', 'significant', 'ci', 'confidence interval', 'odds ratio', 'hazard ratio']
+            stat_matches = [kw for kw in stat_keywords if kw in sentence_lower]
+            if stat_matches:
+                score += 2
+        
+        # Check for study type indicators
+        if parameter_type == 'study_type':
+            type_indicators = ['study was', 'conducted', 'design', 'approach', 'method']
+            type_matches = [indicator for indicator in type_indicators if indicator in sentence_lower]
+            if type_matches:
+                score += 2
+        
+        # Clamp score between 1-10
+        score = max(1, min(10, score))
+        
+        return score
+
+
+class LMCitationGenerator(CitationGeneratorBase):
+    """
+    Citation generator using LM-based scoring with language models.
+    """
+    
+    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> int:
+        """
+        Score how relevant a sentence is to a specific annotation using language model.
+        
+        Args:
+            sentence: The sentence to score
+            annotation: The annotation to compare against
+            
+        Returns:
+            Relevance score from 1-10
+        """
+        prompt = annotation_citation_prompt
+        
+        try:
+            completion_kwargs = {
+                "model": self.model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.1,
+                "max_tokens": 100
+            }
+            
+            response = completion(**completion_kwargs)
+            response_text = response.choices[0].message.content.strip()
+            
+            # Parse the response
+            if "Score:" in response_text:
+                score_part = response_text.split("Score:")[1].split("Reasoning:")[0] if "Reasoning:" in response_text else response_text.split("Score:")[1]
+                score_part = score_part.strip()
+                
+                # Extract numeric score
+                score = int(re.search(r'\d+', score_part).group())
+                score = max(1, min(10, score))  # Clamp between 1-10
+                
+                return score
+            else:
+                logger.warning(f"Unexpected response format: {response_text}")
+                return 1
+                
+        except Exception as e:
+            logger.error(f"Error scoring sentence relevance: {e}")
+            return 1
+
+    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
+        """
+        Score how relevant a sentence is to a specific study parameter using language model.
+        
+        Args:
+            sentence: The sentence to score
+            parameter_content: The content of the parameter to find citations for
+            parameter_type: The type of parameter (summary, study_type, etc.)
+            
+        Returns:
+            Relevance score from 1-10
+        """
+        prompt = f"""
+Rate the relevance of this sentence to the study parameter on a scale of 1-10.
+
+Parameter Type: {parameter_type}
+Parameter Content: {parameter_content}
+
+Sentence to evaluate:
+"{sentence}"
+
+Rate from 1-10 where:
+- 10: Sentence directly supports or describes this parameter
+- 7-9: Sentence is closely related to this parameter
+- 4-6: Sentence has some relevance to this parameter
+- 1-3: Sentence has minimal or no relevance to this parameter
+
+Format: Score: X
+"""
+        
+        try:
+            completion_kwargs = {
+                "model": self.model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.1,
+                "max_tokens": 50
+            }
+            
+            response = completion(**completion_kwargs)
+            response_text = response.choices[0].message.content.strip()
+            
+            # Parse the response
+            if "Score:" in response_text:
+                score_part = response_text.split("Score:")[1].strip()
+                
+                # Extract numeric score
+                score = int(re.search(r'\d+', score_part).group())
+                score = max(1, min(10, score))  # Clamp between 1-10
+                
+                return score
+            else:
+                logger.warning(f"Unexpected response format: {response_text}")
+                return 1
+                
+        except Exception as e:
+            logger.error(f"Error scoring sentence for parameter: {e}")
+            return 1
+
+
+def create_citation_generator(pmcid: str, model: str = "local") -> CitationGeneratorBase:
+    """
+    Factory method to create the appropriate citation generator.
+    
+    Args:
+        pmcid: PubMed Central ID
+        model: Model to use - "local" for similarity/regex scoring, or any LM model name for language model scoring
+        
+    Returns:
+        Citation generator instance
+    """
+    if model == "local":
+        logger.info(f"Creating local citation generator")
+        return LocalCitationGenerator(pmcid, model)
+    else:
+        logger.info(f"Creating LM-based citation generator with model {model}")
+        return LMCitationGenerator(pmcid, model)
+
+
+# Maintain backward compatibility
+def CitationGenerator(pmcid: str, model: str = "local", approach: str = None) -> CitationGeneratorBase:
+    """
+    Legacy constructor for backward compatibility.
+    
+    Args:
+        pmcid: PubMed Central ID
+        model: Model to use - "local" for similarity/regex scoring, or any LM model name for language model scoring
+        approach: DEPRECATED - kept for backward compatibility, use model parameter instead
+        
+    Returns:
+        Citation generator instance
+    """
+    # Handle legacy approach parameter
+    if approach is not None:
+        logger.warning("The 'approach' parameter is deprecated. Use model='local' for local scoring or specify an LM model name.")
+        if approach == "local":
+            return create_citation_generator(pmcid, "local")
+        else:
+            # If approach was "lm", use the provided model
+            return create_citation_generator(pmcid, model)
+    else:
+        return create_citation_generator(pmcid, model)
+
+
+def main():
+    """
+    Test function for citation generator using PMC11730665 and a single sentence.
+    """
+    # Test parameters
+    pmcid = "PMC11730665"
+    test_sentence = "Patients with the GG genotype had a trend toward lower efficacy of sitagliptin and higher efficacy of gliclazide, likely due to slower metabolism of gliclazide."
+    
+    # Create citation generator
+    generator = create_citation_generator(pmcid, model="gemini/gemini-2.0-flash")
+    
+    # Create a mock annotation for testing
+    from src.components.annotation_table import AnnotationRelationship
+    test_annotation = AnnotationRelationship(
+        gene="CYP2C9",
+        polymorphism="rs1057910 GG",
+        relationship_effect="Patients with the GG genotype had a trend toward lower efficacy of sitagliptin and higher efficacy of gliclazide, likely due to slower metabolism of gliclazide.",
+        p_value=".464",
+        citations=[]
+    )
+    
+    print(f"Testing citation generator with PMCID: {pmcid}")
+    print(f"Test sentence: {test_sentence}")
+    print(f"Test annotation: {test_annotation.gene} {test_annotation.polymorphism}")
+    print("-" * 50)
+    
+    # Get citations for the annotation
+    citations = generator._get_top_citations_for_annotation(test_annotation, top_k=3)
+    
+    print(f"Found {len(citations)} citations:")
+    for i, citation in enumerate(citations, 1):
+        print(f"{i}. {citation}")
+        print()
+    
+    return citations
+
+
+if __name__ == "__main__":
+    main()

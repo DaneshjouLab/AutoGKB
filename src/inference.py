@@ -14,18 +14,6 @@ load_dotenv()
 
 LMResponse = str | dict | List[str] | List[dict] | BaseModel | List[BaseModel]
 
-"""
-TODO:
-Refactor this. Things that change from inference to inference are
-- system prompt
-- whether or not previous_responses are taken
-
-Look into Archon fomratting for taking in previous responses
- 
-Add retry for connection errors
-"""
-
-
 class LLMInterface(ABC):
     """LLM Interface implemented by Generator and Parser classes"""
 
