@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
+
 @dataclass
 class ArticleInput:
     """Input article data."""
@@ -47,7 +48,19 @@ class MarkdownParser:
         if self.remove_references:
             self.remove_sections(["References", "Acknowledgments"])
         if self.for_citations:
-            self.remove_sections(["Introduction", "Background", "Metadata", "Abstract", "Acknowledgements", "References", "Author Contributions", "Contributor Information", "Funding"])
+            self.remove_sections(
+                [
+                    "Introduction",
+                    "Background",
+                    "Metadata",
+                    "Abstract",
+                    "Acknowledgements",
+                    "References",
+                    "Author Contributions",
+                    "Contributor Information",
+                    "Funding",
+                ]
+            )
 
     def get_article_text(self) -> str:
         """Get article text from PMCID."""
@@ -71,12 +84,12 @@ class MarkdownParser:
     def remove_section(self, section_name: str):
         """
         Removes the introduction section from article text.
-        
+
         Removes sections where ## and Introduction appear on the same line
         """
         # Split the text into lines
         lines = self.text.split("\n")
-        
+
         # Find the start of Introduction section
         intro_start = -1
         for i, line in enumerate(lines):
@@ -84,18 +97,18 @@ class MarkdownParser:
             if line.strip().startswith("##") and section_name.lower() in line.lower():
                 intro_start = i
                 break
-        
+
         # If no introduction found, return original text
         if intro_start == -1:
             return
-            
+
         # Find the next section start
         next_section = -1
         for i in range(intro_start + 1, len(lines)):
             if lines[i].strip().startswith("##"):
                 next_section = i
                 break
-        
+
         # Remove the introduction section
         if next_section != -1:
             # Remove from intro start to next section
@@ -103,7 +116,7 @@ class MarkdownParser:
         else:
             # If no next section, just remove from intro to end
             self.text = "\n".join(lines[:intro_start])
-    
+
     def remove_sections(self, section_names: List[str]):
         """
         Removes the sections from article text.
@@ -114,20 +127,22 @@ class MarkdownParser:
     def remove_acknowledgements(self):
         """
         Removes the acknowledgements section from article text.
-        
+
         (Looks for ## Acknowledgements section and removes it)
         """
         # Split the text into sections
         sections = self.text.split("##")
-        
+
         # Find and remove the Acknowledgements section
         filtered_sections = []
         for section in sections:
             section_name = section.strip().lower()
-            if not (section_name.startswith("acknowledgements") or 
-                   section_name.startswith("acknowledgments")):
+            if not (
+                section_name.startswith("acknowledgements")
+                or section_name.startswith("acknowledgments")
+            ):
                 filtered_sections.append(section)
-        
+
         self.text = "##".join(filtered_sections)
 
     def parse_pmid(self) -> str:
@@ -165,9 +180,11 @@ class MarkdownParser:
             pmcid=self.parse_pmcid(),
         )
 
+
 def test():
     parser = MarkdownParser(pmcid="PMC11730665", for_citations=True)
     print(parser.text)
+
 
 if __name__ == "__main__":
     test()

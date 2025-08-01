@@ -6,9 +6,11 @@ class ExplainedStr(BaseModel):
     content: str
     explanation: str
 
+
 class ExplainedList(BaseModel):
     contents: List[str]
     explanation: str
+
 
 class Variant(BaseModel):
     """Variant."""

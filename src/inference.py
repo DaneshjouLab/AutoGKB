@@ -14,6 +14,7 @@ load_dotenv()
 
 LMResponse = str | dict | List[str] | List[dict] | BaseModel | List[BaseModel]
 
+
 class LLMInterface(ABC):
     """LLM Interface implemented by Generator and Parser classes"""
 
@@ -69,15 +70,22 @@ class LLMInterface(ABC):
             raise e
         return response.choices[0].message.content
 
+
 class PMCIDGenerator(LLMInterface):
     """
     PMCIDGenerator Class
     Used to generate responses about a PMCID article by automatically hydrating prompts with article content
     """
-    
+
     debug_mode = False
-    
-    def __init__(self, model: str = "gpt-4.1", temperature: float = 0.1, pmcid: str = None, samples: int = 1):
+
+    def __init__(
+        self,
+        model: str = "gpt-4.1",
+        temperature: float = 0.1,
+        pmcid: str = None,
+        samples: int = 1,
+    ):
         super().__init__(model, temperature)
         if self.debug_mode:
             litellm.set_verbose = True
@@ -94,17 +102,17 @@ class PMCIDGenerator(LLMInterface):
     ) -> LMResponse:
         """Generate a single response with PMCID article content automatically hydrated."""
         from src.prompts import ArticlePrompt
-        
+
         # Auto-hydrate the prompt with PMCID article content
         if self.pmcid:
             article_prompt = ArticlePrompt(
                 article_text=self.pmcid,
                 key_question=input_prompt,
                 system_prompt=system_prompt or self.system_prompt,
-                output_format_structure=response_format
+                output_format_structure=response_format,
             )
             hydrated_prompt = article_prompt.get_hydrated_prompt()
-            
+
             # Use the hydrated prompt components
             input_prompt = hydrated_prompt.input_prompt
             system_prompt = hydrated_prompt.system_prompt
@@ -112,7 +120,7 @@ class PMCIDGenerator(LLMInterface):
                 response_format = hydrated_prompt.output_format_structure
 
         temp = temperature if temperature is not None else self.temperature
-        
+
         # Check if system prompt is provided
         if system_prompt is not None and system_prompt != "":
             messages = [
@@ -124,7 +132,7 @@ class PMCIDGenerator(LLMInterface):
                 {"role": "system", "content": self.system_prompt},
                 {"role": "user", "content": input_prompt},
             ]
-        
+
         try:
             response = litellm.completion(
                 model=self.model,
@@ -135,7 +143,7 @@ class PMCIDGenerator(LLMInterface):
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             raise e
-        
+
         response_content = response.choices[0].message.content
         return parse_structured_response(response_content, response_format)
 
@@ -158,11 +166,12 @@ class PMCIDGenerator(LLMInterface):
                 response_format=response_format,
             )
             responses.append(response)
-        
+
         if len(responses) == 1:
             return responses[0]
 
         return parse_structured_response(responses, response_format)
+
 
 class Generator(LLMInterface):
     """Generator Class"""
