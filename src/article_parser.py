@@ -29,10 +29,13 @@ class MarkdownParser:
         text: Optional[str] = None,
         pmcid: Optional[str] = None,
         remove_references: bool = True,
+        for_citations: bool = False,
     ):
         self.text = text
         self.pmcid = pmcid
         self.remove_references = remove_references
+        self.for_citations = for_citations
+
         if not self.text and not self.pmcid:
             logger.error("Either text or pmcid must be provided.")
             raise ValueError("Either text or pmcid must be provided.")
@@ -42,7 +45,18 @@ class MarkdownParser:
         if self.pmcid:
             self.text = self.get_article_text()
         if self.remove_references:
-            self.remove_references_section()
+            self.remove_section("References")
+            self.remove_section("Acknowledgments")
+        if self.for_citations:
+            self.remove_section("Introduction")
+            self.remove_section("Background")
+            self.remove_section("Metadata")
+            self.remove_section("Abstract")
+            self.remove_section("Acknowledgements")
+            self.remove_section("References")
+            self.remove_section("Author Contributions")
+            self.remove_section("Contributor Information")
+            self.remove_section("Funding")
 
     def get_article_text(self) -> str:
         """Get article text from PMCID."""
@@ -63,28 +77,60 @@ class MarkdownParser:
             title = title[2:].strip()
         return title
 
-    def remove_references_section(self):
+    def remove_section(self, section_name: str):
         """
-        Removes the references section from article text.
+        Removes the introduction section from article text.
+        
+        Removes sections where ## and Introduction appear on the same line
+        """
+        # Split the text into lines
+        lines = self.text.split("\n")
+        
+        # Find the start of Introduction section
+        intro_start = -1
+        for i, line in enumerate(lines):
+            # Check if line starts with ## and contains Introduction
+            if line.strip().startswith("##") and section_name.lower() in line.lower():
+                intro_start = i
+                break
+        
+        # If no introduction found, return original text
+        if intro_start == -1:
+            return
+            
+        # Find the next section start
+        next_section = -1
+        for i in range(intro_start + 1, len(lines)):
+            if lines[i].strip().startswith("##"):
+                next_section = i
+                break
+        
+        # Remove the introduction section
+        if next_section != -1:
+            # Remove from intro start to next section
+            self.text = "\n".join(lines[:intro_start] + lines[next_section:])
+        else:
+            # If no next section, just remove from intro to end
+            self.text = "\n".join(lines[:intro_start])
 
-        Returns:
-            str: Article text with references section removed
-            (Looks for ## References section and removes it and everything after)
+    def remove_acknowledgements(self):
+        """
+        Removes the acknowledgements section from article text.
+        
+        (Looks for ## Acknowledgements section and removes it)
         """
         # Split the text into sections
         sections = self.text.split("##")
-
-        # Find the index of the References section
-        ref_index = -1
-        for i, section in enumerate(sections):
-            if section.strip().startswith("References"):
-                ref_index = i
-                break
-
-        # If references section found, remove it and everything after
-        if ref_index != -1:
-            sections = sections[:ref_index]
-            self.text = "##".join(sections)
+        
+        # Find and remove the Acknowledgements section
+        filtered_sections = []
+        for section in sections:
+            section_name = section.strip().lower()
+            if not (section_name.startswith("acknowledgements") or 
+                   section_name.startswith("acknowledgments")):
+                filtered_sections.append(section)
+        
+        self.text = "##".join(filtered_sections)
 
     def parse_pmid(self) -> str:
         """Parse the PMID from the markdown text."""
@@ -120,3 +166,10 @@ class MarkdownParser:
             pmid=self.parse_pmid(),
             pmcid=self.parse_pmcid(),
         )
+
+def test():
+    parser = MarkdownParser(pmcid="PMC11730665", for_citations=True)
+    print(parser.text)
+
+if __name__ == "__main__":
+    test()
