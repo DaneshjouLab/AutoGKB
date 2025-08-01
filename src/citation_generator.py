@@ -80,7 +80,7 @@ class CitationGeneratorBase(ABC):
         """
         self.pmcid = pmcid
         self.model = model
-        self.article_text = get_article_text(pmcid)
+        self.article_text = get_article_text(pmcid, for_citations=True)
         
         # Split article into sentences
         self.sentences = self._split_into_sentences(self.article_text)
@@ -89,35 +89,30 @@ class CitationGeneratorBase(ABC):
     def _split_into_sentences(self, text: str) -> List[str]:
         """
         Split text into sentences using regex pattern.
-        Excludes markdown headers from the sentence list.
+        Removes introduction and abstract sections before splitting.
         
         Args:
             text: Input text to split
             
         Returns:
-            List of sentences with markdown headers excluded
+            List of sentences with introduction/abstract sections excluded
         """
-        # Basic sentence splitting - can be improved with more sophisticated NLP
-        sentences = re.split(r'(?<=[.!?])\s+', text)
+        processed_text = text
         
-        # Filter out very short sentences, markdown headers, and clean up
+        # Basic sentence splitting - can be improved with more sophisticated NLP
+        sentences = re.split(r'(?<=[.!?])\s+', processed_text)
+        
+        # Clean up sentences
         filtered_sentences = []
         for sentence in sentences:
             sentence = sentence.strip()
-            # Skip if too short
-            if len(sentence) <= 20:
-                continue
-            # Skip if it's a markdown header (starts with # after stripping)
-            if re.match(r'^\s*#+\s', sentence):
-                continue
-            if "Keywords:" in sentence or "keywords:" in sentence:
-                continue
-            filtered_sentences.append(sentence)
+            if sentence:  # Only keep non-empty sentences
+                filtered_sentences.append(sentence)
         
         return filtered_sentences
     
     @abstractmethod
-    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> int:
+    def _score_sentence_for_annotation(self, sentence: str, annotation: AnnotationRelationship) -> int:
         """
         Score how relevant a sentence is to a specific annotation.
         
@@ -131,7 +126,7 @@ class CitationGeneratorBase(ABC):
         pass
     
     @abstractmethod
-    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
+    def _score_sentence_for_study_param(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
         """
         Score how relevant a sentence is to a specific study parameter.
         
@@ -145,7 +140,7 @@ class CitationGeneratorBase(ABC):
         """
         pass
     
-    def _is_citation_similar(self, citation1: str, citation2: str, threshold: float = 0.8) -> bool:
+    def _is_duplicate_citation(self, citation1: str, citation2: str, threshold: float = 0.8) -> bool:
         """
         Check if two citations are similar using sequence matching.
         
@@ -165,68 +160,27 @@ class CitationGeneratorBase(ABC):
         similarity = SequenceMatcher(None, norm1, norm2).ratio()
         return similarity >= threshold
     
-    def _is_generic_background(self, sentence: str) -> bool:
+    def _remove_duplicates(self, str_list: List[str], threshold: float = 0.8) -> List[str]:
         """
-        Check if a sentence is generic background information not specific to the study.
+        Remove duplicates from a list of strings.
         
         Args:
-            sentence: Sentence to evaluate
+            str_list: List of strings
+            threshold: Similarity threshold (0.0 to 1.0)
             
         Returns:
-            True if sentence appears to be generic background
+            Filtered list with duplicates removed
         """
-        sentence_lower = sentence.lower()
-        
-        # Generic phrases that indicate background information
-        generic_patterns = [
-            'for example,',
-            'in addition,',
-            'furthermore,',
-            'moreover,',
-            'various studies',
-            'research has',
-            'investigations have',
-            'studies have',
-            'it has been',
-            'previous research',
-            'prior studies',
-            'literature suggests',
-            'evidence suggests',
-            'reports have',
-            'findings suggest'
-        ]
-        
-        # Check for generic patterns
-        generic_count = sum(1 for pattern in generic_patterns if pattern in sentence_lower)
-        
-        # Consider it generic if it has multiple generic patterns
-        return generic_count >= 2
-    
-    def _remove_duplicates_and_filter(self, citations: List[str]) -> List[str]:
-        """
-        Remove duplicate and generic citations from a list.
-        
-        Args:
-            citations: List of citation strings
-            
-        Returns:
-            Filtered list with duplicates and generic citations removed
-        """
-        if not citations:
-            return citations
+        if not str_list:
+            return str_list
         
         filtered_citations = []
         
-        for citation in citations:
-            # Skip if it's generic background information
-            if self._is_generic_background(citation):
-                logger.debug(f"Skipping generic citation: {citation[:100]}...")
-                continue
-            
+        for citation in str_list:
             # Skip if similar to an already added citation
             is_duplicate = False
             for existing in filtered_citations:
-                if self._is_citation_similar(citation, existing):
+                if self._is_duplicate_citation(citation, existing, threshold):
                     logger.debug(f"Skipping duplicate citation: {citation[:100]}...")
                     is_duplicate = True
                     break
@@ -248,27 +202,16 @@ class CitationGeneratorBase(ABC):
         Returns:
             List of top relevant sentences
         """
-        # First, filter sentences that contain the gene name or polymorphism
-        gene_terms = [annotation.gene.lower(), annotation.gene.replace('(', '').replace(')', '').lower()]
-        poly_terms = [annotation.polymorphism.lower().split()[0] if annotation.polymorphism else '']
         
-        # Pre-filter sentences that contain relevant keywords
-        candidate_sentences = []
-        for sentence in self.sentences:
-            sentence_lower = sentence.lower()
-            if any(term in sentence_lower for term in gene_terms + poly_terms if term):
-                candidate_sentences.append(sentence)
+        # Use all sentences without pre-filtering
+        candidate_sentences = self.sentences
         
-        # If we have too few candidates, expand to more sentences
-        if len(candidate_sentences) < 20:
-            candidate_sentences = self.sentences[:min(100, len(self.sentences))]
-        
-        logger.info(f"Pre-filtered to {len(candidate_sentences)} candidate sentences for {annotation.gene}-{annotation.polymorphism}")
+        logger.info(f"Scoring all {len(candidate_sentences)} sentences for {annotation.gene}-{annotation.polymorphism}")
         
         sentence_scores = []
         
         for i, sentence in tqdm(enumerate(candidate_sentences), total=len(candidate_sentences), desc=f"Scoring sentences using {self.model}"):
-            score = self._score_sentence_relevance(sentence, annotation)
+            score = self._score_sentence_for_annotation(sentence, annotation)
             sentence_scores.append((sentence, score))
         
         # Sort by score descending and take more than needed for filtering
@@ -277,25 +220,11 @@ class CitationGeneratorBase(ABC):
         # Take more candidates than needed to account for filtering
         candidate_sentences = [item[0] for item in sentence_scores[:top_k * 3]]
         
-        # Remove duplicates and filter generic citations
-        filtered_sentences = self._remove_duplicates_and_filter(candidate_sentences)
+        # Remove duplicates
+        filtered_sentences = self._remove_duplicates(candidate_sentences)
         
         # Take final top K after filtering
         top_sentences = filtered_sentences[:top_k]
-        
-        # If we don't have enough after filtering, add more non-generic ones
-        if len(top_sentences) < top_k:
-            remaining_needed = top_k - len(top_sentences)
-            for sentence, score in sentence_scores[top_k * 3:]:
-                if not self._is_generic_background(sentence):
-                    # Check if it's not already similar to existing ones
-                    is_duplicate = any(self._is_citation_similar(sentence, existing) 
-                                     for existing in top_sentences)
-                    if not is_duplicate:
-                        top_sentences.append(sentence)
-                        remaining_needed -= 1
-                        if remaining_needed == 0:
-                            break
         
         # Log the scores for the final top sentences
         logger.info(f"Top scores for {annotation.gene}-{annotation.polymorphism} (after filtering):")
@@ -342,7 +271,7 @@ class CitationGeneratorBase(ABC):
     def add_citations_to_annotations(self, annotations: AnnotationTable) -> AnnotationTable:
         """
         Add citations directly to the annotation relationships.
-        Ensures uniqueness across all relationships to avoid citation reuse.
+        Ensures uniqueness within each annotation to avoid duplicate citations.
         
         Args:
             annotations: Original AnnotationTable
@@ -351,58 +280,39 @@ class CitationGeneratorBase(ABC):
             AnnotationTable with citations added
         """
         updated_relationships = []
-        used_citations = set()  # Track citations used across all relationships
         
         for i, annotation in enumerate(annotations.relationships):
             logger.info(f"Adding citations to annotation {i+1}/{len(annotations.relationships)}: {annotation.gene}-{annotation.polymorphism}")
             
-            # Get more candidates to account for global filtering
+            # Get candidates for this annotation
             top_citations_candidates = self._get_top_citations_for_annotation(annotation, top_k=5)
             
-            # Filter out citations already used in other relationships
+            # Filter out duplicate citations within this annotation
             unique_citations = []
             for citation in top_citations_candidates:
-                # Check if this citation is too similar to any already used citation
-                is_globally_duplicate = any(
-                    self._is_citation_similar(citation, used_citation, threshold=0.7)
-                    for used_citation in used_citations
+                # Check if this citation is too similar to any already used citation for this annotation
+                is_duplicate = any(
+                    self._is_duplicate_citation(citation, used_citation, threshold=0.7)
+                    for used_citation in unique_citations
                 )
                 
-                if not is_globally_duplicate:
+                if not is_duplicate:
                     unique_citations.append(citation)
-                    used_citations.add(citation)
                     if len(unique_citations) >= 3:  # We want 3 unique citations per relationship
                         break
             
-            # If we still don't have enough unique citations, get more candidates
-            if len(unique_citations) < 3:
-                additional_candidates = self._get_top_citations_for_annotation(annotation, top_k=10)
-                for citation in additional_candidates:
-                    if citation not in unique_citations:
-                        is_globally_duplicate = any(
-                            self._is_citation_similar(citation, used_citation, threshold=0.7)
-                            for used_citation in used_citations
-                        )
-                        
-                        if not is_globally_duplicate:
-                            unique_citations.append(citation)
-                            used_citations.add(citation)
-                            if len(unique_citations) >= 3:
-                                break
-            
-            # Final fallback: if still no unique citations, use lower similarity threshold or fallback citations
+            # Final fallback: if still no unique citations, use lower similarity threshold
             if len(unique_citations) == 0:
                 # Try with a lower similarity threshold
                 fallback_candidates = self._get_top_citations_for_annotation(annotation, top_k=15)
                 for citation in fallback_candidates:
-                    is_globally_duplicate = any(
-                        self._is_citation_similar(citation, used_citation, threshold=0.5)
-                        for used_citation in used_citations
+                    is_duplicate = any(
+                        self._is_duplicate_citation(citation, used_citation, threshold=0.5)
+                        for used_citation in unique_citations
                     )
                     
-                    if not is_globally_duplicate:
+                    if not is_duplicate:
                         unique_citations.append(citation)
-                        used_citations.add(citation)
                         if len(unique_citations) >= 3:
                             break
                 
@@ -414,8 +324,7 @@ class CitationGeneratorBase(ABC):
                         if len(gene_mentions) < 3:
                             unique_citations = gene_mentions
                         else:
-                            unique_citations = gene_mentions[:3]  # At least provide one citation
-                        used_citations.update(unique_citations)
+                            unique_citations = gene_mentions[:3]  # Take top 3 citations
             
             # Create new annotation with unique citations
             updated_annotation = AnnotationRelationship(
@@ -444,34 +353,15 @@ class CitationGeneratorBase(ABC):
         Returns:
             List of top relevant sentences
         """
-        # Pre-filter sentences based on parameter type keywords
-        parameter_keywords = {
-            'summary': ['study', 'research', 'investigation'],
-            'study_type': ['study', 'design', 'analysis', 'gwas', 'cohort', 'case'],
-            'participant_info': ['participants', 'subjects', 'patients', 'population'],
-            'study_design': ['design', 'methodology', 'sample', 'recruitment'],
-            'study_results': ['results', 'findings', 'significant', 'association'],
-            'allele_frequency': ['allele', 'frequency', 'genotype', 'variant']
-        }
+        # Use all sentences without pre-filtering
+        candidate_sentences = self.sentences
         
-        keywords = parameter_keywords.get(parameter_type, [])
-        candidate_sentences = []
-        
-        for sentence in self.sentences:
-            sentence_lower = sentence.lower()
-            if any(keyword in sentence_lower for keyword in keywords):
-                candidate_sentences.append(sentence)
-        
-        # If we have too few candidates, use more sentences
-        if len(candidate_sentences) < 20:
-            candidate_sentences = self.sentences[:min(100, len(self.sentences))]
-        
-        logger.info(f"Pre-filtered to {len(candidate_sentences)} candidate sentences for {parameter_type}")
+        logger.info(f"Scoring all {len(candidate_sentences)} sentences for {parameter_type}")
         
         sentence_scores = []
         
         for sentence in candidate_sentences:
-            score = self._score_sentence_for_parameter(sentence, parameter_content, parameter_type)
+            score = self._score_sentence_for_study_param(sentence, parameter_content, parameter_type)
             sentence_scores.append((sentence, score))
         
         # Sort by score descending and take more than needed for filtering
@@ -480,25 +370,24 @@ class CitationGeneratorBase(ABC):
         # Take more candidates than needed to account for filtering
         candidate_sentences = [item[0] for item in sentence_scores[:top_k * 3]]
         
-        # Remove duplicates and filter generic citations
-        filtered_sentences = self._remove_duplicates_and_filter(candidate_sentences)
+        # Remove duplicates
+        filtered_sentences = self._remove_duplicates(candidate_sentences)
         
         # Take final top K after filtering
         top_sentences = filtered_sentences[:top_k]
         
-        # If we don't have enough after filtering, add more non-generic ones
+        # If we don't have enough after filtering, add more sentences
         if len(top_sentences) < top_k:
             remaining_needed = top_k - len(top_sentences)
             for sentence, score in sentence_scores[top_k * 3:]:
-                if not self._is_generic_background(sentence):
-                    # Check if it's not already similar to existing ones
-                    is_duplicate = any(self._is_citation_similar(sentence, existing) 
-                                     for existing in top_sentences)
-                    if not is_duplicate:
-                        top_sentences.append(sentence)
-                        remaining_needed -= 1
-                        if remaining_needed == 0:
-                            break
+                # Check if it's not already similar to existing ones
+                is_duplicate = any(self._is_duplicate_citation(sentence, existing) 
+                                 for existing in top_sentences)
+                if not is_duplicate:
+                    top_sentences.append(sentence)
+                    remaining_needed -= 1
+                    if remaining_needed == 0:
+                        break
         
         # Log the scores for the final top sentences
         logger.info(f"Top scores for {parameter_type} (after filtering):")
@@ -559,7 +448,7 @@ class LocalCitationGenerator(CitationGeneratorBase):
     Citation generator using local similarity/regex-based scoring for offline usage.
     """
     
-    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> int:
+    def _score_sentence_for_annotation(self, sentence: str, annotation: AnnotationRelationship) -> int:
         """
         Score how relevant a sentence is to a specific annotation using local similarity/regex.
         
@@ -644,7 +533,7 @@ class LocalCitationGenerator(CitationGeneratorBase):
         
         return score
 
-    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
+    def _score_sentence_for_study_param(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
         """
         Score how relevant a sentence is to a specific study parameter using local similarity/regex.
         
@@ -713,7 +602,7 @@ class LMCitationGenerator(CitationGeneratorBase):
     Citation generator using LM-based scoring with language models.
     """
     
-    def _score_sentence_relevance(self, sentence: str, annotation: AnnotationRelationship) -> int:
+    def _score_sentence_for_annotation(self, sentence: str, annotation: AnnotationRelationship) -> int:
         """
         Score how relevant a sentence is to a specific annotation using language model.
         
@@ -756,7 +645,7 @@ class LMCitationGenerator(CitationGeneratorBase):
             logger.error(f"Error scoring sentence relevance: {e}")
             return 1
 
-    def _score_sentence_for_parameter(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
+    def _score_sentence_for_study_param(self, sentence: str, parameter_content: str, parameter_type: str) -> int:
         """
         Score how relevant a sentence is to a specific study parameter using language model.
         

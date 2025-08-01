@@ -103,7 +103,7 @@ def get_true_variants(pmcid: str) -> List[str]:
 
 
 def get_article_text(
-    pmcid: Optional[str] = None, article_text: Optional[str] = None
+    pmcid: Optional[str] = None, article_text: Optional[str] = None, remove_references: bool = True, for_citations: bool = False
 ) -> str:
     """
     Get the article text for a given PMCID or return the article text if it is already provided.
@@ -113,7 +113,7 @@ def get_article_text(
         raise ValueError("Either article_text or pmcid must be provided.")
 
     if article_text is None:
-        article_text = MarkdownParser(pmcid=pmcid).get_article_text()
+        article_text = MarkdownParser(pmcid=pmcid, remove_references=remove_references, for_citations=for_citations).get_article_text()
 
     return article_text
 

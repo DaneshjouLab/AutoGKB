@@ -19,7 +19,7 @@ download-data = "gdown --fuzzy https://drive.google.com/file/d/1qtQWvi0x_k5_Jofg
 setup-repo = "pixi install && pixi run download-data"
 copy-markdown = "python -m src.copy_markdown"
 annotation-pipeline = "python -m src.components.annotation_pipeline"
-test-citations = "python -m src.components.citation_generator"
+test-citations = "python -m src.citation_generator"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"

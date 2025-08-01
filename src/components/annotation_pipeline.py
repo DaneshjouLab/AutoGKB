@@ -1,5 +1,5 @@
 from src.components.annotation_table import AnnotationTableGenerator
-from src.components.citation_generator import CitationGenerator
+from src.citation_generator import CitationGenerator
 from src.components.study_parameters import get_study_parameters
 from src.utils import get_article_text, is_pmcid, get_title
 from loguru import logger
@@ -12,7 +12,7 @@ class AnnotationPipeline:
             logger.error(f"Invalid PMCID: {pmcid}")
         self.pmcid = pmcid
         self.citation_model = citation_model
-        self.article_text = get_article_text(pmcid)
+        self.article_text = get_article_text(pmcid, remove_references=True)
         self.title = get_title(self.article_text)
         self.study_parameters = {}
         self.annotations = None
@@ -79,11 +79,11 @@ def copy_markdown(pmcid: str):
 
 if __name__ == "__main__":
     pmcids = [
-        # "PMC5728534",
+        "PMC5728534",
         "PMC11730665",
-        # "PMC5712579",
-        # "PMC4737107",
-        # "PMC5749368"
+        "PMC5712579",
+        "PMC4737107",
+        "PMC5749368"
     ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")
