@@ -27,6 +27,20 @@ If a table provides the support warranting of being in the top 3, return the tab
 Output the exact sentences from the article text in a numbered list with each sentence on a new line. No other text.
 """
 
+p_value_citation_prompt = """
+Pharmacogenomic Relationship:
+- Gene: {annotation.gene}
+- Polymorphism: {annotation.polymorphism}  
+- Proposed Effect: {annotation.relationship_effect}
+- P-value: {annotation.p_value}
+
+From the following article text, find the top sentence from the article that contains the p-value for the pharmacogenomic relationship.
+Article text:
+"{article_text}"
+
+Output the exact sentence from the article text. If two sentences are necessary for understanding the p-value, return both sentences. No other text. 
+"""
+
 study_parameters_citation_prompt = """
 
 Parameter Type: {parameter_type}

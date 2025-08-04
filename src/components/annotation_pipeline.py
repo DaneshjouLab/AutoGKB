@@ -1,7 +1,7 @@
 from src.components.annotation_table import AnnotationTableGenerator
-from src.citation_generator import CitationGenerator
+from src.citations.line_citation_generator import CitationGenerator
 from src.components.study_parameters import get_study_parameters
-from src.one_shot_citations import OneShotCitations
+from src.citations.one_shot_citations import OneShotCitations
 from src.utils import get_article_text, is_pmcid, get_title
 from loguru import logger
 from pathlib import Path
@@ -13,7 +13,7 @@ class AnnotationPipeline:
         self,
         pmcid: str,
         citation_model: str = "local",
-        use_one_shot_citations: bool = False,
+        use_one_shot_citations: bool = True,
     ):
         if not is_pmcid(pmcid):
             logger.error(f"Invalid PMCID: {pmcid}")
@@ -142,7 +142,13 @@ def copy_markdown(pmcid: str):
 
 
 if __name__ == "__main__":
-    pmcids = ["PMC5728534", "PMC11730665", "PMC5712579", "PMC4737107", "PMC5749368"]
+    pmcids = [
+        "PMC5728534",
+        # "PMC11730665",
+        # "PMC5712579",
+        # "PMC4737107",
+        # "PMC5749368",
+    ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")
         pipeline = AnnotationPipeline(
