@@ -1,6 +1,6 @@
-from src.components.annotation_table import AnnotationTableGenerator
+from src.annotation_table import AnnotationTableGenerator
 from src.citations.line_citation_generator import CitationGenerator
-from src.components.study_parameters import get_study_parameters
+from src.study_parameters import get_study_parameters
 from src.citations.one_shot_citations import OneShotCitations
 from src.utils import get_article_text, is_pmcid, get_title
 from loguru import logger
