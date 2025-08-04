@@ -135,7 +135,18 @@ class RSIDNormalizer(BaseNormalizer):
         except Exception:
             logger.exception(f"PharmGKB symbol lookup failed for {raw}")
             return None
+        
+class StarAlleleNormalizer(BaseNormalizer):
+    
 
+    def __init__(self):
+        pass
+    def name(self):
+        return "Star Allele Normalizer"
+    
+
+    def 
+    
 
         
     
