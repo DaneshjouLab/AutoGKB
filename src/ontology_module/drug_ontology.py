@@ -23,9 +23,11 @@ class DrugNormalizer(BaseNormalizer):
 
         #TODO: insert logic to handle base generic instead of what we have 
 
-        
+
         self.register_handler(self.lookup_drug_pharmgkb)
         # register the pubchem first before I register the other. 
+    def name(self):
+        return "Drug Normalizer"
 
     def lookup_drug_pubchem(self, raw: str) -> Optional[NormalizationResult]:
         """
@@ -118,3 +120,54 @@ class DrugNormalizer(BaseNormalizer):
             logger.warning("Unexpected error during PharmGKB lookup for '%s': %s", raw, exc)
 
         return None
+    
+
+
+
+def test_lookup_pubchem():
+    normalizer = DrugNormalizer()
+    drug = "Imatinib"
+    result = normalizer.lookup_drug_pubchem(drug)
+
+    print(f"\n[PubChem] Input: {drug}")
+    if result is None:
+        print("❌ No result returned.")
+    else:
+        print("✅ Result:")
+        print(f"  Raw:         {result.raw_input}")
+        print(f"  Normalized:  {result.normalized_output}")
+        print(f"  Source:      {result.source}")
+        print(f"  Entity Type: {result.entity_type}")
+        print(f"  CID:         {result.metadata.get('cid')}")
+        print(f"  SMILES:      {result.metadata.get('canonical_smiles')}")
+        assert isinstance(result, NormalizationResult)
+        assert result.source == "PubChem"
+        assert result.entity_type == "drug"
+        assert "canonical_smiles" in result.metadata
+
+
+def test_lookup_pharmgkb():
+    normalizer = DrugNormalizer()
+    drug = "Gleevec"  # Brand name for Imatinib
+    result = normalizer.lookup_drug_pharmgkb(drug)
+
+    print(f"\n[PharmGKB] Input: {drug}")
+    if result is None:
+        print("❌ No result returned.")
+    else:
+        print("✅ Result:")
+        print(f"  Raw:         {result.raw_input}")
+        print(f"  Normalized:  {result.normalized_output}")
+        print(f"  Source:      {result.source}")
+        print(f"  Entity Type: {result.entity_type}")
+        print(f"  PharmGKB ID: {result.metadata.get('id')}")
+        print(f"  Brand Names: {result.metadata.get('brandNames')}")
+        assert isinstance(result, NormalizationResult)
+        assert result.source == "PharmGKB"
+        assert result.entity_type == "drug"
+        assert "id" in result.metadata
+
+
+if __name__ == "__main__":
+    test_lookup_pubchem()
+    test_lookup_pharmgkb()
