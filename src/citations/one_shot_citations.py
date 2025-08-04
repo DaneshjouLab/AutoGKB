@@ -25,6 +25,7 @@ Article text:
 
 If a table provides the support warranting of being in the top 3, return the table header (## Table X: ..., etc.) as your sentence. Make sure to include a sentence or table in your top 3 responses if it has the p-value for the relationship.
 Output the exact sentences from the article text in a numbered list with each sentence on a new line. No other text.
+Keep in mind that headings are text/numbers preceded by hash symbols (#) and should not be included in citations unless referencing the table. Only include content sentences.
 """
 
 p_value_citation_prompt = """
@@ -40,6 +41,7 @@ Article text:
 "{article_text}"
 
 Output the exact sentence from the article text. If two sentences are necessary for understanding the p-value, return both sentences. No other text. 
+Keep in mind that headings are text/numbers preceded by hash symbols (#) and should not be included in citations unless referencing the table. Only include content sentences.
 """
 
 study_parameters_citation_prompt = """
@@ -53,6 +55,7 @@ Article text:
 
 If a table provides the support warranting of being in the top 3, return the table header (## Table X: ..., etc.) as your sentence.
 Output the exact sentences from the article text in a numbered list with each sentence on a new line. No other text.
+Keep in mind that headings are text/numbers preceded by hash symbols (#) and should not be included in citations unless referencing the table. Only include content sentences.
 """
 
 
