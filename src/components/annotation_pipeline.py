@@ -43,7 +43,7 @@ class AnnotationPipeline:
             "annotations": self.annotations,
         }
 
-    def run(self, save_path: str = "data/one_shot_annotations"):
+    def run(self, save_path: str = "data/annotations"):
         logger.info("Getting Study Parameters")
         self.study_parameters = get_study_parameters(self.pmcid)
 
@@ -144,10 +144,10 @@ def copy_markdown(pmcid: str):
 if __name__ == "__main__":
     pmcids = [
         "PMC5728534",
-        # "PMC11730665",
-        # "PMC5712579",
-        # "PMC4737107",
-        # "PMC5749368",
+        "PMC11730665",
+        "PMC5712579",
+        "PMC4737107",
+        "PMC5749368",
     ]
     for pmcid in pmcids:
         logger.info(f"Processing {pmcid}")
