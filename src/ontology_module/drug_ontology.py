@@ -78,7 +78,17 @@ class DrugNormalizer(BaseNormalizer):
             logger.warning("Unexpected error for '%s': %s", raw, exc)
 
         return None
-    
+    def get_generic_from_brand_pubchem(self, raw: str) -> Optional[str]:
+        """
+        Resolves a brand name to a generic (IUPAC) name using PubChem.
+        Returns the normalized_output from lookup_drug_pubchem, or None.
+        """
+        result = self.lookup_drug_pubchem(raw)
+        if result:
+            return result.normalized_output
+        return None
+
+
     def lookup_drug_pharmgkb(self, raw: str) -> Optional[NormalizationResult]:
         """
         Lookup drug info from PharmGKB using its REST API.
@@ -120,7 +130,63 @@ class DrugNormalizer(BaseNormalizer):
             logger.warning("Unexpected error during PharmGKB lookup for '%s': %s", raw, exc)
 
         return None
-    
+    def lookup_drug_rxnorm(self, raw: str) -> Optional[NormalizationResult]:
+        """
+        Resolves a drug name (brand or generic) using the RxNorm API.
+        Returns a NormalizationResult with the generic name and RxNorm metadata.
+        """
+        query = raw.strip()
+        if not query:
+            logger.debug("Empty drug input for RxNorm lookup.")
+            return None
+
+        try:
+            # Step 1: Get RxCUI for input name
+            rxcui_url = f"https://rxnav.nlm.nih.gov/REST/rxcui.json?name={requests.utils.quote(query)}"
+            rxcui_resp = requests.get(rxcui_url, timeout=5)
+            rxcui_resp.raise_for_status()
+            rxcui_data = rxcui_resp.json()
+            rxcui_list = rxcui_data.get("idGroup", {}).get("rxnormId", [])
+            if not rxcui_list:
+                logger.debug("No RxCUI found for input: %s", query)
+                return None
+            rxcui = rxcui_list[0]
+
+            # Step 2: Get related ingredient (generic) names from RxCUI
+            related_url = f"https://rxnav.nlm.nih.gov/REST/rxcui/{rxcui}/related.json?tty=IN"
+            related_resp = requests.get(related_url, timeout=5)
+            related_resp.raise_for_status()
+            related_data = related_resp.json()
+
+            concepts = related_data.get("relatedGroup", {}).get("conceptGroup", [])
+            ingredients = []
+            for group in concepts:
+                if group.get("tty") == "IN":
+                    for concept in group.get("conceptProperties", []):
+                        ingredients.append(concept.get("name"))
+
+            if not ingredients:
+                logger.debug("No generic (IN) concept found for RxCUI: %s", rxcui)
+                return None
+
+            return NormalizationResult(
+                raw_input=raw,
+                normalized_output=ingredients[0],  # first generic match
+                entity_type="drug",
+                source="RxNorm",
+                metadata={
+                    "rxcui": rxcui,
+                    "generic_candidates": ingredients
+                }
+            )
+
+        except requests.RequestException as exc:
+            logger.warning("RxNorm request failed for '%s': %s", raw, exc)
+        except Exception as exc:
+            logger.warning("Unexpected error in RxNorm lookup for '%s': %s", raw, exc)
+
+        return None
+
 
 
 
@@ -149,6 +215,9 @@ def test_lookup_pubchem():
 def test_lookup_pharmgkb():
     normalizer = DrugNormalizer()
     drug = "Gleevec"  # Brand name for Imatinib
+    print("TEST LOOKUP PHARMGKB")
+    generic = normalizer.get_generic_from_brand_pubchem("Gleevec")
+    print(generic)
     result = normalizer.lookup_drug_pharmgkb(drug)
 
     print(f"\n[PharmGKB] Input: {drug}")
@@ -170,4 +239,9 @@ def test_lookup_pharmgkb():
 
 if __name__ == "__main__":
     test_lookup_pubchem()
+    
     test_lookup_pharmgkb()
+    normalizer = DrugNormalizer()
+    result = normalizer.lookup_drug_rxnorm("Gleevec")
+    print(result.normalized_output)  # → "imatinib"
+
