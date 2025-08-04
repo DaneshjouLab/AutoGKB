@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Callable,Dict, Optional, Any
-from dataclasses import dataclass, field
+from typing import Callable,Dict, Optional, Any, List
+from dataclasses import dataclass, field 
 import logging
 from Bio import Entrez
 import requests
@@ -137,58 +137,106 @@ class RSIDNormalizer(BaseNormalizer):
             return None
         
 class StarAlleleNormalizer(BaseNormalizer):
-    
+    API_URL = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
 
     def __init__(self):
         pass
     def name(self):
         return "Star Allele Normalizer"
-    def fetch_star_alleles(self, term: str) -> list[dict]:
-        """
-        Searches for star alleles matching a term and retrieves full metadata for each.
+ 
 
-        Args:
-            term (str): The star allele search string (e.g., "CYP2D6*4").
+       
 
-        Returns:
-            list[dict]: Each dict contains all metadata fields for a matched star allele.
+    def fetch_star_alleles(self, query: str, max_results: int = 50) -> List[Dict[str, Any]]:
         """
-        base_url = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
+        Fetches all star allele records matching the query string from the PharmVar-backed Clinical Tables API.
+        Returns a list of dictionaries, one per allele, with all available fields populated.
+        """
         fields = [
             "StarAlleleName", "GenBank", "ProteinAffected", "cDNANucleotideChanges",
-            "GeneNucleotideChange", "ProteinChange", "OtherNames",
+            "GeneNucleotideChange", "XbaIHaplotype", "RFLP", "OtherNames", "ProteinChange",
             "InVivoEnzymeActivity", "InVitroEnzymeActivity", "References",
             "ClinicalPhenotype", "Notes"
         ]
 
         params = {
-            "terms": term,
-            "ef": ",".join(fields),
-            "maxList": "50"
+            "terms": query,
+            "count": max_results,
+            "ef": ",".join(fields)
         }
 
-        response = requests.get(base_url, params=params)
-        response.raise_for_status()
-        data = response.json()
-
-        if not data or len(data) < 3:
+        try:
+            response = requests.get(self.API_URL, params=params, timeout=10)
+            response.raise_for_status()
+        except Exception as e:
+            logger.error(f"API request failed: {e}")
             return []
 
-        codes = data[1]
-        extra_fields = data[2]
+        try:
+            total_count, allele_names, extra_fields, *_ = response.json()
+        except Exception as e:
+            logger.error(f"Failed to parse API response: {e}")
+            return []
 
         results = []
-        for i, code in enumerate(codes):
-            allele_data = {field: extra_fields.get(field, [None])[i] for field in fields}
-            results.append(allele_data)
+        for i, allele in enumerate(allele_names):
+            allele_info = {
+                "StarAlleleName": allele
+            }
+            for field, values in extra_fields.items():
+                allele_info[field] = values[i] if i < len(values) else None
+            results.append(allele_info)
 
         return results
+    # def fetch_star_alleles(self, term: str) -> list[dict]:
+    #     """
+    #     Searches for star alleles matching a term and retrieves full metadata for each.
+
+    #     Args:
+    #         term (str): The star allele search string (e.g., "CYP2D6*4").
+
+    #     Returns:
+    #         list[dict]: Each dict contains all metadata fields for a matched star allele.
+    #     """
+    #     base_url = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
+    #     fields = [
+    #         "StarAlleleName", "GenBank", "ProteinAffected", "cDNANucleotideChanges",
+    #         "GeneNucleotideChange", "ProteinChange", "OtherNames",
+    #         "InVivoEnzymeActivity", "InVitroEnzymeActivity", "References",
+    #         "ClinicalPhenotype", "Notes"
+    #     ]
+
+    #     params = {
+    #         "terms": term,
+    #         "ef": ",".join(fields),
+    #         "maxList": "50"
+    #     }
+
+    #     response = requests.get(base_url, params=params)
+    #     response.raise_for_status()
+    #     data = response.json()
+
+    #     if not data or len(data) < 3:
+    #         return []
+
+    #     codes = data[1]
+    #     extra_fields = data[2]
+
+    #     results = []
+    #     for i, code in enumerate(codes):
+    #         allele_data = {field: extra_fields.get(field, [None])[i] for field in fields}
+    #         results.append(allele_data)
+
+    #     return results
         
 
 if __name__ == "__main__":
-    from pprint import pprint
-    pprint(StarAlleleNormalizer().fetch_star_alleles("CYP2D6*4"))
+    logging.basicConfig(level=logging.INFO)
+    normalizer = StarAlleleNormalizer()
+    data = normalizer.fetch_star_alleles("CYP2D6*4")
 
-        
-
+    for record in data:
+        print("\n--- Star Allele Record ---")
+        for k, v in record.items():
+            print(f"{k}: {v}")
 
