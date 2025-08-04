@@ -32,6 +32,27 @@ Rate from 0-10 where:
 Provide your score on a scale of 0-10 (one decimal place allowed). No other text.
 """
 
+p_value_citation_prompt = """
+Pharmacogenomic Relationship:
+- Gene: {annotation.gene}
+- Polymorphism: {annotation.polymorphism}  
+- Proposed Effect: {annotation.relationship_effect}
+- P-value: {annotation.p_value}
+
+Rate how strongly the following sentence contains or supports the p-value for this pharmacogenomic relationship on a scale of 0-10.
+Sentence to evaluate:
+"{sentence}"
+
+Rate from 0-10 where:
+- 10: Sentence directly contains the exact p-value ({annotation.p_value}) for this gene-polymorphism relationship
+- 7-9: Sentence contains statistical significance information closely related to this relationship
+- 4-6: Sentence mentions statistical analysis or p-values in the context of this gene/polymorphism
+- 1-3: Sentence has minimal statistical relevance to this relationship
+- 0: Sentence has no statistical relevance to this relationship
+
+Provide your score on a scale of 0-10 (one decimal place allowed). No other text.
+"""
+
 study_parameters_citation_prompt = """
 
 Parameter Type: {parameter_type}
@@ -120,6 +141,22 @@ class CitationGeneratorBase(ABC):
     ) -> int:
         """
         Score how relevant a sentence is to a specific annotation.
+
+        Args:
+            sentence: The sentence to score
+            annotation: The annotation to compare against
+
+        Returns:
+            Relevance score from 1-10
+        """
+        pass
+
+    @abstractmethod
+    def _score_sentence_for_p_value(
+        self, sentence: str, annotation: AnnotationRelationship
+    ) -> int:
+        """
+        Score how relevant a sentence is to the p-value of a specific annotation.
 
         Args:
             sentence: The sentence to score
@@ -257,6 +294,60 @@ class CitationGeneratorBase(ABC):
 
         return top_sentences
 
+    def _get_top_p_value_citations_for_annotation(
+        self, annotation: AnnotationRelationship, top_k: int = 2
+    ) -> List[str]:
+        """
+        Find the top K most relevant sentences for the p-value of a specific annotation.
+
+        Args:
+            annotation: The annotation to find p-value citations for
+            top_k: Number of top sentences to return
+
+        Returns:
+            List of top relevant sentences containing p-value information
+        """
+        # Use all sentences without pre-filtering
+        candidate_sentences = self.sentences
+
+        logger.info(
+            f"Scoring all {len(candidate_sentences)} sentences for p-value citations for {annotation.gene}-{annotation.polymorphism}"
+        )
+
+        sentence_scores = []
+
+        for i, sentence in tqdm(
+            enumerate(candidate_sentences),
+            total=len(candidate_sentences),
+            desc=f"Scoring p-value sentences using {self.model}",
+        ):
+            score = self._score_sentence_for_p_value(sentence, annotation)
+            sentence_scores.append((sentence, score))
+
+        # Sort by score descending and take more than needed for filtering
+        sentence_scores.sort(key=lambda x: x[1], reverse=True)
+
+        # Take more candidates than needed to account for filtering
+        candidate_sentences = [item[0] for item in sentence_scores[: top_k * 3]]
+
+        # Remove duplicates
+        filtered_sentences = self._remove_duplicates(candidate_sentences)
+
+        # Take final top K after filtering
+        top_sentences = filtered_sentences[:top_k]
+
+        # Log the scores for the final top sentences
+        logger.info(
+            f"Top p-value scores for {annotation.gene}-{annotation.polymorphism} (after filtering):"
+        )
+        final_scores = [
+            (s, score) for s, score in sentence_scores if s in top_sentences
+        ]
+        for i, (sentence, score) in enumerate(final_scores[:top_k]):
+            logger.info(f"  {i+1}. Score {score}: {sentence[:100]}...")
+
+        return top_sentences
+
     def generate_citations(
         self, annotations: AnnotationTable
     ) -> Dict[str, AnnotationCitations]:
@@ -321,6 +412,11 @@ class CitationGeneratorBase(ABC):
                 annotation, top_k=5
             )
 
+            # Get p-value citations for this annotation
+            p_value_citations_candidates = self._get_top_p_value_citations_for_annotation(
+                annotation, top_k=3
+            )
+
             # Filter out duplicate citations within this annotation
             unique_citations = []
             for citation in top_citations_candidates:
@@ -335,6 +431,22 @@ class CitationGeneratorBase(ABC):
                     if (
                         len(unique_citations) >= 3
                     ):  # We want 3 unique citations per relationship
+                        break
+
+            # Filter out duplicate p-value citations within this annotation
+            unique_p_value_citations = []
+            for citation in p_value_citations_candidates:
+                # Check if this citation is too similar to any already used p-value citation for this annotation
+                is_duplicate = any(
+                    self._is_duplicate_citation(citation, used_citation, threshold=0.7)
+                    for used_citation in unique_p_value_citations
+                )
+
+                if not is_duplicate:
+                    unique_p_value_citations.append(citation)
+                    if (
+                        len(unique_p_value_citations) >= 2
+                    ):  # We want 2 unique p-value citations per relationship
                         break
 
             # Final fallback: if still no unique citations, use lower similarity threshold
@@ -372,6 +484,38 @@ class CitationGeneratorBase(ABC):
                         else:
                             unique_citations = gene_mentions[:3]  # Take top 3 citations
 
+            # Final fallback for p-value citations: if still no unique p-value citations, use lower similarity threshold
+            if len(unique_p_value_citations) == 0:
+                # Try with a lower similarity threshold
+                fallback_p_value_candidates = self._get_top_p_value_citations_for_annotation(
+                    annotation, top_k=5
+                )
+                for citation in fallback_p_value_candidates:
+                    is_duplicate = any(
+                        self._is_duplicate_citation(
+                            citation, used_citation, threshold=0.5
+                        )
+                        for used_citation in unique_p_value_citations
+                    )
+
+                    if not is_duplicate:
+                        unique_p_value_citations.append(citation)
+                        if len(unique_p_value_citations) >= 2:
+                            break
+
+                # Ultimate fallback: if STILL no p-value citations, find any sentence mentioning p-value or statistics
+                if len(unique_p_value_citations) == 0:
+                    logger.warning(
+                        f"No p-value citations found for {annotation.gene}-{annotation.polymorphism}, using fallback"
+                    )
+                    p_value_mentions = [
+                        s
+                        for s in self.sentences
+                        if any(keyword in s.lower() for keyword in ["p-value", "p<", "p =", "significant"])
+                    ]
+                    if p_value_mentions:
+                        unique_p_value_citations = p_value_mentions[:2]  # Take top 2 p-value citations
+
             # Create new annotation with unique citations
             updated_annotation = AnnotationRelationship(
                 gene=annotation.gene,
@@ -379,6 +523,7 @@ class CitationGeneratorBase(ABC):
                 relationship_effect=annotation.relationship_effect,
                 p_value=annotation.p_value,
                 citations=unique_citations[:3],  # Take top 3 unique citations
+                p_value_citations=unique_p_value_citations[:2],  # Take top 2 unique p-value citations
             )
 
             updated_relationships.append(updated_annotation)
@@ -630,6 +775,107 @@ class LocalCitationGenerator(CitationGeneratorBase):
 
         return score
 
+    def _score_sentence_for_p_value(
+        self, sentence: str, annotation: AnnotationRelationship
+    ) -> int:
+        """
+        Score how relevant a sentence is to the p-value of a specific annotation using local similarity/regex.
+
+        Args:
+            sentence: The sentence to score
+            annotation: The annotation to compare against
+
+        Returns:
+            Relevance score from 1-10
+        """
+        sentence_lower = sentence.lower()
+        score = 0
+
+        # Check for exact p-value match (highest priority)
+        if annotation.p_value and annotation.p_value.lower() in sentence_lower:
+            score += 8
+
+        # Check for exact gene match
+        gene_variants = [
+            annotation.gene.lower(),
+            annotation.gene.lower().replace("(", "").replace(")", ""),
+            annotation.gene.lower().replace("-", ""),
+            annotation.gene.lower().replace("_", ""),
+        ]
+
+        gene_found = False
+        for gene_variant in gene_variants:
+            if gene_variant in sentence_lower:
+                score += 2
+                gene_found = True
+                break
+
+        # Check for polymorphism match
+        poly_found = False
+        if annotation.polymorphism:
+            poly_variants = [
+                annotation.polymorphism.lower(),
+                annotation.polymorphism.lower().replace("*", ""),
+                (
+                    annotation.polymorphism.lower().split()[0]
+                    if " " in annotation.polymorphism
+                    else annotation.polymorphism.lower()
+                ),
+            ]
+
+            for poly_variant in poly_variants:
+                if poly_variant and poly_variant in sentence_lower:
+                    score += 2
+                    poly_found = True
+                    break
+
+        # Check for statistical terms (very important for p-value citations)
+        stat_keywords = [
+            "p-value",
+            "p<",
+            "p =",
+            "p>",
+            "p≤",
+            "p≥",
+            "significant",
+            "significance",
+            "statistical",
+            "correlation",
+            "association",
+            "odds ratio",
+            "confidence interval",
+            "chi-square",
+            "t-test",
+            "anova",
+        ]
+        stat_matches = [kw for kw in stat_keywords if kw in sentence_lower]
+        if stat_matches:
+            score += min(4, len(stat_matches) * 2)
+
+        # Bonus for having gene/polymorphism + statistical terms
+        if (gene_found or poly_found) and stat_matches:
+            score += 2
+
+        # Check for numerical patterns that might be p-values
+        import re
+        p_value_patterns = [
+            r"p\s*[<>=≤≥]\s*0\.\d+",
+            r"p\s*=\s*\d+\.\d+",
+            r"p\s*<\s*0\.05",
+            r"p\s*<\s*0\.01",
+            r"p\s*<\s*0\.001",
+        ]
+        
+        for pattern in p_value_patterns:
+            if re.search(pattern, sentence_lower):
+                score += 3
+                break
+
+        # Clamp score between 1-10
+        score = max(1, min(10, score))
+
+        return score
+
     def _score_sentence_for_study_param(
         self, sentence: str, parameter_content: str, parameter_type: str
     ) -> int:
@@ -816,6 +1062,56 @@ class LMCitationGenerator(CitationGeneratorBase):
             logger.error(f"Error scoring sentence relevance: {e}")
             return 1
 
+    def _score_sentence_for_p_value(
+        self, sentence: str, annotation: AnnotationRelationship
+    ) -> int:
+        """
+        Score how relevant a sentence is to the p-value of a specific annotation using language model.
+
+        Args:
+            sentence: The sentence to score
+            annotation: The annotation to compare against
+
+        Returns:
+            Relevance score from 1-10
+        """
+        prompt = p_value_citation_prompt.format(
+            annotation=annotation, sentence=sentence
+        )
+        try:
+            completion_kwargs = {
+                "model": self.model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.1,
+                "max_tokens": 100,
+            }
+
+            response = completion(**completion_kwargs)
+            response_text = response.choices[0].message.content.strip()
+
+            # Parse the response - expect only numeric score (no reasoning)
+            try:
+                # Extract numeric score directly from response
+                score_match = re.search(r"\b(\d+(?:\.\d+)?)\b", response_text)
+                if score_match:
+                    score = float(score_match.group(1))
+                    score = max(0, min(10, score))  # Clamp between 0-10
+                    return int(score)
+                else:
+                    logger.warning(
+                        f"No numeric score found in p-value response: {response_text}"
+                    )
+                    return 1
+            except Exception as parse_error:
+                logger.warning(
+                    f"Error parsing p-value score from response '{response_text}': {parse_error}"
+                )
+                return 1
+
+        except Exception as e:
+            logger.error(f"Error scoring sentence for p-value: {e}")
+            return 1
+
     def _score_sentence_for_study_param(
         self, sentence: str, parameter_content: str, parameter_type: str
     ) -> int:
@@ -957,7 +1253,15 @@ def main():
         print(f"{i}. {citation}")
         print()
 
-    return citations
+    # Get p-value citations for the annotation
+    p_value_citations = generator._get_top_p_value_citations_for_annotation(test_annotation, top_k=2)
+
+    print(f"Found {len(p_value_citations)} p-value citations:")
+    for i, citation in enumerate(p_value_citations, 1):
+        print(f"{i}. {citation}")
+        print()
+
+    return citations, p_value_citations
 
 
 if __name__ == "__main__":

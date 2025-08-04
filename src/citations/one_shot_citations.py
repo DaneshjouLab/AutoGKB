@@ -35,6 +35,7 @@ Pharmacogenomic Relationship:
 - P-value: {annotation.p_value}
 
 From the following article text, find the top sentence from the article that contains the p-value for the pharmacogenomic relationship.
+If a table provides the exact p-value, return the table header (## Table X: ..., etc.) as your sentence.
 Article text:
 "{article_text}"
 
@@ -98,6 +99,46 @@ class OneShotCitations:
 
         except Exception as e:
             logger.error(f"Error getting citations for annotation: {e}")
+            return []
+
+    def get_p_value_citations(
+        self, annotation: AnnotationRelationship, model: str = "openai/gpt-4.1"
+    ) -> List[str]:
+        """
+        Get citations specifically for the p-value of a pharmacogenomic relationship.
+
+        Args:
+            annotation: The annotation relationship to find p-value citations for
+            model: The language model to use for citation generation
+
+        Returns:
+            List of sentences containing p-value information
+        """
+        prompt = p_value_citation_prompt.format(
+            annotation=annotation, article_text=self.article_text
+        )
+
+        try:
+            completion_kwargs = {
+                "model": model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.1,
+            }
+
+            response = completion(**completion_kwargs)
+            response_text = response.choices[0].message.content.strip()
+
+            # Parse the response to extract sentences
+            # For p-value citations, we expect fewer sentences (1-2)
+            citations = self._parse_citation_list(response_text)
+
+            logger.info(
+                f"Found {len(citations)} p-value citations for {annotation.gene}-{annotation.polymorphism}"
+            )
+            return citations[:2]  # Return top 2 at most for p-value
+
+        except Exception as e:
+            logger.error(f"Error getting p-value citations for annotation: {e}")
             return []
 
     def get_study_parameter_citations(
@@ -228,6 +269,14 @@ if __name__ == "__main__":
 
     print(f"\nFound {len(citations)} citations for annotation:")
     for i, citation in enumerate(citations, 1):
+        print(f"{i}. {citation}")
+        print()
+
+    # Test p-value citations
+    print("Testing p-value citations:")
+    p_value_citations = one_shot_citations.get_p_value_citations(test_annotation)
+    print(f"Found {len(p_value_citations)} p-value citations:")
+    for i, citation in enumerate(p_value_citations, 1):
         print(f"{i}. {citation}")
         print()
 

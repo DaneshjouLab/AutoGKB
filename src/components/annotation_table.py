@@ -13,6 +13,10 @@ class AnnotationRelationship(BaseModel):
     citations: List[str] = Field(
         default=[], description="List of supporting sentences from the text"
     )
+    p_value_citations: List[str] = Field(
+        default=[],
+        description="List of supporting sentences from the text for the p-value",
+    )
 
 
 class AnnotationTable(BaseModel):
