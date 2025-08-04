@@ -14,20 +14,20 @@ Final output:
 
 from typing import Dict, List, Optional
 from loguru import logger
-from src.components.deprecated.all_variants import extract_all_variants
-from src.components.deprecated.association_types import (
+from src.deprecated.all_variants import extract_all_variants
+from src.deprecated.association_types import (
     get_association_types,
     AssociationType,
 )
-from src.components.drug_annotation import extract_drug_annotations
-from src.components.deprecated.phenotype_annotation_extraction import (
+from src.drug_annotation import extract_drug_annotations
+from src.deprecated.phenotype_annotation_extraction import (
     extract_phenotype_annotations,
 )
-from src.components.deprecated.functional_annotation_extraction import (
+from src.deprecated.functional_annotation_extraction import (
     extract_functional_annotations,
 )
 from src.utils import get_article_text
-from src.variants import Variant
+from src.deprecated.variants import Variant
 
 from src.config import DEBUG
 

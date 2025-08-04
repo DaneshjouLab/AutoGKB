@@ -5,7 +5,7 @@ from loguru import logger
 from litellm import completion
 import os
 from abc import ABC, abstractmethod
-from src.components.annotation_table import AnnotationTable, AnnotationRelationship
+from src.annotation_table import AnnotationTable, AnnotationRelationship
 from src.utils import get_article_text
 from difflib import SequenceMatcher
 from tqdm import tqdm
@@ -1230,7 +1230,7 @@ def main():
     generator = create_citation_generator(pmcid, model="gemini/gemini-2.5-flash-lite")
 
     # Create a mock annotation for testing
-    from src.components.annotation_table import AnnotationRelationship
+    from src.annotation_table import AnnotationRelationship
 
     test_annotation = AnnotationRelationship(
         gene="CYP2C9",

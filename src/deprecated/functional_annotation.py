@@ -6,8 +6,8 @@ from typing import List, Optional, Dict
 import os
 from loguru import logger
 from pydantic import BaseModel
-from src.variants import Variant, QuotedStr, QuotedList
-from src.components.all_associations import (
+from src.deprecated.variants import Variant, QuotedStr, QuotedList
+from src.deprecated.all_associations import (
     VariantAssociation,
     get_all_associations,
     AssociationType,

@@ -5,8 +5,8 @@ Extract detailed drug annotation information for variants with drug associations
 from typing import Optional, Dict
 from loguru import logger
 from pydantic import BaseModel
-from src.variants import QuotedStr, QuotedList
-from src.components.all_associations import (
+from src.deprecated.variants import QuotedStr, QuotedList
+from src.deprecated.all_associations import (
     VariantAssociation,
     get_all_associations,
     AssociationType,

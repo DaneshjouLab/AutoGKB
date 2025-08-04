@@ -1,5 +1,5 @@
 from src.utils import get_article_text, get_title
-from src.components.annotation_table import AnnotationRelationship
+from src.annotation_table import AnnotationRelationship
 from litellm import completion
 from loguru import logger
 import re
@@ -233,7 +233,7 @@ if __name__ == "__main__":
     one_shot_citations = OneShotCitations(pmcid)
 
     # Example usage
-    from src.components.annotation_table import AnnotationRelationship
+    from src.annotation_table import AnnotationRelationship
 
     test_annotation = AnnotationRelationship(
         gene="CYP2C9",
