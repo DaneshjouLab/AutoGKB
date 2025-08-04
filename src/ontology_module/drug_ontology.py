@@ -2,7 +2,7 @@
 
 from typing import Optional
 import logging
-from variant_ontology import BaseNormalizer,NormalizationResult
+from .variant_ontology import BaseNormalizer, NormalizationResult
 
 import requests
 
@@ -16,6 +16,15 @@ class DrugNormalizer(BaseNormalizer):
 
     def __init__(self):
         super().__init__()
+        
+        self.register_handler(self.lookup_drug_pubchem)
+        
+
+
+        #TODO: insert logic to handle base generic instead of what we have 
+
+        
+        self.register_handler(self.lookup_drug_pharmgkb)
         # register the pubchem first before I register the other. 
 
     def lookup_drug_pubchem(self, raw: str) -> Optional[NormalizationResult]:
