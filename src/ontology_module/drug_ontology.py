@@ -9,12 +9,14 @@ import requests
 # how to use, you have thew following, 
 
 
+logger = logging.getLogger(__name__)
 
 class DrugNormalizer(BaseNormalizer):
-    """Normalizes drug names using PubChem API."""
+    """Normalizes drug names, and connect to common ID's per use."""
 
     def __init__(self):
         super().__init__()
+        # register the pubchem first before I register the other. 
 
     def lookup_drug_pubchem(self, raw: str) -> Optional[NormalizationResult]:
         """
@@ -66,4 +68,44 @@ class DrugNormalizer(BaseNormalizer):
 
         return None
     
-    def 
+    def lookup_drug_pharmgkb(self, raw: str) -> Optional[NormalizationResult]:
+        """
+        Lookup drug info from PharmGKB using its REST API.
+        Returns all available metadata without filtering.
+        """
+        query = raw.strip().lower()  
+        if not query:
+            logger.debug("Empty drug input for PharmGKB lookup.")
+            return None
+
+        try:
+            url = (
+                "https://api.pharmgkb.org/v1/data/chemical"
+                f"?name={requests.utils.quote(query)}&view=max"
+            )
+            headers = {"accept": "application/json"}
+            response = requests.get(url, headers=headers, timeout=5)
+            response.raise_for_status()
+            data = response.json()
+
+            results = data.get("data", [])
+            if not results:
+                logger.debug("No PharmGKB chemical match found for: %s", query)
+                return None
+
+            entry = results[0]  # Always take the first match
+
+            return NormalizationResult(
+                raw_input=raw,
+                normalized_output=entry.get("name", raw),
+                entity_type="drug",
+                source="PharmGKB",
+                metadata=entry  # Store the entire returned dictionary
+            )
+
+        except requests.RequestException as exc:
+            logger.warning("PharmGKB request failed for '%s': %s", raw, exc)
+        except Exception as exc:
+            logger.warning("Unexpected error during PharmGKB lookup for '%s': %s", raw, exc)
+
+        return None
