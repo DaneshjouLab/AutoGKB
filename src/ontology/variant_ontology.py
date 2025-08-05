@@ -282,7 +282,7 @@ def extract_variants_from_annotations():
     star_normalizer = StarAlleleNormalizer()
 
     annotation_dir = (
-        "/Users/shloknatarajan/stanford/research/daneshjou/AutoGKB/data/annotations"
+        "data/annotations"
     )
     if not os.path.exists(annotation_dir):
         print(f"❌ Annotation directory not found: {annotation_dir}")
