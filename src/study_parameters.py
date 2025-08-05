@@ -1,17 +1,43 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Union
 from src.inference import PMCIDGenerator
 from loguru import logger
 import os
 import json
+import re
 
 
 class ParameterWithCitations(BaseModel):
     """Model for a parameter with its content and citations"""
 
-    content: str
+    content: Union[str, List[str]]  # Can store either string or list of strings
     citations: Optional[List[str]] = None
 
+
+def parse_bullets_to_list(text: str) -> List[str]:
+    """Parse bulleted text into a list of strings."""
+    if not text or not text.strip():
+        return []
+    
+    # Split by common bullet patterns
+    lines = text.strip().split('\n')
+    bullets = []
+    
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        
+        # Remove common bullet markers (•, -, numbers) but preserve markdown asterisks
+        cleaned_line = re.sub(r'^[\s]*[\•\-\d+\.\)\]\s]+[\s]*', '', line)
+        # Also remove standalone asterisks that are bullet markers (not part of markdown)
+        cleaned_line = re.sub(r'^[\s]*\*[\s]+', '', cleaned_line)
+        
+        if cleaned_line:
+            bullets.append(cleaned_line)
+    
+    # If no bullets were found, return the original text as a single item
+    return bullets if bullets else [text.strip()]
 
 class StudyParameters(BaseModel):
     summary: ParameterWithCitations
@@ -22,6 +48,7 @@ class StudyParameters(BaseModel):
     allele_frequency: ParameterWithCitations
     additional_resource_links: List[str]
 
+bulleted_output_queue = "Format the response as a bulleted list. Keep each bullet point concise (1-2 sentences maximum). If the format of the response is term: value, then have the term bolded (**term**) and the value in plain text. Do not include any other text and use markdown formatting for your response."
 
 class StudyParametersGenerator:
     """
@@ -43,7 +70,8 @@ class StudyParametersGenerator:
     def get_summary(self) -> str:
         """Extract a short 2-3 sentence summary of the study."""
         prompt = "Provide a short 2-3 sentence summary of the study motivation, design, and results."
-        return self.generator.generate(prompt)
+        output_queues = "Format the response as a short paragraph without using any bullet points."
+        return self.generator.generate(prompt + output_queues)
 
     def get_study_type(self) -> str:
         """Extract the study type with explanation."""
@@ -68,34 +96,37 @@ class StudyParametersGenerator:
 
         return self.generator.generate(prompt)
 
-    def get_participant_info(self) -> str:
+    def get_participant_info(self) -> List[str]:
         """Extract participant information with explanation."""
         prompt = """What are the details about the participants in this study? Include age, gender, ethnicity, pre-existing conditions and any other relevant characteristics. Also breakdown this information by study group if applicable."""
-        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (4-5 sentences) maximum."
+        output_queues = bulleted_output_queue
+        response = self.generator.generate(prompt + output_queues)
+        return parse_bullets_to_list(response)
 
-        return self.generator.generate(prompt + output_queues)
-
-    def get_study_design(self) -> str:
+    def get_study_design(self) -> List[str]:
         """Extract study design information with explanation."""
         prompt = """Describe the study design, including the study population, sample size, and any other relevant details about how the study was conducted."""
-        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (4-5 sentences) maximum."
-        return self.generator.generate(prompt + output_queues)
+        output_queues = bulleted_output_queue
+        response = self.generator.generate(prompt + output_queues)
+        return parse_bullets_to_list(response)
 
-    def get_study_results(self) -> str:
+    def get_study_results(self) -> List[str]:
         """Extract study results with explanation."""
         prompt = """What are the main study results and findings? Pay key attention to report any ratio statistics (hazard ratio, odds ratio, etc.) and p-values."""
-        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (4-5 sentences) maximum."
-        return self.generator.generate(prompt + output_queues)
+        output_queues = bulleted_output_queue
+        response = self.generator.generate(prompt + output_queues)
+        return parse_bullets_to_list(response)
 
-    def get_allele_frequency(self) -> str:
+    def get_allele_frequency(self) -> List[str]:
         """Extract allele frequency information with explanation."""
         prompt = """What information is provided about allele frequencies of variants in the study population? Include the allele frequency in the studied cohorts and experiments if relevant."""
-        output_queues = "Don't use bullets points, use plain text. Keep response length to one paragraph (2-3 sentences) maximum."
-        return self.generator.generate(prompt + output_queues)
+        output_queues = bulleted_output_queue
+        response = self.generator.generate(prompt + output_queues)
+        return parse_bullets_to_list(response)
 
     def get_additional_resource_links(self) -> List[str]:
         """Extract additional resource links."""
-        prompt = """What additional resources or links are provided in the study, such as study protocols or data? This should not include other papers or references, but solely information that pertains to the design/execution of this study. Return as a list of links/resources."""
+        prompt = """What additional resources or links are provided in the study, such as study protocols or data? This should not include other papers or references, but solely information that pertains to the design/execution of this study. Return as a list of links/resources in markdown format."""
 
         response = self.generator.generate(prompt)
         # Parse the response to extract links if it's a string
@@ -152,16 +183,32 @@ def test_study_parameters():
         print(f"   {study_parameters.study_type.content}")
 
         print(f"\n👥 PARTICIPANT INFO:")
-        print(f"   {study_parameters.participant_info.content}")
+        if isinstance(study_parameters.participant_info.content, list):
+            for i, item in enumerate(study_parameters.participant_info.content, 1):
+                print(f"   • {item}")
+        else:
+            print(f"   {study_parameters.participant_info.content}")
 
         print(f"\n🔬 STUDY DESIGN:")
-        print(f"   {study_parameters.study_design.content}")
+        if isinstance(study_parameters.study_design.content, list):
+            for i, item in enumerate(study_parameters.study_design.content, 1):
+                print(f"   • {item}")
+        else:
+            print(f"   {study_parameters.study_design.content}")
 
         print(f"\n📊 STUDY RESULTS:")
-        print(f"   {study_parameters.study_results.content}")
+        if isinstance(study_parameters.study_results.content, list):
+            for i, item in enumerate(study_parameters.study_results.content, 1):
+                print(f"   • {item}")
+        else:
+            print(f"   {study_parameters.study_results.content}")
 
         print(f"\n🧬 ALLELE FREQUENCY:")
-        print(f"   {study_parameters.allele_frequency.content}")
+        if isinstance(study_parameters.allele_frequency.content, list):
+            for i, item in enumerate(study_parameters.allele_frequency.content, 1):
+                print(f"   • {item}")
+        else:
+            print(f"   {study_parameters.allele_frequency.content}")
 
         print(f"\n🔗 ADDITIONAL RESOURCES:")
         if study_parameters.additional_resource_links:

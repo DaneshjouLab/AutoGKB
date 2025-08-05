@@ -36,7 +36,7 @@ Pharmacogenomic Relationship:
 - P-value: {annotation.p_value}
 
 From the following article text, find the top sentence from the article that contains the p-value for the pharmacogenomic relationship.
-If a table provides the exact p-value, return the table header (## Table X: ..., etc.) as your sentence.
+If a table provides the exact p-value, return the table header (## Table X: ..., etc.) as your sentence. But prefer to use a sentence from the article text if it also provides the p-value.
 Article text:
 "{article_text}"
 

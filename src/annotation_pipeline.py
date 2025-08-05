@@ -67,7 +67,7 @@ class AnnotationPipeline:
             logger.info(
                 f"Adding Citations to Study Parameters using OneShotCitations with model {self.citation_model}"
             )
-            for field_name in self.study_parameters.model_fields:
+            for field_name in self.study_parameters.__class__.model_fields:
                 if (
                     field_name != "additional_resource_links"
                 ):  # Skip non-ParameterWithCitations field

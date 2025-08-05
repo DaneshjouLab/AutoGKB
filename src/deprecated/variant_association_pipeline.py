@@ -19,7 +19,7 @@ from src.deprecated.association_types import (
     get_association_types,
     AssociationType,
 )
-from src.drug_annotation import extract_drug_annotations
+from src.deprecated.drug_annotation import extract_drug_annotations
 from src.deprecated.phenotype_annotation_extraction import (
     extract_phenotype_annotations,
 )
