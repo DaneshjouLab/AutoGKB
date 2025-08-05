@@ -1,5 +1,5 @@
 from typing import Optional
-import logging
+from loguru import logger
 from .variant_ontology import BaseNormalizer, NormalizationResult
 
 import requests
@@ -7,7 +7,6 @@ import requests
 # how to use, you have thew following,
 
 
-logger = logging.getLogger(__name__)
 
 
 class DrugNormalizer(BaseNormalizer):
@@ -357,7 +356,7 @@ def test_drug_normalizers():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    pass
 
     print("🎯 AutoGKB Drug Ontology Normalization System")
     print("=" * 60)

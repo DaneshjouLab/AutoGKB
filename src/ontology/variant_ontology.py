@@ -1,11 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Callable, Dict, Optional, Any, List
 from dataclasses import dataclass, field
-import logging
+from loguru import logger
 from Bio import Entrez
 import requests
 
-logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -400,7 +399,7 @@ def test_individual_normalizers():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    pass
 
     print("🎯 AutoGKB Variant Ontology Normalization System")
     print("=" * 60)
