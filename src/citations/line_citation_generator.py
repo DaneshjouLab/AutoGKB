@@ -413,8 +413,8 @@ class CitationGeneratorBase(ABC):
             )
 
             # Get p-value citations for this annotation
-            p_value_citations_candidates = self._get_top_p_value_citations_for_annotation(
-                annotation, top_k=3
+            p_value_citations_candidates = (
+                self._get_top_p_value_citations_for_annotation(annotation, top_k=3)
             )
 
             # Filter out duplicate citations within this annotation
@@ -487,8 +487,8 @@ class CitationGeneratorBase(ABC):
             # Final fallback for p-value citations: if still no unique p-value citations, use lower similarity threshold
             if len(unique_p_value_citations) == 0:
                 # Try with a lower similarity threshold
-                fallback_p_value_candidates = self._get_top_p_value_citations_for_annotation(
-                    annotation, top_k=5
+                fallback_p_value_candidates = (
+                    self._get_top_p_value_citations_for_annotation(annotation, top_k=5)
                 )
                 for citation in fallback_p_value_candidates:
                     is_duplicate = any(
@@ -511,10 +511,15 @@ class CitationGeneratorBase(ABC):
                     p_value_mentions = [
                         s
                         for s in self.sentences
-                        if any(keyword in s.lower() for keyword in ["p-value", "p<", "p =", "significant"])
+                        if any(
+                            keyword in s.lower()
+                            for keyword in ["p-value", "p<", "p =", "significant"]
+                        )
                     ]
                     if p_value_mentions:
-                        unique_p_value_citations = p_value_mentions[:2]  # Take top 2 p-value citations
+                        unique_p_value_citations = p_value_mentions[
+                            :2
+                        ]  # Take top 2 p-value citations
 
             # Create new annotation with unique citations
             updated_annotation = AnnotationRelationship(
@@ -523,7 +528,9 @@ class CitationGeneratorBase(ABC):
                 relationship_effect=annotation.relationship_effect,
                 p_value=annotation.p_value,
                 citations=unique_citations[:3],  # Take top 3 unique citations
-                p_value_citations=unique_p_value_citations[:2],  # Take top 2 unique p-value citations
+                p_value_citations=unique_p_value_citations[
+                    :2
+                ],  # Take top 2 unique p-value citations
             )
 
             updated_relationships.append(updated_annotation)
@@ -858,6 +865,7 @@ class LocalCitationGenerator(CitationGeneratorBase):
 
         # Check for numerical patterns that might be p-values
         import re
+
         p_value_patterns = [
             r"p\s*[<>=≤≥]\s*0\.\d+",
             r"p\s*=\s*\d+\.\d+",
@@ -865,7 +873,7 @@ class LocalCitationGenerator(CitationGeneratorBase):
             r"p\s*<\s*0\.01",
             r"p\s*<\s*0\.001",
         ]
-        
+
         for pattern in p_value_patterns:
             if re.search(pattern, sentence_lower):
                 score += 3
@@ -1254,7 +1262,9 @@ def main():
         print()
 
     # Get p-value citations for the annotation
-    p_value_citations = generator._get_top_p_value_citations_for_annotation(test_annotation, top_k=2)
+    p_value_citations = generator._get_top_p_value_citations_for_annotation(
+        test_annotation, top_k=2
+    )
 
     print(f"Found {len(p_value_citations)} p-value citations:")
     for i, citation in enumerate(p_value_citations, 1):

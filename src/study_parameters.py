@@ -18,26 +18,27 @@ def parse_bullets_to_list(text: str) -> List[str]:
     """Parse bulleted text into a list of strings."""
     if not text or not text.strip():
         return []
-    
+
     # Split by common bullet patterns
-    lines = text.strip().split('\n')
+    lines = text.strip().split("\n")
     bullets = []
-    
+
     for line in lines:
         line = line.strip()
         if not line:
             continue
-        
+
         # Remove common bullet markers (•, -, numbers) but preserve markdown asterisks
-        cleaned_line = re.sub(r'^[\s]*[\•\-\d+\.\)\]\s]+[\s]*', '', line)
+        cleaned_line = re.sub(r"^[\s]*[\•\-\d+\.\)\]\s]+[\s]*", "", line)
         # Also remove standalone asterisks that are bullet markers (not part of markdown)
-        cleaned_line = re.sub(r'^[\s]*\*[\s]+', '', cleaned_line)
-        
+        cleaned_line = re.sub(r"^[\s]*\*[\s]+", "", cleaned_line)
+
         if cleaned_line:
             bullets.append(cleaned_line)
-    
+
     # If no bullets were found, return the original text as a single item
     return bullets if bullets else [text.strip()]
+
 
 class StudyParameters(BaseModel):
     summary: ParameterWithCitations
@@ -48,7 +49,9 @@ class StudyParameters(BaseModel):
     allele_frequency: ParameterWithCitations
     additional_resource_links: List[str]
 
+
 bulleted_output_queue = "Format the response as a bulleted list. Keep each bullet point concise (1-2 sentences maximum). If the format of the response is term: value, then have the term bolded (**term**) and the value in plain text. Do not include any other text and use markdown formatting for your response."
+
 
 class StudyParametersGenerator:
     """
@@ -70,7 +73,9 @@ class StudyParametersGenerator:
     def get_summary(self) -> str:
         """Extract a short 2-3 sentence summary of the study."""
         prompt = "Provide a short 2-3 sentence summary of the study motivation, design, and results."
-        output_queues = "Format the response as a short paragraph without using any bullet points."
+        output_queues = (
+            "Format the response as a short paragraph without using any bullet points."
+        )
         return self.generator.generate(prompt + output_queues)
 
     def get_study_type(self) -> str:
