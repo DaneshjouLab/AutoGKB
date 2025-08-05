@@ -1,18 +1,19 @@
 from abc import ABC, abstractmethod
-from typing import Callable,Dict, Optional, Any, List
-from dataclasses import dataclass, field 
+from typing import Callable, Dict, Optional, Any, List
+from dataclasses import dataclass, field
 import logging
 from Bio import Entrez
 import requests
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class NormalizationResult:
     raw_input: str
     normalized_output: str
-    entity_type: str         # e.g. "variant", "gene", "drug", etc.
-    source: str              # where the normalized info came from
+    entity_type: str  # e.g. "variant", "gene", "drug", etc.
+    source: str  # where the normalized info came from
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     @classmethod
@@ -22,8 +23,9 @@ class NormalizationResult:
             normalized_output=data["normalized_output"],
             entity_type=data.get("entity_type", "unknown"),
             source=data["source"],
-            metadata=data.get("metadata", {})
+            metadata=data.get("metadata", {}),
         )
+
 
 class BaseNormalizer(ABC):
     def __init__(self):
@@ -39,15 +41,14 @@ class BaseNormalizer(ABC):
                 if result:
                     return result  # Assuming result is already a NormalizedEntity
             except Exception as e:
-                logger.exception(f"Handler '{handler.__name__}' failed on input: '{raw}'")
+                logger.exception(
+                    f"Handler '{handler.__name__}' failed on input: '{raw}'"
+                )
         return None
 
     @abstractmethod
     def name(self) -> str:
         pass
-
-    
-
 
 
 class RSIDNormalizer(BaseNormalizer):
@@ -75,6 +76,7 @@ class RSIDNormalizer(BaseNormalizer):
 
             # Convert JSON string to Python dict
             import json
+
             data = json.loads(response)
 
             record = data.get("result", {}).get(rsid[2:])
@@ -86,7 +88,7 @@ class RSIDNormalizer(BaseNormalizer):
                 normalized_output=rsid,
                 entity_type="variant",
                 source="dbSNP",
-                metadata=record
+                metadata=record,
             )
 
         except Exception:
@@ -97,15 +99,14 @@ class RSIDNormalizer(BaseNormalizer):
         logger.debug(f"Looking up PharmGKB variant by symbol: {raw}")
 
         base_url = "https://api.pharmgkb.org/v1/data/variant"
-        params = {
-            "symbol": raw.strip(),
-            "view": "max"
-        }
+        params = {"symbol": raw.strip(), "view": "max"}
 
         try:
             response = requests.get(base_url, params=params, timeout=10)
             if response.status_code != 200:
-                logger.warning(f"PharmGKB lookup failed ({response.status_code}) for {raw}")
+                logger.warning(
+                    f"PharmGKB lookup failed ({response.status_code}) for {raw}"
+                )
                 return None
 
             data = response.json()
@@ -129,41 +130,48 @@ class RSIDNormalizer(BaseNormalizer):
                 normalized_output=normalized_output,
                 entity_type=entity_type,
                 source=source,
-                metadata=metadata
+                metadata=metadata,
             )
 
         except Exception:
             logger.exception(f"PharmGKB symbol lookup failed for {raw}")
             return None
-        
+
+
 class StarAlleleNormalizer(BaseNormalizer):
     API_URL = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
 
     def __init__(self):
         pass
+
     def name(self):
         return "Star Allele Normalizer"
- 
 
-       
-
-    def fetch_star_alleles(self, query: str, max_results: int = 50) -> List[Dict[str, Any]]:
+    def fetch_star_alleles(
+        self, query: str, max_results: int = 50
+    ) -> List[Dict[str, Any]]:
         """
         Fetches all star allele records matching the query string from the PharmVar-backed Clinical Tables API.
         Returns a list of dictionaries, one per allele, with all available fields populated.
         """
         fields = [
-            "StarAlleleName", "GenBank", "ProteinAffected", "cDNANucleotideChanges",
-            "GeneNucleotideChange", "XbaIHaplotype", "RFLP", "OtherNames", "ProteinChange",
-            "InVivoEnzymeActivity", "InVitroEnzymeActivity", "References",
-            "ClinicalPhenotype", "Notes"
+            "StarAlleleName",
+            "GenBank",
+            "ProteinAffected",
+            "cDNANucleotideChanges",
+            "GeneNucleotideChange",
+            "XbaIHaplotype",
+            "RFLP",
+            "OtherNames",
+            "ProteinChange",
+            "InVivoEnzymeActivity",
+            "InVitroEnzymeActivity",
+            "References",
+            "ClinicalPhenotype",
+            "Notes",
         ]
 
-        params = {
-            "terms": query,
-            "count": max_results,
-            "ef": ",".join(fields)
-        }
+        params = {"terms": query, "count": max_results, "ef": ",".join(fields)}
 
         try:
             response = requests.get(self.API_URL, params=params, timeout=10)
@@ -180,14 +188,13 @@ class StarAlleleNormalizer(BaseNormalizer):
 
         results = []
         for i, allele in enumerate(allele_names):
-            allele_info = {
-                "StarAlleleName": allele
-            }
+            allele_info = {"StarAlleleName": allele}
             for field, values in extra_fields.items():
                 allele_info[field] = values[i] if i < len(values) else None
             results.append(allele_info)
 
         return results
+
     # def fetch_star_alleles(self, term: str) -> list[dict]:
     #     """
     #     Searches for star alleles matching a term and retrieves full metadata for each.
@@ -228,7 +235,7 @@ class StarAlleleNormalizer(BaseNormalizer):
     #         results.append(allele_data)
 
     #     return results
-        
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
@@ -239,4 +246,3 @@ if __name__ == "__main__":
         print("\n--- Star Allele Record ---")
         for k, v in record.items():
             print(f"{k}: {v}")
-

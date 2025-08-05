@@ -1,31 +1,28 @@
-
-
 from typing import Optional
 import logging
 from .variant_ontology import BaseNormalizer, NormalizationResult
 
 import requests
 
-# how to use, you have thew following, 
+# how to use, you have thew following,
 
 
 logger = logging.getLogger(__name__)
+
 
 class DrugNormalizer(BaseNormalizer):
     """Normalizes drug names, and connect to common ID's per use."""
 
     def __init__(self):
         super().__init__()
-        
+
         self.register_handler(self.lookup_drug_pubchem)
-        
 
-
-        #TODO: insert logic to handle base generic instead of what we have 
-
+        # TODO: insert logic to handle base generic instead of what we have
 
         self.register_handler(self.lookup_drug_pharmgkb)
-        # register the pubchem first before I register the other. 
+        # register the pubchem first before I register the other.
+
     def name(self):
         return "Drug Normalizer"
 
@@ -68,8 +65,8 @@ class DrugNormalizer(BaseNormalizer):
                 metadata={
                     "cid": cid,
                     "molecular_formula": props.get("MolecularFormula"),
-                    "canonical_smiles": props.get("CanonicalSMILES")
-                }
+                    "canonical_smiles": props.get("CanonicalSMILES"),
+                },
             )
 
         except requests.RequestException as exc:
@@ -78,6 +75,7 @@ class DrugNormalizer(BaseNormalizer):
             logger.warning("Unexpected error for '%s': %s", raw, exc)
 
         return None
+
     def get_generic_from_brand_pubchem(self, raw: str) -> Optional[str]:
         """
         Resolves a brand name to a generic (IUPAC) name using PubChem.
@@ -88,13 +86,12 @@ class DrugNormalizer(BaseNormalizer):
             return result.normalized_output
         return None
 
-
     def lookup_drug_pharmgkb(self, raw: str) -> Optional[NormalizationResult]:
         """
         Lookup drug info from PharmGKB using its REST API.
         Returns all available metadata without filtering.
         """
-        query = raw.strip().lower()  
+        query = raw.strip().lower()
         if not query:
             logger.debug("Empty drug input for PharmGKB lookup.")
             return None
@@ -121,15 +118,18 @@ class DrugNormalizer(BaseNormalizer):
                 normalized_output=entry.get("name", raw),
                 entity_type="drug",
                 source="PharmGKB",
-                metadata=entry  # Store the entire returned dictionary
+                metadata=entry,  # Store the entire returned dictionary
             )
 
         except requests.RequestException as exc:
             logger.warning("PharmGKB request failed for '%s': %s", raw, exc)
         except Exception as exc:
-            logger.warning("Unexpected error during PharmGKB lookup for '%s': %s", raw, exc)
+            logger.warning(
+                "Unexpected error during PharmGKB lookup for '%s': %s", raw, exc
+            )
 
         return None
+
     def lookup_drug_rxnorm(self, raw: str) -> Optional[NormalizationResult]:
         """
         Resolves a drug name (brand or generic) using the RxNorm API.
@@ -153,7 +153,9 @@ class DrugNormalizer(BaseNormalizer):
             rxcui = rxcui_list[0]
 
             # Step 2: Get related ingredient (generic) names from RxCUI
-            related_url = f"https://rxnav.nlm.nih.gov/REST/rxcui/{rxcui}/related.json?tty=IN"
+            related_url = (
+                f"https://rxnav.nlm.nih.gov/REST/rxcui/{rxcui}/related.json?tty=IN"
+            )
             related_resp = requests.get(related_url, timeout=5)
             related_resp.raise_for_status()
             related_data = related_resp.json()
@@ -174,10 +176,7 @@ class DrugNormalizer(BaseNormalizer):
                 normalized_output=ingredients[0],  # first generic match
                 entity_type="drug",
                 source="RxNorm",
-                metadata={
-                    "rxcui": rxcui,
-                    "generic_candidates": ingredients
-                }
+                metadata={"rxcui": rxcui, "generic_candidates": ingredients},
             )
 
         except requests.RequestException as exc:
@@ -186,8 +185,6 @@ class DrugNormalizer(BaseNormalizer):
             logger.warning("Unexpected error in RxNorm lookup for '%s': %s", raw, exc)
 
         return None
-
-
 
 
 def test_lookup_pubchem():
@@ -239,9 +236,8 @@ def test_lookup_pharmgkb():
 
 if __name__ == "__main__":
     test_lookup_pubchem()
-    
+
     test_lookup_pharmgkb()
     normalizer = DrugNormalizer()
     result = normalizer.lookup_drug_rxnorm("Gleevec")
     print(result.normalized_output)  # → "imatinib"
-
