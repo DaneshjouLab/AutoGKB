@@ -5,10 +5,6 @@ from .variant_ontology import BaseNormalizer, NormalizationResult
 import requests
 
 # how to use, you have thew following,
-<<<<<<< HEAD:src/ontology/drug_ontology.py
-
-=======
->>>>>>> origin/main:src/ontology_module/drug_ontology.py
 
 
 
@@ -24,10 +20,7 @@ class DrugNormalizer(BaseNormalizer):
         # TODO: insert logic to handle base generic instead of what we have
 
         self.register_handler(self.lookup_drug_pharmgkb)
-<<<<<<< HEAD:src/ontology/drug_ontology.py
         self.register_handler(self.lookup_drug_rxnorm)
-=======
->>>>>>> origin/main:src/ontology_module/drug_ontology.py
         # register the pubchem first before I register the other.
 
     def name(self):
@@ -241,7 +234,6 @@ def test_lookup_pharmgkb():
         assert "id" in result.metadata
 
 
-<<<<<<< HEAD:src/ontology/drug_ontology.py
 def extract_drugs_from_annotations():
     """
     Extract and normalize drugs from annotation files.
@@ -384,12 +376,3 @@ if __name__ == "__main__":
         print(f"   Normalized {len(results)} drugs")
     else:
         print("\n⚠️  No results from annotation processing")
-=======
-if __name__ == "__main__":
-    test_lookup_pubchem()
-
-    test_lookup_pharmgkb()
-    normalizer = DrugNormalizer()
-    result = normalizer.lookup_drug_rxnorm("Gleevec")
-    print(result.normalized_output)  # → "imatinib"
->>>>>>> origin/main:src/ontology_module/drug_ontology.py
