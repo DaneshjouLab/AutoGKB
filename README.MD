@@ -24,23 +24,6 @@ We manage a few repos externally:
  - [PubMed Downloader](https://github.com/shloknatarajan/PubMed-Downloader): This repo is used to download all the markdown files from the PMIDs represented in `var_drug_ann.tsv` 
  - [Huggingface/AutoGKB](https://huggingface.co/datasets/shlokn/autogkb): This converts the annotations and article text into a dataset format for benchmarking
 
-## Progress Tracker
-| Category | Task | Status |
-| --- | --- | --- |
-| Initial Download | Download the zip of variants from pharmgkb | ✅  |
-|                  | Get a PMID list from the variants tsv (column PMID) | ✅ |
-|                  | Convert the PMID to PMCID | ✅ |
-|                  | Update to use non-official pmid to pmcid (aaron's method) | |
-|                  | Fetch the content from the PMCID | ✅ |
-| Benchmark        | Create pairings of annotations to articles | ✅ |
-|                  | Create a niave score of number of matches | |
-|                  | Create group wise score | |
-|                  | Look into advanced scoring based on distance from truth per term | |
-| Workflows        | Integrate Aaron's current approach | ✅ |
-|                  | Document on individual annotation meanings | |
-|                  | Delegate annotation groupings to team members | |
-| New Article Fetching | Replicate PharGKB current workflow | |
-
 ## System Overview
 ![Annotations Diagram](assets/annotations_diagram.svg)
 
@@ -48,4 +31,8 @@ We manage a few repos externally:
 ```
 pixi run gdown —-id 1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9
 unzip autogkb-data.zip
+
+OR
+
+pixi run setup-repo
 ```
