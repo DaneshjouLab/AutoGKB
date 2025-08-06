@@ -1,5 +1,5 @@
 from src.inference import Generator, Fuser
-from src.variants import QuotedStr
+from src.deprecated.variants import QuotedStr
 from src.prompts import GeneratorPrompt, ArticlePrompt
 from src.utils import get_article_text
 from loguru import logger

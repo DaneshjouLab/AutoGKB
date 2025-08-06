@@ -2,7 +2,7 @@
 Given a list of variants and the article text, determine the type of association (drug, phenotype, functional association)
 """
 
-from src.variants import Variant
+from src.deprecated.variants import Variant
 from typing import List, Optional
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser

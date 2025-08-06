@@ -5,7 +5,7 @@ Extract detailed functional annotation information for variants with functional 
 from typing import List
 from loguru import logger
 from pydantic import BaseModel
-from src.variants import Variant, FunctionalAnnotation, FunctionalAnnotationList
+from src.deprecated.variants import Variant, FunctionalAnnotation, FunctionalAnnotationList
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
 from src.utils import get_article_text
