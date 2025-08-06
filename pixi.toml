@@ -20,6 +20,7 @@ setup-repo = "pixi install && pixi run download-data"
 copy-markdown = "python -m src.copy_markdown"
 annotation-pipeline = "python -m src.annotation_pipeline"
 test-citations = "python -m src.citations.one_shot_citations"
+study-parameters = "python -m src.study_parameters"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"

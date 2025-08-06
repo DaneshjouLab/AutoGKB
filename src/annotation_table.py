@@ -47,6 +47,7 @@ class AnnotationTableGenerator:
         self.prompt = """
 What are all the pharmacogenomic relationships found in this paper?
 Output your response in markdown table format with nothing except the table. The columns should be Gene, Polymorphism, Relationship/Effect, and p-value.
+Make sure that every polymorphism gets its own row, even if they have the same effect/p-value.
 """
 
     def generate_table_json(self) -> AnnotationTable:
@@ -62,10 +63,12 @@ What are all the pharmacogenomic relationships found in this paper?
 Please extract all pharmacogenomic relationships and format them as structured data with the following fields for each relationship:
 - gene: The gene name
 - polymorphism: The genetic polymorphism or variant
+- drug: The drug name if a drug is part of this relationship. If a drug is not part of this association, fill this field with "None".
 - relationship_effect: Description of the relationship or effect
-- p_value: The statistical p-value
+- p_value: The statistical p-value. If confidence intervals are provided, display that information here as well.
 
 Return the data as a JSON object with a 'relationships' array containing all the pharmacogenomic relationships found.
+Make sure that every polymorphism/relationship gets its own entry, even if they have the same effect/p-value.
 """
 
         response = self.generator.generate(
