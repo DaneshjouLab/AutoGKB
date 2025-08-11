@@ -225,48 +225,6 @@ class StarAlleleNormalizer(BaseNormalizer):
 
         return results
 
-    # def fetch_star_alleles(self, term: str) -> list[dict]:
-    #     """
-    #     Searches for star alleles matching a term and retrieves full metadata for each.
-
-    #     Args:
-    #         term (str): The star allele search string (e.g., "CYP2D6*4").
-
-    #     Returns:
-    #         list[dict]: Each dict contains all metadata fields for a matched star allele.
-    #     """
-    #     base_url = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
-    #     fields = [
-    #         "StarAlleleName", "GenBank", "ProteinAffected", "cDNANucleotideChanges",
-    #         "GeneNucleotideChange", "ProteinChange", "OtherNames",
-    #         "InVivoEnzymeActivity", "InVitroEnzymeActivity", "References",
-    #         "ClinicalPhenotype", "Notes"
-    #     ]
-
-    #     params = {
-    #         "terms": term,
-    #         "ef": ",".join(fields),
-    #         "maxList": "50"
-    #     }
-
-    #     response = requests.get(base_url, params=params)
-    #     response.raise_for_status()
-    #     data = response.json()
-
-    #     if not data or len(data) < 3:
-    #         return []
-
-    #     codes = data[1]
-    #     extra_fields = data[2]
-
-    #     results = []
-    #     for i, code in enumerate(codes):
-    #         allele_data = {field: extra_fields.get(field, [None])[i] for field in fields}
-    #         results.append(allele_data)
-
-    #     return results
-
-
 def extract_variants_from_annotations():
     """
     Extract and normalize variants from annotation files.

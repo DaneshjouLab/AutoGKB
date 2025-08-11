@@ -122,11 +122,9 @@ class DrugNormalizer(BaseNormalizer):
             )
 
         except requests.RequestException as exc:
-            logger.warning("PharmGKB request failed for '%s': %s", raw, exc)
+            logger.warning(f"PharmGKB request failed for '{raw}': {exc}")
         except Exception as exc:
-            logger.warning(
-                "Unexpected error during PharmGKB lookup for '%s': %s", raw, exc
-            )
+            logger.warning(f"Unexpected error during PharmGKB lookup for '{raw}': {exc}")
 
         return None
 
@@ -180,9 +178,9 @@ class DrugNormalizer(BaseNormalizer):
             )
 
         except requests.RequestException as exc:
-            logger.warning("RxNorm request failed for '%s': %s", raw, exc)
+            logger.warning(f"RxNorm request failed for '{raw}': {exc}")
         except Exception as exc:
-            logger.warning("Unexpected error in RxNorm lookup for '%s': %s", raw, exc)
+            logger.warning(f"Unexpected error in RxNorm lookup for '{raw}': {exc}")
 
         return None
 
@@ -234,145 +232,6 @@ def test_lookup_pharmgkb():
         assert "id" in result.metadata
 
 
-def extract_drugs_from_annotations():
-    """
-    Extract and normalize drugs from annotation files.
-    This demonstrates drug normalization from real annotation data.
-    """
-    import json
-    import os
-    import re
-    from typing import Set, List, Dict, Any
-
-    drug_normalizer = DrugNormalizer()
-
-    annotation_dir = (
-        "/Users/shloknatarajan/stanford/research/daneshjou/AutoGKB/data/annotations"
-    )
-    if not os.path.exists(annotation_dir):
-        print(f"❌ Annotation directory not found: {annotation_dir}")
-        return
-
-    drugs_found: Set[str] = set()
-    normalized_results: List[Dict[str, Any]] = []
-
-    print("🔍 Scanning annotation files for drugs...")
-
-    # Common drug name patterns to look for
-    drug_patterns = [
-        r"\b(?:warfarin|imatinib|gleevec|sitagliptin|gliclazide|metformin|edoxaban)\b",
-        r"\b\w+mab\b",  # monoclonal antibodies
-        r"\b\w+ine\b",  # many drugs end in -ine
-        r"\b\w+ol\b",  # many drugs end in -ol
-    ]
-
-    # Scan all annotation files
-    for filename in os.listdir(annotation_dir):
-        if not filename.endswith(".json"):
-            continue
-
-        filepath = os.path.join(annotation_dir, filename)
-        try:
-            with open(filepath, "r") as f:
-                data = json.load(f)
-
-            # Extract drugs from title and content
-            text_content = data.get("title", "") + " "
-
-            # Also check study parameters for drug mentions
-            if "study_parameters" in data:
-                for section in data["study_parameters"].values():
-                    if isinstance(section, dict) and "content" in section:
-                        if isinstance(section["content"], str):
-                            text_content += section["content"] + " "
-                        elif isinstance(section["content"], list):
-                            text_content += (
-                                " ".join(str(item) for item in section["content"]) + " "
-                            )
-
-            # Apply drug patterns
-            for pattern in drug_patterns:
-                matches = re.findall(pattern, text_content, re.IGNORECASE)
-                drugs_found.update(match.lower() for match in matches)
-
-        except Exception as e:
-            print(f"⚠️  Error processing {filename}: {e}")
-
-    print(f"📊 Found {len(drugs_found)} potential drug names")
-
-    # Normalize each drug
-    for drug in drugs_found:
-        if len(drug) < 3:  # Skip very short matches
-            continue
-
-        print(f"\n💊 Processing drug: {drug}")
-
-        result = drug_normalizer.normalize(drug)
-
-        if result:
-            print(f"✅ Normalization successful:")
-            print(f"   Raw: {result.raw_input}")
-            print(f"   Normalized: {result.normalized_output}")
-            print(f"   Source: {result.source}")
-            print(f"   Type: {result.entity_type}")
-
-            if result.metadata:
-                if "cid" in result.metadata:
-                    print(f"   PubChem CID: {result.metadata['cid']}")
-                if "molecular_formula" in result.metadata:
-                    print(f"   Formula: {result.metadata['molecular_formula']}")
-
-            normalized_results.append({"raw_drug": drug, "result": result})
-        else:
-            print(f"❌ No normalization found for {drug}")
-
-    print(
-        f"\n📈 Summary: {len(normalized_results)}/{len(drugs_found)} drugs successfully normalized"
-    )
-    return normalized_results
-
-
-def test_drug_normalizers():
-    """Test drug normalizer with sample data"""
-    print("\n" + "=" * 50)
-    print("🧪 TESTING DRUG NORMALIZERS")
-    print("=" * 50)
-
-    drug_normalizer = DrugNormalizer()
-    test_drugs = ["imatinib", "Gleevec", "warfarin", "sitagliptin", "metformin"]
-
-    for drug in test_drugs:
-        print(f"\n💊 Testing {drug}:")
-        result = drug_normalizer.normalize(drug)
-        if result:
-            print(f"  ✅ Found: {result.normalized_output} from {result.source}")
-            if result.metadata:
-                if "cid" in result.metadata:
-                    print(f"  🆔 PubChem CID: {result.metadata['cid']}")
-                if "molecular_formula" in result.metadata:
-                    print(f"  🧪 Formula: {result.metadata['molecular_formula']}")
-        else:
-            print(f"  ❌ Not found")
-
-
 if __name__ == "__main__":
-    pass
-
-    print("🎯 AutoGKB Drug Ontology Normalization System")
-    print("=" * 60)
-
-    # Test individual drug normalizers first
-    test_drug_normalizers()
-
-    # Then demonstrate with real annotation data
-    print("\n" + "=" * 50)
-    print("📋 PROCESSING ANNOTATION DATA FOR DRUGS")
-    print("=" * 50)
-
-    results = extract_drugs_from_annotations()
-
-    if results:
-        print(f"\n🎉 Successfully processed annotation data!")
-        print(f"   Normalized {len(results)} drugs")
-    else:
-        print("\n⚠️  No results from annotation processing")
+    test_lookup_pharmgkb()
+    test_lookup_pubchem()
