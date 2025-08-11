@@ -899,7 +899,13 @@ class LocalCitationGenerator(CitationGeneratorBase):
             Relevance score from 1-10
         """
         sentence_lower = sentence.lower()
-        parameter_lower = parameter_content.lower()
+        
+        # Handle case where parameter_content is a list
+        if isinstance(parameter_content, list):
+            parameter_lower = " ".join(str(item) for item in parameter_content).lower()
+        else:
+            parameter_lower = str(parameter_content).lower()
+        
         score = 0
 
         # Define keywords for each parameter type
@@ -1197,6 +1203,37 @@ def create_citation_generator(
         return LMCitationGenerator(pmcid, model)
 
 
+def process_annotation_file_with_citations(pmcid: str, model: str = "local") -> AnnotationTable:
+    """
+    Convenience function to load annotations from file, add citations, and save back to file.
+    
+    Args:
+        pmcid: PubMed Central ID
+        model: Model to use for citation generation
+        
+    Returns:
+        AnnotationTable with citations added
+    """
+    # Load annotations from file
+    annotations = load_annotations_from_file(pmcid)
+    
+    if not annotations.relationships:
+        logger.warning(f"No annotations found for {pmcid}")
+        return annotations
+    
+    # Create citation generator
+    generator = create_citation_generator(pmcid, model)
+    
+    # Add citations to annotations
+    updated_annotations = generator.add_citations_to_annotations(annotations)
+    
+    # Save updated annotations back to file
+    update_annotations_in_file(pmcid, updated_annotations)
+    
+    logger.info(f"Successfully processed {len(updated_annotations.relationships)} annotations for {pmcid}")
+    return updated_annotations
+
+
 # Maintain backward compatibility
 def CitationGenerator(
     pmcid: str, model: str = "local", approach: str = None
@@ -1226,33 +1263,136 @@ def CitationGenerator(
         return create_citation_generator(pmcid, model)
 
 
+def update_annotations_in_file(pmcid: str, updated_annotations: AnnotationTable) -> None:
+    """
+    Save updated annotations back to the JSON file in the new schema format.
+    
+    Args:
+        pmcid: PubMed Central ID
+        updated_annotations: AnnotationTable with updated relationships
+    """
+    import json
+    import os
+    
+    annotation_file = f"data/annotations/{pmcid}.json"
+    
+    if not os.path.exists(annotation_file):
+        logger.error(f"Annotation file not found: {annotation_file}")
+        return
+    
+    try:
+        # Load existing data
+        with open(annotation_file, 'r') as f:
+            data = json.load(f)
+        
+        # Update the relationships in the new schema format
+        if "annotations" not in data:
+            data["annotations"] = {}
+        
+        data["annotations"]["relationships"] = []
+        for rel in updated_annotations.relationships:
+            rel_dict = {
+                "gene": rel.gene,
+                "polymorphism": rel.polymorphism,
+                "relationship_effect": rel.relationship_effect,
+                "p_value": rel.p_value,
+                "citations": rel.citations,
+                "p_value_citations": rel.p_value_citations
+            }
+            data["annotations"]["relationships"].append(rel_dict)
+        
+        # Write back to file
+        with open(annotation_file, 'w') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+            
+        logger.info(f"Updated annotations saved to {annotation_file}")
+        
+    except Exception as e:
+        logger.error(f"Error updating annotations in {annotation_file}: {e}")
+
+
+def load_annotations_from_file(pmcid: str) -> AnnotationTable:
+    """
+    Load annotations from the new JSON schema format.
+    
+    Args:
+        pmcid: PubMed Central ID
+        
+    Returns:
+        AnnotationTable with relationships loaded from the file
+    """
+    import json
+    import os
+    
+    annotation_file = f"data/annotations/{pmcid}.json"
+    
+    if not os.path.exists(annotation_file):
+        logger.warning(f"Annotation file not found: {annotation_file}")
+        return AnnotationTable(relationships=[])
+    
+    try:
+        with open(annotation_file, 'r') as f:
+            data = json.load(f)
+            
+        # Extract relationships from the new schema format
+        if "annotations" in data and "relationships" in data["annotations"]:
+            relationships = []
+            for rel_data in data["annotations"]["relationships"]:
+                # Convert the dict to AnnotationRelationship object
+                relationship = AnnotationRelationship(
+                    gene=rel_data.get("gene", ""),
+                    polymorphism=rel_data.get("polymorphism", ""),
+                    relationship_effect=rel_data.get("relationship_effect", ""),
+                    p_value=rel_data.get("p_value", ""),
+                    citations=rel_data.get("citations", []),
+                    p_value_citations=rel_data.get("p_value_citations", [])
+                )
+                relationships.append(relationship)
+            
+            return AnnotationTable(relationships=relationships)
+        else:
+            logger.warning(f"No annotations found in file: {annotation_file}")
+            return AnnotationTable(relationships=[])
+            
+    except Exception as e:
+        logger.error(f"Error loading annotations from {annotation_file}: {e}")
+        return AnnotationTable(relationships=[])
+
+
 def main():
     """
-    Test function for citation generator using PMC11730665 and a single sentence.
+    Test function for citation generator using PMC11730665 and loading annotations from file.
     """
     # Test parameters
     pmcid = "PMC11730665"
-    test_sentence = "Patients with the GG genotype had a trend toward lower efficacy of sitagliptin and higher efficacy of gliclazide, likely due to slower metabolism of gliclazide."
 
     # Create citation generator
-    generator = create_citation_generator(pmcid, model="gemini/gemini-2.5-flash-lite")
+    generator = create_citation_generator(pmcid, model="local")
 
-    # Create a mock annotation for testing
-    from src.annotation_table import AnnotationRelationship
-
-    test_annotation = AnnotationRelationship(
-        gene="CYP2C9",
-        polymorphism="rs1057910 GG",
-        relationship_effect="Patients with the GG genotype had a trend toward lower efficacy of sitagliptin and higher efficacy of gliclazide, likely due to slower metabolism of gliclazide.",
-        p_value=".464",
-        citations=[],
-    )
+    # Load annotations from the updated schema file
+    annotations = load_annotations_from_file(pmcid)
+    
+    if not annotations.relationships:
+        logger.error("No annotations loaded from file. Creating a test annotation instead.")
+        # Fallback to creating a mock annotation for testing
+        from src.annotation_table import AnnotationRelationship
+        test_annotation = AnnotationRelationship(
+            gene="CYP2C9",
+            polymorphism="rs1057910 GG",
+            relationship_effect="Patients with the GG genotype had a trend toward lower efficacy of sitagliptin and higher efficacy of gliclazide, likely due to slower metabolism of gliclazide.",
+            p_value=".464",
+            citations=[],
+        )
+        annotations = AnnotationTable(relationships=[test_annotation])
 
     print(f"Testing citation generator with PMCID: {pmcid}")
-    print(f"Test sentence: {test_sentence}")
-    print(f"Test annotation: {test_annotation.gene} {test_annotation.polymorphism}")
+    print(f"Loaded {len(annotations.relationships)} annotations from file")
     print("-" * 50)
 
+    # Test with first annotation
+    test_annotation = annotations.relationships[0]
+    print(f"Test annotation: {test_annotation.gene} {test_annotation.polymorphism}")
+    
     # Get citations for the annotation
     citations = generator._get_top_citations_for_annotation(test_annotation, top_k=3)
 
