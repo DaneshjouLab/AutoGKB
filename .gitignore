@@ -28,6 +28,7 @@ data/pmid_list.json
 data/downloaded_pmcids.json
 data/markdown
 data/extractions/
+data/lookup_data/
 
 *.zip
 *.tar.gz
