@@ -5,7 +5,11 @@ Extract detailed phenotype annotation information for variants with phenotype as
 from typing import List
 from loguru import logger
 from pydantic import BaseModel
-from src.variants import Variant, PhenotypeAnnotation, PhenotypeAnnotationList
+from src.deprecated.variants import (
+    Variant,
+    PhenotypeAnnotation,
+    PhenotypeAnnotationList,
+)
 from src.prompts import PromptVariables, GeneratorPrompt, ParserPrompt
 from src.inference import Generator, Parser
 from src.utils import get_article_text

@@ -1,13 +1,8 @@
 from typing import Optional
-import logging
+from loguru import logger
 from .variant_ontology import BaseNormalizer, NormalizationResult
 
 import requests
-
-# how to use, you have thew following,
-
-
-logger = logging.getLogger(__name__)
 
 
 class DrugNormalizer(BaseNormalizer):
@@ -21,6 +16,7 @@ class DrugNormalizer(BaseNormalizer):
         # TODO: insert logic to handle base generic instead of what we have
 
         self.register_handler(self.lookup_drug_pharmgkb)
+        self.register_handler(self.lookup_drug_rxnorm)
         # register the pubchem first before I register the other.
 
     def name(self):
@@ -122,10 +118,10 @@ class DrugNormalizer(BaseNormalizer):
             )
 
         except requests.RequestException as exc:
-            logger.warning("PharmGKB request failed for '%s': %s", raw, exc)
+            logger.warning(f"PharmGKB request failed for '{raw}': {exc}")
         except Exception as exc:
             logger.warning(
-                "Unexpected error during PharmGKB lookup for '%s': %s", raw, exc
+                f"Unexpected error during PharmGKB lookup for '{raw}': {exc}"
             )
 
         return None
@@ -180,9 +176,9 @@ class DrugNormalizer(BaseNormalizer):
             )
 
         except requests.RequestException as exc:
-            logger.warning("RxNorm request failed for '%s': %s", raw, exc)
+            logger.warning(f"RxNorm request failed for '{raw}': {exc}")
         except Exception as exc:
-            logger.warning("Unexpected error in RxNorm lookup for '%s': %s", raw, exc)
+            logger.warning(f"Unexpected error in RxNorm lookup for '{raw}': {exc}")
 
         return None
 
@@ -235,9 +231,5 @@ def test_lookup_pharmgkb():
 
 
 if __name__ == "__main__":
-    test_lookup_pubchem()
-
     test_lookup_pharmgkb()
-    normalizer = DrugNormalizer()
-    result = normalizer.lookup_drug_rxnorm("Gleevec")
-    print(result.normalized_output)  # → "imatinib"
+    test_lookup_pubchem()

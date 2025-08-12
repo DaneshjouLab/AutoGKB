@@ -1,11 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Callable, Dict, Optional, Any, List
 from dataclasses import dataclass, field
-import logging
+from loguru import logger
 from Bio import Entrez
 import requests
-
-logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -142,10 +140,41 @@ class StarAlleleNormalizer(BaseNormalizer):
     API_URL = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
 
     def __init__(self):
-        pass
+        super().__init__()
+        self.register_handler(self.lookup_star_allele)
 
     def name(self):
         return "Star Allele Normalizer"
+
+    def lookup_star_allele(self, raw: str) -> Optional[NormalizationResult]:
+        """
+        Normalize a star allele (e.g., CYP2D6*4) using the Clinical Tables API.
+        Returns a NormalizationResult with detailed metadata.
+        """
+        query = raw.strip()
+        if not query:
+            logger.debug("Empty star allele input, skipping.")
+            return None
+
+        try:
+            alleles = self.fetch_star_alleles(query, max_results=1)
+            if not alleles:
+                logger.debug("No star allele found for input: %s", query)
+                return None
+
+            allele_data = alleles[0]
+
+            return NormalizationResult(
+                raw_input=raw,
+                normalized_output=allele_data.get("StarAlleleName", query),
+                entity_type="variant",
+                source="PharmVar/Clinical Tables",
+                metadata=allele_data,
+            )
+
+        except Exception as exc:
+            logger.warning("Star allele lookup failed for '%s': %s", raw, exc)
+            return None
 
     def fetch_star_alleles(
         self, query: str, max_results: int = 50
@@ -195,54 +224,154 @@ class StarAlleleNormalizer(BaseNormalizer):
 
         return results
 
-    # def fetch_star_alleles(self, term: str) -> list[dict]:
-    #     """
-    #     Searches for star alleles matching a term and retrieves full metadata for each.
 
-    #     Args:
-    #         term (str): The star allele search string (e.g., "CYP2D6*4").
+def extract_variants_from_annotations():
+    """
+    Extract and normalize variants from annotation files.
+    This demonstrates the core functionality for mapping variants to normalized ontologies.
+    """
+    import json
+    import os
+    import re
+    from typing import Set, List, Dict, Any
 
-    #     Returns:
-    #         list[dict]: Each dict contains all metadata fields for a matched star allele.
-    #     """
-    #     base_url = "https://clinicaltables.nlm.nih.gov/api/star_alleles/v3/search"
-    #     fields = [
-    #         "StarAlleleName", "GenBank", "ProteinAffected", "cDNANucleotideChanges",
-    #         "GeneNucleotideChange", "ProteinChange", "OtherNames",
-    #         "InVivoEnzymeActivity", "InVitroEnzymeActivity", "References",
-    #         "ClinicalPhenotype", "Notes"
-    #     ]
+    # Initialize normalizers
+    rsid_normalizer = RSIDNormalizer(email="test@example.com")
+    star_normalizer = StarAlleleNormalizer()
 
-    #     params = {
-    #         "terms": term,
-    #         "ef": ",".join(fields),
-    #         "maxList": "50"
-    #     }
+    annotation_dir = "data/annotations"
+    if not os.path.exists(annotation_dir):
+        print(f"❌ Annotation directory not found: {annotation_dir}")
+        return
 
-    #     response = requests.get(base_url, params=params)
-    #     response.raise_for_status()
-    #     data = response.json()
+    variants_found: Set[str] = set()
+    normalized_results: List[Dict[str, Any]] = []
 
-    #     if not data or len(data) < 3:
-    #         return []
+    print("🔍 Scanning annotation files for variants...")
 
-    #     codes = data[1]
-    #     extra_fields = data[2]
+    # Scan all annotation files
+    for filename in os.listdir(annotation_dir):
+        if not filename.endswith(".json"):
+            continue
 
-    #     results = []
-    #     for i, code in enumerate(codes):
-    #         allele_data = {field: extra_fields.get(field, [None])[i] for field in fields}
-    #         results.append(allele_data)
+        filepath = os.path.join(annotation_dir, filename)
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
 
-    #     return results
+            # Extract polymorphisms from annotations
+            if "annotations" in data and "relationships" in data["annotations"]:
+                for relationship in data["annotations"]["relationships"]:
+                    polymorphism = relationship.get("polymorphism", "")
+
+                    # Extract rsIDs (rs followed by numbers)
+                    rsids = re.findall(r"rs\d+", polymorphism)
+                    variants_found.update(rsids)
+
+                    # Extract star alleles (gene*number pattern)
+                    star_alleles = re.findall(r"[A-Z0-9]+\*\d+", polymorphism)
+                    variants_found.update(star_alleles)
+
+        except Exception as e:
+            print(f"⚠️  Error processing {filename}: {e}")
+
+    print(f"📊 Found {len(variants_found)} unique variants")
+
+    # Normalize each variant
+    for variant in variants_found:
+        print(f"\n🧬 Processing variant: {variant}")
+
+        result = None
+        normalizer_used = None
+
+        # Try rsID normalization first
+        if variant.startswith("rs"):
+            result = rsid_normalizer.normalize(variant)
+            normalizer_used = "RSIDNormalizer"
+
+        # Try star allele normalization if rsID didn't work
+        if not result and "*" in variant:
+            result = star_normalizer.normalize(variant)
+            normalizer_used = "StarAlleleNormalizer"
+
+        if result:
+            print(f"✅ {normalizer_used} successful:")
+            print(f"   Raw: {result.raw_input}")
+            print(f"   Normalized: {result.normalized_output}")
+            print(f"   Source: {result.source}")
+            print(f"   Type: {result.entity_type}")
+
+            normalized_results.append(
+                {
+                    "raw_variant": variant,
+                    "normalizer": normalizer_used,
+                    "result": result,
+                }
+            )
+        else:
+            print(f"❌ No normalization found for {variant}")
+
+    print(
+        f"\n📈 Summary: {len(normalized_results)}/{len(variants_found)} variants successfully normalized"
+    )
+    return normalized_results
+
+
+def test_individual_normalizers():
+    """Test each normalizer with sample data"""
+    print("\n" + "=" * 50)
+    print("🧪 TESTING INDIVIDUAL NORMALIZERS")
+    print("=" * 50)
+
+    # Test RSIDNormalizer
+    print("\n🧬 Testing RSIDNormalizer:")
+    rsid_normalizer = RSIDNormalizer(email="test@example.com")
+    test_rsids = ["rs1799853", "rs1057910", "rs9923231"]
+
+    for rsid in test_rsids:
+        print(f"\n Testing {rsid}:")
+        result = rsid_normalizer.normalize(rsid)
+        if result:
+            print(f"  ✅ Found: {result.normalized_output} from {result.source}")
+        else:
+            print(f"  ❌ Not found")
+
+    # Test StarAlleleNormalizer
+    print("\n⭐ Testing StarAlleleNormalizer:")
+    star_normalizer = StarAlleleNormalizer()
+    test_alleles = ["CYP2D6*4", "CYP2C9*2", "CYP2C9*3"]
+
+    for allele in test_alleles:
+        print(f"\n Testing {allele}:")
+        result = star_normalizer.normalize(allele)
+        if result:
+            print(f"  ✅ Found: {result.normalized_output} from {result.source}")
+            if result.metadata:
+                activity = result.metadata.get("InVivoEnzymeActivity")
+                if activity:
+                    print(f"  📊 Activity: {activity}")
+        else:
+            print(f"  ❌ Not found")
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    normalizer = StarAlleleNormalizer()
-    data = normalizer.fetch_star_alleles("CYP2D6*4")
+    pass
 
-    for record in data:
-        print("\n--- Star Allele Record ---")
-        for k, v in record.items():
-            print(f"{k}: {v}")
+    print("🎯 AutoGKB Variant Ontology Normalization System")
+    print("=" * 60)
+
+    # Test individual normalizers first
+    test_individual_normalizers()
+
+    # Then demonstrate with real annotation data
+    print("\n" + "=" * 50)
+    print("📋 PROCESSING ANNOTATION DATA")
+    print("=" * 50)
+
+    results = extract_variants_from_annotations()
+
+    if results:
+        print(f"\n🎉 Successfully processed annotation data!")
+        print(f"   Normalized {len(results)} variants")
+    else:
+        print("\n⚠️  No results from annotation processing")

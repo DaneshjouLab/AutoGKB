@@ -1,5 +1,5 @@
 from src.inference import Generator
-from src.variants import Variant, VariantList
+from src.deprecated.variants import Variant, VariantList
 from src.prompts import GeneratorPrompt, PromptVariables
 from src.utils import get_article_text
 from loguru import logger

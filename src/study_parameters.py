@@ -97,7 +97,9 @@ class StudyParametersGenerator:
         Retrospective: Uses existing records to look backward at exposures and outcomes.
         Replication: Repeating a study to confirm findings.
 
-        Your output should be a string similar to these examples: "case/control, GWAS", "Cohort, replication", etc. Do not include a descriptor that's not included in the list above."""
+        Your output should be a string similar to these examples: "case/control, GWAS", "Cohort, replication", etc. Do not include a descriptor that's not included in the list above.
+        If the study type is not clear, return "Unknown".
+        Don't include any other text or formatting (e.g. don't include quotation marks in your response)."""
 
         return self.generator.generate(prompt)
 
