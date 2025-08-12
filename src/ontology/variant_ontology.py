@@ -6,7 +6,6 @@ from Bio import Entrez
 import requests
 
 
-
 @dataclass
 class NormalizationResult:
     raw_input: str
@@ -225,6 +224,7 @@ class StarAlleleNormalizer(BaseNormalizer):
 
         return results
 
+
 def extract_variants_from_annotations():
     """
     Extract and normalize variants from annotation files.
@@ -239,9 +239,7 @@ def extract_variants_from_annotations():
     rsid_normalizer = RSIDNormalizer(email="test@example.com")
     star_normalizer = StarAlleleNormalizer()
 
-    annotation_dir = (
-        "data/annotations"
-    )
+    annotation_dir = "data/annotations"
     if not os.path.exists(annotation_dir):
         print(f"❌ Annotation directory not found: {annotation_dir}")
         return

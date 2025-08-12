@@ -4,10 +4,6 @@ from .variant_ontology import BaseNormalizer, NormalizationResult
 
 import requests
 
-# how to use, you have thew following,
-
-
-
 
 class DrugNormalizer(BaseNormalizer):
     """Normalizes drug names, and connect to common ID's per use."""
@@ -124,7 +120,9 @@ class DrugNormalizer(BaseNormalizer):
         except requests.RequestException as exc:
             logger.warning(f"PharmGKB request failed for '{raw}': {exc}")
         except Exception as exc:
-            logger.warning(f"Unexpected error during PharmGKB lookup for '{raw}': {exc}")
+            logger.warning(
+                f"Unexpected error during PharmGKB lookup for '{raw}': {exc}"
+            )
 
         return None
 
