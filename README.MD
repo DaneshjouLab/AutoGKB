@@ -21,7 +21,7 @@ This repository contains Python scripts for running and building a Pharmacogenom
 
 ## Dependencies
 We manage a few repos externally:
- - [PubMed Downloader](https://github.com/shloknatarajan/PubMed-Downloader): This repo is used to download all the markdown files from the PMIDs represented in `var_drug_ann.tsv` 
+ - [PubMed Downloader](https://github.com/shloknatarajan/PubMedDownloader): This repo is used to download all the markdown files from the PMIDs represented in `var_drug_ann.tsv` 
  - [Huggingface/AutoGKB](https://huggingface.co/datasets/shlokn/autogkb): This converts the annotations and article text into a dataset format for benchmarking
 
 ## System Overview
@@ -29,10 +29,10 @@ We manage a few repos externally:
 
 ## Downloading the data
 ```
-pixi run gdown —-id 1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9
-unzip autogkb-data.zip
+pixi run setup-repo
 
 OR
 
-pixi run setup-repo
+pixi run gdown —-id 1qtQWvi0x_k5_JofgrfsgkWzlIdb6isr9
+unzip autogkb-data.zip
 ```
