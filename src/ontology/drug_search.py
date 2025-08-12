@@ -58,6 +58,14 @@ def rxcui_to_pa_id(raw_input: str, rxcui: str) -> Optional[List[DrugSearchResult
     return []
 
 class DrugLookup(BaseModel):
+    """
+    Lookup class for drugs
+    Uses ClinPGx and RxNorm to find drug information
+    
+    Usage:
+    drug_lookup = DrugLookup()
+    drug_lookup.search("aspirin")
+    """
     data_path: str = "lookup_data/drugs/drugs.tsv"
     
     def __init__(self, data_path: str = "lookup_data/drugs/drugs.tsv", **data: Any) -> None:

@@ -41,6 +41,14 @@ def pgkb_rsid_search(rsid: str, threshold: float = 0.8, top_k: int = 1) -> Optio
 
 
 class VariantLookup(BaseModel):
+    """
+    Lookup class for variants
+    Uses PharmGKB (local and API access) to find variant information
+    
+    Usage:
+    variant_lookup = VariantLookup()
+    variant_lookup.search("rs12345")
+    """
     data_path: str = "lookup_data/variants/variants.tsv"
 
     def _clinpgx_variant_search(self, variant: str, threshold: float = 0.8, top_k: int = 1) -> Optional[List[VariantSearchResult]]:
