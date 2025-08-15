@@ -35,24 +35,7 @@ class AnnotationPipeline:
 
         logger.info(f"Created {annotation_count} Annotations")
 
-    def generate_final_structure(self):
-        return {
-            "pmcid": self.pmcid,
-            "title": self.title,
-            "study_parameters": self.study_parameters,
-            "annotations": self.annotations,
-        }
-
-    def run(self, save_path: str = "data/annotations"):
-        logger.info("Getting Study Parameters")
-        self.study_parameters = get_study_parameters(self.pmcid)
-
-        # Generate annotations using AnnotationTableGenerator
-        annotation_generator = AnnotationTableGenerator(self.pmcid)
-
-        logger.info("Generating Annotations")
-        self.annotations = annotation_generator.generate_table_json()
-
+    def add_citations(self):
         # Generate citations for annotations and study parameters
         if self.use_one_shot_citations:
             logger.info(
@@ -101,6 +84,26 @@ class AnnotationPipeline:
                 )
             )
 
+    def generate_final_structure(self):
+        return {
+            "pmcid": self.pmcid,
+            "title": self.title,
+            "study_parameters": self.study_parameters,
+            "annotations": self.annotations,
+        }
+
+    def run(self, save_path: str = "data/annotations"):
+        logger.info("Getting Study Parameters")
+        self.study_parameters = get_study_parameters(self.pmcid)
+
+        # Generate annotations using AnnotationTableGenerator
+        annotation_generator = AnnotationTableGenerator(self.pmcid)
+
+        logger.info("Generating Annotations")
+        self.annotations = annotation_generator.generate_table_json()
+
+        self.add_citations()
+
         self.print_info()
 
         final_structure = self.generate_final_structure()
@@ -144,7 +147,7 @@ def copy_markdown(pmcid: str):
 if __name__ == "__main__":
     pmcids = [
         "PMC5728534",
-        "PMC11730665",
+        # "PMC11730665",
         "PMC5712579",
         "PMC4737107",
         "PMC5749368",

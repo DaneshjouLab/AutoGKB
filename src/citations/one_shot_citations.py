@@ -15,7 +15,8 @@ rather than running a smaller model on each sentence.
 annotation_citation_prompt = """
 Pharmacogenomic Relationship:
 - Gene: {annotation.gene}
-- Polymorphism: {annotation.polymorphism}  
+- Polymorphism: {annotation.polymorphism.value}  
+- Drug: {annotation.drug.value}
 - Proposed Effect: {annotation.relationship_effect}
 - P-value: {annotation.p_value}
 
@@ -31,7 +32,8 @@ Keep in mind that headings are text/numbers preceded by hash symbols (#) and sho
 p_value_citation_prompt = """
 Pharmacogenomic Relationship:
 - Gene: {annotation.gene}
-- Polymorphism: {annotation.polymorphism}  
+- Polymorphism: {annotation.polymorphism.value}  
+- Drug: {annotation.drug.value}
 - Proposed Effect: {annotation.relationship_effect}
 - P-value: {annotation.p_value}
 
@@ -96,7 +98,7 @@ class OneShotCitations:
             citations = self._parse_citation_list(response_text)
 
             logger.info(
-                f"Found {len(citations)} citations for {annotation.gene}-{annotation.polymorphism}"
+                f"Found {len(citations)} citations for {annotation.gene}-{annotation.polymorphism.value}"
             )
             return citations[:3]  # Return top 3
 
@@ -136,7 +138,7 @@ class OneShotCitations:
             citations = self._parse_citation_list(response_text)
 
             logger.info(
-                f"Found {len(citations)} p-value citations for {annotation.gene}-{annotation.polymorphism}"
+                f"Found {len(citations)} p-value citations for {annotation.gene}-{annotation.polymorphism.value}"
             )
             return citations[:2]  # Return top 2 at most for p-value
 

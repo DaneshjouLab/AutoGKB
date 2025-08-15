@@ -58,30 +58,6 @@ def rxnorm_search(drug_name: str) -> Optional[DrugSearchResult]:
     )
 
 
-def rxcui_to_pa_id(raw_input: str, rxcui: str) -> Optional[List[DrugSearchResult]]:
-    """
-    Convert a RXCUI to a PharmGKB Accession Id using the 'RxNorm Identifiers' column in drugs.tsv.
-    """
-    local_path = "clinpgx_data/drugs/drugs.tsv"
-    df = pd.read_csv(local_path, sep="\t")
-    results = general_search(
-        df, rxcui, "RxNorm Identifiers", "PharmGKB Accession Id", threshold=0.8, top_k=1
-    )
-    # Convert to DrugSearchResult
-    if results:
-        return [
-            DrugSearchResult(
-                raw_input=raw_input,
-                id=result["PharmGKB Accession Id"],
-                name=result["Name"],
-                url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
-                score=result["score"],
-            )
-            for result in results
-        ]
-    return []
-
-
 class DrugLookup(BaseModel):
     """
     Lookup class for drugs
@@ -93,6 +69,7 @@ class DrugLookup(BaseModel):
     """
 
     data_path: str = "data/lookup_data/drugs/drugs.tsv"
+    raw_input: str = ""
 
     def _clinpgx_drug_name_search(
         self, drug_name: str, threshold: float = 0.8, top_k: int = 1
@@ -109,7 +86,7 @@ class DrugLookup(BaseModel):
         if results:
             return [
                 DrugSearchResult(
-                    raw_input=drug_name,
+                    raw_input=self.raw_input,
                     id=result["PharmGKB Accession Id"],
                     name=result["Name"],
                     url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
@@ -147,7 +124,7 @@ class DrugLookup(BaseModel):
         if results:
             return [
                 DrugSearchResult(
-                    raw_input=drug_name,
+                    raw_input=self.raw_input,
                     id=result["PharmGKB Accession Id"],
                     name=result["Name"],
                     url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
@@ -185,6 +162,28 @@ class DrugLookup(BaseModel):
             return all_results[:top_k]
 
         return []
+    
+    def rxcui_to_pa_id(self, rxcui: str) -> Optional[List[DrugSearchResult]]:
+        """
+        Convert a RXCUI to a PharmGKB Accession Id using the 'RxNorm Identifiers' column in drugs.tsv.
+        """
+        df = pd.read_csv(self.data_path, sep="\t")
+        results = general_search(
+            df, rxcui, "RxNorm Identifiers", "PharmGKB Accession Id", threshold=0.8, top_k=1
+        )
+        # Convert to DrugSearchResult
+        if results:
+            return [
+                DrugSearchResult(
+                    raw_input=self.raw_input,
+                    id=result["PharmGKB Accession Id"],
+                    name=result["Name"],
+                    url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
+                    score=result["score"],
+                )
+                for result in results
+            ]
+        return []
 
     def rxnorm_lookup(self, drug_name: str) -> Optional[List[DrugSearchResult]]:
         """
@@ -204,13 +203,14 @@ class DrugLookup(BaseModel):
             rxcui = rxnorm_result.id
 
         # Convert RxCUI to PharmGKB PA ID
-        pharmgkb_results = rxcui_to_pa_id(drug_name, rxcui)
+        pharmgkb_results = self.rxcui_to_pa_id(rxcui)
 
         return pharmgkb_results if pharmgkb_results else []
 
     def search(
         self, drug_name: str, threshold: float = 0.8, top_k: int = 1
     ) -> Optional[List[DrugSearchResult]]:
+        self.raw_input = drug_name
         # Try ClinPGx first
         results = self.clinpgx_lookup(drug_name, threshold=threshold, top_k=top_k)
         if results:
