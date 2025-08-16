@@ -51,17 +51,23 @@ class AnnotationPipeline:
                 f"Adding Citations to Study Parameters using OneShotCitations with model {self.citation_model}"
             )
             for field_name in self.study_parameters.__class__.model_fields:
-                if (
-                    field_name != "additional_resource_links"
-                ):  # Skip non-ParameterWithCitations field
+                if field_name != "additional_resource_links":
                     param_content = getattr(self.study_parameters, field_name)
-                    if hasattr(param_content, "content"):
-                        citations = (
-                            self.one_shot_citations.get_study_parameter_citations(
-                                field_name,
-                                param_content.content,
-                                model=self.citation_model,
-                            )
+                    
+                    if field_name in ["participant_info", "study_design", "study_results"]:
+                        if hasattr(param_content, "items"):
+                            for item in param_content.items:
+                                citations = self.one_shot_citations.get_study_parameter_item_citations(
+                                    field_name,
+                                    item.content,
+                                    model=self.citation_model,
+                                )
+                                item.citations = citations
+                    elif hasattr(param_content, "content"):
+                        citations = self.one_shot_citations.get_study_parameter_citations(
+                            field_name,
+                            param_content.content,
+                            model=self.citation_model,
                         )
                         param_content.citations = citations
         else:

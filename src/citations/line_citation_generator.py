@@ -607,10 +607,58 @@ class CitationGeneratorBase(ABC):
 
         return top_sentences
 
+    def _get_top_citations_for_parameter_item(
+        self, item_content: str, parameter_type: str, top_k: int = 2
+    ) -> List[str]:
+        """
+        Find the top K most relevant sentences for a specific study parameter item.
+
+        Args:
+            item_content: The content of the specific item to find citations for
+            parameter_type: The type of parameter (participant_info, study_design, etc.)
+            top_k: Number of top sentences to return
+
+        Returns:
+            List of top relevant sentences
+        """
+        candidate_sentences = self.sentences
+
+        logger.info(
+            f"Scoring all {len(candidate_sentences)} sentences for {parameter_type} item"
+        )
+
+        sentence_scores = []
+        for sentence in candidate_sentences:
+            score = self._score_sentence_for_study_param(
+                sentence, item_content, parameter_type
+            )
+            sentence_scores.append((sentence, score))
+
+        sentence_scores.sort(key=lambda x: x[1], reverse=True)
+        candidate_sentences = [item[0] for item in sentence_scores[: top_k * 3]]
+        filtered_sentences = self._remove_duplicates(candidate_sentences)
+        
+        top_sentences = filtered_sentences[:top_k]
+
+        if len(top_sentences) < top_k:
+            remaining_needed = top_k - len(top_sentences)
+            for sentence, score in sentence_scores[top_k * 3 :]:
+                is_duplicate = any(
+                    self._is_duplicate_citation(sentence, existing)
+                    for existing in top_sentences
+                )
+                if not is_duplicate:
+                    top_sentences.append(sentence)
+                    remaining_needed -= 1
+                    if remaining_needed == 0:
+                        break
+
+        return top_sentences
+
     def add_citations_to_study_parameters(self, study_parameters):
         """
         Add citations to study parameters by finding relevant sentences for each parameter.
-        Modifies the parameters to include citations nested within each parameter key.
+        Now handles item-level citations for participant_info, study_design, and study_results.
 
         Args:
             study_parameters: StudyParameters object
@@ -620,30 +668,22 @@ class CitationGeneratorBase(ABC):
         """
         logger.info("Adding citations to study parameters")
 
-        # Create a new study parameters object with citations
         updated_params = study_parameters.model_copy(deep=True)
 
-        # Add citations nested within each parameter
+        for field_name in ["participant_info", "study_design", "study_results"]:
+            param_obj = getattr(updated_params, field_name)
+            if hasattr(param_obj, 'items'):
+                for item in param_obj.items:
+                    item.citations = self._get_top_citations_for_parameter_item(
+                        item.content, field_name
+                    )
+
         updated_params.summary.citations = self._get_top_citations_for_parameter(
             study_parameters.summary.content, "summary"
         )
 
         updated_params.study_type.citations = self._get_top_citations_for_parameter(
             study_parameters.study_type.content, "study_type"
-        )
-
-        updated_params.participant_info.citations = (
-            self._get_top_citations_for_parameter(
-                study_parameters.participant_info.content, "participant_info"
-            )
-        )
-
-        updated_params.study_design.citations = self._get_top_citations_for_parameter(
-            study_parameters.study_design.content, "study_design"
-        )
-
-        updated_params.study_results.citations = self._get_top_citations_for_parameter(
-            study_parameters.study_results.content, "study_results"
         )
 
         updated_params.allele_frequency.citations = (
