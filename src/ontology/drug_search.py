@@ -162,14 +162,19 @@ class DrugLookup(BaseModel):
             return all_results[:top_k]
 
         return []
-    
+
     def rxcui_to_pa_id(self, rxcui: str) -> Optional[List[DrugSearchResult]]:
         """
         Convert a RXCUI to a PharmGKB Accession Id using the 'RxNorm Identifiers' column in drugs.tsv.
         """
         df = pd.read_csv(self.data_path, sep="\t")
         results = general_search(
-            df, rxcui, "RxNorm Identifiers", "PharmGKB Accession Id", threshold=0.8, top_k=1
+            df,
+            rxcui,
+            "RxNorm Identifiers",
+            "PharmGKB Accession Id",
+            threshold=0.8,
+            top_k=1,
         )
         # Convert to DrugSearchResult
         if results:

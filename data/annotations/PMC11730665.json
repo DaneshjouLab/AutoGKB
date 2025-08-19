@@ -3,11 +3,11 @@
     "title": "Comparative efficacy and safety of sitagliptin or gliclazide combined with metformin in treatment-naive patients with type 2 diabetes: A single-center, prospective, randomized, controlled, noninferiority study with genetic polymorphism analysis",
     "study_parameters": {
         "summary": {
-            "content": "The study aimed to compare the efficacy and safety of sitagliptin versus gliclazide, both combined with metformin, in treatment-naive patients with type 2 diabetes mellitus (T2DM) and glucotoxicity. Conducted as a single-center, randomized, controlled noninferiority trial, 129 participants were assigned to either sitagliptin plus metformin or gliclazide plus metformin for 12 weeks. Results demonstrated that sitagliptin was noninferior to gliclazide in reducing glycated hemoglobin levels, with sitagliptin achieving faster glycemic targets and greater weight reductions, while genetic polymorphisms significantly influenced drug efficacy, underscoring the importance of personalized medicine.",
+            "content": "The study aimed to compare the efficacy and safety of sitagliptin versus gliclazide, both combined with metformin, in treatment-naive patients with type 2 diabetes mellitus and glucotoxicity. Conducted as a single-center, randomized, controlled noninferiority trial, it involved 129 participants who received either sitagliptin or gliclazide for 4 weeks, followed by metformin monotherapy for 8 weeks. Results demonstrated that sitagliptin was noninferior to gliclazide in reducing glycated hemoglobin levels, with sitagliptin achieving faster glycemic targets and greater weight reductions, while genetic polymorphisms significantly influenced drug efficacy, underscoring the importance of personalized medicine.",
             "citations": [
-                "After 12 weeks, mean glycated hemoglobin reductions were 4.03% in the sitagliptin group and 4.13% in the gliclazide group, with a mean difference of \u22120.097 (95% confidence interval, \u22120.648 to 0.453), confirming noninferiority.",
+                "Sitagliptin combined with metformin is noninferior to gliclazide combined with metformin in treatment-naive patients with T2DM with glucotoxicity.",
                 "The sitagliptin group achieved faster glycemic targets, greater FPG and body weight reductions, and higher rates of FPG < 6.1 mmol/L (26.2% vs 5.7%; P = .012).",
-                "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin."
+                "Genetic polymorphisms significantly affect drug efficacy, highlighting the importance of personalized medicine."
             ]
         },
         "study_type": {
@@ -21,31 +21,32 @@
         "participant_info": {
             "content": [
                 "**Age Range:** 18 to 70 years",
-                "**Gender:** Study group: 47 males, 14 females; Control group: 33 males, 20 females",
-                "**Body Mass Index (BMI):** 18 to 30 kg/m\u00b2",
+                "**Gender (Study Group):** 47 males, 14 females",
+                "**Gender (Control Group):** 33 males, 20 females",
+                "**Body Mass Index (BMI) Range:** 18 to 30 kg/m\u00b2",
                 "**Ethnicity:** Not specified",
-                "**Pre-existing Conditions:** Newly diagnosed, treatment-naive individuals with type 2 diabetes mellitus (T2DM) with glucotoxicity (FPG \u2265 200 mg/dL and HbA1c \u2265 9.0%)",
-                "**Hepatic and Renal Function:** Normal hepatic and renal function (alanine aminotransferase and aspartate aminotransferase levels not exceeding 2.5\u00d7 the upper limit of normal, serum creatinine within normal limits)",
-                "**Other Characteristics:** Capable of adhering to the prescribed antidiabetic regimen, following dietary guidelines, and self-monitoring fasting and postprandial blood glucose levels."
+                "**Pre-existing Conditions:** Normal hepatic and renal function; no history of type 1 diabetes, severe ketosis, ketoacidosis, hyperosmolar hyperglycemic state, pancreatitis, pancreatic surgery, major systemic diseases, severe anemia, malignancies, psychiatric disorders, or allergies to sitagliptin or gliclazide",
+                "**Fasting Plasma Glucose (FPG):** \u2265 200 mg/dL (11.1 mmol/L)",
+                "**Glycated Hemoglobin (HbA1c):** \u2265 9.0%"
             ],
             "citations": [
                 "The inclusion criteria are given as follows: demonstrably understand the study objectives with voluntary participation, documented by signed informed consent; newly diagnosed, treatment-naive individuals with T2DM; the age range is between 18 and 70 years, with a body mass index (BMI) ranging from 18 to 30 kg/m\u00b2; normal hepatic and renal function, defined as alanine aminotransferase and aspartate aminotransferase levels not exceeding 2.5\u00d7 the upper limit of normal, serum creatinine within normal limits, and urine ketone bodies not exceeding (1+); fasting plasma glucose (FPG) levels \u2265 200 mg/dL (11.1 mmol/L) and glycated hemoglobin (HbA1c) \u2265 9.0%; and capability to adhere to the prescribed antidiabetic regimen, follow dietary guidelines, and self-monitor fasting and postprandial blood glucose levels.",
-                "## Table 1. Baseline data characteristics of patients in the 2 groups (x\u0304\u00b1s).",
-                "There were no statistically significant differences between the groups in terms of gender, age, height, weight, BMI, FPG, or HbA1c at baseline, indicating homogeneity across the cohorts (P > .05; Table [1]1)."
+                "Exclusion criteria included the following: a diagnosis of type 1 diabetes mellitus; hepatic or renal dysfunction indicated by serum creatinine levels above 1.2\u00d7 the upper limit of normal; previous use of hypoglycemic medications before screening; a history of severe ketosis, ketoacidosis, or hyperosmolar hyperglycemic state; ongoing treatment with corticosteroids, immunosuppressive agents, or cytotoxic drugs or a history of pancreatitis or pancreatic surgery; major systemic diseases such as cardiovascular, respiratory, gastrointestinal, neurological, endocrine, or genitourinary disorders, severe anemia, malignancies, psychiatric disorders, or other conditions likely to interfere with study results; pregnant or breastfeeding women; known allergies to sitagliptin or gliclazide; and poor compliance potential as assessed by the investigator, which may preclude completion of study requirements.",
+                "## Table 1. Baseline data characteristics of patients in the 2 groups (x\u0304\u00b1s)."
             ]
         },
         "study_design": {
             "content": [
-                "**Study design:** Single-center, prospective, randomized, controlled, noninferiority trial.",
-                "**Study population:** Treatment-naive patients with type 2 diabetes mellitus (T2DM) and glucotoxicity.",
-                "**Inclusion criteria:** Newly diagnosed T2DM, age 18-70 years, BMI 18-30 kg/m\u00b2, FPG \u2265 200 mg/dL, HbA1c \u2265 9.0%.",
-                "**Exclusion criteria:** Type 1 diabetes, hepatic or renal dysfunction, previous hypoglycemic medication use, major systemic diseases, pregnancy, or poor compliance potential.",
-                "**Sample size:** 129 participants randomized; 66 in the sitagliptin group and 63 in the gliclazide group.",
-                "**Intervention:** Sitagliptin plus metformin or gliclazide plus metformin for 4 weeks, followed by metformin monotherapy for 8 weeks.",
-                "**Primary endpoint:** Change in HbA1c from baseline to week 12.",
-                "**Secondary endpoints:** Changes in FPG, body weight, BMI, and achievement of specific glycemic targets.",
-                "**Follow-up protocol:** Regular assessments at baseline, 2, 4, 8, and 12 weeks, with weekly telephone contact for adverse event documentation.",
-                "**Genetic analysis:** Whole genome sequencing to assess the impact of genetic polymorphisms on drug efficacy and safety."
+                "**Study Design:** Single-center, prospective, randomized, controlled, noninferiority trial.",
+                "**Study Population:** Treatment-naive patients with type 2 diabetes mellitus (T2DM) and glucotoxicity.",
+                "**Sample Size:** 129 participants were randomized; 66 in the sitagliptin plus metformin group and 63 in the gliclazide plus metformin group.",
+                "**Inclusion Criteria:** Newly diagnosed, treatment-naive individuals with T2DM, aged 18-70 years, BMI 18-30 kg/m\u00b2, FPG \u2265 200 mg/dL, HbA1c \u2265 9.0%.",
+                "**Exclusion Criteria:** Type 1 diabetes, hepatic or renal dysfunction, prior hypoglycemic medication use, severe ketosis history, and poor compliance potential.",
+                "**Intervention:** Sitagliptin (100 mg daily) plus metformin (500 mg 3\u00d7 daily) for 4 weeks, followed by metformin monotherapy for 8 weeks.",
+                "**Control:** Gliclazide MR (2 mg daily) plus metformin (500 mg 3\u00d7 daily) for 4 weeks, followed by metformin monotherapy for 8 weeks.",
+                "**Follow-up Protocol:** Regular follow-ups at weeks 2, 4, 8, and 12, with weekly telephone contact to document hypoglycemic events and adverse effects.",
+                "**Primary Endpoint:** Change in HbA1c from baseline to week 12.",
+                "**Secondary Endpoints:** Changes in FPG, body weight, BMI, and achievement of specific glycemic targets."
             ],
             "citations": [
                 "This single-center, prospective, randomized, controlled, noninferiority study, which is of utmost importance, included treatment-naive patients with T2DM.",
@@ -56,32 +57,35 @@
         "study_results": {
             "content": [
                 "**Mean glycated hemoglobin reduction:** 4.03% in the sitagliptin group and 4.13% in the gliclazide group, with a mean difference of \u22120.097 (95% CI, \u22120.648 to 0.453), confirming noninferiority.",
-                "**FPG < 6.1 mmol/L achievement at 4 weeks:** 26.2% in the sitagliptin group vs. 5.7% in the gliclazide group (*P* = .012).",
-                "**Weight change after 12 weeks:** \u22120.53 \u00b1 1.85 kg in the sitagliptin group vs. 0.49 \u00b1 1.57 kg in the gliclazide group (*P* < .001).",
-                "**BMI change after 12 weeks:** \u22120.18 \u00b1 0.63 kg/m\u00b2 in the sitagliptin group vs. 0.18 \u00b1 0.59 kg/m\u00b2 in the gliclazide group (*P* < .001).",
-                "**Time to achieve target glucose:** 24.56 \u00b1 7.43 days in the sitagliptin group vs. 28.30 \u00b1 10.29 days in the gliclazide group (*P* = .027).",
-                "**Hypoglycemia incidence:** 6.6% in the sitagliptin group vs. 9.4% in the gliclazide group (*P* = .605).",
-                "**Genetic polymorphism impact:** DPP-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin."
+                "**FPG reduction at 4 weeks:** Significant in both groups (*P* < .05).",
+                "**FPG < 6.1 mmol/L achievement rate:** 26.2% in the sitagliptin group vs 5.7% in the gliclazide group (*P* = .012).",
+                "**Body weight reduction:** Greater in the sitagliptin group compared to the gliclazide group (*P* = .009).",
+                "**\u03b2-cell function and hypoglycemia incidence:** No significant differences between groups (*P* > .05).",
+                "**Genetic polymorphisms affecting sitagliptin efficacy:** DPP-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin."
             ],
             "citations": [
                 "After 12 weeks, mean glycated hemoglobin reductions were 4.03% in the sitagliptin group and 4.13% in the gliclazide group, with a mean difference of \u22120.097 (95% confidence interval, \u22120.648 to 0.453), confirming noninferiority.",
-                "At 4 weeks, the proportion of patients achieving FPG < 6.1 mmol/L was significantly higher in the study group (26.2% [16/61]) compared with the control group (5.7% [3/53]; *P* = .012; Fig. 2B).",
-                "The study group experienced a weight change of \u22120.53 \u00b1 1.85 kg, while the control group had a weight change of 0.49 \u00b1 1.57 kg (*P* < .001)."
+                "Both groups showed significant FPG reductions at 4 weeks (P < .05).",
+                "The sitagliptin group achieved faster glycemic targets, greater FPG and body weight reductions, and higher rates of FPG < 6.1 mmol/L (26.2% vs 5.7%; P = .012)."
             ]
         },
         "allele_frequency": {
             "content": [
-                "**rs2909451 TT genotype**: Lower efficacy with sitagliptin, with a median HbA1c improvement of 0.57 in the study group compared to 1.11 in the control group.",
-                "**rs4664443 GG genotype**: Lower efficacy with sitagliptin, with a median HbA1c improvement of 0.69 in the study group compared to 1.25 in the control group.",
-                "**rs3765467 AG genotype**: Better response to sitagliptin, with a median HbA1c improvement of 1.42 in the study group compared to 1.08 in the control group.",
-                "**rs2285676 CC genotype**: Better response to sitagliptin, with a median HbA1c improvement of 1.02 in the study group compared to 1.31 in the control group.",
-                "**rs1799853 TT genotype**: Slower metabolism of gliclazide, with a median HbA1c improvement of 0.70 in the study group compared to 1.07 in the control group.",
-                "**rs1057910 GG genotype**: Slower metabolism of gliclazide, with a median HbA1c improvement of 0.93 in the study group compared to 1.20 in the control group."
+                "**rs2909451 TT genotype frequency in study group:** Not explicitly provided.",
+                "**rs4664443 GG genotype frequency in study group:** Not explicitly provided.",
+                "**rs6923761 AA genotype frequency in study group:** Not explicitly provided.",
+                "**rs3765467 AG genotype frequency in study group:** Not explicitly provided.",
+                "**rs163184 GG allele frequency in study group:** Not explicitly provided.",
+                "**rs2285676 CC genotype frequency in study group:** Not explicitly provided.",
+                "**rs7754840 CG genotype frequency in study group:** Not explicitly provided.",
+                "**rs756992 AG genotype frequency in study group:** Not explicitly provided.",
+                "**rs1799853 TT genotype frequency in study group:** Not explicitly provided.",
+                "**rs1057910 GG genotype frequency in study group:** Not explicitly provided."
             ],
             "citations": [
                 "The analysis revealed significant effects of DPP-4 gene polymorphisms on the efficacy of sitagliptin.",
-                "Patients with the rs2909451 TT genotype in the study group (treated with sitagliptin) exhibited a median HbA1c improvement of 0.57 (interquartile range [IQR], 0.18\u20130.85), whereas the control group (treated with gliclazide) showed a median improvement of 1.11 (IQR, 0.86\u20131.35; *P*P < .001).",
-                "Similarly, for the rs4664443 GG genotype, the median HbA1c improvement in the study group was 0.69 (IQR, 0.48\u20130.91) compared with 1.25 (IQR, 1.00\u20131.46) in the control group (*P*P < .001), indicating lower efficacy of sitagliptin."
+                "Genotypes at target loci, including DPP-4, GLP1R, KCNQ1, KCNJ11, CDKAL1, CYP2C9, and CYP2C19, were ascertained for each participant.",
+                "## Table 6. Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
             ]
         },
         "additional_resource_links": [
@@ -106,8 +110,8 @@
                 "relationship_effect": "TT genotype associated with lower efficacy of sitagliptin (smaller HbA1c improvement) compared to gliclazide.",
                 "p_value": "<.001",
                 "citations": [
-                    "The analysis revealed significant effects of DPP-4 gene polymorphisms on the efficacy of sitagliptin. Patients with the rs2909451 TT genotype in the study group (treated with sitagliptin) exhibited a median HbA1c improvement of 0.57 (interquartile range [IQR], 0.18\u20130.85), whereas the control group (treated with gliclazide) showed a median improvement of 1.11 (IQR, 0.86\u20131.35; *P*P < .001).",
-                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin.",
+                    "The analysis revealed significant effects of DPP-4 gene polymorphisms on the efficacy of sitagliptin.",
+                    "Patients with the rs2909451 TT genotype in the study group (treated with sitagliptin) exhibited a median HbA1c improvement of 0.57 (interquartile range [IQR], 0.18\u20130.85), whereas the control group (treated with gliclazide) showed a median improvement of 1.11 (IQR, 0.86\u20131.35; *P*P < .001).",
                     "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
                 ],
                 "p_value_citations": []
@@ -126,7 +130,8 @@
                 "p_value": "<.001",
                 "citations": [
                     "Similarly, for the rs4664443 GG genotype, the median HbA1c improvement in the study group was 0.69 (IQR, 0.48\u20130.91) compared with 1.25 (IQR, 1.00\u20131.46) in the control group (*P*P < .001), indicating lower efficacy of sitagliptin.",
-                    "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin."
+                    "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes.",
+                    "Genetic polymorphisms, such as DPP-4 rs2909451 TT and rs4664443 GG, significantly influenced the efficacy of sitagliptin, highlighting the importance of personalized medicine."
                 ],
                 "p_value_citations": []
             },
@@ -145,7 +150,7 @@
                 "citations": [
                     "Regarding GLP1R gene polymorphisms, patients with the rs6923761 AA homozygous genotype in the study group had a median HbA1c improvement of 0.90 (IQR, 0.61\u20131.01), while the control group showed 1.41 (IQR, 1.12\u20131.45; *P*P = .010), suggesting reduced glycemic response to sitagliptin.",
                     "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes.",
-                    "These findings provide new insights into optimizing treatment strategies and support the integration of genetic information into clinical decision-making to develop personalized therapeutic approaches."
+                    "The analysis revealed significant effects of DPP-4 gene polymorphisms on the efficacy of sitagliptin. Patients with the rs2909451 TT genotype in the study group (treated with sitagliptin) exhibited a median HbA1c improvement of 0.57 (interquartile range [IQR], 0.18\u20130.85), whereas the control group (treated with gliclazide) showed a median improvement of 1.11 (IQR, 0.86\u20131.35; *P*P < .001). Similarly, for the rs4664443 GG genotype, the median HbA1c improvement in the study group was 0.69 (IQR, 0.48\u20130.91) compared with 1.25 (IQR, 1.00\u20131.46) in the control group (*P*P < .001), indicating lower efficacy of sitagliptin."
                 ],
                 "p_value_citations": []
             },
@@ -181,7 +186,7 @@
                 "p_value": "<.001",
                 "citations": [
                     "KCNQ1 gene polymorphisms also significantly affected treatment outcomes. Patients with the rs163184 GG allele in the study group had a median HbA1c improvement of 0.81 (IQR, 0.62\u20130.92) compared with 1.16 (IQR, 0.91\u20131.32) in the control group (*P*P < .001), suggesting lower responsiveness to sitagliptin and better response to gliclazide.",
-                    "## Table 6. Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes.",
+                    "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes.",
                     "The Manhattan plot shows the overall distribution of single-nucleotide polymorphism associations across the genome, highlighting key loci such as rs2909451, rs4664443, rs163184, and rs2285676, which are strongly associated with differential HbA1c improvements and underscore the genetic influence on therapeutic response (Fig. [6](#F6)6)."
                 ],
                 "p_value_citations": []
@@ -196,10 +201,11 @@
                     "value": "Sitagliptin",
                     "link": "https://www.clinpgx.org/chemical/PA164748978"
                 },
-                "relationship_effect": "CC genotype associated with more substantial insulin secretion capability and better response to sitagliptin (greater HbA1c improvement) compared to gliclazide.",
+                "relationship_effect": "CC genotype associated with more substantial insulin secretion capability and greater HbA1c improvement with sitagliptin compared to gliclazide.",
                 "p_value": "<.001",
                 "citations": [
                     "For KCNJ11 gene polymorphisms, patients with the rs2285676 CC genotype in the study group had a median HbA1c improvement of 1.02 (IQR, 0.90\u20131.22), while the control group showed 1.31 (IQR, 1.08\u20131.42; *P*P < .001), indicating more substantial insulin secretion capability with sitagliptin.",
+                    "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes.",
                     "Genetic analysis showed specific single-nucleotide polymorphisms affected drug efficacy: dipeptidyl peptidase-4 rs2909451 TT and rs4664443 GG genotypes showed lower efficacy with sitagliptin, while GLP1R rs3765467 AG and KCNJ11 rs2285676 CC genotypes responded better to sitagliptin."
                 ],
                 "p_value_citations": []
@@ -214,7 +220,7 @@
                     "value": "Sitagliptin",
                     "link": "https://www.clinpgx.org/chemical/PA164748978"
                 },
-                "relationship_effect": "CG genotype associated with more significant HbA1c reduction in the sitagliptin group compared to gliclazide.",
+                "relationship_effect": "CG genotype associated with greater HbA1c reduction in the sitagliptin group compared to gliclazide.",
                 "p_value": ".053",
                 "citations": [
                     "CDKAL1 gene variants, specifically rs7754840 CG and rs756992 AG, were associated with more significant HbA1c reductions in the study group.",
@@ -233,12 +239,12 @@
                     "value": "Sitagliptin",
                     "link": "https://www.clinpgx.org/chemical/PA164748978"
                 },
-                "relationship_effect": "AG genotype associated with more significant HbA1c reduction in the sitagliptin group compared to gliclazide.",
+                "relationship_effect": "AG genotype associated with greater HbA1c reduction in the sitagliptin group compared to gliclazide.",
                 "p_value": ".081",
                 "citations": [
                     "CDKAL1 gene variants, specifically rs7754840 CG and rs756992 AG, were associated with more significant HbA1c reductions in the study group.",
                     "Similarly, patients with the rs756992 AG genotype exhibited a median improvement of 1.43 (IQR, 1.28\u20131.52) in the study group compared with 1.10 (IQR, 0.87\u20131.18) in the control group (*P*P = .081).",
-                    "Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
+                    "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
                 ],
                 "p_value_citations": []
             },
@@ -252,12 +258,12 @@
                     "value": "Gliclazide",
                     "link": "https://www.clinpgx.org/chemical/PA10892"
                 },
-                "relationship_effect": "TT genotype associated with slower metabolism of gliclazide, impacting drug efficacy and adverse event rates; greater HbA1c improvement with gliclazide than sitagliptin.",
+                "relationship_effect": "TT genotype associated with slower metabolism of gliclazide, impacting drug efficacy and adverse event rates; greater HbA1c improvement with gliclazide compared to sitagliptin.",
                 "p_value": "<.001",
                 "citations": [
-                    "CYP2C9 gene polymorphisms also significantly influenced treatment efficacy. Patients with the rs1799853 TT genotype in the study group had a median HbA1c improvement of 0.70 (IQR, 0.69\u20130.72), while the control group showed 1.07 (IQR, 0.82\u20131.42; *P*P < .001).",
-                    "These findings suggest that rs1799853 and rs1057910 variants lead to slower metabolism of gliclazide, thereby impacting drug efficacy and adverse event rates (Table [6](#T6)6; Fig. [5](#F5)5).",
-                    "### Table 6. Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
+                    "CYP2C9 gene polymorphisms also significantly influenced treatment efficacy.",
+                    "Patients with the rs1799853 TT genotype in the study group had a median HbA1c improvement of 0.70 (IQR, 0.69\u20130.72), while the control group showed 1.07 (IQR, 0.82\u20131.42; *P*P < .001).",
+                    "## Table 6: Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
                 ],
                 "p_value_citations": []
             },
@@ -271,12 +277,12 @@
                     "value": "Gliclazide",
                     "link": "https://www.clinpgx.org/chemical/PA10892"
                 },
-                "relationship_effect": "GG genotype associated with slower metabolism of gliclazide, impacting drug efficacy and adverse event rates; greater HbA1c improvement with gliclazide than sitagliptin.",
+                "relationship_effect": "GG genotype associated with slower metabolism of gliclazide, impacting drug efficacy and adverse event rates; greater HbA1c improvement with gliclazide compared to sitagliptin.",
                 "p_value": ".464",
                 "citations": [
+                    "CYP2C9 gene polymorphisms also significantly influenced treatment efficacy.",
                     "For the rs1057910 GG genotype, the study group exhibited a median improvement of 0.93 (IQR, 0.66\u20131.21) compared with 1.20 (IQR, 0.89\u20131.30) in the control group (*P*P = .464).",
-                    "These findings suggest that rs1799853 and rs1057910 variants lead to slower metabolism of gliclazide, thereby impacting drug efficacy and adverse event rates (Table [6](#T6)6; Fig. [5](#F5)5).",
-                    "Comparison of the median (IQR) glycated hemoglobin improvement and P values between the study group and control group across different genotypes."
+                    "These findings suggest that rs1799853 and rs1057910 variants lead to slower metabolism of gliclazide, thereby impacting drug efficacy and adverse event rates (Table [6](#T6)6; Fig. [5](#F5)5)."
                 ],
                 "p_value_citations": []
             }

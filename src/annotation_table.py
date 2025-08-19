@@ -4,17 +4,22 @@ from src.inference import PMCIDGenerator
 from enum import Enum
 from src.ontology.term_lookup import TermLookup, TermType
 import loguru
+
 logger = loguru.logger
+
 
 class LinkedString(BaseModel):
     value: str
     link: str
 
+
 class AnnotationRelationship(BaseModel):
     """Model for a single pharmacogenomic relationship with links"""
 
     gene: str = Field(description="Gene name")
-    polymorphism: LinkedString = Field(description="Genetic polymorphism/variant (either a star allele or rsID)")
+    polymorphism: LinkedString = Field(
+        description="Genetic polymorphism/variant (either a star allele or rsID)"
+    )
     drug: LinkedString = Field(description="Drug name")
     relationship_effect: str = Field(description="Relationship or effect description")
     p_value: str = Field(description="Statistical p-value")
@@ -26,13 +31,18 @@ class AnnotationRelationship(BaseModel):
         description="List of supporting sentences from the text for the p-value",
     )
 
+
 class UnlinkedAnnotationRelationship(BaseModel):
     """Model for a single pharmacogenomic relationship"""
+
     gene: str = Field(description="Gene name")
-    polymorphism: str = Field(description="Genetic polymorphism/variant (either a star allele or rsID)")
+    polymorphism: str = Field(
+        description="Genetic polymorphism/variant (either a star allele or rsID)"
+    )
     drug: str = Field(description="Drug name")
     relationship_effect: str = Field(description="Relationship or effect description")
     p_value: str = Field(description="Statistical p-value")
+
 
 class UnlinkedAnnotationTable(BaseModel):
     """Model for the complete pharmacogenomic relationships table"""
@@ -41,6 +51,7 @@ class UnlinkedAnnotationTable(BaseModel):
         description="List of pharmacogenomic relationships"
     )
 
+
 class AnnotationTable(BaseModel):
     """Model for the complete pharmacogenomic relationships table"""
 
@@ -48,35 +59,59 @@ class AnnotationTable(BaseModel):
         description="List of pharmacogenomic relationships"
     )
 
-def add_links(unlinked_annotation: UnlinkedAnnotationRelationship) -> AnnotationRelationship:
+
+def add_links(
+    unlinked_annotation: UnlinkedAnnotationRelationship,
+) -> AnnotationRelationship:
     term_lookup = TermLookup()
-    
+
     # Search for polymorphism link with error handling
-    polymorphism_results = term_lookup.search(unlinked_annotation.polymorphism, TermType.POLYMORPHISM)
-    polymorphism_link = polymorphism_results[0].url if polymorphism_results and len(polymorphism_results) > 0 else "No Match Found"
-    
+    polymorphism_results = term_lookup.search(
+        unlinked_annotation.polymorphism, TermType.POLYMORPHISM
+    )
+    polymorphism_link = (
+        polymorphism_results[0].url
+        if polymorphism_results and len(polymorphism_results) > 0
+        else "No Match Found"
+    )
+
     # Search for drug link with error handling
     drug_results = term_lookup.search(unlinked_annotation.drug, TermType.DRUG)
-    drug_link = drug_results[0].url if drug_results and len(drug_results) > 0 else "No Match Found"
-    
+    drug_link = (
+        drug_results[0].url
+        if drug_results and len(drug_results) > 0
+        else "No Match Found"
+    )
+
     linked_annotation = AnnotationRelationship(
         gene=unlinked_annotation.gene,
-        polymorphism=LinkedString(value=unlinked_annotation.polymorphism, link=polymorphism_link),
+        polymorphism=LinkedString(
+            value=unlinked_annotation.polymorphism, link=polymorphism_link
+        ),
         drug=LinkedString(value=unlinked_annotation.drug, link=drug_link),
         relationship_effect=unlinked_annotation.relationship_effect,
         p_value=unlinked_annotation.p_value,
         citations=[],
-        p_value_citations=[]
+        p_value_citations=[],
     )
     logger.debug(f"Added drug link: {drug_link} to {unlinked_annotation.drug}")
-    logger.debug(f"Added polymorphism link: {polymorphism_link} to {unlinked_annotation.polymorphism}")
+    logger.debug(
+        f"Added polymorphism link: {polymorphism_link} to {unlinked_annotation.polymorphism}"
+    )
     return linked_annotation
 
-def add_links_to_table(unlinked_annotation_table: UnlinkedAnnotationTable) -> AnnotationTable:
+
+def add_links_to_table(
+    unlinked_annotation_table: UnlinkedAnnotationTable,
+) -> AnnotationTable:
     linked_annotation_table = AnnotationTable(
-        relationships=[add_links(rel) for rel in unlinked_annotation_table.relationships]
+        relationships=[
+            add_links(rel) for rel in unlinked_annotation_table.relationships
+        ]
     )
     return linked_annotation_table
+
+
 class AnnotationTableGenerator:
     """
     Generator for extracting pharmacogenomic relationships from PMC articles

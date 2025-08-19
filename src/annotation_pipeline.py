@@ -147,7 +147,7 @@ def copy_markdown(pmcid: str):
 if __name__ == "__main__":
     pmcids = [
         "PMC5728534",
-        # "PMC11730665",
+        "PMC11730665",
         "PMC5712579",
         "PMC4737107",
         "PMC5749368",
