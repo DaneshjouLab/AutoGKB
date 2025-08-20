@@ -637,7 +637,7 @@ class CitationGeneratorBase(ABC):
         sentence_scores.sort(key=lambda x: x[1], reverse=True)
         candidate_sentences = [item[0] for item in sentence_scores[: top_k * 3]]
         filtered_sentences = self._remove_duplicates(candidate_sentences)
-        
+
         top_sentences = filtered_sentences[:top_k]
 
         if len(top_sentences) < top_k:
@@ -672,7 +672,7 @@ class CitationGeneratorBase(ABC):
 
         for field_name in ["participant_info", "study_design", "study_results"]:
             param_obj = getattr(updated_params, field_name)
-            if hasattr(param_obj, 'items'):
+            if hasattr(param_obj, "items"):
                 for item in param_obj.items:
                     item.citations = self._get_top_citations_for_parameter_item(
                         item.content, field_name

@@ -53,8 +53,12 @@ class AnnotationPipeline:
             for field_name in self.study_parameters.__class__.model_fields:
                 if field_name != "additional_resource_links":
                     param_content = getattr(self.study_parameters, field_name)
-                    
-                    if field_name in ["participant_info", "study_design", "study_results"]:
+
+                    if field_name in [
+                        "participant_info",
+                        "study_design",
+                        "study_results",
+                    ]:
                         if hasattr(param_content, "items"):
                             for item in param_content.items:
                                 citations = self.one_shot_citations.get_study_parameter_item_citations(
@@ -64,10 +68,12 @@ class AnnotationPipeline:
                                 )
                                 item.citations = citations
                     elif hasattr(param_content, "content"):
-                        citations = self.one_shot_citations.get_study_parameter_citations(
-                            field_name,
-                            param_content.content,
-                            model=self.citation_model,
+                        citations = (
+                            self.one_shot_citations.get_study_parameter_citations(
+                                field_name,
+                                param_content.content,
+                                model=self.citation_model,
+                            )
                         )
                         param_content.citations = citations
         else:

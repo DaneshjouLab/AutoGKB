@@ -16,14 +16,14 @@ class ParameterWithCitations(BaseModel):
 
 class ParameterItemWithCitations(BaseModel):
     """Model for a single parameter item with its own citations"""
-    
+
     content: str
     citations: Optional[List[str]] = None
 
 
 class ParameterWithItemCitations(BaseModel):
     """Model for a parameter containing multiple items, each with their own citations"""
-    
+
     items: List[ParameterItemWithCitations]
 
 
@@ -161,15 +161,14 @@ class StudyParametersGenerator:
         logger.info(f"Extracting study parameters for {self.pmcid}")
 
         participant_items = [
-            ParameterItemWithCitations(content=item) 
+            ParameterItemWithCitations(content=item)
             for item in self.get_participant_info()
         ]
         study_design_items = [
-            ParameterItemWithCitations(content=item) 
-            for item in self.get_study_design()
+            ParameterItemWithCitations(content=item) for item in self.get_study_design()
         ]
         study_results_items = [
-            ParameterItemWithCitations(content=item) 
+            ParameterItemWithCitations(content=item)
             for item in self.get_study_results()
         ]
 
@@ -214,7 +213,7 @@ def test_study_parameters():
         print(f"   {study_parameters.study_type.content}")
 
         print(f"\n👥 PARTICIPANT INFO:")
-        if hasattr(study_parameters.participant_info, 'items'):
+        if hasattr(study_parameters.participant_info, "items"):
             for i, item in enumerate(study_parameters.participant_info.items, 1):
                 print(f"   • {item.content}")
                 if item.citations:
@@ -228,7 +227,7 @@ def test_study_parameters():
                 print(f"   {study_parameters.participant_info.content}")
 
         print(f"\n🔬 STUDY DESIGN:")
-        if hasattr(study_parameters.study_design, 'items'):
+        if hasattr(study_parameters.study_design, "items"):
             for i, item in enumerate(study_parameters.study_design.items, 1):
                 print(f"   • {item.content}")
                 if item.citations:
@@ -242,7 +241,7 @@ def test_study_parameters():
                 print(f"   {study_parameters.study_design.content}")
 
         print(f"\n📊 STUDY RESULTS:")
-        if hasattr(study_parameters.study_results, 'items'):
+        if hasattr(study_parameters.study_results, "items"):
             for i, item in enumerate(study_parameters.study_results.items, 1):
                 print(f"   • {item.content}")
                 if item.citations:
