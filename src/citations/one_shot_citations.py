@@ -186,6 +186,51 @@ class OneShotCitations:
             logger.error(f"Error getting citations for parameter: {e}")
             return []
 
+    def get_study_parameter_item_citations(
+        self, parameter_type: str, item_content: str, model: str = "openai/gpt-4.1"
+    ) -> List[str]:
+        """
+        Get citations for a single study parameter item using the whole article text.
+
+        Args:
+            parameter_type: The type of parameter (participant_info, study_design, etc.)
+            item_content: The content of the specific item to find citations for
+            model: The language model to use for citation generation
+
+        Returns:
+            List of top 2 most relevant sentences for this specific item
+        """
+        prompt = f"""
+Parameter Type: {parameter_type}
+Specific Item Content: {item_content}
+
+From the following article text, find the top 2 sentences from the article that are most relevant to and support this specific item content.
+Article text:
+"{self.article_text}"
+
+If a table provides the support warranting of being in the top 2, return the table header (## Table X: ..., etc.) as your sentence.
+Output the exact sentences from the article text in a numbered list with each sentence on a new line. No other text.
+Keep in mind that headings are text/numbers preceded by hash symbols (#) and should not be included in citations unless referencing the table. Only include content sentences.
+"""
+
+        try:
+            completion_kwargs = {
+                "model": model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.1,
+            }
+
+            response = completion(**completion_kwargs)
+            response_text = response.choices[0].message.content.strip()
+
+            citations = self._parse_citation_list(response_text)
+            logger.info(f"Found {len(citations)} citations for {parameter_type} item")
+            return citations[:2]  # Return top 2 for individual items
+
+        except Exception as e:
+            logger.error(f"Error getting citations for parameter item: {e}")
+            return []
+
     def _parse_citation_list(self, response_text: str) -> List[str]:
         """
         Parse the citation list from the model response.
