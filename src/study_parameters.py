@@ -14,6 +14,19 @@ class ParameterWithCitations(BaseModel):
     citations: Optional[List[str]] = None
 
 
+class ParameterItemWithCitations(BaseModel):
+    """Model for a single parameter item with its own citations"""
+    
+    content: str
+    citations: Optional[List[str]] = None
+
+
+class ParameterWithItemCitations(BaseModel):
+    """Model for a parameter containing multiple items, each with their own citations"""
+    
+    items: List[ParameterItemWithCitations]
+
+
 def parse_bullets_to_list(text: str) -> List[str]:
     """Parse bulleted text into a list of strings."""
     if not text or not text.strip():
@@ -43,9 +56,9 @@ def parse_bullets_to_list(text: str) -> List[str]:
 class StudyParameters(BaseModel):
     summary: ParameterWithCitations
     study_type: ParameterWithCitations
-    participant_info: ParameterWithCitations
-    study_design: ParameterWithCitations
-    study_results: ParameterWithCitations
+    participant_info: ParameterWithItemCitations
+    study_design: ParameterWithItemCitations
+    study_results: ParameterWithItemCitations
     allele_frequency: ParameterWithCitations
     additional_resource_links: List[str]
 
@@ -147,14 +160,25 @@ class StudyParametersGenerator:
         """Generate all study parameters using separate questions."""
         logger.info(f"Extracting study parameters for {self.pmcid}")
 
+        participant_items = [
+            ParameterItemWithCitations(content=item) 
+            for item in self.get_participant_info()
+        ]
+        study_design_items = [
+            ParameterItemWithCitations(content=item) 
+            for item in self.get_study_design()
+        ]
+        study_results_items = [
+            ParameterItemWithCitations(content=item) 
+            for item in self.get_study_results()
+        ]
+
         return StudyParameters(
             summary=ParameterWithCitations(content=self.get_summary()),
             study_type=ParameterWithCitations(content=self.get_study_type()),
-            participant_info=ParameterWithCitations(
-                content=self.get_participant_info()
-            ),
-            study_design=ParameterWithCitations(content=self.get_study_design()),
-            study_results=ParameterWithCitations(content=self.get_study_results()),
+            participant_info=ParameterWithItemCitations(items=participant_items),
+            study_design=ParameterWithItemCitations(items=study_design_items),
+            study_results=ParameterWithItemCitations(items=study_results_items),
             allele_frequency=ParameterWithCitations(
                 content=self.get_allele_frequency()
             ),
@@ -190,25 +214,46 @@ def test_study_parameters():
         print(f"   {study_parameters.study_type.content}")
 
         print(f"\n👥 PARTICIPANT INFO:")
-        if isinstance(study_parameters.participant_info.content, list):
-            for i, item in enumerate(study_parameters.participant_info.content, 1):
-                print(f"   • {item}")
+        if hasattr(study_parameters.participant_info, 'items'):
+            for i, item in enumerate(study_parameters.participant_info.items, 1):
+                print(f"   • {item.content}")
+                if item.citations:
+                    for j, citation in enumerate(item.citations, 1):
+                        print(f"     Citation {j}: {citation[:100]}...")
         else:
-            print(f"   {study_parameters.participant_info.content}")
+            if isinstance(study_parameters.participant_info.content, list):
+                for i, item in enumerate(study_parameters.participant_info.content, 1):
+                    print(f"   • {item}")
+            else:
+                print(f"   {study_parameters.participant_info.content}")
 
         print(f"\n🔬 STUDY DESIGN:")
-        if isinstance(study_parameters.study_design.content, list):
-            for i, item in enumerate(study_parameters.study_design.content, 1):
-                print(f"   • {item}")
+        if hasattr(study_parameters.study_design, 'items'):
+            for i, item in enumerate(study_parameters.study_design.items, 1):
+                print(f"   • {item.content}")
+                if item.citations:
+                    for j, citation in enumerate(item.citations, 1):
+                        print(f"     Citation {j}: {citation[:100]}...")
         else:
-            print(f"   {study_parameters.study_design.content}")
+            if isinstance(study_parameters.study_design.content, list):
+                for i, item in enumerate(study_parameters.study_design.content, 1):
+                    print(f"   • {item}")
+            else:
+                print(f"   {study_parameters.study_design.content}")
 
         print(f"\n📊 STUDY RESULTS:")
-        if isinstance(study_parameters.study_results.content, list):
-            for i, item in enumerate(study_parameters.study_results.content, 1):
-                print(f"   • {item}")
+        if hasattr(study_parameters.study_results, 'items'):
+            for i, item in enumerate(study_parameters.study_results.items, 1):
+                print(f"   • {item.content}")
+                if item.citations:
+                    for j, citation in enumerate(item.citations, 1):
+                        print(f"     Citation {j}: {citation[:100]}...")
         else:
-            print(f"   {study_parameters.study_results.content}")
+            if isinstance(study_parameters.study_results.content, list):
+                for i, item in enumerate(study_parameters.study_results.content, 1):
+                    print(f"   • {item}")
+            else:
+                print(f"   {study_parameters.study_results.content}")
 
         print(f"\n🧬 ALLELE FREQUENCY:")
         if isinstance(study_parameters.allele_frequency.content, list):
