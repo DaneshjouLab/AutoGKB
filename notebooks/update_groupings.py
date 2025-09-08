@@ -142,7 +142,14 @@ def main():
     var_pheno_ann = pd.read_csv(f"{data_dir}/var_pheno_ann.tsv", sep='\t', low_memory=False)
     var_fa_ann = pd.read_csv(f"{data_dir}/var_fa_ann.tsv", sep='\t', low_memory=False)
     
-    # Combine all variant annotation dataframes
+    # Keep separate dataframes for different annotation types
+    annotation_types = {
+        'var_drug_ann': var_drug_ann,
+        'var_pheno_ann': var_pheno_ann,
+        'var_fa_ann': var_fa_ann
+    }
+    
+    # Combine all variant annotation dataframes for PMID extraction
     all_var_ann = pd.concat([var_drug_ann, var_pheno_ann, var_fa_ann], ignore_index=True)
     
     # Create mapping from provided aligned lists
@@ -176,30 +183,34 @@ def main():
             'pmcid': pmcid,
             'title': None,
             'study_parameters': {},
-            'variant_annotations': []
+            'var_drug_ann': [],
+            'var_pheno_ann': [],
+            'var_fa_ann': []
         }
     
-    print("Processing variant annotations...")
+    print("Processing variant annotations by type...")
     
-    # Group variant annotations by PMID (only for target PMIDs)
-    for _, row in all_var_ann.iterrows():
-        pmid = int(row['PMID']) if pd.notna(row['PMID']) else None
-        if pmid and pmid in all_pmids:  # Only process PMIDs in our target set
-            # Find the corresponding PMCID
-            corresponding_pmcid = None
-            for pmcid in provided_pmcids:
-                if pmcid_to_pmid_map.get(pmcid) == pmid:
-                    corresponding_pmcid = pmcid
-                    break
-            
-            if corresponding_pmcid:
-                # Create variant annotation entry
-                var_ann_entry = {}
-                for col in row.index:
-                    if pd.notna(row[col]):
-                        var_ann_entry[col] = row[col]
+    # Process each annotation type separately
+    for ann_type, df in annotation_types.items():
+        print(f"Processing {ann_type}...")
+        for _, row in df.iterrows():
+            pmid = int(row['PMID']) if pd.notna(row['PMID']) else None
+            if pmid and pmid in all_pmids:  # Only process PMIDs in our target set
+                # Find the corresponding PMCID
+                corresponding_pmcid = None
+                for pmcid in provided_pmcids:
+                    if pmcid_to_pmid_map.get(pmcid) == pmid:
+                        corresponding_pmcid = pmcid
+                        break
                 
-                pmcid_to_data[corresponding_pmcid]['variant_annotations'].append(var_ann_entry)
+                if corresponding_pmcid:
+                    # Create variant annotation entry
+                    var_ann_entry = {}
+                    for col in row.index:
+                        if pd.notna(row[col]):
+                            var_ann_entry[col] = row[col]
+                    
+                    pmcid_to_data[corresponding_pmcid][ann_type].append(var_ann_entry)
     
     print("Processing study parameters...")
     
@@ -216,11 +227,15 @@ def main():
     
     # Link study parameters to PMCIDs through variant annotation IDs
     for pmcid, data in pmcid_to_data.items():
-        for var_ann in data['variant_annotations']:
-            var_ann_id = var_ann.get('Variant Annotation ID')
-            if var_ann_id in study_params_dict:
-                data['study_parameters'] = study_params_dict[var_ann_id]
-                break  # Use the first matching study parameter
+        # Check all annotation types for matching variant annotation IDs
+        for ann_type in ['var_drug_ann', 'var_pheno_ann', 'var_fa_ann']:
+            for var_ann in data[ann_type]:
+                var_ann_id = var_ann.get('Variant Annotation ID')
+                if var_ann_id in study_params_dict:
+                    data['study_parameters'] = study_params_dict[var_ann_id]
+                    break  # Use the first matching study parameter
+            if data['study_parameters']:  # If we found study parameters, stop looking
+                break
     
     print("Loading PMCID cache...")
     pmcid_cache = load_pmcid_cache(cache_file)
@@ -278,7 +293,7 @@ def main():
     for pmcid in provided_pmcids:
         data = pmcid_to_data[pmcid]
         annotations_by_pmcid[pmcid] = data  # Use PMCID as key
-        if data['variant_annotations']:
+        if data['var_drug_ann'] or data['var_pheno_ann'] or data['var_fa_ann']:
             entries_with_data += 1
         else:
             entries_without_data += 1
@@ -287,10 +302,10 @@ def main():
     print(f"Entries without variant annotations (included): {entries_without_data}")
     
     # Save new_annotations_by_pmcid.json
-    with open(f"{data_dir}/new_annotations_by_pmcid.json", 'w') as f:
+    with open(f"{data_dir}/provided_annotations_by_pmcid.json", 'w') as f:
         json.dump(annotations_by_pmcid, f, indent=2)
     
-    print(f"Created new_annotations_by_pmcid.json with {len(annotations_by_pmcid)} entries")
+    print(f"Created provided_annotations_by_pmcid.json with {len(annotations_by_pmcid)} entries")
     print("Done!")
 
 if __name__ == "__main__":
