@@ -53,101 +53,105 @@ class PMIDConverter:
         
         return mapping
     
-    def _convert_batch(self, pmids: List[str]) -> Dict[str, str]:
+    def _convert_batch(self, pmids: List[str]) -> tuple[Dict[str, str], Set[str]]:
         """
         Convert a single batch of PMIDs to PMCIDs (internal method)
-        
+
         Args:
             pmids: List of PMIDs (max 200)
-            
+
         Returns:
-            Dictionary mapping PMID -> PMCID
+            Tuple of (Dictionary mapping PMID -> PMCID, Set of PMIDs not found)
         """
         if len(pmids) > self.BATCH_SIZE:
             raise ValueError(f"Batch size exceeds maximum of {self.BATCH_SIZE}")
-        
+
         params = self._build_params(pmids)
-        
+
         try:
             response = self.session.get(self.BASE_URL, params=params, timeout=30)
             response.raise_for_status()
             data = response.json()
-            return self._parse_response(data)
-            
+            mappings = self._parse_response(data)
+
+            # Identify PMIDs that were not found
+            not_found = set(pmids) - set(mappings.keys())
+            return mappings, not_found
+
         except requests.exceptions.RequestException as e:
             print(f"Error converting batch: {e}")
-            return {}
+            return {}, set()
     
     def convert(self, pmids: List[str], show_progress: bool = True) -> Dict[str, str]:
         """
         Convert a list of PMIDs to PMCIDs (in-memory only)
-        
+
         Args:
             pmids: List of PMIDs to convert
             show_progress: Whether to print progress updates
-            
+
         Returns:
             Dictionary mapping PMID -> PMCID for all successfully converted IDs
         """
         # Remove duplicates while preserving order
         unique_pmids = list(dict.fromkeys(str(p) for p in pmids))
-        
+
         # Split into batches
         batches = [
-            unique_pmids[i:i + self.BATCH_SIZE] 
+            unique_pmids[i:i + self.BATCH_SIZE]
             for i in range(0, len(unique_pmids), self.BATCH_SIZE)
         ]
-        
+
         all_mappings = {}
         total_batches = len(batches)
-        
+
         if show_progress:
             print(f"Converting {len(unique_pmids)} PMIDs in {total_batches} batches...")
-        
+
         for idx, batch in enumerate(batches, 1):
-            mappings = self._convert_batch(batch)
+            mappings, not_found = self._convert_batch(batch)
             all_mappings.update(mappings)
-            
+
             if show_progress:
                 converted = len(mappings)
                 print(f"Batch {idx}/{total_batches}")
-            
+
             # Rate limiting (except for last batch)
             if idx < total_batches:
                 time.sleep(self.RATE_LIMIT_DELAY)
-        
+
         if show_progress:
             success_rate = len(all_mappings) / len(unique_pmids) * 100 if unique_pmids else 0
             print(f"\nTotal: {len(all_mappings)}/{len(unique_pmids)} converted ({success_rate:.1f}%)")
-        
+
         return all_mappings
     
-    def convert_from_file(self, input_file: Path, output_file: Path, 
+    def convert_from_file(self, input_file: Path, output_file: Path,
                          override: bool = False, show_progress: bool = True) -> Dict[str, str]:
         """
         Convert PMIDs from an input file and save to output JSON file
-        
+
         Args:
             input_file: Path to file containing PMIDs (one per line, or JSON list)
             output_file: Path to output JSON file for mappings
-            override: If False, skip already converted PMIDs in output_file
+            override: If False, skip already converted PMIDs (including those not found)
             show_progress: Whether to print progress updates
-            
+
         Returns:
-            Dictionary mapping PMID -> PMCID for all IDs
+            Dictionary mapping PMID -> PMCID for all IDs (not found PMIDs map to None)
         """
         input_file = Path(input_file)
         output_file = Path(output_file)
-        
+
         # Read PMIDs from input file
         if show_progress:
             print(f"Reading PMIDs from {input_file}...")
-        
+
         pmids = self._read_pmids_from_file(input_file)
-        
+
         if show_progress:
             print(f"Found {len(pmids)} PMIDs in input file")
-        
+
         # Load existing mappings if file exists and not overriding
         existing_mappings = {}
         if not override and output_file.exists():
@@ -158,59 +162,67 @@ class PMIDConverter:
                     print(f"Loaded {len(existing_mappings)} existing mappings from {output_file}")
             except (json.JSONDecodeError, IOError) as e:
                 print(f"Warning: Could not load existing file: {e}")
-        
-        # Remove duplicates and filter out already converted PMIDs
+
+        # Remove duplicates and filter out already converted PMIDs (including those marked as not found)
         unique_pmids = list(dict.fromkeys(str(p) for p in pmids))
-        
+
         if not override and existing_mappings:
             pmids_to_convert = [p for p in unique_pmids if p not in existing_mappings]
             skipped = len(unique_pmids) - len(pmids_to_convert)
             if show_progress and skipped > 0:
-                print(f"Skipping {skipped} already converted PMIDs")
+                print(f"Skipping {skipped} already processed PMIDs")
         else:
             pmids_to_convert = unique_pmids
-        
+
         # If nothing to convert, return existing mappings
         if not pmids_to_convert:
             if show_progress:
-                print("All PMIDs already converted!")
+                print("All PMIDs already processed!")
             return existing_mappings
-        
+
         # Split into batches
         batches = [
-            pmids_to_convert[i:i + self.BATCH_SIZE] 
+            pmids_to_convert[i:i + self.BATCH_SIZE]
             for i in range(0, len(pmids_to_convert), self.BATCH_SIZE)
         ]
-        
+
         all_mappings = existing_mappings.copy()
         total_batches = len(batches)
         total_converted = 0
+        total_not_found = 0
 
         if show_progress:
             print(f"Converting {len(pmids_to_convert)} new PMIDs in {total_batches} batches...")
 
         for idx, batch in enumerate(batches, 1):
-            mappings = self._convert_batch(batch)
+            mappings, not_found = self._convert_batch(batch)
             all_mappings.update(mappings)
+
+            # Store not found PMIDs with None value
+            for pmid in not_found:
+                all_mappings[pmid] = None
+
             total_converted += len(mappings)
+            total_not_found += len(not_found)
 
             # Save incrementally after each batch
             self._save_mappings(all_mappings, output_file)
 
             if show_progress:
-                print(f"Batch {idx}/{total_batches}: {total_converted}/{len(pmids_to_convert)} converted")
+                print(f"Batch {idx}/{total_batches}: {total_converted} converted, {total_not_found} not found")
 
             # Rate limiting (except for last batch)
             if idx < total_batches:
                 time.sleep(self.RATE_LIMIT_DELAY)
-        
+
         if show_progress:
-            new_conversions = len(all_mappings) - len(existing_mappings)
-            success_rate = new_conversions / len(pmids_to_convert) * 100 if pmids_to_convert else 0
-            print(f"\nNew conversions: {new_conversions}/{len(pmids_to_convert)} ({success_rate:.1f}%)")
+            new_conversions = total_converted
+            new_not_found = total_not_found
+            print(f"\nNew conversions: {new_conversions}/{len(pmids_to_convert)}")
+            print(f"Not found: {new_not_found}/{len(pmids_to_convert)}")
             print(f"Total mappings: {len(all_mappings)}")
             print(f"Results saved to {output_file}")
-        
+
         return all_mappings
     
     def _read_pmids_from_file(self, input_file: Path) -> List[str]:
