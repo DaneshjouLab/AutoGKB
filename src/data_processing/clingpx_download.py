@@ -3,24 +3,30 @@ import zipfile
 import os
 from pathlib import Path
 
-def download_variant_annotations(base_dir='data/') -> Path:
+def download_variant_annotations(base_dir='data/', override=False) -> Path:
     """
     Download a zip file from a URL and extract its contents.
-    
+
     Args:
-        url: URL of the zip file to download
         base_dir: Base directory where files will be downloaded and extracted (default: current directory)
+        override: If True, download and extract even if files already exist (default: False)
     """
     url = "https://api.clinpgx.org/v1/download/file/data/variantAnnotations.zip"
 
     # Create paths
     download_path = os.path.join(base_dir, 'variantAnnotations.zip')
     extract_to = os.path.join(base_dir, 'variantAnnotations')
-    
+
+    # Check if files already exist
+    if os.path.exists(extract_to) and os.listdir(extract_to) and not override:
+        print(f"Files already exist in {extract_to}. Skipping download.")
+        print(f"Use override=True to re-download.")
+        return Path(extract_to)
+
     # Create directories if they don't exist
     Path(base_dir).mkdir(parents=True, exist_ok=True)
     Path(extract_to).mkdir(parents=True, exist_ok=True)
-    
+
     print(f"Downloading file from {url}...")
     
     # Download the file
