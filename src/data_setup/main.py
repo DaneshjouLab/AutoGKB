@@ -5,12 +5,14 @@
 """
 
 from pathlib import Path
-from typing import List, Set
+from typing import Set
 from .clingpx_download import download_variant_annotations
 from .pmcid_converter import PMIDConverter
 import json
+import math
 import pandas as pd
 import numpy as np
+from src.utils import get_article_text, get_title
 
 
 def download_latest_data(data_dir: Path, override=False) -> Path:
@@ -76,9 +78,29 @@ def _normalize_id_series(series: pd.Series) -> pd.Series:
     return s
 
 
-def _df_records_without_nan(df: pd.DataFrame) -> list[dict]:
-    """Convert a DataFrame to records with NaN -> None to keep valid JSON."""
-    return df.where(pd.notnull(df), None).to_dict("records")
+def _clean_nans(obj):
+    """Recursively replace NaN/Inf/pandas NA with None in nested structures."""
+    # Handle dict
+    if isinstance(obj, dict):
+        return {k: _clean_nans(v) for k, v in obj.items()}
+    # Handle list/tuple
+    if isinstance(obj, (list, tuple)):
+        return [_clean_nans(v) for v in obj]
+    # Preserve None
+    if obj is None:
+        return None
+    # Handle pandas NA / numpy NaN / inf
+    try:
+        # pandas.isna handles numpy/pandas dtypes
+        if pd.isna(obj):
+            return None
+    except Exception:
+        pass
+    # Also explicitly guard float nan/inf
+    if isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            return None
+    return obj
 
 
 def create_pmcid_groupings(annotation_dir: Path, pmcid_mapping: Path, output_dir: Path) -> Path:
@@ -146,21 +168,33 @@ def create_pmcid_groupings(annotation_dir: Path, pmcid_mapping: Path, output_dir
             study_params["Variant Annotation ID_norm"].isin(list(variant_annotation_ids))
         ].copy()
 
+        # Try to load study title from local markdown, if available
+        title = None
+        try:
+            article_md = get_article_text(pmcid=pmcid, remove_references=False)
+            title = get_title(article_md)
+        except Exception:
+            # Title is optional; skip if article markdown is unavailable
+            title = None
+
         # Create entry for this PMCID
         entry = {
             "pmid": pmid_str,
-            "study_parameters": _df_records_without_nan(study_params_for_pmid),
-            "var_drug_ann": _df_records_without_nan(drug_anns),
-            "var_pheno_ann": _df_records_without_nan(pheno_anns),
-            "var_fa_ann": _df_records_without_nan(fa_anns),
+            "title": title,
+            "study_parameters": study_params_for_pmid.to_dict("records"),
+            "var_drug_ann": drug_anns.to_dict("records"),
+            "var_pheno_ann": pheno_anns.to_dict("records"),
+            "var_fa_ann": fa_anns.to_dict("records"),
         }
 
         annotations_by_pmcid[pmcid] = entry
 
     # Save to JSON file
     output_file = output_dir / "annotations_by_pmcid.json"
+    # Deep-clean any remaining NaN/Inf just before serialization
+    cleaned = _clean_nans(annotations_by_pmcid)
     with open(output_file, 'w') as f:
-        json.dump(annotations_by_pmcid, f, indent=2)
+        json.dump(cleaned, f, indent=2, allow_nan=False)
 
     print(f"Created {len(annotations_by_pmcid)} PMCID groupings in {output_file}")
     return output_file
