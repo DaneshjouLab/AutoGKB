@@ -135,7 +135,7 @@ class PMIDConverter:
         return all_mappings
     
     def convert_from_file(self, input_file_path: Path, output_path: Path,
-                         override: bool = False, show_progress: bool = True) -> Dict[str, str]:
+                         override: bool = False, show_progress: bool = True) -> Path:
         """
         Convert PMIDs from an input file and save to output JSON file
 
@@ -181,11 +181,15 @@ class PMIDConverter:
         else:
             pmids_to_convert = unique_pmids
 
-        # If nothing to convert, return existing mappings
+        # If nothing to convert, ensure we still return the output file path
         if not pmids_to_convert:
             if show_progress:
                 print("All PMIDs already processed!")
-            return existing_mappings
+            # Ensure the expected output file exists and return its path
+            # If it already existed, we keep it; otherwise, create from existing_mappings
+            if not output_file_path.exists():
+                self._save_mappings(existing_mappings, output_file_path)
+            return output_file_path
 
         # Split into batches
         batches = [

@@ -239,5 +239,5 @@ if __name__ == "__main__":
     output_dir = data_dir
     pmids_path = get_all_pmids(data_dir, output_dir) # gets pmids from 
     pmcids_path = convert_pmids_to_pmcids(pmids_path, output_dir, override=False)
-    # pmcid_groupings_path = create_pmcid_groupings(annotation_dir, pmcids_path, output_dir)
+    pmcid_groupings_path = create_pmcid_groupings(data_dir, pmcids_path, output_dir)
     # create_benchmark_groupings(pmcid_groupings_path, output_dir)

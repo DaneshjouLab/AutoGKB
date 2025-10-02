@@ -2,8 +2,9 @@ import requests
 import zipfile
 import os
 from pathlib import Path
+import time
 
-def download_variant_annotations(base_dir='data/', override=False) -> Path:
+def download_variant_annotations(base_dir=Path("data"), override=False) -> Path:
     """
     Download a zip file from a URL and extract its contents.
 
@@ -14,18 +15,18 @@ def download_variant_annotations(base_dir='data/', override=False) -> Path:
     url = "https://api.clinpgx.org/v1/download/file/data/variantAnnotations.zip"
 
     # Create paths
-    download_path = os.path.join(base_dir, 'variantAnnotations.zip')
-    extract_to = os.path.join(base_dir, 'variantAnnotations')
+    download_path = Path(base_dir) / 'variantAnnotations.zip'
+    extract_to = Path(base_dir) / 'variantAnnotations'
 
     # Check if files already exist
-    if os.path.exists(extract_to) and os.listdir(extract_to) and not override:
+    if extract_to.exists() and extract_to.is_dir() and not override:
         print(f"Files already exist in {extract_to}. Skipping download.")
         print(f"Use override=True to re-download.")
         return Path(extract_to)
 
     # Create directories if they don't exist
-    Path(base_dir).mkdir(parents=True, exist_ok=True)
-    Path(extract_to).mkdir(parents=True, exist_ok=True)
+    base_dir.mkdir(parents=True, exist_ok=True)
+    extract_to.mkdir(parents=True, exist_ok=True)
 
     print(f"Downloading file from {url}...")
     
@@ -53,7 +54,7 @@ def download_variant_annotations(base_dir='data/', override=False) -> Path:
         zip_ref.extractall(extract_to)
     
     # List extracted files
-    extracted_files = os.listdir(extract_to)
+    extracted_files = list(os.listdir(extract_to))
     print(f"\nExtraction complete! {len(extracted_files)} file(s) extracted:")
     for file in extracted_files:
         file_path = os.path.join(extract_to, file)
