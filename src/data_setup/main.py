@@ -6,6 +6,7 @@
 
 from pathlib import Path
 from typing import Set
+
 from .clingpx_download import download_variant_annotations
 from .pmcid_converter import PMIDConverter
 import json
@@ -19,13 +20,18 @@ def download_latest_data(data_dir: Path, override=False) -> Path:
     """
     Download the latest data from ClinPGx
     """
-    return download_variant_annotations(data_dir, override=False)
+    return download_variant_annotations(data_dir, override=override)
 
-def get_all_pmids(annotation_dir: Path, output_dir: Path) -> Path:
+def get_all_pmids(data_dir: Path, output_dir: Path | None = None) -> Path:
     """
     Get all the PMCIDs from the data and save to a txt file all_pmids.txt
+    Searches {data_dir}/variantAnnotations/<annotations>.tsv for PMIDs
+    output_dir should be the same as data_dir in most cases
     """
     pmids = set()
+    annotation_dir = data_dir / "variantAnnotations"
+    if output_dir is None:
+        output_dir = data_dir
 
     # Files that have PMID column directly
     files_with_pmid = [
@@ -44,21 +50,27 @@ def get_all_pmids(annotation_dir: Path, output_dir: Path) -> Path:
         pmids.update(df['PMID'].dropna().astype(str))  # Add to set, drop NaN values, convert to string
 
     # save to a txt file
-    output_file = output_dir / "all_pmids.txt"
-    with open(output_file, 'w') as f:
+    output_file_path = output_dir / "all_pmids.txt"
+    with open(output_file_path, 'w') as f:
         for pmid in pmids:
             f.write(pmid + '\n')
-    return output_file
+    print(f"Extracted {len(pmids)} PMIDs to {output_file_path}")
+    return output_file_path
 
-def convert_pmids_to_pmcids(pmids: Path, output_dir: Path, override: bool = False) -> Path:
+def convert_pmids_to_pmcids(pmids: Path, output_dir: Path | None = None, override: bool = False) -> Path:
     """
-    Convert PMIDs to PMCIDs and save to a mapping file mapped_pmcids.json
+    Convert PMIDs to PMCIDs and save to a mapping file.
+
+    Returns the actual JSON file path created by the converter
+    (e.g., `<output_dir>/pmcid_mapping.json`).
     """
 
     pmcid_converter = PMIDConverter()
-    output_file = output_dir / "mapped_pmcids.json"
-    mapped_pmcids = pmcid_converter.convert_from_file(pmids, output_file, override=override)
-    return output_file
+    # Pass the directory; converter will write `<dir>/pmcid_mapping.json`
+    if output_dir is None:
+        output_dir = pmids.parent
+    output_file_path = pmcid_converter.convert_from_file(pmids, output_dir, override=override)
+    return output_file_path
 
 def _normalize_pmid_series(series: pd.Series) -> pd.Series:
     """Return a string PMID series with only digit characters; invalid entries set to NA."""
@@ -103,13 +115,17 @@ def _clean_nans(obj):
     return obj
 
 
-def create_pmcid_groupings(annotation_dir: Path, pmcid_mapping: Path, output_dir: Path) -> Path:
+def create_pmcid_groupings(data_dir: Path, pmcid_mapping: Path | None = None, output_dir: Path | None = None) -> Path:
     """
     Create the pmcid groupings from the annotations
     """
     # Load the PMID to PMCID mapping
+    if pmcid_mapping is None:
+        pmcid_mapping = data_dir / "pmcid_mapping.json"
     with open(pmcid_mapping, 'r') as f:
         pmid_to_pmcid = json.load(f)
+
+    annotation_dir = data_dir / "variantAnnotations"
 
     # Load all the dataframes
     study_params = pd.read_csv(annotation_dir / "study_parameters.tsv", sep='\t', low_memory=False)
@@ -199,12 +215,29 @@ def create_pmcid_groupings(annotation_dir: Path, pmcid_mapping: Path, output_dir
     print(f"Created {len(annotations_by_pmcid)} PMCID groupings in {output_file}")
     return output_file
 
+def create_benchmark_groupings(annotations_by_pmcid_path: Path, output_dir: Path) -> Path:
+    """
+    Create the benchmark groupings from the annotations
+    """
+    # Load benchmark PMCIDs
+    benchmark_pmcids_path = Path('persistent_data/benchmark_pmcids.txt')
+    if not benchmark_pmcids_path.exists():
+        raise FileNotFoundError(f"Benchmark PMCIDs file not found at {benchmark_pmcids_path}")
+    benchmark_pmcids = []
+    with open(benchmark_pmcids_path, "r") as f:
+        for line in f:
+            benchmark_pmcids.append(line.strip())
+    print(f"Found {len(benchmark_pmcids)} benchmark PMCIDs")
+
+    # Load all annotations
+    annotations_by_pmcid = json.load(open(annotations_by_pmcid_path, 'r'))
+    print(f"We have {len(annotations_by_pmcid)} already")
+
 if __name__ == "__main__":
     data_dir = Path('data/next_data/')
-    download_latest_data(data_dir, override=False)
-    annotation_dir = data_dir / "variantAnnotations"
+    download_latest_data(data_dir, override=True) # downloads to data_dir/variantAnnotations
     output_dir = data_dir
-    pmids = get_all_pmids(annotation_dir, output_dir)
-    convert_pmids_to_pmcids(pmids, output_dir, override=False)
-    create_pmcid_groupings(annotation_dir, output_dir / "mapped_pmcids.json", output_dir)
-    
+    pmids_path = get_all_pmids(data_dir, output_dir) # gets pmids from 
+    pmcids_path = convert_pmids_to_pmcids(pmids_path, output_dir, override=False)
+    # pmcid_groupings_path = create_pmcid_groupings(annotation_dir, pmcids_path, output_dir)
+    # create_benchmark_groupings(pmcid_groupings_path, output_dir)

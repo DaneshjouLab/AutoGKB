@@ -47,7 +47,13 @@ class PMIDConverter:
             for record in data["records"]:
                 pmid = record.get("pmid")
                 pmcid = record.get("pmcid")
-                
+
+                # Normalize to strings to avoid type mismatches (e.g., int vs str)
+                if pmid is not None:
+                    pmid = str(pmid).strip()
+                if pmcid is not None:
+                    pmcid = str(pmcid).strip()
+
                 if pmid and pmcid:
                     mapping[pmid] = pmcid
         
@@ -74,8 +80,10 @@ class PMIDConverter:
             data = response.json()
             mappings = self._parse_response(data)
 
-            # Identify PMIDs that were not found
-            not_found = set(pmids) - set(mappings.keys())
+            # Identify PMIDs that were not found (normalize everything to string)
+            batch_ids = set(str(p).strip() for p in pmids)
+            found_ids = set(str(k).strip() for k in mappings.keys())
+            not_found = batch_ids - found_ids
             return mappings, not_found
 
         except requests.exceptions.RequestException as e:
@@ -126,7 +134,7 @@ class PMIDConverter:
 
         return all_mappings
     
-    def convert_from_file(self, input_file: Path, output_file: Path,
+    def convert_from_file(self, input_file_path: Path, output_path: Path,
                          override: bool = False, show_progress: bool = True) -> Dict[str, str]:
         """
         Convert PMIDs from an input file and save to output JSON file
@@ -140,26 +148,25 @@ class PMIDConverter:
         Returns:
             Dictionary mapping PMID -> PMCID for all IDs (not found PMIDs map to None)
         """
-        input_file = Path(input_file)
-        output_file = Path(output_file)
+        output_file_path = output_path / "pmcid_mapping.json"
 
         # Read PMIDs from input file
         if show_progress:
-            print(f"Reading PMIDs from {input_file}...")
+            print(f"Reading PMIDs from {input_file_path}...")
 
-        pmids = self._read_pmids_from_file(input_file)
+        pmids = self._read_pmids_from_file(input_file_path)
 
         if show_progress:
             print(f"Found {len(pmids)} PMIDs in input file")
 
         # Load existing mappings if file exists and not overriding
         existing_mappings = {}
-        if not override and output_file.exists():
+        if not override and output_file_path.exists():
             try:
-                with open(output_file, 'r') as f:
+                with open(output_file_path, 'r') as f:
                     existing_mappings = json.load(f)
                 if show_progress:
-                    print(f"Loaded {len(existing_mappings)} existing mappings from {output_file}")
+                    print(f"Loaded {len(existing_mappings)} existing mappings from {output_file_path}")
             except (json.JSONDecodeError, IOError) as e:
                 print(f"Warning: Could not load existing file: {e}")
 
@@ -206,7 +213,7 @@ class PMIDConverter:
             total_not_found += len(not_found)
 
             # Save incrementally after each batch
-            self._save_mappings(all_mappings, output_file)
+            self._save_mappings(all_mappings, output_file_path)
 
             if show_progress:
                 print(f"Batch {idx}/{total_batches}: {total_converted} converted, {total_not_found} not found")
@@ -221,9 +228,9 @@ class PMIDConverter:
             print(f"\nNew conversions: {new_conversions}/{len(pmids_to_convert)}")
             print(f"Not found: {new_not_found}/{len(pmids_to_convert)}")
             print(f"Total mappings: {len(all_mappings)}")
-            print(f"Results saved to {output_file}")
+            print(f"Results saved to {output_file_path}")
 
-        return all_mappings
+        return output_file_path
     
     def _read_pmids_from_file(self, input_file: Path) -> List[str]:
         """

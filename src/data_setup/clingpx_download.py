@@ -30,8 +30,14 @@ def download_variant_annotations(base_dir='data/', override=False) -> Path:
     print(f"Downloading file from {url}...")
     
     # Download the file
-    response = requests.get(url, stream=True)
-    response.raise_for_status()  # Raise an error for bad status codes
+    for attempt in range(5):  # Retry up to 5 times
+        response = requests.get(url, stream=True)
+        if response.status_code == 503:
+            print("Service unavailable (503). Retrying in 5 seconds...")
+            time.sleep(5)  # Wait for 5 seconds before retrying
+        else:
+            response.raise_for_status()  # Raise an error for other bad status codes
+            break  # Exit loop if the request was successful
     
     # Save the downloaded file
     with open(download_path, 'wb') as f:
