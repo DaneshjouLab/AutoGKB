@@ -1,0 +1,36 @@
+PMID,PMCID,Comment,Title,Study Parameters Count,Drug Annotations Count,Functional Analysis Annotations Count,Phenotype Annotations Count
+39346054,PMC11430164,"in vitro study CYP3A4, lots of variants",,0,0,2,0
+38216550,PMC10786722,DPYD,Integrating rare genetic variants into DPYD pharmacogenetic testing may help preventing fluoropyrimidine-induced toxicity,3,0,3,0
+38568509,PMC10993165,"drug combination (sulfamethoxazole / trimethoprim), HLA, scar",Human Leukocyte Antigens and Sulfamethoxazole/Cotrimoxazole–Induced Severe Cutaneous Adverse Reactions: A Systematic Review and Meta-Analysis,5,0,0,3
+40786508,PMC12331468,"DPYD, TYMS and others, bunch of cancer chemotherapy toxicities",,6,0,0,5
+40761554,PMC12319246,tacrolimus kidney transplant lots of VAs,,8,0,0,8
+40672687,PMC12260932,mix of PK and complex efficacy,,3,3,0,0
+37332933,PMC10275785,responders/non-responders rheumatoid arthritis,Effect of NLRP3 inflammasome genes polymorphism on disease susceptibility and response to TNF-α inhibitors in Iraqi patients with rheumatoid arthritis,2,2,0,0
+40762011,PMC12320098,content to suitable for VA,,0,0,0,0
+28550460,PMC5508045,warfarin,The impact of non-genetic and genetic factors on a stable warfarin dose in Thai patients,4,4,0,0
+26745506,PMC4706412,warfarin,A Novel Admixture-Based Pharmacogenetic Approach to Refine Warfarin Dosing in Caribbean Hispanics,7,4,0,0
+39604537,PMC11603346,CYP2B6/efavirenz,Association between the CYP2B6 polymorphisms and nonnucleoside reverse transcriptase inhibitors drug-induced liver injury: a systematic review and meta-analysis,2,0,0,2
+20338069,PMC2859392,CYP2B6/efavirenz,Effects of CYP2B6 G516T polymorphisms on plasma efavirenz and nevirapine levels when co-administered with rifampicin in HIV/TB co-infected Thai adults,2,2,0,0
+37490620,PMC10399933,statins,"Real-world pharmacogenetics of statin intolerance: effects of SLCO1B1, ABCG2, and CYP2C9 variants",10,0,0,5
+40297930,PMC12038368,simvastatin,,2,2,0,0
+26715213,PMC4916189,efavirenz,"Comprehensive Pharmacokinetic, Pharmacodynamic and Pharmacogenetic Evaluation of Once-Daily Efavirenz 400 and 600 mg in Treatment-Naïve HIV-Infected Patients at 96 Weeks: Results of the ENCORE1 Study",7,0,0,7
+30336686,PMC6714829,simvastatin,"Associations of the SLCO1B1 Polymorphisms With Hepatic Function, Baseline Lipid Levels, and Lipid-lowering Response to Simvastatin in Patients With Hyperlipidemia",2,2,0,0
+38497131,PMC10946077,UGT1A1,Individual Irinotecan Therapy Under the Guidance of Pre-Treated UGT1A1*6 Genotyping in Gastric Cancer,7,0,0,3
+38707740,PMC11062152,UGT1A1,Risk Factors for Adverse Events of Nanoliposomal Irinotecan Plus 5-Fluorouracil and L-leucovorin,3,0,0,2
+31024313,PMC6465603,TPMT/NUDT15,NUDT15 Polymorphism Confer Increased Susceptibility to Thiopurine-Induced Leukopenia in Patients With Autoimmune Hepatitis and Related Cirrhosis,2,0,0,2
+35431360,PMC8973308,TPMT/NUDT15,Susceptibility to thiopurine toxicity by TPMT and NUDT15 variants in Colombian children with acute lymphoblastic leukemia,3,2,0,1
+40099566,PMC12035587,NUDT15,Severe myelosuppression and alopecia after thiopurine initiation in a patient with NUDT15 deficiency,1,0,0,1
+28819312,PMC5561238,HLAs,Shared peptide binding of HLA Class I and II alleles associate with cutaneous nevirapine hypersensitivity and identify novel risk alleles,43,0,0,43
+23588310,PMC3839910,HLAs,HLA-A*31:01 and HLA-B*15:02 as genetic markers for carbamazepine hypersensitivity in children,6,0,0,6
+15024131,PMC384715,HLAs,Predisposition to abacavir hypersensitivity conferred by HLA-B*5701 and a haplotypic Hsp70-Hom variant,2,0,0,1
+21428769,PMC3113609,HLAs,HLA-A★3101 and Carbamazepine-Induced Hypersensitivity Reactions in Europeans,3,0,0,3
+15743917,PMC554812,HLAs,HLA-B*5801 allele as a genetic marker for severe cutaneous adverse reactions caused by allopurinol,14,0,0,5
+21505298,PMC3387531,HLAs,"Toxicogenomics of nevirapine-associated cutaneous and hepatic adverse events among populations of African, Asian, and European descent",6,0,0,6
+33768542,PMC8790808,HLAs,Class II HLA Variants Associate with Risk of Pegaspargase Hypersensitivity,8,0,0,4
+15590749,none,"CYP2D6/CYP2C19-toxicity, response, PK (not in pubmed central) but really good example of complexity",,0,0,0,0
+23213055,PMC3548984,CYP2D6/tamoxifen/response,CYP2D6 Metabolism and Patient Outcome in the Austrian Breast and Colorectal Cancer Study Group Trial (ABCSG) 8,3,0,0,3
+23476897,PMC3584248,CYP2D6/tamoxifen/concentration; response is reported for endoxifen concentration so we cannot capture,"CYP2D6 genotypes, endoxifen levels, and disease recurrence in 224 Filipino and Vietnamese women receiving adjuvant tamoxifen for operable breast cancer",4,2,0,0
+30661084,PMC6435416,CYP2D6 risperidone toxicity - strong 2d6 inhibitors mentioned but phenoconversion not considered in analysis,CYP2D6 genotype and adverse events to risperidone in children and adolescents,1,0,0,1
+40184070,PMC11971672,CYP2C19/clopidogrel,,2,0,0,1
+40295977,PMC12036300,CYP2C19/clopidogrel,,2,0,0,2
+38377518,PMC10880264,CYP2D6/CYP2C19 - escitalopram toxicity,Pharmacogenetic Factors Influence Escitalopram Pharmacokinetics and Adverse Events in Youth with a Family History of Bipolar Disorder: A Preliminary Study,4,1,0,3

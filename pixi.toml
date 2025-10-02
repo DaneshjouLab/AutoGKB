@@ -23,6 +23,7 @@ test-citations = "python -m src.citations.one_shot_citations"
 study-parameters = "python -m src.study_parameters"
 variant-ontology = "python -m src.ontology.variant_ontology"
 drug-ontology = "python -m src.ontology.drug_ontology"
+setup-data = "python -m src.data_setup.main"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"

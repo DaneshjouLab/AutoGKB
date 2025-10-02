@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 .vscode
+AGENTS.md
 
 # pixi environments
 .pixi
@@ -29,6 +30,10 @@ data/downloaded_pmcids.json
 data/markdown
 data/extractions/
 data/lookup_data/
+data/mapped_pmcids.json
+data/annotations_by_pmcid.json
+data/provided_annotations_by_pmcid.json
+data/all_pmids.txt
 
 *.zip
 *.tar.gz
