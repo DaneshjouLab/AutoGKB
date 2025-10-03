@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import argparse
 import sys
 import zipfile
 from pathlib import Path
@@ -9,24 +8,6 @@ import shutil
 import gdown
 
 GOOGLE_DRIVE_URL = "https://drive.google.com/file/d/1jD3okYclzYmZqLLiY7kBO0erhKm6bWBl/view"
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Download benchmark article markdowns, unzip to data/articles/, and clean up."
-    )
-    parser.add_argument(
-        "--mode",
-        choices=["overwrite", "skip-existing", "clean"],
-        default="overwrite",
-        help="How to handle existing files in data/articles/.",
-    )
-    parser.add_argument(
-        "--force-download",
-        action="store_true",
-        help="Re-download even if zip already exists.",
-    )
-    return parser.parse_args()
 
 
 def download_markdown_zip(data_dir: Path, force_download: bool) -> Path:
@@ -70,13 +51,28 @@ def unzip_markdown(zip_path: Path, articles_dir: Path, mode: str) -> None:
     print(f"Unzipping {zip_path} into {articles_dir} with mode={mode}")
     with zipfile.ZipFile(zip_path, "r") as zf:
         for member in zf.infolist():
-            # Skip directory entries; create them as needed
+            # Skip macOS metadata entries
+            if member.filename.startswith("__MACOSX/"):
+                continue
+
+            # Normalize path and strip a top-level 'markdown/' directory if present
+            rel_parts = Path(member.filename).parts
+            if rel_parts and rel_parts[0] == "markdown":
+                rel_parts = rel_parts[1:]
+
+            # If nothing remains (e.g., the entry was just 'markdown/'), skip
+            if not rel_parts:
+                continue
+
+            rel_path = Path(*rel_parts)
+
+            # Handle directories and files
             if member.is_dir():
-                target_dir = _safe_join(articles_dir, member.filename)
+                target_dir = _safe_join(articles_dir, str(rel_path))
                 target_dir.mkdir(parents=True, exist_ok=True)
                 continue
 
-            target_path = _safe_join(articles_dir, member.filename)
+            target_path = _safe_join(articles_dir, str(rel_path))
             target_path.parent.mkdir(parents=True, exist_ok=True)
 
             if mode == "skip-existing" and target_path.exists():
@@ -119,6 +115,10 @@ def download_articles(
         # Extract into the articles directory (not the base data dir)
         articles_dir = data_dir / "articles"
         unzip_markdown(zip_path, articles_dir, mode=mode)
+        # Remove macosx directory
+        macosx_dir = articles_dir / "__MACOSX"
+        if macosx_dir.exists():
+            shutil.rmtree(macosx_dir)
     except Exception as e:
         print(f"Error while downloading/unzipping: {e}", file=sys.stderr)
         # Best effort cleanup of a potentially corrupt zip
@@ -135,16 +135,6 @@ def download_articles(
 
     print("Markdown download and extraction complete.")
 
-
-def main():
-    args = parse_args()
-    # Bridge CLI args to library-style function
-    download_articles(
-        data_dir=Path("data"),
-        mode=args.mode,
-        force_download=args.force_download,
-    )
-
-
 if __name__ == "__main__":
-    main()
+    data_dir = Path("data")
+    download_articles(data_dir)

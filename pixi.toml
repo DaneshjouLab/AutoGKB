@@ -13,7 +13,6 @@ version = "0.1.0"
 [tasks]
 download-variants = "python -m src.load_variants.load_clinical_variants"
 update-download-map = "python -c 'from src.fetch_articles.article_downloader import update_downloaded_pmcids; update_downloaded_pmcids()'"
-download-articles = "python -m src.data_setup.markdown_downloader"
 setup-repo = "pixi install && pixi run download-data"
 copy-markdown = "python -m src.copy_markdown"
 annotation-pipeline = "python -m src.annotation_pipeline"
@@ -22,6 +21,7 @@ study-parameters = "python -m src.study_parameters"
 variant-ontology = "python -m src.ontology.variant_ontology"
 drug-ontology = "python -m src.ontology.drug_ontology"
 setup-data = "python -m src.data_setup.main"
+download-articles = "python -m src.data_setup.article_markdown_downloader"
 
 [dependencies]
 seaborn = ">=0.13.2,<0.14"

@@ -9,12 +9,12 @@ from typing import Set
 
 from .clingpx_download import download_variant_annotations
 from .pmcid_converter import PMIDConverter
-from .markdown_downloader import download_articles
+from .article_markdown_downloader import download_articles
+from .pmc_title_fetcher import get_title_from_pmcid
 import json
 import math
 import pandas as pd
 import numpy as np
-from src.utils import get_article_text, get_title
 
 def get_all_pmids(data_dir: Path, output_dir: Path | None = None) -> Path:
     """
@@ -178,13 +178,12 @@ def create_pmcid_groupings(data_dir: Path, pmcid_mapping: Path | None = None, ou
             study_params["Variant Annotation ID_norm"].isin(list(variant_annotation_ids))
         ].copy()
 
-        # Try to load study title from local markdown, if available
+        # Fetch study title directly from PMC using E-utilities
         title = None
         try:
-            article_md = get_article_text(pmcid=pmcid, remove_references=False)
-            title = get_title(article_md)
+            title = get_title_from_pmcid(pmcid, data_dir)
         except Exception:
-            # Title is optional; skip if article markdown is unavailable
+            # Title is optional; skip on failures
             title = None
 
         # Create entry for this PMCID
@@ -252,7 +251,7 @@ def create_benchmark_groupings(annotations_by_pmcid_path: Path, output_dir: Path
 if __name__ == "__main__":
     data_dir = Path('data/next_data/')
     # Ensure article markdowns are available under `data/articles/`
-    download_articles(data_dir=Path('data'), mode="overwrite", force_download=False)
+    download_articles(data_dir=data_dir, mode="overwrite", force_download=False)
     download_variant_annotations(data_dir, override=True) # downloads to data_dir/variantAnnotations
     output_dir = data_dir
     pmids_path = get_all_pmids(data_dir, output_dir) # gets pmids from 
@@ -260,4 +259,3 @@ if __name__ == "__main__":
     pmcid_groupings_path = create_pmcid_groupings(data_dir, pmcids_path, output_dir)
     create_benchmark_groupings(pmcid_groupings_path, output_dir)
 
-    # TODO: Have the title extraction not be dependent on the data folder specifically
