@@ -30,7 +30,9 @@ import shutil
 # ClinPGx data sources (see `src/data_setup/README.MD`)
 CLINPGX_DRUGS_ZIP_URL = "https://api.clinpgx.org/v1/download/file/data/drugs.zip"
 CLINPGX_VARIANTS_ZIP_URL = "https://api.clinpgx.org/v1/download/file/data/variants.zip"
-CLINPGX_CHEMICALS_ZIP_URL = "https://api.clinpgx.org/v1/download/file/data/chemicals.zip"
+CLINPGX_CHEMICALS_ZIP_URL = (
+    "https://api.clinpgx.org/v1/download/file/data/chemicals.zip"
+)
 
 
 def _flatten_list(values: Any, sep: str = ", ") -> str:
@@ -86,6 +88,7 @@ def _robust_download(url: str, dest: Path, retries: int = 5, timeout: int = 60) 
         if resp.status_code == 503 and attempt < retries:
             # transient service unavailable, retry
             import time
+
             time.sleep(5)
             continue
         resp.raise_for_status()
@@ -99,6 +102,7 @@ def _robust_download(url: str, dest: Path, retries: int = 5, timeout: int = 60) 
 
 def _extract_zip(zip_path: Path, extract_to: Path) -> Path:
     import zipfile
+
     extract_to.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(zip_path, "r") as zf:
         zf.extractall(extract_to)
@@ -151,13 +155,15 @@ def _normalize_drugs_df(df: pd.DataFrame) -> pd.DataFrame:
     ]:
         if c not in df.columns:
             df[c] = ""
-    return df[[
-        "PharmGKB Accession Id",
-        "Name",
-        "Generic Names",
-        "Trade Names",
-        "RxNorm Identifiers",
-    ]].copy()
+    return df[
+        [
+            "PharmGKB Accession Id",
+            "Name",
+            "Generic Names",
+            "Trade Names",
+            "RxNorm Identifiers",
+        ]
+    ].copy()
 
 
 def _normalize_variants_df(df: pd.DataFrame) -> pd.DataFrame:
@@ -188,8 +194,12 @@ def _download_drugs_df(data_dir: Path) -> pd.DataFrame:
     # Prefer a file named 'drugs.tsv' or 'drugs.csv'
     tsv = _find_first_tsv(extracted, ["drugs.tsv", "drugs.csv"])
     if tsv is None:
-        raise RuntimeError(f"No TSV/CSV found in downloaded drugs archive from {CLINPGX_DRUGS_ZIP_URL}")
-    df = pd.read_csv(tsv, sep="\t" if tsv.suffix.lower() == ".tsv" else ",", low_memory=False)
+        raise RuntimeError(
+            f"No TSV/CSV found in downloaded drugs archive from {CLINPGX_DRUGS_ZIP_URL}"
+        )
+    df = pd.read_csv(
+        tsv, sep="\t" if tsv.suffix.lower() == ".tsv" else ",", low_memory=False
+    )
     return _normalize_drugs_df(df)
 
 
@@ -204,8 +214,12 @@ def _download_variants_df(data_dir: Path) -> pd.DataFrame:
         # Some archives may name the file 'chemicals' or similar; try fallback list
         tsv = _find_first_tsv(extracted, ["variant.tsv", "variant.csv"])  # alt naming
     if tsv is None:
-        raise RuntimeError(f"No TSV/CSV found in downloaded variants archive from {CLINPGX_VARIANTS_ZIP_URL}")
-    df = pd.read_csv(tsv, sep="\t" if tsv.suffix.lower() == ".tsv" else ",", low_memory=False)
+        raise RuntimeError(
+            f"No TSV/CSV found in downloaded variants archive from {CLINPGX_VARIANTS_ZIP_URL}"
+        )
+    df = pd.read_csv(
+        tsv, sep="\t" if tsv.suffix.lower() == ".tsv" else ",", low_memory=False
+    )
     # Try to coerce list-like synonyms to string
     if "synonyms" in df.columns:
         df["synonyms"] = df["synonyms"].apply(_flatten_list)
@@ -257,4 +271,3 @@ def prepare_term_lookup_data(data_dir: str | Path) -> Path:
 if __name__ == "__main__":
     # Default to repository `data/` for ad-hoc runs
     prepare_term_lookup_data(Path("data"))
-

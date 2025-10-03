@@ -7,7 +7,9 @@ import shutil
 
 import gdown
 
-GOOGLE_DRIVE_URL = "https://drive.google.com/file/d/1jD3okYclzYmZqLLiY7kBO0erhKm6bWBl/view"
+GOOGLE_DRIVE_URL = (
+    "https://drive.google.com/file/d/1jD3okYclzYmZqLLiY7kBO0erhKm6bWBl/view"
+)
 
 
 def download_markdown_zip(data_dir: Path, force_download: bool) -> Path:
@@ -17,7 +19,9 @@ def download_markdown_zip(data_dir: Path, force_download: bool) -> Path:
     zip_path = articles_dir / "markdown.zip"
 
     if zip_path.exists() and not force_download:
-        print(f"Zip already exists at {zip_path}. Skipping download (use --force-download to re-fetch).")
+        print(
+            f"Zip already exists at {zip_path}. Skipping download (use --force-download to re-fetch)."
+        )
         return zip_path
 
     print(f"Downloading markdown zip to: {zip_path}")
@@ -134,6 +138,7 @@ def download_articles(
         remove_zip(zip_path)
 
     print("Markdown download and extraction complete.")
+
 
 if __name__ == "__main__":
     data_dir = Path("data")
