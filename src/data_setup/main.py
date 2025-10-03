@@ -9,18 +9,12 @@ from typing import Set
 
 from .clingpx_download import download_variant_annotations
 from .pmcid_converter import PMIDConverter
+from .markdown_downloader import download_articles
 import json
 import math
 import pandas as pd
 import numpy as np
 from src.utils import get_article_text, get_title
-
-
-def download_latest_data(data_dir: Path, override=False) -> Path:
-    """
-    Download the latest data from ClinPGx
-    """
-    return download_variant_annotations(data_dir, override=override)
 
 def get_all_pmids(data_dir: Path, output_dir: Path | None = None) -> Path:
     """
@@ -223,21 +217,47 @@ def create_benchmark_groupings(annotations_by_pmcid_path: Path, output_dir: Path
     benchmark_pmcids_path = Path('persistent_data/benchmark_pmcids.txt')
     if not benchmark_pmcids_path.exists():
         raise FileNotFoundError(f"Benchmark PMCIDs file not found at {benchmark_pmcids_path}")
-    benchmark_pmcids = []
+    benchmark_pmcids = set()
     with open(benchmark_pmcids_path, "r") as f:
         for line in f:
-            benchmark_pmcids.append(line.strip())
+            benchmark_pmcids.add(line.strip())
     print(f"Found {len(benchmark_pmcids)} benchmark PMCIDs")
 
     # Load all annotations
     annotations_by_pmcid = json.load(open(annotations_by_pmcid_path, 'r'))
-    print(f"We have {len(annotations_by_pmcid)} already")
+
+    # Filter annotations by benchmark PMCIDs
+    annotation_pmcids = set(annotations_by_pmcid.keys())
+    found_pmcids = benchmark_pmcids.intersection(annotation_pmcids)
+    benchmark_annotations = {
+        pmcid: annotations_by_pmcid[pmcid]
+        for pmcid in found_pmcids
+    }
+    missing_pmcids = list(benchmark_pmcids - found_pmcids)
+    print(f"Found {len(benchmark_annotations)} benchmark PMCIDs")
+    print(f"Missing {len(missing_pmcids)} benchmark PMCIDs:")
+    if len(missing_pmcids) > 0:
+        # Print all missing PMCIDs
+        for pmcid in missing_pmcids:
+            print(pmcid)
+
+    # Save to JSON file
+    output_file = output_dir / "benchmark_annotations.json"
+    with open(output_file, 'w') as f:
+        json.dump(benchmark_annotations, f, indent=2, allow_nan=False)
+
+    print(f"Created {len(benchmark_annotations)} benchmark PMCIDs in {output_file}")
+    return output_file
 
 if __name__ == "__main__":
     data_dir = Path('data/next_data/')
-    download_latest_data(data_dir, override=True) # downloads to data_dir/variantAnnotations
+    # Ensure article markdowns are available under `data/articles/`
+    download_articles(data_dir=Path('data'), mode="overwrite", force_download=False)
+    download_variant_annotations(data_dir, override=True) # downloads to data_dir/variantAnnotations
     output_dir = data_dir
     pmids_path = get_all_pmids(data_dir, output_dir) # gets pmids from 
     pmcids_path = convert_pmids_to_pmcids(pmids_path, output_dir, override=False)
     pmcid_groupings_path = create_pmcid_groupings(data_dir, pmcids_path, output_dir)
-    # create_benchmark_groupings(pmcid_groupings_path, output_dir)
+    create_benchmark_groupings(pmcid_groupings_path, output_dir)
+
+    # TODO: Have the title extraction not be dependent on the data folder specifically
