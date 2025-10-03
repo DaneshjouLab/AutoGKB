@@ -1,0 +1,1 @@
+from .clingpx_download import download_variant_annotations

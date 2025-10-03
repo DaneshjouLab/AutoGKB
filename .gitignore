@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 .vscode
+AGENTS.md
 
 # pixi environments
 .pixi
@@ -13,6 +14,7 @@ __pycache__
 *.pyo
 *.pyd
 *.pyw
+__MACOSX
 
 # environments
 .pyenv
@@ -21,14 +23,7 @@ __pycache__
 credentials/
 
 # data
-data/articles/
-data/variantAnnotations/
-data/unique_pmcids.json
-data/pmid_list.json
-data/downloaded_pmcids.json
-data/markdown
-data/extractions/
-data/lookup_data/
+data/*
 
 *.zip
 *.tar.gz
