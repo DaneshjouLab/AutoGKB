@@ -11,6 +11,7 @@ from .clingpx_download import download_variant_annotations
 from .pmcid_converter import PMIDConverter
 from .article_markdown_downloader import download_articles
 from .pmc_title_fetcher import get_title_from_pmcid
+from .term_lookup_data import prepare_term_lookup_data
 import json
 import math
 import pandas as pd
@@ -248,8 +249,17 @@ def create_benchmark_groupings(annotations_by_pmcid_path: Path, output_dir: Path
     print(f"Created {len(benchmark_annotations)} benchmark PMCIDs in {output_file}")
     return output_file
 
+def clean_directory(data_dir: Path):
+    # Remove __MACOSX and extraneous directories
+    for path in data_dir.iterdir():
+        if path.is_dir() and path.name == "__MACOSX":
+            shutil.rmtree(path)
+
 if __name__ == "__main__":
-    data_dir = Path('data/next_data/')
+    data_dir = Path('data')
+    # Always refresh PharmGKB lookup tables used by ontology search
+    # These are written under `data/term_lookup_info/` to match search defaults
+    prepare_term_lookup_data(data_dir)
     # Ensure article markdowns are available under `data/articles/`
     download_articles(data_dir=data_dir, mode="overwrite", force_download=False)
     download_variant_annotations(data_dir, override=True) # downloads to data_dir/variantAnnotations
@@ -258,4 +268,4 @@ if __name__ == "__main__":
     pmcids_path = convert_pmids_to_pmcids(pmids_path, output_dir, override=False)
     pmcid_groupings_path = create_pmcid_groupings(data_dir, pmcids_path, output_dir)
     create_benchmark_groupings(pmcid_groupings_path, output_dir)
-
+    clean_directory(data_dir)

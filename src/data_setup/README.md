@@ -1,12 +1,11 @@
 # Data Setup
 This should setup all the files coming from ClinPGx / PubMed. All steps triggered via 
-`pixi run setup-data`
+`pixi run setup-data` or `python -m src.data_setup.main`
 
-## Setup
-- Download the latest data from ClinPGx
-- Convert PMIDs to PMCIDs
-- Create the pmcid groupings
-- Create the benchmark groupings
-
-## Todo
-- Integrate markdown downloading within the repo itself / a method for downloading new pmcids added to variantAnnotations
+## Term Lookup Download Links
+https://api.clinpgx.org/v1/download/file/data/genes.zip
+https://api.clinpgx.org/v1/download/file/data/variants.zip
+https://api.clinpgx.org/v1/download/file/data/phenotypes.zip
+https://api.clinpgx.org/v1/download/file/data/drugs.zip
+https://api.clinpgx.org/v1/download/file/data/variantAnnotations.zip
+https://api.clinpgx.org/v1/download/file/data/chemicals.zip

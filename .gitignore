@@ -23,18 +23,7 @@ __MACOSX
 credentials/
 
 # data
-data/articles/
-data/variantAnnotations/
-data/unique_pmcids.json
-data/pmid_list.json
-data/downloaded_pmcids.json
-data/markdown
-data/extractions/
-data/lookup_data/
-data/mapped_pmcids.json
-data/annotations_by_pmcid.json
-data/provided_annotations_by_pmcid.json
-data/all_pmids.txt
+data/*
 
 *.zip
 *.tar.gz

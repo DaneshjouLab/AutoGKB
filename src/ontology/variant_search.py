@@ -8,6 +8,7 @@ from src.ontology.search_utils import (
 )
 import pandas as pd
 from loguru import logger
+from pathlib import Path
 
 
 class VariantSearchResult(BaseModel):
@@ -72,7 +73,11 @@ class VariantLookup(BaseModel):
     variant_lookup.search("rs12345")
     """
 
-    data_path: str = "data/lookup_data/variants/variants.tsv"
+    # Base data directory; expects TSV at `<data_dir>/term_lookup_info/variants.tsv`
+    data_dir: Path = Path("data")
+
+    def _data_path(self) -> Path:
+        return self.data_dir / "term_lookup_info" / "variants.tsv"
 
     def _clinpgx_variant_search(
         self, variant: str, threshold: float = 0.8, top_k: int = 1
@@ -82,7 +87,7 @@ class VariantLookup(BaseModel):
         1. Searches through the Variant Name column for similarity
         2. Searches through comma separated Synonyms column for similarity
         """
-        df = pd.read_csv(self.data_path, sep="\t")
+        df = pd.read_csv(self._data_path(), sep="\t")
         results = general_search(
             df, variant, "Variant Name", "Variant ID", threshold=threshold, top_k=top_k
         )

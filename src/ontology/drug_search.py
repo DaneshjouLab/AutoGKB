@@ -8,6 +8,7 @@ from src.ontology.search_utils import (
 )
 import pandas as pd
 from loguru import logger
+from pathlib import Path
 
 
 class DrugSearchResult(BaseModel):
@@ -68,13 +69,17 @@ class DrugLookup(BaseModel):
     drug_lookup.search("aspirin")
     """
 
-    data_path: str = "data/lookup_data/drugs/drugs.tsv"
+    # Base data directory; expects TSV at `<data_dir>/term_lookup_info/drugs.tsv`
+    data_dir: Path = Path("data")
     raw_input: str = ""
+
+    def _data_path(self) -> Path:
+        return self.data_dir / "term_lookup_info" / "drugs.tsv"
 
     def _clinpgx_drug_name_search(
         self, drug_name: str, threshold: float = 0.8, top_k: int = 1
     ) -> Optional[List[DrugSearchResult]]:
-        df = pd.read_csv(self.data_path, sep="\t")
+        df = pd.read_csv(self._data_path(), sep="\t")
         results = general_search(
             df,
             drug_name,
@@ -102,7 +107,7 @@ class DrugLookup(BaseModel):
         """
         Checks generic names and trade names for the drug
         """
-        df = pd.read_csv(self.data_path, sep="\t")
+        df = pd.read_csv(self._data_path(), sep="\t")
         results = general_search_comma_list(
             df,
             drug_name,
@@ -167,7 +172,7 @@ class DrugLookup(BaseModel):
         """
         Convert a RXCUI to a PharmGKB Accession Id using the 'RxNorm Identifiers' column in drugs.tsv.
         """
-        df = pd.read_csv(self.data_path, sep="\t")
+        df = pd.read_csv(self._data_path(), sep="\t")
         results = general_search(
             df,
             rxcui,
