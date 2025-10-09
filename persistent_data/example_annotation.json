@@ -1,4 +1,5 @@
-"PMC1887589": {
+{
+    "PMC1887589": {
     "pmid": "17537913",
     "title": "A genome-wide approach to identify genetic variants that contribute to etoposide-induced cytotoxicity",
     "study_parameters": [
@@ -291,4 +292,5 @@
         "Variant Annotation ID_norm": "981240132"
       }
     ]
-  },
+  }
+}
