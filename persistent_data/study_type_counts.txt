@@ -1,0 +1,78 @@
+cohort: 6434
+None: 1488
+case/control: 1486
+meta-analysis: 552
+clinical trial: 524
+GWAS: 407
+cohort, retrospective: 348
+case series: 306
+cohort, prospective: 276
+prospective: 270
+cohort, GWAS: 212
+retrospective: 203
+cohort, clinical trial: 168
+replication: 117
+case/control, GWAS: 99
+meta-analysis, GWAS: 90
+case/control, retrospective: 78
+clinical trial, retrospective: 76
+cohort, case/control: 69
+clinical trial, prospective: 64
+case/control, meta-analysis: 58
+clinical trial, GWAS: 51
+cohort, replication: 36
+clinical trial, replication: 34
+case/control, replication: 32
+meta-analysis, retrospective: 29
+case/control, clinical trial, prospective: 27
+case/control, clinical trial: 26
+cohort, meta-analysis: 21
+cross sectional: 19
+meta-analysis, replication: 17
+case/control, meta-analysis, GWAS: 17
+cohort, GWAS, retrospective: 16
+linkage: 13
+clinical trial, replication, prospective: 13
+cohort, GWAS, prospective: 12
+replication, retrospective: 12
+trios: 9
+cohort, meta-analysis, GWAS: 9
+case/control, clinical trial, retrospective: 9
+GWAS, retrospective: 9
+case/control, prospective: 8
+GWAS, prospective: 7
+case/control, GWAS, retrospective: 7
+cohort, replication, prospective: 6
+cohort, clinical trial, prospective: 6
+clinical trial, meta-analysis: 6
+prospective, retrospective: 6
+cohort, clinical trial, meta-analysis: 4
+cohort, clinical trial, retrospective: 4
+cohort, cross sectional, retrospective: 4
+GWAS, replication: 3
+case series, clinical trial: 3
+case/control, clinical trial, GWAS: 3
+cohort, case series: 2
+cohort, GWAS, replication: 2
+case/control, clinical trial, meta-analysis: 2
+cross sectional, retrospective: 2
+linkage, trios: 2
+clinical trial, meta-analysis, GWAS: 2
+case/control, replication, retrospective: 2
+cohort, prospective, retrospective: 2
+cohort, case series, prospective: 2
+cohort, case/control, GWAS: 2
+cohort, case/control, replication: 2
+cohort, case/control, retrospective: 1
+replication, prospective: 1
+retrospective, linkage, trios: 1
+meta-analysis, GWAS, replication: 1
+cohort, trios: 1
+clinical trial, meta-analysis, replication: 1
+cohort, meta-analysis, retrospective: 1
+case/control, case series: 1
+cohort, replication, retrospective: 1
+case series, linkage, trios: 1
+case series, trios: 1
+cohort, linkage: 1
+meta-analysis, GWAS, retrospective: 1
