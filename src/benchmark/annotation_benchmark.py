@@ -1,6 +1,7 @@
 from typing import List
 from src.utils import get_pmcid_annotation
 
+
 class AnnotationBenchmark:
     def __init__(self):
         pass
