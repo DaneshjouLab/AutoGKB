@@ -10,10 +10,13 @@ from pathlib import Path
 _true_variant_cache: Optional[dict] = None
 
 
-def get_pmcid_annotation(pmcid: str, annotations_by_pmcid: Path = Path("data/annotations_by_pmcid.json")) -> dict:
+def get_pmcid_annotation(
+    pmcid: str, annotations_by_pmcid: Path = Path("data/annotations_by_pmcid.json")
+) -> dict:
     with open(annotations_by_pmcid, "r") as f:
         annotations_by_pmcid = json.load(f)
     return annotations_by_pmcid.get(pmcid, {})
+
 
 def extractVariantsRegex(text):
     # Note, seems to extract a ton of variants, not just the ones that are being studied
