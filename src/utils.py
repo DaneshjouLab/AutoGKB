@@ -5,8 +5,17 @@ from typing import List, Optional
 from termcolor import colored
 from src.article_parser import MarkdownParser
 from pydantic import BaseModel, ValidationError
+from pathlib import Path
 
 _true_variant_cache: Optional[dict] = None
+
+
+def get_pmcid_annotation(
+    pmcid: str, annotations_by_pmcid: Path = Path("data/annotations_by_pmcid.json")
+) -> dict:
+    with open(annotations_by_pmcid, "r") as f:
+        annotations_by_pmcid = json.load(f)
+    return annotations_by_pmcid.get(pmcid, {})
 
 
 def extractVariantsRegex(text):
@@ -79,7 +88,7 @@ def compare_lists(
     return true_positives, true_negatives, false_positives, false_negatives
 
 
-def get_true_variants(pmcid: str) -> List[str]:
+def get_true_variants(pmcid: str, annotations_by_pmcid: Path) -> List[str]:
     """
     Get the actual annotated variants for a given PMCID.
     Uses module-level caching to load the JSON file only once.
@@ -88,7 +97,7 @@ def get_true_variants(pmcid: str) -> List[str]:
 
     if _true_variant_cache is None:
         try:
-            with open("data/benchmark/true_variant_list.json", "r") as f:
+            with open(annotations_by_pmcid, "r") as f:
                 _true_variant_cache = json.load(f)
         except FileNotFoundError:
             logger.error(
