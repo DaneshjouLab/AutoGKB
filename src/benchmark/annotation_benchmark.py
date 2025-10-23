@@ -1,7 +1,6 @@
 from typing import List
 from src.utils import get_pmcid_annotation
 
-
 class AnnotationBenchmark:
     def __init__(self):
         pass
@@ -45,10 +44,22 @@ class AnnotationBenchmark:
         total_score = self.calculate_total_score(
             var_drug_ann, var_pheno_ann, var_fa_ann, study_parameters
         )
-        print(f"Total score for pmcid {pmcid}: {total_score}")
+        print(f"Score for pmcid {pmcid}: {total_score}")
         return total_score
+
+    def run_all(self):
+        benchmark_pmcids = []
+        with open("persistent_data/benchmark_pmcids.txt", "r") as f:
+            benchmark_pmcids = f.read().splitlines()
+        scores = []
+        for pmcid in benchmark_pmcids:
+            scores.append(self.run(pmcid))
+
+        overall_score = sum(scores) / len(scores)
+        print(f"Average score: {overall_score}")
+        return overall_score
 
 
 if __name__ == "__main__":
     benchmark = AnnotationBenchmark()
-    benchmark.run("PMC123456")
+    benchmark.run_all()
