@@ -1,11 +1,8 @@
 from typing import List
 from src.utils import get_pmcid_annotation
 
-class Benchmark:
+class AnnotationBenchmark:
     def __init__(self):
-        pass
-
-    def load_data(self):
         pass
 
     def get_var_drug_ann_score(self, var_drug_ann: List[dict]):
@@ -38,8 +35,6 @@ class Benchmark:
         return total_score
 
 
-
-
 if __name__ == "__main__":
-    benchmark = Benchmark()
+    benchmark = AnnotationBenchmark()
     benchmark.run("PMC123456")
