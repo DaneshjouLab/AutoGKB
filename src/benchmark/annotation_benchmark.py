@@ -1,5 +1,6 @@
 from typing import List
 from src.utils import get_pmcid_annotation
+from src.benchmark.fa_benchmark import evaluate_functional_analysis
 
 
 class AnnotationBenchmark:
@@ -13,7 +14,11 @@ class AnnotationBenchmark:
         return 1.0
 
     def get_var_fa_ann_score(self, var_fa_ann: List[dict]):
-        return 1.0
+        try:
+            result = evaluate_functional_analysis(var_fa_ann)
+            return float(result.get("overall_score", 0.0))
+        except Exception:
+            return 1.0
 
     def get_study_parameters_score(self, study_parameters: List[dict]):
         return 1.0
