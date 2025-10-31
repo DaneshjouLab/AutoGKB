@@ -11,12 +11,31 @@ class AnnotationBenchmark:
     def get_var_drug_ann_score(self, var_drug_ann: List[dict]):
         return 1.0
 
-    def get_var_pheno_ann_score(self, var_pheno_ann: List[dict]):
-        try:
-            result = evaluate_phenotype_annotations(var_pheno_ann)
-            return result / 100.0
-        except Exception:
+    def get_var_pheno_ann_score(self, var_pheno_ann: List[dict], pmcid: str):
+        # Load ground truth annotations
+        with open("persistent_data/benchmark_annotations.json", "r") as f:
+            ground_truth_data = json.load(f)
+
+        # Get ground truth for this PMCID
+        if pmcid not in ground_truth_data:
+            return 0.0
+
+        ground_truth_pheno_ann = ground_truth_data[pmcid].get("var_pheno_ann", [])
+
+        # If both are empty, perfect score
+        if not var_pheno_ann and not ground_truth_pheno_ann:
             return 1.0
+
+        # If one is empty but not the other, score is 0
+        if not var_pheno_ann or not ground_truth_pheno_ann:
+            return 0.0
+
+        # Compare: [ground_truth, prediction]
+        try:
+            score = evaluate_phenotype_annotations([ground_truth_pheno_ann, var_pheno_ann])
+            return score / 100.0
+        except Exception:
+            return 0.0
 
     def get_var_fa_ann_score(self, var_fa_ann: List[dict]):
         return 1.0
@@ -30,11 +49,12 @@ class AnnotationBenchmark:
         var_pheno_ann: List[dict],
         var_fa_ann: List[dict],
         study_parameters: List[dict],
+        pmcid: str,
     ):
         # Return average of all scores
         scores = [
             self.get_var_drug_ann_score(var_drug_ann),
-            self.get_var_pheno_ann_score(var_pheno_ann),
+            self.get_var_pheno_ann_score(var_pheno_ann, pmcid),
             self.get_var_fa_ann_score(var_fa_ann),
             self.get_study_parameters_score(study_parameters),
         ]
@@ -49,7 +69,7 @@ class AnnotationBenchmark:
         study_parameters = pmcid_annotation.get("studyParameters", [])
 
         total_score = self.calculate_total_score(
-            var_drug_ann, var_pheno_ann, var_fa_ann, study_parameters
+            var_drug_ann, var_pheno_ann, var_fa_ann, study_parameters, pmcid
         )
         print(f"Score for pmcid {pmcid}: {total_score}")
         return total_score
