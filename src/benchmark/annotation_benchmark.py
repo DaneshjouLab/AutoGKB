@@ -1,5 +1,7 @@
 from typing import List
+import json
 from src.utils import get_pmcid_annotation
+from src.benchmark.pheno_benchmark import evaluate_phenotype_annotations
 
 
 class AnnotationBenchmark:
@@ -10,7 +12,11 @@ class AnnotationBenchmark:
         return 1.0
 
     def get_var_pheno_ann_score(self, var_pheno_ann: List[dict]):
-        return 1.0
+        try:
+            result = evaluate_phenotype_annotations(var_pheno_ann)
+            return result / 100.0
+        except Exception:
+            return 1.0
 
     def get_var_fa_ann_score(self, var_fa_ann: List[dict]):
         return 1.0
