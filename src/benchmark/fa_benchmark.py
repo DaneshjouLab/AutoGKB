@@ -1,4 +1,4 @@
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 from difflib import SequenceMatcher
 import numpy as np
 import re
@@ -43,6 +43,95 @@ def expand_annotations_by_variant(annotations: List[Dict[str, Any]]) -> List[Dic
             new_ann['_expanded_from_multi_variant'] = True
             expanded.append(new_ann)
     return expanded
+
+
+def align_fa_annotations_by_variant(
+    ground_truth_fa: List[Dict[str, Any]],
+    predictions_fa: List[Dict[str, Any]],
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], List[str]]:
+    """
+    Align FA annotations by variant string with robust matching:
+    1) Expand multi-variant records to one per variant
+    2) Prefer rsID intersection; fallback to normalized substring containment
+    Returns aligned (gt_list, pred_list, display_keys)
+    """
+    rs_re = re.compile(r"rs\d+", re.IGNORECASE)
+
+    gt_expanded = expand_annotations_by_variant(ground_truth_fa or [])
+    pred_expanded = expand_annotations_by_variant(predictions_fa or [])
+
+    pred_index: List[Tuple[set, str, Dict[str, Any]]] = []
+    for rec in pred_expanded:
+        raw = (rec.get('Variant/Haplotypes') or '').strip()
+        raw_norm = normalize_variant(raw).lower()
+        rsids = set(m.group(0).lower() for m in rs_re.finditer(raw))
+        pred_index.append((rsids, raw_norm, rec))
+
+    aligned_gt: List[Dict[str, Any]] = []
+    aligned_pred: List[Dict[str, Any]] = []
+    display_keys: List[str] = []
+
+    for gt_rec in gt_expanded:
+        gt_raw = (gt_rec.get('Variant/Haplotypes') or '').strip()
+        gt_norm = normalize_variant(gt_raw).lower()
+        gt_rs = set(m.group(0).lower() for m in rs_re.finditer(gt_raw))
+
+        match = None
+        if gt_rs:
+            for rsids, raw_norm, pred_rec in pred_index:
+                if rsids & gt_rs:
+                    match = pred_rec
+                    break
+        if match is None and gt_norm:
+            for rsids, raw_norm, pred_rec in pred_index:
+                if gt_norm in raw_norm:
+                    match = pred_rec
+                    break
+
+        if match is not None:
+            aligned_gt.append(gt_rec)
+            aligned_pred.append(match)
+            disp = next(iter(gt_rs)) if gt_rs else gt_norm
+            display_keys.append(disp)
+
+    return aligned_gt, aligned_pred, display_keys
+
+def evaluate_fa_from_articles(
+    ground_truth_article: Dict[str, Any],
+    predictions_article: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    Given two article dicts with var_fa_ann lists, align by variant and evaluate.
+    Returns standard results plus results['aligned_variants'] and a 'status'.
+    """
+    gt_fa = (ground_truth_article or {}).get('var_fa_ann', []) or []
+    pred_fa = (predictions_article or {}).get('var_fa_ann', []) or []
+
+    if not gt_fa or not pred_fa:
+        return {
+            'total_samples': 0,
+            'field_scores': {},
+            'overall_score': 0.0,
+            'detailed_results': [],
+            'aligned_variants': [],
+            'status': 'missing_var_fa_ann',
+        }
+
+    aligned_gt, aligned_pred, display = align_fa_annotations_by_variant(gt_fa, pred_fa)
+    if not aligned_gt:
+        return {
+            'total_samples': 0,
+            'field_scores': {},
+            'overall_score': 0.0,
+            'detailed_results': [],
+            'aligned_variants': [],
+            'status': 'no_overlap_after_alignment',
+        }
+
+    results = _evaluate_functional_analysis_pairs(aligned_gt, aligned_pred, None)
+    results['aligned_variants'] = display
+    results['status'] = 'ok'
+    return results
 
 
 def validate_external_data(annotation: Dict[str, Any]) -> List[str]:
@@ -138,7 +227,14 @@ def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any
 
     gt_list: List[Dict[str, Any]] = [gt]
     pred_list: List[Dict[str, Any]] = [pred]
+    return _evaluate_functional_analysis_pairs(gt_list, pred_list, None)
 
+
+def _evaluate_functional_analysis_pairs(
+    gt_list: List[Dict[str, Any]],
+    pred_list: List[Dict[str, Any]],
+    study_parameters: Optional[List[Dict[str, Any]]],
+) -> Dict[str, Any]:
     model = _get_model()
 
     def exact_match(gt_val: Any, pred_val: Any) -> float:
@@ -205,8 +301,19 @@ def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any
                     covered_count += 1
         return covered_count / len(gt_list_filtered)
 
+    def variant_substring_match(gt_val: Any, pred_val: Any) -> float:
+        if gt_val is None and pred_val is None:
+            return 1.0
+        if gt_val is None or pred_val is None:
+            return 0.0
+        gt_str = str(gt_val).strip().lower()
+        pred_str = str(pred_val).strip().lower()
+        if not gt_str:
+            return 1.0 if not pred_str else 0.0
+        return 1.0 if gt_str in pred_str else 0.0
+
     field_evaluators = {
-        'Variant/Haplotypes': variant_coverage,
+        'Variant/Haplotypes': variant_substring_match,
         'Gene': semantic_similarity,
         'Drug(s)': semantic_similarity,
         'PMID': exact_match,
@@ -241,7 +348,7 @@ def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any
         sample_result: Dict[str, Any] = {'sample_id': i, 'field_scores': {}}
         for field, evaluator in field_evaluators.items():
             sample_result['field_scores'][field] = evaluator(gt.get(field), pred.get(field))
-        dependency_issues = validate_all_dependencies(pred, None)
+        dependency_issues = validate_all_dependencies(pred, study_parameters)
         sample_result['dependency_issues'] = dependency_issues
         if dependency_issues:
             penalty_per_issue = 0.05
