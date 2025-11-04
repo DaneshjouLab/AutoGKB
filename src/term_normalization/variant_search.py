@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional, Any
 import requests
-from src.ontology.search_utils import (
+from src.term_normalization.search_utils import (
     calc_similarity,
     general_search,
     general_search_comma_list,
@@ -14,9 +14,21 @@ from pathlib import Path
 class VariantSearchResult(BaseModel):
     raw_input: str
     id: str
-    name: str
+    normalized_term: str
     url: str
     score: float
+
+    def to_dict(self) -> dict:
+        """
+        Return a plain-Python dict representation of the result that is safe for json.dump.
+        Supports both Pydantic v1 (dict) and v2 (model_dump).
+        """
+        try:
+            # Pydantic v2
+            return self.model_dump()
+        except AttributeError:  # pragma: no cover - v1 fallback
+            # Pydantic v1
+            return self.dict()
 
 
 def pgkb_star_allele_search(
@@ -32,7 +44,7 @@ def pgkb_star_allele_search(
                 VariantSearchResult(
                     raw_input=star_allele,
                     id=result["id"],
-                    name=result["symbol"],
+                    normalized_term=result["symbol"],
                     url=f"https://www.clinpgx.org/haplotype/{result['id']}",
                     score=score,
                 )
@@ -54,7 +66,7 @@ def pgkb_rsid_search(
                 VariantSearchResult(
                     raw_input=rsid,
                     id=result["id"],
-                    name=result["symbol"],
+                    normalized_term=result["symbol"],
                     url=f"https://www.clinpgx.org/variant/{result['id']}",
                     score=score,
                 )
@@ -102,7 +114,7 @@ class VariantLookup(BaseModel):
                 VariantSearchResult(
                     raw_input=variant,
                     id=result["Variant ID"],
-                    name=result["Variant Name"],
+                    normalized_term=result["Variant Name"],
                     url=f"https://www.clinpgx.org/variant/{result['Variant ID']}",
                     score=result["score"],
                 )
