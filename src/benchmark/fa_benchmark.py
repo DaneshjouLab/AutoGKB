@@ -18,29 +18,31 @@ def _get_model() -> SentenceTransformer:
 def parse_variant_list(variants_text: Optional[str]) -> List[str]:
     if not variants_text:
         return []
-    tokens = re.split(r'[,;|\s]+(?:\+\s*)?', variants_text)
+    tokens = re.split(r"[,;|\s]+(?:\+\s*)?", variants_text)
     return [t.strip() for t in tokens if t and t.strip()]
 
 
 def normalize_variant(variant: str) -> str:
     v = variant.strip()
-    if v.lower().startswith('rs'):
+    if v.lower().startswith("rs"):
         return v.lower()
-    return re.sub(r'\s+', '', v)
+    return re.sub(r"\s+", "", v)
 
 
-def expand_annotations_by_variant(annotations: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def expand_annotations_by_variant(
+    annotations: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
     expanded: List[Dict[str, Any]] = []
     for ann in annotations:
-        variants_field = ann.get('Variant/Haplotypes')
+        variants_field = ann.get("Variant/Haplotypes")
         tokens = parse_variant_list(variants_field)
         if len(tokens) <= 1:
             expanded.append(ann)
             continue
         for tok in tokens:
             new_ann = dict(ann)
-            new_ann['Variant/Haplotypes'] = normalize_variant(tok)
-            new_ann['_expanded_from_multi_variant'] = True
+            new_ann["Variant/Haplotypes"] = normalize_variant(tok)
+            new_ann["_expanded_from_multi_variant"] = True
             expanded.append(new_ann)
     return expanded
 
@@ -62,7 +64,7 @@ def align_fa_annotations_by_variant(
 
     pred_index: List[Tuple[set, str, Dict[str, Any]]] = []
     for rec in pred_expanded:
-        raw = (rec.get('Variant/Haplotypes') or '').strip()
+        raw = (rec.get("Variant/Haplotypes") or "").strip()
         raw_norm = normalize_variant(raw).lower()
         rsids = set(m.group(0).lower() for m in rs_re.finditer(raw))
         pred_index.append((rsids, raw_norm, rec))
@@ -72,7 +74,7 @@ def align_fa_annotations_by_variant(
     display_keys: List[str] = []
 
     for gt_rec in gt_expanded:
-        gt_raw = (gt_rec.get('Variant/Haplotypes') or '').strip()
+        gt_raw = (gt_rec.get("Variant/Haplotypes") or "").strip()
         gt_norm = normalize_variant(gt_raw).lower()
         gt_rs = set(m.group(0).lower() for m in rs_re.finditer(gt_raw))
 
@@ -96,6 +98,7 @@ def align_fa_annotations_by_variant(
 
     return aligned_gt, aligned_pred, display_keys
 
+
 def evaluate_fa_from_articles(
     ground_truth_article: Dict[str, Any],
     predictions_article: Dict[str, Any],
@@ -104,54 +107,54 @@ def evaluate_fa_from_articles(
     Given two article dicts with var_fa_ann lists, align by variant and evaluate.
     Returns standard results plus results['aligned_variants'] and a 'status'.
     """
-    gt_fa = (ground_truth_article or {}).get('var_fa_ann', []) or []
-    pred_fa = (predictions_article or {}).get('var_fa_ann', []) or []
+    gt_fa = (ground_truth_article or {}).get("var_fa_ann", []) or []
+    pred_fa = (predictions_article or {}).get("var_fa_ann", []) or []
 
     if not gt_fa or not pred_fa:
         return {
-            'total_samples': 0,
-            'field_scores': {},
-            'overall_score': 0.0,
-            'detailed_results': [],
-            'aligned_variants': [],
-            'status': 'missing_var_fa_ann',
+            "total_samples": 0,
+            "field_scores": {},
+            "overall_score": 0.0,
+            "detailed_results": [],
+            "aligned_variants": [],
+            "status": "missing_var_fa_ann",
         }
 
     aligned_gt, aligned_pred, display = align_fa_annotations_by_variant(gt_fa, pred_fa)
     if not aligned_gt:
         return {
-            'total_samples': 0,
-            'field_scores': {},
-            'overall_score': 0.0,
-            'detailed_results': [],
-            'aligned_variants': [],
-            'status': 'no_overlap_after_alignment',
+            "total_samples": 0,
+            "field_scores": {},
+            "overall_score": 0.0,
+            "detailed_results": [],
+            "aligned_variants": [],
+            "status": "no_overlap_after_alignment",
         }
 
     results = _evaluate_functional_analysis_pairs(aligned_gt, aligned_pred, None)
-    results['aligned_variants'] = display
-    results['status'] = 'ok'
+    results["aligned_variants"] = display
+    results["status"] = "ok"
     return results
 
 
 def validate_external_data(annotation: Dict[str, Any]) -> List[str]:
     issues: List[str] = []
-    rsid_pattern = re.compile(r'^rs\d+$', re.IGNORECASE)
-    star_allele_pattern = re.compile(r'^[A-Z0-9]+\*\d+$')
-    gene_pattern = re.compile(r'^[A-Z0-9]+$')
+    rsid_pattern = re.compile(r"^rs\d+$", re.IGNORECASE)
+    star_allele_pattern = re.compile(r"^[A-Z0-9]+\*\d+$")
+    gene_pattern = re.compile(r"^[A-Z0-9]+$")
 
-    variants = annotation.get('Variant/Haplotypes', '')
+    variants = annotation.get("Variant/Haplotypes", "")
     if variants:
-        variant_list = re.split(r'[,;|\s]+(?:\+\s*)?', variants)
+        variant_list = re.split(r"[,;|\s]+(?:\+\s*)?", variants)
         for variant in (v.strip() for v in variant_list if v.strip()):
-            if variant.lower().startswith('rs'):
+            if variant.lower().startswith("rs"):
                 if not rsid_pattern.match(variant):
                     issues.append(f"Invalid rsID format: {variant}")
-            elif '*' in variant:
+            elif "*" in variant:
                 if not star_allele_pattern.match(variant):
                     issues.append(f"Invalid star allele format: {variant}")
 
-    gene = annotation.get('Gene', '')
+    gene = annotation.get("Gene", "")
     if gene and not gene_pattern.match(gene):
         issues.append(f"Invalid gene name format: {gene}")
     return issues
@@ -159,45 +162,57 @@ def validate_external_data(annotation: Dict[str, Any]) -> List[str]:
 
 def validate_field_dependencies(annotation: Dict[str, Any]) -> List[str]:
     issues: List[str] = []
-    gene_product = annotation.get('Gene/gene product')
-    gene = annotation.get('Gene')
+    gene_product = annotation.get("Gene/gene product")
+    gene = annotation.get("Gene")
     if gene_product and not gene:
         issues.append("Gene field required when Gene/gene product is specified")
 
-    comparison_alleles = annotation.get('Comparison Allele(s) or Genotype(s)')
-    variants = annotation.get('Variant/Haplotypes')
+    comparison_alleles = annotation.get("Comparison Allele(s) or Genotype(s)")
+    variants = annotation.get("Variant/Haplotypes")
     if comparison_alleles and not variants:
-        issues.append("Variant/Haplotypes required when Comparison Allele(s) is specified")
+        issues.append(
+            "Variant/Haplotypes required when Comparison Allele(s) is specified"
+        )
 
-    direction = annotation.get('Direction of effect')
-    association = annotation.get('Is/Is Not associated')
-    if direction and association != 'Associated with':
+    direction = annotation.get("Direction of effect")
+    association = annotation.get("Is/Is Not associated")
+    if direction and association != "Associated with":
         issues.append("Direction of effect requires 'Associated with' status")
 
-    functional_terms = annotation.get('Functional terms')
-    gene_product = annotation.get('Gene/gene product')
+    functional_terms = annotation.get("Functional terms")
+    gene_product = annotation.get("Gene/gene product")
     if functional_terms and not gene_product:
-        issues.append("Gene/gene product recommended when Functional terms is specified")
+        issues.append(
+            "Gene/gene product recommended when Functional terms is specified"
+        )
     return issues
 
 
-def validate_annotation_consistency(annotation: Dict[str, Any], study_params: List[Dict[str, Any]]) -> List[str]:
+def validate_annotation_consistency(
+    annotation: Dict[str, Any], study_params: List[Dict[str, Any]]
+) -> List[str]:
     issues: List[str] = []
-    variant_id = annotation.get('Variant Annotation ID')
+    variant_id = annotation.get("Variant Annotation ID")
     if variant_id:
-        found_in_study = any(sp.get('Variant Annotation ID') == variant_id for sp in study_params)
+        found_in_study = any(
+            sp.get("Variant Annotation ID") == variant_id for sp in study_params
+        )
         if not found_in_study:
-            issues.append(f"Variant Annotation ID {variant_id} not found in study_parameters")
+            issues.append(
+                f"Variant Annotation ID {variant_id} not found in study_parameters"
+            )
 
-    annotation_pmid = annotation.get('PMID')
+    annotation_pmid = annotation.get("PMID")
     if annotation_pmid and study_params:
-        study_pmids = {sp.get('PMID') for sp in study_params if sp.get('PMID')}
+        study_pmids = {sp.get("PMID") for sp in study_params if sp.get("PMID")}
         if study_pmids and annotation_pmid not in study_pmids:
             issues.append(f"PMID {annotation_pmid} inconsistent with study parameters")
     return issues
 
 
-def validate_all_dependencies(annotation: Dict[str, Any], study_params: Optional[List[Dict[str, Any]]] = None) -> List[str]:
+def validate_all_dependencies(
+    annotation: Dict[str, Any], study_params: Optional[List[Dict[str, Any]]] = None
+) -> List[str]:
     issues: List[str] = []
     issues.extend(validate_external_data(annotation))
     issues.extend(validate_field_dependencies(annotation))
@@ -220,10 +235,14 @@ def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any
     """
 
     if not isinstance(samples, list) or len(samples) != 2:
-        raise ValueError("Expected a list with exactly two dicts: [ground_truth, prediction].")
+        raise ValueError(
+            "Expected a list with exactly two dicts: [ground_truth, prediction]."
+        )
     gt, pred = samples[0], samples[1]
     if not isinstance(gt, dict) or not isinstance(pred, dict):
-        raise ValueError("Both items must be dicts: [ground_truth_dict, prediction_dict].")
+        raise ValueError(
+            "Both items must be dicts: [ground_truth_dict, prediction_dict]."
+        )
 
     gt_list: List[Dict[str, Any]] = [gt]
     pred_list: List[Dict[str, Any]] = [pred]
@@ -242,7 +261,9 @@ def _evaluate_functional_analysis_pairs(
             return 1.0
         if gt_val is None or pred_val is None:
             return 0.0
-        return 1.0 if str(gt_val).strip().lower() == str(pred_val).strip().lower() else 0.0
+        return (
+            1.0 if str(gt_val).strip().lower() == str(pred_val).strip().lower() else 0.0
+        )
 
     def semantic_similarity(gt_val: Any, pred_val: Any) -> float:
         if gt_val is None and pred_val is None:
@@ -257,7 +278,10 @@ def _evaluate_functional_analysis_pairs(
             embeddings = model.encode([gt_str, pred_str])
             gt_embedding = embeddings[0]
             pred_embedding = embeddings[1]
-            similarity = float(np.dot(gt_embedding, pred_embedding) / (np.linalg.norm(gt_embedding) * np.linalg.norm(pred_embedding)))
+            similarity = float(
+                np.dot(gt_embedding, pred_embedding)
+                / (np.linalg.norm(gt_embedding) * np.linalg.norm(pred_embedding))
+            )
             return similarity
         except Exception:
             return SequenceMatcher(None, gt_str.lower(), pred_str.lower()).ratio()
@@ -268,17 +292,23 @@ def _evaluate_functional_analysis_pairs(
 
         def is_wildtype(variant: str) -> bool:
             variant_lower = variant.lower().strip()
-            wildtype_indicators = ['wild type', 'wildtype', 'wt', '*1']
+            wildtype_indicators = ["wild type", "wildtype", "wt", "*1"]
             return any(wt in variant_lower for wt in wildtype_indicators)
 
         def is_rsid(variant: str) -> bool:
-            return variant.strip().lower().startswith('rs')
+            return variant.strip().lower().startswith("rs")
 
         def is_star_allele(variant: str) -> bool:
-            return '*' in variant.strip()
+            return "*" in variant.strip()
 
-        gt_list = [v.strip() for v in re.split(r'[,;|\s]+(?:\+\s*)?', gt_variants) if v.strip()]
-        pred_list = [v.strip() for v in re.split(r'[,;|\s]+(?:\+\s*)?', pred_variants) if v.strip()]
+        gt_list = [
+            v.strip() for v in re.split(r"[,;|\s]+(?:\+\s*)?", gt_variants) if v.strip()
+        ]
+        pred_list = [
+            v.strip()
+            for v in re.split(r"[,;|\s]+(?:\+\s*)?", pred_variants)
+            if v.strip()
+        ]
         gt_list_filtered = [v for v in gt_list if not is_wildtype(v)]
         if not gt_list_filtered:
             return 1.0 if pred_list else 0.0
@@ -292,10 +322,15 @@ def _evaluate_functional_analysis_pairs(
             else:
                 best_match_score = 0.0
                 for pred_var in pred_list:
-                    if gt_var_lower in pred_var.lower() or pred_var.lower() in gt_var_lower:
+                    if (
+                        gt_var_lower in pred_var.lower()
+                        or pred_var.lower() in gt_var_lower
+                    ):
                         best_match_score = 1.0
                         break
-                    similarity = SequenceMatcher(None, gt_var_lower, pred_var.lower()).ratio()
+                    similarity = SequenceMatcher(
+                        None, gt_var_lower, pred_var.lower()
+                    ).ratio()
                     best_match_score = max(best_match_score, similarity)
                 if best_match_score > 0.8:
                     covered_count += 1
@@ -313,71 +348,117 @@ def _evaluate_functional_analysis_pairs(
         return 1.0 if gt_str in pred_str else 0.0
 
     field_evaluators = {
-        'Variant/Haplotypes': variant_substring_match,
-        'Gene': semantic_similarity,
-        'Drug(s)': semantic_similarity,
-        'PMID': exact_match,
-        'Phenotype Category': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Significance': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Alleles': semantic_similarity,
-        'Specialty Population': semantic_similarity,
-        'Assay type': semantic_similarity,
-        'Metabolizer types': semantic_similarity,
-        'isPlural': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Is/Is Not associated': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Direction of effect': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Functional terms': semantic_similarity,
-        'Gene/gene product': semantic_similarity,
-        'When treated with/exposed to/when assayed with': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Multiple drugs And/or': lambda gt, pred: 1.0 if (gt and pred and gt.lower().strip() == pred.lower().strip()) else (1.0 if not gt and not pred else 0.0),
-        'Cell type': semantic_similarity,
-        'Comparison Allele(s) or Genotype(s)': semantic_similarity,
-        'Comparison Metabolizer types': semantic_similarity
+        "Variant/Haplotypes": variant_substring_match,
+        "Gene": semantic_similarity,
+        "Drug(s)": semantic_similarity,
+        "PMID": exact_match,
+        "Phenotype Category": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Significance": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Alleles": semantic_similarity,
+        "Specialty Population": semantic_similarity,
+        "Assay type": semantic_similarity,
+        "Metabolizer types": semantic_similarity,
+        "isPlural": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Is/Is Not associated": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Direction of effect": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Functional terms": semantic_similarity,
+        "Gene/gene product": semantic_similarity,
+        "When treated with/exposed to/when assayed with": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Multiple drugs And/or": lambda gt, pred: (
+            1.0
+            if (gt and pred and gt.lower().strip() == pred.lower().strip())
+            else (1.0 if not gt and not pred else 0.0)
+        ),
+        "Cell type": semantic_similarity,
+        "Comparison Allele(s) or Genotype(s)": semantic_similarity,
+        "Comparison Metabolizer types": semantic_similarity,
     }
 
-    results: Dict[str, Any] = {'total_samples': len(gt_list), 'field_scores': {}, 'overall_score': 0.0}
+    results: Dict[str, Any] = {
+        "total_samples": len(gt_list),
+        "field_scores": {},
+        "overall_score": 0.0,
+    }
 
     for field, evaluator in field_evaluators.items():
         scores: List[float] = []
         for gt, pred in zip(gt_list, pred_list):
             scores.append(evaluator(gt.get(field), pred.get(field)))
-        results['field_scores'][field] = {'mean_score': sum(scores) / len(scores), 'scores': scores}
+        results["field_scores"][field] = {
+            "mean_score": sum(scores) / len(scores),
+            "scores": scores,
+        }
 
-    results['detailed_results'] = []
+    results["detailed_results"] = []
     for i, (gt, pred) in enumerate(zip(gt_list, pred_list)):
-        sample_result: Dict[str, Any] = {'sample_id': i, 'field_scores': {}}
+        sample_result: Dict[str, Any] = {"sample_id": i, "field_scores": {}}
         for field, evaluator in field_evaluators.items():
-            sample_result['field_scores'][field] = evaluator(gt.get(field), pred.get(field))
+            sample_result["field_scores"][field] = evaluator(
+                gt.get(field), pred.get(field)
+            )
         dependency_issues = validate_all_dependencies(pred, study_parameters)
-        sample_result['dependency_issues'] = dependency_issues
+        sample_result["dependency_issues"] = dependency_issues
         if dependency_issues:
             penalty_per_issue = 0.05
             total_penalty = min(len(dependency_issues) * penalty_per_issue, 0.3)
             fields_to_penalize = set()
             for issue in dependency_issues:
                 if "Gene" in issue or "gene" in issue:
-                    fields_to_penalize.update(['Gene', 'Gene/gene product'])
+                    fields_to_penalize.update(["Gene", "Gene/gene product"])
                 elif "Variant" in issue or "variant" in issue:
-                    fields_to_penalize.update(['Variant/Haplotypes', 'Comparison Allele(s) or Genotype(s)'])
+                    fields_to_penalize.update(
+                        ["Variant/Haplotypes", "Comparison Allele(s) or Genotype(s)"]
+                    )
                 elif "Direction" in issue or "Associated" in issue:
-                    fields_to_penalize.update(['Direction of effect', 'Is/Is Not associated'])
+                    fields_to_penalize.update(
+                        ["Direction of effect", "Is/Is Not associated"]
+                    )
                 elif "Functional" in issue:
-                    fields_to_penalize.update(['Functional terms', 'Gene/gene product'])
+                    fields_to_penalize.update(["Functional terms", "Gene/gene product"])
                 elif "rsID" in issue or "star allele" in issue:
-                    fields_to_penalize.add('Variant/Haplotypes')
+                    fields_to_penalize.add("Variant/Haplotypes")
                 else:
-                    fields_to_penalize.update(sample_result['field_scores'].keys())
+                    fields_to_penalize.update(sample_result["field_scores"].keys())
             for field in fields_to_penalize:
-                original_score = sample_result['field_scores'][field]
-                sample_result['field_scores'][field] = original_score * (1 - total_penalty)
-        results['detailed_results'].append(sample_result)
+                original_score = sample_result["field_scores"][field]
+                sample_result["field_scores"][field] = original_score * (
+                    1 - total_penalty
+                )
+        results["detailed_results"].append(sample_result)
 
     for field in list(field_evaluators.keys()):
-        field_scores = [s['field_scores'][field] for s in results['detailed_results']]
-        results['field_scores'][field] = {'mean_score': sum(field_scores) / len(field_scores), 'scores': field_scores}
+        field_scores = [s["field_scores"][field] for s in results["detailed_results"]]
+        results["field_scores"][field] = {
+            "mean_score": sum(field_scores) / len(field_scores),
+            "scores": field_scores,
+        }
 
-    field_means = [v['mean_score'] for v in results['field_scores'].values()]
-    results['overall_score'] = sum(field_means) / len(field_means) if field_means else 0.0
+    field_means = [v["mean_score"] for v in results["field_scores"].values()]
+    results["overall_score"] = (
+        sum(field_means) / len(field_means) if field_means else 0.0
+    )
     return results
-
-

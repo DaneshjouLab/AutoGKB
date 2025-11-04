@@ -28,7 +28,7 @@ class PhenotypeAnnotationBenchmark:
         "Alleles": 1.5,
         "Is/Is Not associated": 1.0,
         "Variant/Haplotypes": 1.0,
-        "Gene": 1.0,    
+        "Gene": 1.0,
         "Phenotype Category": 0.5,
         "When treated with/exposed to/when assayed with": 0.5,
         "Comparison Allele(s) or Genotype(s)": 1.0,
@@ -52,10 +52,10 @@ class PhenotypeAnnotationBenchmark:
         s = str(value).lower().strip()
 
         # Remove extra whitespace
-        s = re.sub(r'\s+', ' ', s)
+        s = re.sub(r"\s+", " ", s)
 
         # Remove punctuation variations
-        s = re.sub(r'[,;]+', '', s)
+        s = re.sub(r"[,;]+", "", s)
 
         return s
 
@@ -89,7 +89,7 @@ class PhenotypeAnnotationBenchmark:
         if pred_norm in ground_truth_norm or ground_truth_norm in pred_norm:
             return 0.8
 
-        #The Jaccard index is particularly useful when the presence or absence of elements 
+        # The Jaccard index is particularly useful when the presence or absence of elements
         # in the sets is more important than their frequency or order.
         # could be used to help check for multiple entries put in one annotation?
         pred_tokens = set(pred_norm.split())
@@ -132,9 +132,7 @@ class PhenotypeAnnotationBenchmark:
         return matching_score
 
     def _find_best_matches(
-        self,
-        predictions: List[Dict[str, Any]],
-        ground_truths: List[Dict[str, Any]]
+        self, predictions: List[Dict[str, Any]], ground_truths: List[Dict[str, Any]]
     ) -> List[Tuple[int, int, float]]:
         """
         Find best matches between predictions and ground truths.
@@ -155,10 +153,7 @@ class PhenotypeAnnotationBenchmark:
 
         return matches
 
-    def evaluate(
-        self,
-        samples: List[Any]
-    ) -> float:
+    def evaluate(self, samples: List[Any]) -> float:
         """
         Evaluate predictions against ground truths and return similarity score.
 
@@ -173,7 +168,9 @@ class PhenotypeAnnotationBenchmark:
             Similarity score between 0 and 1
         """
         if not isinstance(samples, list) or len(samples) != 2:
-            raise ValueError("Expected a list with exactly two items: [ground_truth, prediction].")
+            raise ValueError(
+                "Expected a list with exactly two items: [ground_truth, prediction]."
+            )
 
         gt, pred = samples[0], samples[1]
 
@@ -187,7 +184,9 @@ class PhenotypeAnnotationBenchmark:
             gt_list = gt
             pred_list = pred
         else:
-            raise ValueError("Both items must be either dicts or lists: [ground_truth, prediction].")
+            raise ValueError(
+                "Both items must be either dicts or lists: [ground_truth, prediction]."
+            )
 
         if not gt_list or not pred_list:
             return 0.0
@@ -218,8 +217,7 @@ class PhenotypeAnnotationBenchmark:
 
 
 def evaluate_phenotype_annotations(
-    samples: List[Any],
-    matching_threshold: float = 0.7
+    samples: List[Any], matching_threshold: float = 0.7
 ) -> float:
     """
     Benchmark phenotype annotations and return an aggregate similarity score.

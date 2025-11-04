@@ -26,36 +26,42 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
 
     if not isinstance(samples, list) or len(samples) != 2:
-        raise ValueError("Expected a list with exactly two dicts: [ground_truth, prediction].")
+        raise ValueError(
+            "Expected a list with exactly two dicts: [ground_truth, prediction]."
+        )
     gt, pred = samples[0], samples[1]
     if not isinstance(gt, dict) or not isinstance(pred, dict):
-        raise ValueError("Both items must be dicts: [ground_truth_dict, prediction_dict].")
+        raise ValueError(
+            "Both items must be dicts: [ground_truth_dict, prediction_dict]."
+        )
 
     # Variant expansion and alignment (mirroring FA)
     def parse_variant_list(variants_text: Optional[str]) -> List[str]:
         if not variants_text:
             return []
-        tokens = re.split(r'[,;|\s]+(?:\+\s*)?', variants_text)
+        tokens = re.split(r"[,;|\s]+(?:\+\s*)?", variants_text)
         return [t.strip() for t in tokens if t and t.strip()]
 
     def normalize_variant(variant: str) -> str:
         v = variant.strip()
-        if v.lower().startswith('rs'):
+        if v.lower().startswith("rs"):
             return v.lower()
-        return re.sub(r'\s+', '', v)
+        return re.sub(r"\s+", "", v)
 
-    def expand_annotations_by_variant(annotations: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    def expand_annotations_by_variant(
+        annotations: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
         expanded: List[Dict[str, Any]] = []
         for ann in annotations:
-            variants_field = ann.get('Variant/Haplotypes')
+            variants_field = ann.get("Variant/Haplotypes")
             tokens = parse_variant_list(variants_field)
             if len(tokens) <= 1:
                 expanded.append(ann)
                 continue
             for tok in tokens:
                 new_ann = dict(ann)
-                new_ann['Variant/Haplotypes'] = normalize_variant(tok)
-                new_ann['_expanded_from_multi_variant'] = True
+                new_ann["Variant/Haplotypes"] = normalize_variant(tok)
+                new_ann["_expanded_from_multi_variant"] = True
                 expanded.append(new_ann)
         return expanded
 
@@ -69,7 +75,7 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
 
         pred_index: List[Tuple[set, str, Dict[str, Any]]] = []
         for rec in pred_expanded:
-            raw = (rec.get('Variant/Haplotypes') or '').strip()
+            raw = (rec.get("Variant/Haplotypes") or "").strip()
             raw_norm = normalize_variant(raw).lower()
             rsids = set(m.group(0).lower() for m in rs_re.finditer(raw))
             pred_index.append((rsids, raw_norm, rec))
@@ -79,7 +85,7 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
         display_keys: List[str] = []
 
         for gt_rec in gt_expanded:
-            gt_raw = (gt_rec.get('Variant/Haplotypes') or '').strip()
+            gt_raw = (gt_rec.get("Variant/Haplotypes") or "").strip()
             gt_norm = normalize_variant(gt_raw).lower()
             gt_rs = set(m.group(0).lower() for m in rs_re.finditer(gt_raw))
 
@@ -109,7 +115,12 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
     gt_list, pred_list, _ = align_by_variant(gt_list_raw, pred_list_raw)
     if not gt_list:
         # nothing aligned; return empty result structure
-        return {'total_samples': 0, 'field_scores': {}, 'overall_score': 0.0, 'detailed_results': []}
+        return {
+            "total_samples": 0,
+            "field_scores": {},
+            "overall_score": 0.0,
+            "detailed_results": [],
+        }
 
     model = _get_model()
 
@@ -117,9 +128,9 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
         # lowercase, strip, collapse whitespace, standardize separators
         n = name.lower().strip()
         # normalize hyphens to space and standardize slashes
-        n = n.replace('-', ' ')
+        n = n.replace("-", " ")
         # replace slashes with space-slash-space to normalize
-        n = n.replace('/', ' / ')
+        n = n.replace("/", " / ")
         n = re.sub(r"\s+", " ", n)
         return n
 
@@ -147,7 +158,9 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
             return 1.0
         if gt_val is None or pred_val is None:
             return 0.0
-        return 1.0 if str(gt_val).strip().lower() == str(pred_val).strip().lower() else 0.0
+        return (
+            1.0 if str(gt_val).strip().lower() == str(pred_val).strip().lower() else 0.0
+        )
 
     def semantic_similarity(gt_val: Any, pred_val: Any) -> float:
         if gt_val is None and pred_val is None:
@@ -182,13 +195,13 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
         pred_str = re.sub(r"\s+", " ", str(pred_val).strip().lower())
         # canonical phenotype-group labels that may appear in this field
         phenotype_group_labels = {
-            'poor metabolizers',
-            'intermediate metabolizers',
-            'extensive metabolizers',
-            'ultra-rapid metabolizers',
-            'intermediate activity',
-            'reduced function',
-            'normal function',
+            "poor metabolizers",
+            "intermediate metabolizers",
+            "extensive metabolizers",
+            "ultra-rapid metabolizers",
+            "intermediate activity",
+            "reduced function",
+            "normal function",
         }
         if gt_str in phenotype_group_labels or pred_str in phenotype_group_labels:
             return 1.0 if gt_str == pred_str else 0.0
@@ -222,8 +235,8 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Operator-aware coverage for Drug(s).
         Uses `Multiple drugs And/or` to decide coverage rule. Defaults to 'or' if missing.
         """
-        gt_drugs_raw = gt.get('Drug(s)')
-        pred_drugs_raw = pred.get('Drug(s)')
+        gt_drugs_raw = gt.get("Drug(s)")
+        pred_drugs_raw = pred.get("Drug(s)")
         gt_tokens = parse_drug_list(gt_drugs_raw)
         pred_tokens = parse_drug_list(pred_drugs_raw)
         if not gt_tokens and not pred_tokens:
@@ -231,7 +244,15 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
         if not gt_tokens or not pred_tokens:
             return 0.0
 
-        operator = (gt.get('Multiple drugs And/or') or pred.get('Multiple drugs And/or') or 'or').strip().lower()
+        operator = (
+            (
+                gt.get("Multiple drugs And/or")
+                or pred.get("Multiple drugs And/or")
+                or "or"
+            )
+            .strip()
+            .lower()
+        )
 
         def token_match(g: str, p: str) -> bool:
             if g == p:
@@ -247,7 +268,7 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
                     covered[i] = True
                     break
 
-        if operator == 'and':
+        if operator == "and":
             return 1.0 if all(covered) else sum(1 for c in covered if c) / len(covered)
         # default 'or': partial credit by fraction covered, with minimum of whether any matched
         frac = sum(1 for c in covered if c) / len(covered)
@@ -255,8 +276,8 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
 
     # Map evaluators to drug schema fields; Drug(s) handled separately below.
     def category_equal(a: Any, b: Any) -> float:
-        a_norm = (re.sub(r"\s+", " ", str(a).strip().lower()) if a is not None else None)
-        b_norm = (re.sub(r"\s+", " ", str(b).strip().lower()) if b is not None else None)
+        a_norm = re.sub(r"\s+", " ", str(a).strip().lower()) if a is not None else None
+        b_norm = re.sub(r"\s+", " ", str(b).strip().lower()) if b is not None else None
         if a_norm is None and b_norm is None:
             return 1.0
         if a_norm is None or b_norm is None:
@@ -264,56 +285,69 @@ def evaluate_drug_annotations(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
         return 1.0 if a_norm == b_norm else 0.0
 
     field_evaluators = {
-        'Variant/Haplotypes': variant_substring_match,
-        'Gene': semantic_similarity,
-        'PMID': exact_match,
-        'Phenotype Category': category_equal,
-        'Significance': category_equal,
-        'Alleles': alleles_set_coverage,
-        'Specialty Population': semantic_similarity,
-        'Metabolizer types': semantic_similarity,
-        'isPlural': category_equal,
-        'Is/Is Not associated': category_equal,
-        'Direction of effect': category_equal,
-        'PD/PK terms': semantic_similarity,
-        'Multiple drugs And/or': category_equal,
-        'Population types': semantic_similarity,
-        'Population Phenotypes or diseases': semantic_similarity,
-        'Multiple phenotypes or diseases And/or': category_equal,
-        'Comparison Allele(s) or Genotype(s)': alleles_set_coverage,
-        'Comparison Metabolizer types': semantic_similarity,
+        "Variant/Haplotypes": variant_substring_match,
+        "Gene": semantic_similarity,
+        "PMID": exact_match,
+        "Phenotype Category": category_equal,
+        "Significance": category_equal,
+        "Alleles": alleles_set_coverage,
+        "Specialty Population": semantic_similarity,
+        "Metabolizer types": semantic_similarity,
+        "isPlural": category_equal,
+        "Is/Is Not associated": category_equal,
+        "Direction of effect": category_equal,
+        "PD/PK terms": semantic_similarity,
+        "Multiple drugs And/or": category_equal,
+        "Population types": semantic_similarity,
+        "Population Phenotypes or diseases": semantic_similarity,
+        "Multiple phenotypes or diseases And/or": category_equal,
+        "Comparison Allele(s) or Genotype(s)": alleles_set_coverage,
+        "Comparison Metabolizer types": semantic_similarity,
     }
 
-    results: Dict[str, Any] = {'total_samples': len(gt_list), 'field_scores': {}, 'overall_score': 0.0}
+    results: Dict[str, Any] = {
+        "total_samples": len(gt_list),
+        "field_scores": {},
+        "overall_score": 0.0,
+    }
 
     for field, evaluator in field_evaluators.items():
         scores: List[float] = []
         for g, p in zip(gt_list, pred_list):
             scores.append(evaluator(g.get(field), p.get(field)))
-        results['field_scores'][field] = {'mean_score': sum(scores) / len(scores), 'scores': scores}
+        results["field_scores"][field] = {
+            "mean_score": sum(scores) / len(scores),
+            "scores": scores,
+        }
 
     # Compute Drug(s) scores with operator-aware logic
     drug_scores: List[float] = []
     for g, p in zip(gt_list, pred_list):
         drug_scores.append(drugs_coverage(g, p))
-    results['field_scores']['Drug(s)'] = {'mean_score': sum(drug_scores) / len(drug_scores), 'scores': drug_scores}
+    results["field_scores"]["Drug(s)"] = {
+        "mean_score": sum(drug_scores) / len(drug_scores),
+        "scores": drug_scores,
+    }
 
-    results['detailed_results'] = []
+    results["detailed_results"] = []
     for i, (g, p) in enumerate(zip(gt_list, pred_list)):
-        sample_result: Dict[str, Any] = {'sample_id': i, 'field_scores': {}}
+        sample_result: Dict[str, Any] = {"sample_id": i, "field_scores": {}}
         for field, evaluator in field_evaluators.items():
-            sample_result['field_scores'][field] = evaluator(g.get(field), p.get(field))
-        sample_result['field_scores']['Drug(s)'] = drugs_coverage(g, p)
+            sample_result["field_scores"][field] = evaluator(g.get(field), p.get(field))
+        sample_result["field_scores"]["Drug(s)"] = drugs_coverage(g, p)
         # No dependency penalties wired yet for drug entries; can be added later if needed
-        sample_result['dependency_issues'] = []
-        results['detailed_results'].append(sample_result)
+        sample_result["dependency_issues"] = []
+        results["detailed_results"].append(sample_result)
 
-    for field in list(field_evaluators.keys()) + ['Drug(s)']:
-        field_scores = [s['field_scores'][field] for s in results['detailed_results']]
-        results['field_scores'][field] = {'mean_score': sum(field_scores) / len(field_scores), 'scores': field_scores}
+    for field in list(field_evaluators.keys()) + ["Drug(s)"]:
+        field_scores = [s["field_scores"][field] for s in results["detailed_results"]]
+        results["field_scores"][field] = {
+            "mean_score": sum(field_scores) / len(field_scores),
+            "scores": field_scores,
+        }
 
-    field_means = [v['mean_score'] for v in results['field_scores'].values()]
-    results['overall_score'] = sum(field_means) / len(field_means) if field_means else 0.0
+    field_means = [v["mean_score"] for v in results["field_scores"].values()]
+    results["overall_score"] = (
+        sum(field_means) / len(field_means) if field_means else 0.0
+    )
     return results
-
-

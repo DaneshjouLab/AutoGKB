@@ -38,7 +38,9 @@ class AnnotationBenchmark:
 
         # Compare: [ground_truth, prediction]
         try:
-            score = evaluate_phenotype_annotations([ground_truth_pheno_ann, var_pheno_ann])
+            score = evaluate_phenotype_annotations(
+                [ground_truth_pheno_ann, var_pheno_ann]
+            )
             return score / 100.0
         except Exception:
             return 0.0
