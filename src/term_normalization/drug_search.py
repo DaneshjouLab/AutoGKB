@@ -64,7 +64,11 @@ def rxnorm_search(drug_name: str) -> Optional[DrugSearchResult]:
             name = candidate["name"]
             score = calc_similarity(drug_name, name)
             return DrugSearchResult(
-                raw_input=drug_name, id=f"RXN{rxcui}", normalized_term=name, url=url, score=score
+                raw_input=drug_name,
+                id=f"RXN{rxcui}",
+                normalized_term=name,
+                url=url,
+                score=score,
             )
     return DrugSearchResult(
         raw_input=drug_name, id="", normalized_term="Not Found", url="", score=0

@@ -19,6 +19,7 @@ class TermType(Enum):
     VARIANT = "variant"
     DRUG = "drug"
 
+
 class TermLookup:
     def __init__(self):
         self.variant_search = VariantLookup()
@@ -41,6 +42,7 @@ class TermLookup:
             return self.lookup_variant(term, threshold=threshold, top_k=top_k)
         elif term_type == TermType.DRUG:
             return self.lookup_drug(term, threshold=threshold, top_k=top_k)
+
 
 def normalize_annotation(input_annotation: Path, output_annotation: Path):
     """
@@ -73,9 +75,14 @@ def normalize_annotation(input_annotation: Path, output_annotation: Path):
             # Iterate through each annotation in the list
             for annotation in annotations[ann_type]:
                 # Normalize Variant/Haplotypes if present
-                if "Variant/Haplotypes" in annotation and annotation["Variant/Haplotypes"]:
+                if (
+                    "Variant/Haplotypes" in annotation
+                    and annotation["Variant/Haplotypes"]
+                ):
                     variant_term = annotation["Variant/Haplotypes"]
-                    results = term_lookup.search(variant_term, term_type=TermType.VARIANT)
+                    results = term_lookup.search(
+                        variant_term, term_type=TermType.VARIANT
+                    )
                     if results:
                         saved_mappings[variant_term] = results[0].to_dict()
                         annotation["Variant/Haplotypes_normalized"] = results[0].id
