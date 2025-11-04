@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional, Any
 import requests
-from src.ontology.search_utils import (
+from src.term_normalization.search_utils import (
     calc_similarity,
     general_search,
     general_search_comma_list,
@@ -14,9 +14,21 @@ from pathlib import Path
 class DrugSearchResult(BaseModel):
     raw_input: str
     id: str
-    name: str
+    normalized_term: str
     url: str
     score: float
+
+    def to_dict(self) -> dict:
+        """
+        Return a plain-Python dict representation of the result that is safe for json.dump.
+        Supports both Pydantic v1 (dict) and v2 (model_dump).
+        """
+        try:
+            # Pydantic v2
+            return self.model_dump()
+        except AttributeError:  # pragma: no cover - v1 fallback
+            # Pydantic v1
+            return self.dict()
 
 
 # RxNorm Helpers
@@ -52,10 +64,10 @@ def rxnorm_search(drug_name: str) -> Optional[DrugSearchResult]:
             name = candidate["name"]
             score = calc_similarity(drug_name, name)
             return DrugSearchResult(
-                raw_input=drug_name, id=f"RXN{rxcui}", name=name, url=url, score=score
+                raw_input=drug_name, id=f"RXN{rxcui}", normalized_term=name, url=url, score=score
             )
     return DrugSearchResult(
-        raw_input=drug_name, id="", name="Not Found", url="", score=0
+        raw_input=drug_name, id="", normalized_term="Not Found", url="", score=0
     )
 
 
@@ -93,7 +105,7 @@ class DrugLookup(BaseModel):
                 DrugSearchResult(
                     raw_input=self.raw_input,
                     id=result["PharmGKB Accession Id"],
-                    name=result["Name"],
+                    normalized_term=result["Name"],
                     url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
                     score=result["score"],
                 )
@@ -131,7 +143,7 @@ class DrugLookup(BaseModel):
                 DrugSearchResult(
                     raw_input=self.raw_input,
                     id=result["PharmGKB Accession Id"],
-                    name=result["Name"],
+                    normalized_term=result["Name"],
                     url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
                     score=result["score"],
                 )
@@ -187,7 +199,7 @@ class DrugLookup(BaseModel):
                 DrugSearchResult(
                     raw_input=self.raw_input,
                     id=result["PharmGKB Accession Id"],
-                    name=result["Name"],
+                    normalized_term=result["Name"],
                     url=f"https://www.clinpgx.org/chemical/{result['PharmGKB Accession Id']}",
                     score=result["score"],
                 )
