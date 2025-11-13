@@ -1,18 +1,13 @@
 from typing import Dict, List, Any, Optional, Tuple
 from difflib import SequenceMatcher
-import numpy as np
 import re
-from sentence_transformers import SentenceTransformer
-
-
-_model: Optional[SentenceTransformer] = None
-
-
-def _get_model() -> SentenceTransformer:
-    global _model
-    if _model is None:
-        _model = SentenceTransformer("pritamdeka/S-PubMedBert-MS-MARCO")
-    return _model
+from src.benchmark.shared_utils import (
+    exact_match,
+    semantic_similarity,
+    category_equal,
+    variant_substring_match,
+    compute_weighted_score,
+)
 
 
 def parse_variant_list(variants_text: Optional[str]) -> List[str]:
@@ -131,7 +126,7 @@ def evaluate_fa_from_articles(
             "status": "no_overlap_after_alignment",
         }
 
-    results = _evaluate_functional_analysis_pairs(aligned_gt, aligned_pred, None)
+    results = _evaluate_functional_analysis_pairs(aligned_gt, aligned_pred, None, None)
     results["aligned_variants"] = display
     results["status"] = "ok"
     return results
@@ -221,7 +216,10 @@ def validate_all_dependencies(
     return issues
 
 
-def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any]:
+def evaluate_functional_analysis(
+    samples: List[Dict[str, Any]],
+    field_weights: Optional[Dict[str, float]] = None,
+) -> Dict[str, Any]:
     """
     Evaluate FA when provided a list with exactly two dicts:
       - samples[0] = ground truth annotation dict
@@ -229,6 +227,8 @@ def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any
 
     Args:
         samples: [ground_truth_dict, prediction_dict]
+        field_weights: Optional dict mapping field names to weights for weighted scoring.
+                      If None, all fields are weighted equally (unweighted mean).
 
     Returns:
         Dict with overall and per-field scores.
@@ -246,46 +246,15 @@ def evaluate_functional_analysis(samples: List[Dict[str, Any]]) -> Dict[str, Any
 
     gt_list: List[Dict[str, Any]] = [gt]
     pred_list: List[Dict[str, Any]] = [pred]
-    return _evaluate_functional_analysis_pairs(gt_list, pred_list, None)
+    return _evaluate_functional_analysis_pairs(gt_list, pred_list, None, field_weights)
 
 
 def _evaluate_functional_analysis_pairs(
     gt_list: List[Dict[str, Any]],
     pred_list: List[Dict[str, Any]],
     study_parameters: Optional[List[Dict[str, Any]]],
+    field_weights: Optional[Dict[str, float]] = None,
 ) -> Dict[str, Any]:
-    model = _get_model()
-
-    def exact_match(gt_val: Any, pred_val: Any) -> float:
-        if gt_val is None and pred_val is None:
-            return 1.0
-        if gt_val is None or pred_val is None:
-            return 0.0
-        return (
-            1.0 if str(gt_val).strip().lower() == str(pred_val).strip().lower() else 0.0
-        )
-
-    def semantic_similarity(gt_val: Any, pred_val: Any) -> float:
-        if gt_val is None and pred_val is None:
-            return 1.0
-        if gt_val is None or pred_val is None:
-            return 0.0
-        gt_str = str(gt_val).strip()
-        pred_str = str(pred_val).strip()
-        if gt_str == pred_str:
-            return 1.0
-        try:
-            embeddings = model.encode([gt_str, pred_str])
-            gt_embedding = embeddings[0]
-            pred_embedding = embeddings[1]
-            similarity = float(
-                np.dot(gt_embedding, pred_embedding)
-                / (np.linalg.norm(gt_embedding) * np.linalg.norm(pred_embedding))
-            )
-            return similarity
-        except Exception:
-            return SequenceMatcher(None, gt_str.lower(), pred_str.lower()).ratio()
-
     def variant_coverage(gt_variants: str, pred_variants: str) -> float:
         if not gt_variants or not pred_variants:
             return 1.0 if not gt_variants and not pred_variants else 0.0
@@ -336,63 +305,24 @@ def _evaluate_functional_analysis_pairs(
                     covered_count += 1
         return covered_count / len(gt_list_filtered)
 
-    def variant_substring_match(gt_val: Any, pred_val: Any) -> float:
-        if gt_val is None and pred_val is None:
-            return 1.0
-        if gt_val is None or pred_val is None:
-            return 0.0
-        gt_str = str(gt_val).strip().lower()
-        pred_str = str(pred_val).strip().lower()
-        if not gt_str:
-            return 1.0 if not pred_str else 0.0
-        return 1.0 if gt_str in pred_str else 0.0
-
     field_evaluators = {
         "Variant/Haplotypes": variant_substring_match,
         "Gene": semantic_similarity,
         "Drug(s)": semantic_similarity,
         "PMID": exact_match,
-        "Phenotype Category": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
-        "Significance": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
+        "Phenotype Category": category_equal,
+        "Significance": category_equal,
         "Alleles": semantic_similarity,
         "Specialty Population": semantic_similarity,
         "Assay type": semantic_similarity,
         "Metabolizer types": semantic_similarity,
-        "isPlural": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
-        "Is/Is Not associated": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
-        "Direction of effect": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
+        "isPlural": category_equal,
+        "Is/Is Not associated": category_equal,
+        "Direction of effect": category_equal,
         "Functional terms": semantic_similarity,
         "Gene/gene product": semantic_similarity,
-        "When treated with/exposed to/when assayed with": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
-        "Multiple drugs And/or": lambda gt, pred: (
-            1.0
-            if (gt and pred and gt.lower().strip() == pred.lower().strip())
-            else (1.0 if not gt and not pred else 0.0)
-        ),
+        "When treated with/exposed to/when assayed with": category_equal,
+        "Multiple drugs And/or": category_equal,
         "Cell type": semantic_similarity,
         "Comparison Allele(s) or Genotype(s)": semantic_similarity,
         "Comparison Metabolizer types": semantic_similarity,
@@ -457,8 +387,7 @@ def _evaluate_functional_analysis_pairs(
             "scores": field_scores,
         }
 
-    field_means = [v["mean_score"] for v in results["field_scores"].values()]
-    results["overall_score"] = (
-        sum(field_means) / len(field_means) if field_means else 0.0
-    )
+    # Compute overall score with optional field weights
+    field_mean_scores = {k: v["mean_score"] for k, v in results["field_scores"].items()}
+    results["overall_score"] = compute_weighted_score(field_mean_scores, field_weights)
     return results
