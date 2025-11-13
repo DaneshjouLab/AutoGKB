@@ -152,7 +152,6 @@ def validate_statistical_consistency(annotation: Dict[str, Any]) -> List[str]:
                 f"Confidence Interval Start ({ci_start_num}) should be less than Stop ({ci_stop_num})"
             )
         
-        # Check if ratio stat is within confidence interval (if both present)
         if ratio_stat_num is not None:
             if ratio_stat_num < ci_start_num or ratio_stat_num > ci_stop_num:
                 issues.append(

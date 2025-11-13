@@ -70,7 +70,6 @@ def parse_numeric(value: Any) -> Optional[float]:
     if isinstance(value, (int, float)):
         return float(value)
     if isinstance(value, str):
-        # Remove common formatting (commas, spaces, currency symbols)
         cleaned = re.sub(r'[,\s$]', '', value.strip())
         try:
             return float(cleaned)
@@ -154,7 +153,6 @@ def compute_weighted_score(
         # Unweighted mean (default behavior)
         return sum(field_scores.values()) / len(field_scores)
     
-    # Weighted mean
     weighted_sum = 0.0
     total_weight = 0.0
     for field, score in field_scores.items():

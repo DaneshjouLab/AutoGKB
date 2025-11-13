@@ -67,8 +67,6 @@ def evaluate_drug_annotations(
             "Both items must be dicts: [ground_truth_dict, prediction_dict]."
         )
 
-    # Variant expansion and alignment (mirroring FA)
-
     def expand_annotations_by_variant(
         annotations: List[Dict[str, Any]],
     ) -> List[Dict[str, Any]]:

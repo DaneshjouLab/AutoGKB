@@ -387,7 +387,6 @@ def _evaluate_functional_analysis_pairs(
             "scores": field_scores,
         }
 
-    # Compute overall score with optional field weights
     field_mean_scores = {k: v["mean_score"] for k, v in results["field_scores"].items()}
     results["overall_score"] = compute_weighted_score(field_mean_scores, field_weights)
     return results
