@@ -13,41 +13,148 @@ from src.benchmark.shared_utils import (
 )
 
 
+def _compute_study_parameters_similarity(
+    gt_rec: Dict[str, Any],
+    pred_rec: Dict[str, Any],
+) -> float:
+    """
+    Compute similarity score between a ground truth and prediction study parameter entry.
+    Uses the same field evaluators as the actual evaluation, but excludes ID fields.
+    """
+    # Field evaluators (same as in evaluate_study_parameters, excluding ID fields)
+    field_evaluators = {
+        'Study Type': category_equal,
+        'Study Cases': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Study Controls': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Characteristics': semantic_similarity,
+        'Characteristics Type': category_equal,
+        'Frequency in Cases': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Allele of Frequency in Cases': semantic_similarity,
+        'Frequency in Controls': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Allele of Frequency in Controls': semantic_similarity,
+        'P Value': p_value_match,
+        'Ratio Stat Type': category_equal,
+        'Ratio Stat': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Confidence Interval Start': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Confidence Interval Stop': lambda gt, pred: numeric_tolerance_match(gt, pred, exact_weight=1.0, tolerance_5pct=0.9, tolerance_10pct=0.8),
+        'Biogeographical Groups': category_equal,
+    }
+    
+    scores = []
+    for field, evaluator in field_evaluators.items():
+        score = evaluator(gt_rec.get(field), pred_rec.get(field))
+        scores.append(score)
+    
+    # Return mean of all field scores
+    return sum(scores) / len(scores) if scores else 0.0
+
+
+def align_study_parameters_by_similarity(
+    ground_truth_list: List[Dict[str, Any]],
+    predictions_list: List[Dict[str, Any]],
+    matching_threshold: float = 0.3,
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Align study parameters by computing similarity scores between all pairs and greedily
+    selecting the best matches. This works even when Variant Annotation ID is null.
+    """
+    if not ground_truth_list or not predictions_list:
+        return [], []
+    
+    # First, try Variant Annotation ID matching for records that have it
+    aligned_gt: List[Dict[str, Any]] = []
+    aligned_pred: List[Dict[str, Any]] = []
+    matched_gt_indices: set = set()
+    matched_pred_indices: set = set()
+    
+    # Build index by Variant Annotation ID
+    pred_by_id: Dict[Any, List[Tuple[int, Dict[str, Any]]]] = {}
+    for idx, pred_rec in enumerate(predictions_list):
+        variant_id = pred_rec.get('Variant Annotation ID')
+        if variant_id is not None:
+            if variant_id not in pred_by_id:
+                pred_by_id[variant_id] = []
+            pred_by_id[variant_id].append((idx, pred_rec))
+    
+    # Match by Variant Annotation ID first
+    for gt_idx, gt_rec in enumerate(ground_truth_list):
+        variant_id = gt_rec.get('Variant Annotation ID')
+        if variant_id is not None and variant_id in pred_by_id:
+            # Use the first available prediction with this ID
+            for pred_idx, pred_rec in pred_by_id[variant_id]:
+                if pred_idx not in matched_pred_indices:
+                    aligned_gt.append(gt_rec)
+                    aligned_pred.append(pred_rec)
+                    matched_gt_indices.add(gt_idx)
+                    matched_pred_indices.add(pred_idx)
+                    break
+    
+    # For remaining unmatched records, use similarity-based matching
+    remaining_gt = [
+        (idx, gt_rec) for idx, gt_rec in enumerate(ground_truth_list)
+        if idx not in matched_gt_indices
+    ]
+    remaining_pred = [
+        (idx, pred_rec) for idx, pred_rec in enumerate(predictions_list)
+        if idx not in matched_pred_indices
+    ]
+    
+    if not remaining_gt or not remaining_pred:
+        return aligned_gt, aligned_pred
+    
+    # Compute all pairwise similarities
+    similarity_scores: List[Tuple[int, int, float]] = []
+    for gt_idx, gt_rec in remaining_gt:
+        for pred_idx, pred_rec in remaining_pred:
+            similarity = _compute_study_parameters_similarity(gt_rec, pred_rec)
+            if similarity >= matching_threshold:
+                similarity_scores.append((gt_idx, pred_idx, similarity))
+    
+    # Sort by similarity score (descending)
+    similarity_scores.sort(key=lambda x: x[2], reverse=True)
+    
+    # Greedily assign matches (one-to-one)
+    for gt_idx, pred_idx, score in similarity_scores:
+        if gt_idx not in matched_gt_indices and pred_idx not in matched_pred_indices:
+            aligned_gt.append(ground_truth_list[gt_idx])
+            aligned_pred.append(predictions_list[pred_idx])
+            matched_gt_indices.add(gt_idx)
+            matched_pred_indices.add(pred_idx)
+    
+    return aligned_gt, aligned_pred
+
+
 def align_study_parameters_by_variant_id(
     ground_truth_list: List[Dict[str, Any]],
     predictions_list: List[Dict[str, Any]],
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     """
-    Align study parameters by Variant Annotation ID.
+    Align study parameters by Variant Annotation ID (legacy function, kept for compatibility).
+    Falls back to similarity-based alignment if Variant Annotation IDs are missing.
     """
+    # Try ID-based matching first
     aligned_gt: List[Dict[str, Any]] = []
     aligned_pred: List[Dict[str, Any]] = []
 
     # prediction index by Variant Annotation ID
     pred_by_id: Dict[Any, Dict[str, Any]] = {}
-    pred_by_pmid_id: Dict[Tuple[Any, Any], Dict[str, Any]] = {}
 
     for pred_rec in predictions_list:
         variant_id = pred_rec.get('Variant Annotation ID')
-        pmid = pred_rec.get('PMID')
         if variant_id is not None:
             pred_by_id[variant_id] = pred_rec
-            if pmid is not None:
-                pred_by_pmid_id[(pmid, variant_id)] = pred_rec
 
     # ground truth to predictions
     for gt_rec in ground_truth_list:
         variant_id = gt_rec.get('Variant Annotation ID')
-        pmid = gt_rec.get('PMID')
-
-        match = None
         if variant_id is not None and variant_id in pred_by_id:
-            match = pred_by_id[variant_id]
-
-        if match is not None:
             aligned_gt.append(gt_rec)
-            aligned_pred.append(match)
+            aligned_pred.append(pred_by_id[variant_id])
 
+    # If no matches found by ID, fall back to similarity-based alignment
+    if not aligned_gt:
+        return align_study_parameters_by_similarity(ground_truth_list, predictions_list)
+    
     return aligned_gt, aligned_pred
 
 
@@ -185,27 +292,38 @@ def evaluate_study_parameters(
     related_annotations: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     """
-    Evaluate study parameters when provided a list with exactly two dicts:
-      - samples[0] = ground truth study parameters dict
-      - samples[1] = prediction study parameters dict
+    Evaluate study parameters when provided a list with exactly two items:
+      - samples[0] = ground truth (dict or list of dicts)
+      - samples[1] = prediction (dict or list of dicts)
     
     Args:
-        samples: [ground_truth_dict, prediction_dict]
+        samples: [ground_truth, prediction] where each can be a dict or list of dicts
         field_weights: Optional dict mapping field names to weights for weighted scoring.
                       If None, all fields are weighted equally (unweighted mean).
         related_annotations: Optional list of related annotations for dependency validation.
     """
 
     if not isinstance(samples, list) or len(samples) != 2:
-        raise ValueError("Expected a list with exactly two dicts: [ground_truth, prediction].")
+        raise ValueError("Expected a list with exactly two items: [ground_truth, prediction].")
     gt, pred = samples[0], samples[1]
-    if not isinstance(gt, dict) or not isinstance(pred, dict):
-        raise ValueError("Both items must be dicts: [ground_truth_dict, prediction_dict].")
+    
+    # Normalize to lists
+    if isinstance(gt, dict):
+        gt_list_raw: List[Dict[str, Any]] = [gt]
+    elif isinstance(gt, list):
+        gt_list_raw: List[Dict[str, Any]] = gt
+    else:
+        raise ValueError("Ground truth must be a dict or list of dicts.")
+    
+    if isinstance(pred, dict):
+        pred_list_raw: List[Dict[str, Any]] = [pred]
+    elif isinstance(pred, list):
+        pred_list_raw: List[Dict[str, Any]] = pred
+    else:
+        raise ValueError("Prediction must be a dict or list of dicts.")
 
-    # Prepare lists and align
-    gt_list_raw: List[Dict[str, Any]] = [gt]
-    pred_list_raw: List[Dict[str, Any]] = [pred]
-    gt_list, pred_list = align_study_parameters_by_variant_id(gt_list_raw, pred_list_raw)
+    # Use similarity-based alignment since predictions often have null Variant Annotation ID
+    gt_list, pred_list = align_study_parameters_by_similarity(gt_list_raw, pred_list_raw)
 
     if not gt_list:
         return {'total_samples': 0, 'field_scores': {}, 'overall_score': 0.0, 'detailed_results': []}
