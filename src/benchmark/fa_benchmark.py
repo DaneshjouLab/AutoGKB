@@ -345,39 +345,64 @@ def _evaluate_functional_analysis_pairs(
 
     results["detailed_results"] = []
     for i, (gt, pred) in enumerate(zip(gt_list, pred_list)):
-        sample_result: Dict[str, Any] = {"sample_id": i, "field_scores": {}}
+        sample_result: Dict[str, Any] = {"sample_id": i, "field_scores": {}, "field_values": {}}
         for field, evaluator in field_evaluators.items():
             sample_result["field_scores"][field] = evaluator(
                 gt.get(field), pred.get(field)
             )
+            # Store actual values for display
+            sample_result["field_values"][field] = {
+                "ground_truth": gt.get(field),
+                "prediction": pred.get(field)
+            }
         dependency_issues = validate_all_dependencies(pred, study_parameters)
         sample_result["dependency_issues"] = dependency_issues
+        
+        # Track penalty information
+        penalty_info = {
+            'total_penalty': 0.0,
+            'penalized_fields': {},
+            'issues_by_field': {}
+        }
+        
         if dependency_issues:
             penalty_per_issue = 0.05
             total_penalty = min(len(dependency_issues) * penalty_per_issue, 0.3)
+            penalty_info['total_penalty'] = total_penalty
             fields_to_penalize = set()
             for issue in dependency_issues:
+                affected_fields = []
                 if "Gene" in issue or "gene" in issue:
-                    fields_to_penalize.update(["Gene", "Gene/gene product"])
+                    affected_fields = ["Gene", "Gene/gene product"]
                 elif "Variant" in issue or "variant" in issue:
-                    fields_to_penalize.update(
-                        ["Variant/Haplotypes", "Comparison Allele(s) or Genotype(s)"]
-                    )
+                    affected_fields = ["Variant/Haplotypes", "Comparison Allele(s) or Genotype(s)"]
                 elif "Direction" in issue or "Associated" in issue:
-                    fields_to_penalize.update(
-                        ["Direction of effect", "Is/Is Not associated"]
-                    )
+                    affected_fields = ["Direction of effect", "Is/Is Not associated"]
                 elif "Functional" in issue:
-                    fields_to_penalize.update(["Functional terms", "Gene/gene product"])
+                    affected_fields = ["Functional terms", "Gene/gene product"]
                 elif "rsID" in issue or "star allele" in issue:
-                    fields_to_penalize.add("Variant/Haplotypes")
+                    affected_fields = ["Variant/Haplotypes"]
                 else:
-                    fields_to_penalize.update(sample_result["field_scores"].keys())
+                    affected_fields = list(sample_result["field_scores"].keys())
+                
+                for field in affected_fields:
+                    fields_to_penalize.add(field)
+                    if field not in penalty_info['issues_by_field']:
+                        penalty_info['issues_by_field'][field] = []
+                    penalty_info['issues_by_field'][field].append(issue)
+            
             for field in fields_to_penalize:
-                original_score = sample_result["field_scores"][field]
-                sample_result["field_scores"][field] = original_score * (
-                    1 - total_penalty
-                )
+                if field in sample_result["field_scores"]:
+                    original_score = sample_result["field_scores"][field]
+                    penalized_score = original_score * (1 - total_penalty)
+                    sample_result["field_scores"][field] = penalized_score
+                    penalty_info['penalized_fields'][field] = {
+                        'original_score': original_score,
+                        'penalized_score': penalized_score,
+                        'penalty_percentage': total_penalty * 100
+                    }
+        
+        sample_result['penalty_info'] = penalty_info
         results["detailed_results"].append(sample_result)
 
     for field in list(field_evaluators.keys()):

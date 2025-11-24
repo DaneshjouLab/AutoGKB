@@ -1,10 +1,118 @@
 from typing import List, Dict, Any, Tuple, Set, Optional
+import re
 from src.benchmark.shared_utils import (
     semantic_similarity,
     category_equal,
     variant_substring_match,
     compute_weighted_score,
+    parse_variant_list,
+    normalize_variant,
 )
+
+
+def expand_pheno_annotations_by_variant(
+    annotations: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """Expand annotations with multiple variants into separate records."""
+    expanded: List[Dict[str, Any]] = []
+    for ann in annotations:
+        variants_field = ann.get("Variant/Haplotypes")
+        tokens = parse_variant_list(variants_field)
+        if len(tokens) <= 1:
+            expanded.append(ann)
+            continue
+        for tok in tokens:
+            new_ann = dict(ann)
+            new_ann["Variant/Haplotypes"] = normalize_variant(tok)
+            new_ann["_expanded_from_multi_variant"] = True
+            expanded.append(new_ann)
+    return expanded
+
+
+def align_pheno_annotations_by_variant(
+    ground_truth_list: List[Dict[str, Any]],
+    predictions_list: List[Dict[str, Any]],
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Align pheno annotations by variant string with robust matching:
+    1) Expand multi-variant records to one per variant
+    2) Prefer rsID intersection; fallback to normalized substring containment
+    3) If no variant match, fallback to Gene + Drug(s) matching
+    Returns aligned (gt_list, pred_list)
+    """
+    rs_re = re.compile(r"rs\d+", re.IGNORECASE)
+
+    gt_expanded = expand_pheno_annotations_by_variant(ground_truth_list or [])
+    pred_expanded = expand_pheno_annotations_by_variant(predictions_list or [])
+
+    pred_index: List[Tuple[set, str, Dict[str, Any]]] = []
+    for rec in pred_expanded:
+        raw = (rec.get("Variant/Haplotypes") or "").strip()
+        raw_norm = normalize_variant(raw).lower()
+        rsids = set(m.group(0).lower() for m in rs_re.finditer(raw))
+        pred_index.append((rsids, raw_norm, rec))
+
+    aligned_gt: List[Dict[str, Any]] = []
+    aligned_pred: List[Dict[str, Any]] = []
+    matched_pred_indices: Set[int] = set()
+
+    # First pass: try variant-based matching
+    for gt_rec in gt_expanded:
+        gt_raw = (gt_rec.get("Variant/Haplotypes") or "").strip()
+        gt_norm = normalize_variant(gt_raw).lower()
+        gt_rs = set(m.group(0).lower() for m in rs_re.finditer(gt_raw))
+
+        match_idx = None
+        match_rec = None
+        
+        if gt_rs:
+            for idx, (rsids, raw_norm, pred_rec) in enumerate(pred_index):
+                if idx not in matched_pred_indices and rsids & gt_rs:
+                    match_idx = idx
+                    match_rec = pred_rec
+                    break
+        if match_idx is None and gt_norm:
+            for idx, (rsids, raw_norm, pred_rec) in enumerate(pred_index):
+                if idx not in matched_pred_indices and (gt_norm in raw_norm or raw_norm in gt_norm):
+                    match_idx = idx
+                    match_rec = pred_rec
+                    break
+
+        if match_idx is not None:
+            aligned_gt.append(gt_rec)
+            aligned_pred.append(match_rec)
+            matched_pred_indices.add(match_idx)
+
+    # Second pass: for unmatched GT records, try Gene + Drug(s) matching
+    for gt_idx, gt_rec in enumerate(gt_expanded):
+        if gt_idx < len(aligned_gt) and aligned_gt[gt_idx] == gt_rec:
+            continue  # Already matched
+            
+        gt_gene = str(gt_rec.get("Gene", "")).strip().lower()
+        gt_drug = str(gt_rec.get("Drug(s)", "")).strip().lower()
+        
+        if not gt_gene and not gt_drug:
+            continue
+            
+        # Try to find match by Gene + Drug
+        for idx, (_, _, pred_rec) in enumerate(pred_index):
+            if idx in matched_pred_indices:
+                continue
+                
+            pred_gene = str(pred_rec.get("Gene", "")).strip().lower()
+            pred_drug = str(pred_rec.get("Drug(s)", "")).strip().lower()
+            
+            # Match if Gene matches and (Drug matches or both are empty)
+            gene_match = gt_gene and pred_gene and gt_gene == pred_gene
+            drug_match = (not gt_drug and not pred_drug) or (gt_drug and pred_drug and gt_drug == pred_drug)
+            
+            if gene_match and drug_match:
+                aligned_gt.append(gt_rec)
+                aligned_pred.append(pred_rec)
+                matched_pred_indices.add(idx)
+                break
+
+    return aligned_gt, aligned_pred
 
 
 class PhenotypeAnnotationBenchmark:
@@ -38,7 +146,7 @@ class PhenotypeAnnotationBenchmark:
         "Comparison Allele(s) or Genotype(s)": 1.0,
     }
 
-    def __init__(self, matching_threshold: float = 0.7):
+    def __init__(self, matching_threshold: float = 0.3):
         """
         Initialize benchmark.
 
@@ -166,13 +274,25 @@ class PhenotypeAnnotationBenchmark:
                 "detailed_results": [],
             }
 
+        # Align by variant first (similar to FA/Drug benchmarks)
+        aligned_gt, aligned_pred = align_pheno_annotations_by_variant(gt_list, pred_list)
+        
+        if not aligned_gt:
+            return {
+                "total_samples": 0,
+                "field_scores": {},
+                "overall_score": 0.0,
+                "detailed_results": [],
+                "status": "no_overlap_after_alignment",
+            }
+
         # Use provided field weights or default
         weights = (
             field_weights if field_weights is not None else self.DEFAULT_FIELD_WEIGHTS
         )
 
-        # Find all potential matches
-        all_matches = self._find_best_matches(pred_list, gt_list, weights)
+        # Find all potential matches from aligned pairs
+        all_matches = self._find_best_matches(aligned_pred, aligned_gt, weights)
 
         # Greedily assign matches (allowing many-to-one mapping)
         matched_preds: Set[int] = set()
@@ -186,7 +306,7 @@ class PhenotypeAnnotationBenchmark:
             if pred_idx not in matched_preds:
                 matched_preds.add(pred_idx)
                 matched_pairs.append(
-                    (gt_list[gt_idx], pred_list[pred_idx], score, field_scores)
+                    (aligned_gt[gt_idx], aligned_pred[pred_idx], score, field_scores)
                 )
 
         # Build detailed results structure
@@ -219,8 +339,16 @@ class PhenotypeAnnotationBenchmark:
             sample_result: Dict[str, Any] = {
                 "sample_id": i,
                 "field_scores": field_scores_dict.copy(),
+                "field_values": {},
                 "dependency_issues": [],  # Placeholder for future dependency validation
             }
+            
+            # Store actual values for display
+            for field in self.CORE_FIELDS:
+                sample_result["field_values"][field] = {
+                    "ground_truth": gt.get(field),
+                    "prediction": pred.get(field)
+                }
 
             results["detailed_results"].append(sample_result)
 
@@ -247,7 +375,7 @@ class PhenotypeAnnotationBenchmark:
 def evaluate_phenotype_annotations(
     samples: List[Any],
     field_weights: Optional[Dict[str, float]] = None,
-    matching_threshold: float = 0.7,
+        matching_threshold: float = 0.3,
 ) -> Dict[str, Any]:
     """
     Benchmark phenotype annotations and return detailed results.

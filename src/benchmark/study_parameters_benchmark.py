@@ -351,17 +351,27 @@ def evaluate_study_parameters(
 
     results: Dict[str, Any] = {'total_samples': len(gt_list), 'field_scores': {}, 'overall_score': 0.0}
 
+    # Exclude ID fields from field_scores (but still evaluate them for detailed_results)
+    excluded_fields = {'Study Parameters ID', 'Variant Annotation ID'}
+    
     for field, evaluator in field_evaluators.items():
         scores: List[float] = []
         for g, p in zip(gt_list, pred_list):
             scores.append(evaluator(g.get(field), p.get(field)))
-        results['field_scores'][field] = {'mean_score': sum(scores) / len(scores), 'scores': scores}
+        # Only include non-ID fields in field_scores for analysis/display
+        if field not in excluded_fields:
+            results['field_scores'][field] = {'mean_score': sum(scores) / len(scores), 'scores': scores}
 
     results['detailed_results'] = []
     for i, (g, p) in enumerate(zip(gt_list, pred_list)):
-        sample_result: Dict[str, Any] = {'sample_id': i, 'field_scores': {}}
+        sample_result: Dict[str, Any] = {'sample_id': i, 'field_scores': {}, 'field_values': {}}
         for field, evaluator in field_evaluators.items():
             sample_result['field_scores'][field] = evaluator(g.get(field), p.get(field))
+            # Store actual values for display
+            sample_result['field_values'][field] = {
+                'ground_truth': g.get(field),
+                'prediction': p.get(field)
+            }
         
         # Dependency validation
         dependency_issues = []
@@ -369,44 +379,68 @@ def evaluate_study_parameters(
         dependency_issues.extend(validate_statistical_consistency(p))
         sample_result['dependency_issues'] = dependency_issues
         
+        # Track penalty information
+        penalty_info = {
+            'total_penalty': 0.0,
+            'penalized_fields': {},
+            'issues_by_field': {}
+        }
+        
         if dependency_issues:
             penalty_per_issue = 0.05
             total_penalty = min(len(dependency_issues) * penalty_per_issue, 0.3)
+            penalty_info['total_penalty'] = total_penalty
             fields_to_penalize = set()
             for issue in dependency_issues:
+                affected_fields = []
                 if "Variant Annotation ID" in issue:
-                    fields_to_penalize.add("Variant Annotation ID")
+                    affected_fields = ["Variant Annotation ID"]
                 elif "P value" in issue.lower() or "ratio stat" in issue.lower():
-                    fields_to_penalize.update(["P Value", "Ratio Stat", "Ratio Stat Type"])
+                    affected_fields = ["P Value", "Ratio Stat", "Ratio Stat Type"]
                 elif "confidence interval" in issue.lower():
-                    fields_to_penalize.update(
-                        ["Confidence Interval Start", "Confidence Interval Stop", "Ratio Stat"]
-                    )
+                    affected_fields = ["Confidence Interval Start", "Confidence Interval Stop", "Ratio Stat"]
                 elif "frequency" in issue.lower():
-                    fields_to_penalize.update(
-                        [
-                            "Frequency in Cases",
-                            "Frequency in Controls",
-                            "Study Cases",
-                            "Study Controls",
-                        ]
-                    )
+                    affected_fields = [
+                        "Frequency in Cases",
+                        "Frequency in Controls",
+                        "Study Cases",
+                        "Study Controls",
+                    ]
                 else:
-                    fields_to_penalize.update(sample_result['field_scores'].keys())
+                    affected_fields = list(sample_result['field_scores'].keys())
+                
+                for field in affected_fields:
+                    fields_to_penalize.add(field)
+                    if field not in penalty_info['issues_by_field']:
+                        penalty_info['issues_by_field'][field] = []
+                    penalty_info['issues_by_field'][field].append(issue)
+            
             for field in fields_to_penalize:
                 if field in sample_result['field_scores']:
                     original_score = sample_result['field_scores'][field]
-                    sample_result['field_scores'][field] = original_score * (
-                        1 - total_penalty
-                    )
+                    penalized_score = original_score * (1 - total_penalty)
+                    sample_result['field_scores'][field] = penalized_score
+                    penalty_info['penalized_fields'][field] = {
+                        'original_score': original_score,
+                        'penalized_score': penalized_score,
+                        'penalty_percentage': total_penalty * 100
+                    }
+        
+        sample_result['penalty_info'] = penalty_info
         results['detailed_results'].append(sample_result)
 
+    # Recalculate field_scores from detailed_results, excluding ID fields
+    excluded_fields = {'Study Parameters ID', 'Variant Annotation ID'}
     for field in list(field_evaluators.keys()):
-        field_scores = [s['field_scores'][field] for s in results['detailed_results']]
-        results['field_scores'][field] = {'mean_score': sum(field_scores) / len(field_scores), 'scores': field_scores}
+        if field not in excluded_fields:
+            field_scores = [s['field_scores'][field] for s in results['detailed_results']]
+            results['field_scores'][field] = {'mean_score': sum(field_scores) / len(field_scores), 'scores': field_scores}
 
-    # Compute overall score with optional field weights
-    field_mean_scores = {k: v['mean_score'] for k, v in results['field_scores'].items()}
+    # Compute overall score with optional field weights (ID fields already excluded from field_scores)
+    field_mean_scores = {
+        k: v['mean_score'] 
+        for k, v in results['field_scores'].items()
+    }
     results['overall_score'] = compute_weighted_score(field_mean_scores, field_weights)
     return results
 
