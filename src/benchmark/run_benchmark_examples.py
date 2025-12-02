@@ -106,95 +106,21 @@ def create_aggregated_summary(bench_result: Dict[str, Any], bench_name: str) -> 
     status = bench_result.get("status")
     if status:
         aggregated["status"] = status
-    
-    # Aggregate field scores
-    field_scores = bench_result.get("field_scores", {})
-    if field_scores:
-        aggregated["field_scores"] = {}
-        for field, score_data in field_scores.items():
-            aggregated["field_scores"][field] = {
-                "mean_score": score_data.get("mean_score", 0.0),
-                "scores": score_data.get("scores", [])
-            }
-    
-    # Aggregate low-scoring fields with values
-    detailed_results = bench_result.get("detailed_results", [])
-    if detailed_results and field_scores:
-        # Exclude ID fields from display for study_parameters
-        excluded_from_display = set()
-        if bench_name == "study_parameters":
-            excluded_from_display = {'Study Parameters ID', 'Variant Annotation ID'}
-        
-        # Find low-scoring fields
-        sorted_fields = sorted(
-            field_scores.items(),
-            key=lambda x: x[1].get("mean_score", 0.0),
-            reverse=True,
-        )
-        low_scoring_fields = [
-            f for f in sorted_fields 
-            if f[1].get("mean_score", 1.0) < 1.0 
-            and f[0] not in excluded_from_display
-        ]
-        
-        if low_scoring_fields:
-            aggregated["low_scoring_fields"] = {}
-            for field, score_data in low_scoring_fields:
-                field_info = {
-                    "mean_score": score_data.get("mean_score", 0.0),
-                    "scores": score_data.get("scores", [])
-                }
-                
-                # Collect values from all samples
-                field_values_list = []
-                for dr in detailed_results:
-                    field_values = dr.get("field_values", {})
-                    if field in field_values:
-                        field_values_list.append(field_values[field])
-                
-                if field_values_list:
-                    # Store all sample values
-                    field_info["sample_values"] = field_values_list
-                
-                aggregated["low_scoring_fields"][field] = field_info
-    
-    # Aggregate dependency issues
-    all_issues = []
-    all_penalties = []
-    for dr in detailed_results:
-        issues = dr.get("dependency_issues", [])
-        all_issues.extend(issues)
-        
-        penalty_info = dr.get("penalty_info", {})
-        if penalty_info and penalty_info.get("total_penalty", 0) > 0:
-            all_penalties.append(penalty_info)
-    
-    if all_issues:
-        aggregated["dependency_issues"] = list(set(all_issues))  # Unique issues
-    
-    if all_penalties:
-        aggregated["penalties"] = []
-        for penalty_info in all_penalties:
-            aggregated["penalties"].append({
-                "total_penalty": penalty_info.get("total_penalty", 0.0),
-                "penalized_fields": list(penalty_info.get("penalized_fields", {}).keys()),
-                "issues_count": len(penalty_info.get("issues_by_field", {}))
-            })
-    
-    return aggregated
 
+    # Add alignment statistics summary (without full item lists)
+    alignment_stats = bench_result.get("alignment_stats")
+    if alignment_stats:
+        alignment_details = alignment_stats.get("alignment_details", {})
+        aggregated["alignment_summary"] = {
+            "total_gt": alignment_details.get("total_gt", 0),
+            "total_pred": alignment_details.get("total_pred", 0),
+            "matched": alignment_details.get("matched", 0),
+            "unmatched_gt_count": alignment_details.get("unmatched_gt_count", 0),
+            "unmatched_pred_count": alignment_details.get("unmatched_pred_count", 0),
+            "recall": alignment_details.get("recall", 0.0),
+            "precision": alignment_details.get("precision", 0.0),
+        }
 
-def create_aggregated_summary(bench_result: Dict[str, Any], bench_name: str) -> Dict[str, Any]:
-    """Create aggregated summary from benchmark results, excluding detailed per-sample data."""
-    aggregated = {
-        "overall_score": bench_result.get("overall_score", 0.0),
-        "total_samples": bench_result.get("total_samples", 0),
-    }
-    
-    status = bench_result.get("status")
-    if status:
-        aggregated["status"] = status
-    
     # Aggregate field scores
     field_scores = bench_result.get("field_scores", {})
     if field_scores:
@@ -320,16 +246,58 @@ def evaluate_pmcid(
     return results
 
 
+def print_alignment_stats(bench_name: str, alignment_stats: Dict[str, Any]):
+    """Print alignment statistics showing missing/extra/wrong categories."""
+    alignment_details = alignment_stats.get("alignment_details", {})
+    unmatched_gt = alignment_stats.get("unmatched_gt", [])
+    unmatched_pred = alignment_stats.get("unmatched_pred", [])
+
+    total_gt = alignment_details.get("total_gt", 0)
+    total_pred = alignment_details.get("total_pred", 0)
+    matched = alignment_details.get("matched", 0)
+    recall = alignment_details.get("recall", 0.0)
+    precision = alignment_details.get("precision", 0.0)
+
+    print(f"\n  Alignment Statistics:")
+    print(f"    Total GT items: {total_gt}")
+    print(f"    Total Predictions: {total_pred}")
+    print(f"    Matched pairs: {matched}")
+    print(f"    Recall: {recall:.2%} ({matched}/{total_gt} GT items matched)")
+    print(f"    Precision: {precision:.2%} ({matched}/{total_pred} predictions matched)")
+
+    # Show missing items (in GT but not in predictions)
+    if unmatched_gt:
+        print(f"\n  Missing in Predictions ({len(unmatched_gt)} items):")
+        for i, item in enumerate(unmatched_gt[:3]):  # Show first 3
+            variant = item.get("Variant/Haplotypes", "N/A")
+            gene = item.get("Gene", "N/A")
+            pheno = item.get("Phenotype", item.get("Drug(s)", "N/A"))
+            print(f"    {i+1}. Variant: {variant}, Gene: {gene}, Phenotype/Drug: {pheno}")
+        if len(unmatched_gt) > 3:
+            print(f"    ... and {len(unmatched_gt) - 3} more")
+
+    # Show extra items (in predictions but not in GT)
+    if unmatched_pred:
+        print(f"\n  Extra in Predictions ({len(unmatched_pred)} items):")
+        for i, item in enumerate(unmatched_pred[:3]):  # Show first 3
+            variant = item.get("Variant/Haplotypes", "N/A")
+            gene = item.get("Gene", "N/A")
+            pheno = item.get("Phenotype", item.get("Drug(s)", "N/A"))
+            print(f"    {i+1}. Variant: {variant}, Gene: {gene}, Phenotype/Drug: {pheno}")
+        if len(unmatched_pred) > 3:
+            print(f"    ... and {len(unmatched_pred) - 3} more")
+
+
 def print_summary(results: Dict[str, Any]):
     """Print a summary of results to console."""
     pmcid = results["pmcid"]
     title = results["title"]
-    
+
     print(f"\n{'='*60}")
     print(f"=== {pmcid} ===")
     print(f"Title: {title}")
     print(f"{'='*60}")
-    
+
     for bench_name, bench_result in results["benchmarks"].items():
         if bench_result is None:
             continue
@@ -341,10 +309,15 @@ def print_summary(results: Dict[str, Any]):
         print(f"\n{bench_name.upper()} Benchmark:")
         print(f"  Overall Score: {overall:.3f}")
         print(f"  Aligned Samples: {total_samples}")
-        
+
         if status:
             print(f"  Status: {status}")
-        
+
+        # Print alignment statistics (missing/extra/wrong)
+        alignment_stats = bench_result.get("alignment_stats")
+        if alignment_stats:
+            print_alignment_stats(bench_name, alignment_stats)
+
         # Get detailed results early for value display
         detailed_results = bench_result.get("detailed_results", [])
         

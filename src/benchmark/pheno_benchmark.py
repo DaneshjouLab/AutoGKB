@@ -32,13 +32,18 @@ def expand_pheno_annotations_by_variant(
 def align_pheno_annotations_by_variant(
     ground_truth_list: List[Dict[str, Any]],
     predictions_list: List[Dict[str, Any]],
-) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, Any]]:
     """
     Align pheno annotations by variant string with robust matching:
     1) Expand multi-variant records to one per variant
     2) Prefer rsID intersection; fallback to normalized substring containment
     3) If no variant match, fallback to Gene + Drug(s) matching
-    Returns aligned (gt_list, pred_list)
+    Returns (aligned_gt, aligned_pred, alignment_stats)
+
+    alignment_stats contains:
+    - unmatched_gt: List of ground truth items that couldn't be matched
+    - unmatched_pred: List of prediction items that couldn't be matched
+    - alignment_details: Statistics about the alignment process
     """
     rs_re = re.compile(r"rs\d+", re.IGNORECASE)
 
@@ -112,7 +117,31 @@ def align_pheno_annotations_by_variant(
                 matched_pred_indices.add(idx)
                 break
 
-    return aligned_gt, aligned_pred
+    # Collect unmatched items
+    matched_gt_set = set(id(rec) for rec in aligned_gt)
+    unmatched_gt = [rec for rec in gt_expanded if id(rec) not in matched_gt_set]
+    unmatched_pred = [pred_index[i][2] for i in range(len(pred_index)) if i not in matched_pred_indices]
+
+    # Calculate alignment statistics
+    total_gt = len(gt_expanded)
+    total_pred = len(pred_expanded)
+    matched_count = len(aligned_gt)
+
+    alignment_stats = {
+        "unmatched_gt": unmatched_gt,
+        "unmatched_pred": unmatched_pred,
+        "alignment_details": {
+            "total_gt": total_gt,
+            "total_pred": total_pred,
+            "matched": matched_count,
+            "unmatched_gt_count": len(unmatched_gt),
+            "unmatched_pred_count": len(unmatched_pred),
+            "recall": matched_count / total_gt if total_gt > 0 else 1.0,
+            "precision": matched_count / total_pred if total_pred > 0 else 1.0,
+        }
+    }
+
+    return aligned_gt, aligned_pred, alignment_stats
 
 
 class PhenotypeAnnotationBenchmark:
@@ -275,8 +304,8 @@ class PhenotypeAnnotationBenchmark:
             }
 
         # Align by variant first (similar to FA/Drug benchmarks)
-        aligned_gt, aligned_pred = align_pheno_annotations_by_variant(gt_list, pred_list)
-        
+        aligned_gt, aligned_pred, alignment_stats = align_pheno_annotations_by_variant(gt_list, pred_list)
+
         if not aligned_gt:
             return {
                 "total_samples": 0,
@@ -284,6 +313,7 @@ class PhenotypeAnnotationBenchmark:
                 "overall_score": 0.0,
                 "detailed_results": [],
                 "status": "no_overlap_after_alignment",
+                "alignment_stats": alignment_stats,
             }
 
         # Use provided field weights or default
@@ -368,6 +398,9 @@ class PhenotypeAnnotationBenchmark:
             k: v["mean_score"] for k, v in results["field_scores"].items()
         }
         results["overall_score"] = compute_weighted_score(field_mean_scores, weights)
+
+        # Add alignment statistics to results
+        results["alignment_stats"] = alignment_stats
 
         return results
 
