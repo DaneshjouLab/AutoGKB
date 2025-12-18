@@ -1,0 +1,60 @@
+{
+    "title": "Severe myelosuppression and alopecia after thiopurine initiation in a patient with NUDT15 deficiency",
+    "pmid": "40099566",
+    "pmcid": "PMC12035587",
+    "study_parameters": [
+        {
+            "Study Parameters ID": 1453076188,
+            "Variant Annotation ID": 1453076180,
+            "Study Type": "case series",
+            "Study Cases": 0.0,
+            "Study Controls": null,
+            "Characteristics": "41-year-old South Asian female, severe mercaptopurine toxicity secondary to an inherited NUDT15 protein deficiency, resulting in myelosuppression, hepatotoxicity and alopecia.",
+            "Characteristics Type": "Study Cohort",
+            "Frequency In Cases": null,
+            "Allele Of Frequency In Cases": null,
+            "Frequency In Controls": null,
+            "Allele Of Frequency In Controls": null,
+            "P Value": null,
+            "Ratio Stat Type": null,
+            "Ratio Stat": null,
+            "Confidence Interval Start": null,
+            "Confidence Interval Stop": null,
+            "Biogeographical Groups": "Central/South Asian",
+            "Variant Annotation ID_norm": "1453076180"
+        }
+    ],
+    "var_drug_ann": [],
+    "var_pheno_ann": [
+        {
+            "Variant Annotation ID": 1453076180,
+            "Variant/Haplotypes": "NUDT15*3",
+            "Gene": "NUDT15",
+            "Drug(s)": "mercaptopurine",
+            "PMID": 40099566,
+            "Phenotype Category": "Toxicity",
+            "Significance": "no",
+            "Notes": "case of thiopurine toxicity resulting in severe myelosuppression, hepatotoxicity and alopecia in an individual with homozygous *3/*3 loss-of-function alleles in the NUDT15 gene",
+            "Sentence": "NUDT15 *3/*3 is associated with increased severity of Myelosuppression, Toxic liver disease and Alopecia when treated with mercaptopurine in women with Leukemia, Promyelocytic, Acute.",
+            "Alleles": "*3/*3",
+            "Specialty Population": null,
+            "Metabolizer types": null,
+            "isPlural": "Is",
+            "Is/Is Not associated": "Associated with",
+            "Direction of effect": "increased",
+            "Side effect/efficacy/other": "severity of",
+            "Phenotype": "Side Effect:Myelosuppression, Side Effect:Toxic liver disease, Side Effect:Alopecia",
+            "Multiple phenotypes And/or": "and",
+            "When treated with/exposed to/when assayed with": "when treated with",
+            "Multiple drugs And/or": null,
+            "Population types": "in women with",
+            "Population Phenotypes or diseases": "Other:Leukemia, Promyelocytic, Acute",
+            "Multiple phenotypes or diseases And/or": null,
+            "Comparison Allele(s) or Genotype(s)": null,
+            "Comparison Metabolizer types": null,
+            "PMID_norm": "40099566",
+            "Variant Annotation ID_norm": "1453076180"
+        }
+    ],
+    "var_fa_ann": []
+}

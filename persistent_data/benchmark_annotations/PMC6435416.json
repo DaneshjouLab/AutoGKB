@@ -1,0 +1,60 @@
+{
+    "title": "CYP2D6 genotype and adverse events to risperidone in children and adolescents",
+    "pmid": "30661084",
+    "pmcid": "PMC6435416",
+    "study_parameters": [
+        {
+            "Study Parameters ID": 1450932850,
+            "Variant Annotation ID": 1450932846,
+            "Study Type": "cohort, retrospective",
+            "Study Cases": 257.0,
+            "Study Controls": null,
+            "Characteristics": "multivariate analysis adjusted for age, sex, race, and initial risperidone dose",
+            "Characteristics Type": "Study Cohort",
+            "Frequency In Cases": null,
+            "Allele Of Frequency In Cases": null,
+            "Frequency In Controls": null,
+            "Allele Of Frequency In Controls": null,
+            "P Value": "= 0.03",
+            "Ratio Stat Type": "OR",
+            "Ratio Stat": 2.4,
+            "Confidence Interval Start": 1.1,
+            "Confidence Interval Stop": 5.1,
+            "Biogeographical Groups": "Multiple groups, White Hispanic, White non-Hispanic, African American, Asian/Pacific Islander, Native American or 'Unknown' ethnicities",
+            "Variant Annotation ID_norm": "1450932846"
+        }
+    ],
+    "var_drug_ann": [],
+    "var_pheno_ann": [
+        {
+            "Variant Annotation ID": 1450932846,
+            "Variant/Haplotypes": "CYP2D6*1, CYP2D6*1xN, CYP2D6*2, CYP2D6*2xN, CYP2D6*3, CYP2D6*4, CYP2D6*4xN, CYP2D6*5, CYP2D6*6, CYP2D6*9, CYP2D6*10, CYP2D6*17, CYP2D6*29, CYP2D6*35, CYP2D6*41",
+            "Gene": "CYP2D6",
+            "Drug(s)": "risperidone",
+            "PMID": 30661084,
+            "Phenotype Category": "Toxicity",
+            "Significance": "yes",
+            "Notes": "Normal metabolizer also included: *35/*35 + *2/*9 + *2/*3 + *2/*29 + *2/*10 + *1xN/*4 + *10/*46 + *10/*35 + *1/*6 + *1/*33 + *1/*10 + *4/*35. Most common AEs were weight change (9%), sedation (6%), and extrapyramidal symptoms (6%). Of the 224 normal/ultrarapid metabolizers, 20 (9%) were taking one or more concomitant drugs that are known strong inhibitors of CYP2D6. The frequency of AEs was not different among those with a strong concomitant CYP2D6 inhibitor (6/20, 30%) vs. those without (55/204, 27%, P= 0.8). CYP2D6 phenoconversion not considered in the PM+IM vs NM+UM analysis.",
+            "Sentence": "CYP2D6 *4/*4 + *3/*4 + *3/*5 + *4/*4xN + *4/*6 + *5/*41 + *4/*29 + *4/*17 + *5/*10 + *3/*41 + *4/*9 + *4/*41 + *4/*10 + *5/*17 (assigned as intermediate metabolizer and poor metabolizer phenotype) are associated with increased likelihood of adverse events due to risperidone in children as compared to CYP2D6 *1/ *2xN + *1/*1xN + *1xN/ *2 + *1/ *2 + *1/*4 + *2/*4 + *1/*41 + *1/*35 + *2/*41 + *1/*9 + *1/*17 + *1/*5 + *3/*35 + *2/*5 + *2/*35 + *2/*17 + *35/*41 + *2/*6 + *1/*29 + *2/*2 + *1/*3 + *1/*1 (assigned as normal metabolizer and ultrarapid metabolizer phenotype) .",
+            "Alleles": "*4/*4 + *3/*4 + *3/*5 + *4/*4xN + *4/*6 + *5/*41 + *4/*29 + *4/*17 + *5/*10 + *3/*41 + *4/*9 + *4/*41 + *4/*10 + *5/*17",
+            "Specialty Population": "Pediatric",
+            "Metabolizer types": "intermediate metabolizer and poor metabolizer",
+            "isPlural": "Are",
+            "Is/Is Not associated": "Associated with",
+            "Direction of effect": "increased",
+            "Side effect/efficacy/other": "likelihood of",
+            "Phenotype": "Side Effect:adverse events",
+            "Multiple phenotypes And/or": null,
+            "When treated with/exposed to/when assayed with": "due to",
+            "Multiple drugs And/or": null,
+            "Population types": "in children",
+            "Population Phenotypes or diseases": null,
+            "Multiple phenotypes or diseases And/or": null,
+            "Comparison Allele(s) or Genotype(s)": "*1/ *2xN + *1/*1xN + *1xN/ *2 + *1/ *2 + *1/*4 + *2/*4 + *1/*41 + *1/*35 + *2/*41 + *1/*9 + *1/*17 + *1/*5 + *3/*35 + *2/*5 + *2/*35 + *2/*17 + *35/*41 + *2/*6 + *1/*29 + *2/*2 + *1/*3 + *1/*1",
+            "Comparison Metabolizer types": "normal metabolizer and ultrarapid metabolizer",
+            "PMID_norm": "30661084",
+            "Variant Annotation ID_norm": "1450932846"
+        }
+    ],
+    "var_fa_ann": []
+}
