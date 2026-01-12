@@ -1,0 +1,4052 @@
+{
+  "timestamp": "20251124_170826",
+  "num_examples": 5,
+  "results": [
+    {
+      "pmcid": "PMC10275785",
+      "title": "Effect of NLRP3 inflammasome genes polymorphism on disease susceptibility and response to TNF-\u03b1 inhibitors in Iraqi patients with rheumatoid arthritis",
+      "benchmarks": {
+        "pheno": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "drug": {
+          "total_samples": 1,
+          "field_scores": {
+            "Variant/Haplotypes": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Gene": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "PMID": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Phenotype Category": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Significance": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Alleles": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Specialty Population": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Metabolizer types": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "isPlural": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Is/Is Not associated": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Direction of effect": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "PD/PK terms": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Multiple drugs And/or": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Population types": {
+              "mean_score": 0.6666666666666666,
+              "scores": [
+                0.6666666666666666
+              ]
+            },
+            "Population Phenotypes or diseases": {
+              "mean_score": 0.8148148148148148,
+              "scores": [
+                0.8148148148148148
+              ]
+            },
+            "Multiple phenotypes or diseases And/or": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Comparison Allele(s) or Genotype(s)": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Comparison Metabolizer types": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Drug(s)": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            }
+          },
+          "overall_score": 0.8674463937621832,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Variant/Haplotypes": 1.0,
+                "Gene": 1.0,
+                "PMID": 0.0,
+                "Phenotype Category": 1.0,
+                "Significance": 1.0,
+                "Alleles": 1.0,
+                "Specialty Population": 1.0,
+                "Metabolizer types": 1.0,
+                "isPlural": 1.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "PD/PK terms": 1.0,
+                "Multiple drugs And/or": 1.0,
+                "Population types": 0.6666666666666666,
+                "Population Phenotypes or diseases": 0.8148148148148148,
+                "Multiple phenotypes or diseases And/or": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0,
+                "Comparison Metabolizer types": 1.0,
+                "Drug(s)": 1.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "rs2043211",
+                  "prediction": "rs2043211"
+                },
+                "Gene": {
+                  "ground_truth": "CARD8",
+                  "prediction": "CARD8"
+                },
+                "PMID": {
+                  "ground_truth": 37332933,
+                  "prediction": null
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Efficacy",
+                  "prediction": "efficacy"
+                },
+                "Significance": {
+                  "ground_truth": "yes",
+                  "prediction": "yes"
+                },
+                "Alleles": {
+                  "ground_truth": "TT",
+                  "prediction": "TT"
+                },
+                "Specialty Population": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Metabolizer types": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "isPlural": {
+                  "ground_truth": "Is",
+                  "prediction": "Is"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "decreased",
+                  "prediction": "decreased"
+                },
+                "PD/PK terms": {
+                  "ground_truth": "response to",
+                  "prediction": "response to"
+                },
+                "Multiple drugs And/or": {
+                  "ground_truth": "or",
+                  "prediction": "or"
+                },
+                "Population types": {
+                  "ground_truth": "in people with",
+                  "prediction": "in patients with"
+                },
+                "Population Phenotypes or diseases": {
+                  "ground_truth": "Other:Rheumatoid arthritis",
+                  "prediction": "Disease:Rheumatoid Arthritis"
+                },
+                "Multiple phenotypes or diseases And/or": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": "AA + AT",
+                  "prediction": null
+                },
+                "Comparison Metabolizer types": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Drug(s)": {
+                  "ground_truth": "etanercept, infliximab",
+                  "prediction": "Etanercept, Infliximab"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        },
+        "fa": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "study_parameters": {
+          "total_samples": 2,
+          "field_scores": {
+            "Study Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Study Cases": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Study Controls": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Characteristics": {
+              "mean_score": 0.4387472283813747,
+              "scores": [
+                0.5365853658536586,
+                0.3409090909090909
+              ]
+            },
+            "Characteristics Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "P Value": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Ratio Stat Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Ratio Stat": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Confidence Interval Start": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Confidence Interval Stop": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Biogeographical Groups": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.429249815225425,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.0,
+                "Study Controls": 0.0,
+                "Characteristics": 0.5365853658536586,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 0.0,
+                "Confidence Interval Start": 0.0,
+                "Confidence Interval Stop": 0.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452143368,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452143360,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "case/control"
+                },
+                "Study Cases": {
+                  "ground_truth": 66.0,
+                  "prediction": 100.0
+                },
+                "Study Controls": {
+                  "ground_truth": 33.0,
+                  "prediction": 100.0
+                },
+                "Characteristics": {
+                  "ground_truth": "Cases = responders, controls = non-responders",
+                  "prediction": "Patients classified into responders and non-responders based on EULAR criteria"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "< 0.0001",
+                  "prediction": "< 0.0001"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": "OR",
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": 0.183,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": 0.063,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": 0.531,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Near Eastern",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.0,
+                "Study Controls": 0.0,
+                "Characteristics": 0.3409090909090909,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 0.0,
+                "Confidence Interval Start": 0.0,
+                "Confidence Interval Stop": 0.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452143420,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452143400,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "case/control"
+                },
+                "Study Cases": {
+                  "ground_truth": 66.0,
+                  "prediction": 100.0
+                },
+                "Study Controls": {
+                  "ground_truth": 33.0,
+                  "prediction": 100.0
+                },
+                "Characteristics": {
+                  "ground_truth": "Cases = responders, controls = non-responders",
+                  "prediction": "Patients with NLRP3 (rs4612666) TT genotype"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "< 0.0001",
+                  "prediction": "< 0.0001"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": "OR",
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": 0.131,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": 0.047,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": 0.36,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Near Eastern",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10399933",
+      "title": "Real-world pharmacogenetics of statin intolerance: effects of SLCO1B1, ABCG2, and CYP2C9 variants",
+      "benchmarks": {
+        "pheno": {
+          "total_samples": 2,
+          "field_scores": {
+            "Variant/Haplotypes": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0
+              ]
+            },
+            "Gene": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Drug(s)": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Phenotype Category": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Alleles": {
+              "mean_score": 0.6000000000000001,
+              "scores": [
+                0.8,
+                0.4
+              ]
+            },
+            "Is/Is Not associated": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Direction of effect": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Phenotype": {
+              "mean_score": 0.26666666666666666,
+              "scores": [
+                0.26666666666666666,
+                0.26666666666666666
+              ]
+            },
+            "When treated with/exposed to/when assayed with": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0
+              ]
+            },
+            "Comparison Allele(s) or Genotype(s)": {
+              "mean_score": 0.2222222222222222,
+              "scores": [
+                0.2222222222222222,
+                0.2222222222222222
+              ]
+            }
+          },
+          "overall_score": 0.6796296296296296,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 1.0,
+                "Alleles": 0.8,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.26666666666666666,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.2222222222222222
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "rs4149056",
+                  "prediction": "SLCO1B1"
+                },
+                "Gene": {
+                  "ground_truth": "SLCO1B1",
+                  "prediction": "SLCO1B1"
+                },
+                "Drug(s)": {
+                  "ground_truth": "simvastatin",
+                  "prediction": "simvastatin"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": "CC",
+                  "prediction": "C/C"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:Discontinuation",
+                  "prediction": "statin intolerance"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": "TT",
+                  "prediction": "SLCO1B1 c.521T/T"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 1.0,
+                "Alleles": 0.4,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.26666666666666666,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.2222222222222222
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "rs4149056",
+                  "prediction": "SLCO1B1"
+                },
+                "Gene": {
+                  "ground_truth": "SLCO1B1",
+                  "prediction": "SLCO1B1"
+                },
+                "Drug(s)": {
+                  "ground_truth": "pravastatin",
+                  "prediction": "pravastatin"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": "CC + CT",
+                  "prediction": "C/T"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:Discontinuation",
+                  "prediction": "statin intolerance"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": "TT",
+                  "prediction": "SLCO1B1 c.521T/T"
+                }
+              },
+              "dependency_issues": []
+            }
+          ]
+        },
+        "drug": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "fa": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "study_parameters": {
+          "total_samples": 3,
+          "field_scores": {
+            "Study Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Study Cases": {
+              "mean_score": 0.3333333333333333,
+              "scores": [
+                1.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Study Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Characteristics": {
+              "mean_score": 0.3166802832244009,
+              "scores": [
+                0.40625,
+                0.4,
+                0.1437908496732026
+              ]
+            },
+            "Characteristics Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "P Value": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Ratio Stat Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Ratio Stat": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Start": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Stop": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Biogeographical Groups": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.7766675744371823,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 1.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.40625,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 1.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452195960,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452195947,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "cohort"
+                },
+                "Study Cases": {
+                  "ground_truth": 92.0,
+                  "prediction": 92
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Statin switch",
+                  "prediction": "Pravastatin intolerance defined by statin switching"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.047",
+                  "prediction": "= 0.047"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": "HR",
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": 2.11,
+                  "prediction": 2.11
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": 1.01,
+                  "prediction": 1.01
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": 4.39,
+                  "prediction": 4.39
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "European",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.4,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 1.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452195946,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452195940,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "cohort"
+                },
+                "Study Cases": {
+                  "ground_truth": 916.0,
+                  "prediction": 2042
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Statin switch",
+                  "prediction": "Statin switchers with CK measurement for simvastatin"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.011",
+                  "prediction": "= 0.011"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": "HR",
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": 5.44,
+                  "prediction": 5.44
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": 1.49,
+                  "prediction": 1.49
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": 19.9,
+                  "prediction": 19.9
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "European",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 2,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.1437908496732026,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 1.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452195945,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452195940,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "cohort"
+                },
+                "Study Cases": {
+                  "ground_truth": 916.0,
+                  "prediction": 2042
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Statin switch",
+                  "prediction": "Patients initiating statin therapy; including simvastatin users, heterozygous or homozygous SLCO1B1 c.521T>C carriers, and pravastatin users"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.025",
+                  "prediction": "= 0.025"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": "HR",
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": 1.88,
+                  "prediction": 1.88
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": 1.08,
+                  "prediction": 1.08
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": 3.25,
+                  "prediction": 3.25
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "European",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10786722",
+      "title": "Integrating rare genetic variants into DPYD pharmacogenetic testing may help preventing fluoropyrimidine-induced toxicity",
+      "benchmarks": {
+        "pheno": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "drug": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "fa": {
+          "total_samples": 1,
+          "field_scores": {
+            "Variant/Haplotypes": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Gene": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Drug(s)": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "PMID": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Phenotype Category": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Significance": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Alleles": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Specialty Population": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Assay type": {
+              "mean_score": 0.18867924528301888,
+              "scores": [
+                0.18867924528301888
+              ]
+            },
+            "Metabolizer types": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "isPlural": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Is/Is Not associated": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Direction of effect": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Functional terms": {
+              "mean_score": 0.4444444444444444,
+              "scores": [
+                0.4444444444444444
+              ]
+            },
+            "Gene/gene product": {
+              "mean_score": 0.8571428571428571,
+              "scores": [
+                0.8571428571428571
+              ]
+            },
+            "When treated with/exposed to/when assayed with": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Multiple drugs And/or": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Cell type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Comparison Allele(s) or Genotype(s)": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Comparison Metabolizer types": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.37451332734351606,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 0.0,
+                "PMID": 1.0,
+                "Phenotype Category": 0.0,
+                "Significance": 1.0,
+                "Alleles": 0.0,
+                "Specialty Population": 0.0,
+                "Assay type": 0.18867924528301888,
+                "Metabolizer types": 1.0,
+                "isPlural": 1.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 0.0,
+                "Functional terms": 0.4444444444444444,
+                "Gene/gene product": 0.8571428571428571,
+                "When treated with/exposed to/when assayed with": 0.0,
+                "Multiple drugs And/or": 0.0,
+                "Cell type": 0.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0,
+                "Comparison Metabolizer types": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "rs56038477",
+                  "prediction": "c.1905+1G>A (DPYD*2A)"
+                },
+                "Gene": {
+                  "ground_truth": "DPYD",
+                  "prediction": "DPYD"
+                },
+                "Drug(s)": {
+                  "ground_truth": null,
+                  "prediction": "5-fluorouracil"
+                },
+                "PMID": {
+                  "ground_truth": 38216550,
+                  "prediction": 38216550
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Metabolism/PK",
+                  "prediction": "toxicity"
+                },
+                "Significance": {
+                  "ground_truth": "yes",
+                  "prediction": "yes"
+                },
+                "Alleles": {
+                  "ground_truth": "CT + TT",
+                  "prediction": ""
+                },
+                "Specialty Population": {
+                  "ground_truth": null,
+                  "prediction": ""
+                },
+                "Assay type": {
+                  "ground_truth": "plasma dihydrouracil/uracil",
+                  "prediction": "Next Generation Sequencing"
+                },
+                "Metabolizer types": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "isPlural": {
+                  "ground_truth": "Is",
+                  "prediction": "Is"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "decreased",
+                  "prediction": "increased"
+                },
+                "Functional terms": {
+                  "ground_truth": "activity of",
+                  "prediction": "risk of"
+                },
+                "Gene/gene product": {
+                  "ground_truth": "DPYD",
+                  "prediction": "DPD"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": null,
+                  "prediction": ""
+                },
+                "Multiple drugs And/or": {
+                  "ground_truth": null,
+                  "prediction": ""
+                },
+                "Cell type": {
+                  "ground_truth": null,
+                  "prediction": "plasma samples"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": "CC",
+                  "prediction": "wild-type DPYD"
+                },
+                "Comparison Metabolizer types": {
+                  "ground_truth": null,
+                  "prediction": ""
+                }
+              },
+              "dependency_issues": [
+                "Invalid star allele format: (DPYD*2A)"
+              ],
+              "penalty_info": {
+                "total_penalty": 0.05,
+                "penalized_fields": {
+                  "Variant/Haplotypes": {
+                    "original_score": 0.0,
+                    "penalized_score": 0.0,
+                    "penalty_percentage": 5.0
+                  }
+                },
+                "issues_by_field": {
+                  "Variant/Haplotypes": [
+                    "Invalid star allele format: (DPYD*2A)"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "study_parameters": {
+          "total_samples": 3,
+          "field_scores": {
+            "Study Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Study Cases": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Study Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Characteristics": {
+              "mean_score": 0.2678406727383393,
+              "scores": [
+                0.35294117647058826,
+                0.24719101123595505,
+                0.2033898305084746
+              ]
+            },
+            "Characteristics Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "P Value": {
+              "mean_score": 0.3333333333333333,
+              "scores": [
+                1.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Ratio Stat Type": {
+              "mean_score": 0.6666666666666666,
+              "scores": [
+                0.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Ratio Stat": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Start": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Stop": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Biogeographical Groups": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.7511893781825559,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 1.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.35294117647058826,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452352360,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452352325,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Study Cases": {
+                  "ground_truth": 1055.0,
+                  "prediction": 180
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "plasma dihydrouracil/uracil",
+                  "prediction": "patients who may exhibit low DPD activity"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "< 0.01",
+                  "prediction": "< 0.01"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "European"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 1.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.24719101123595505,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.0,
+                "Ratio Stat Type": 1.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452352264,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452352260,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Study Cases": {
+                  "ground_truth": 855.0,
+                  "prediction": 628
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "plasma dihydrouracil/uracil",
+                  "prediction": "patients with DPD deficiency identified by [U] and UH2/U ratio"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "< 0.05",
+                  "prediction": null
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "European"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 2,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 1.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.2033898305084746,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.0,
+                "Ratio Stat Type": 1.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452352324,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452352320,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Study Cases": {
+                  "ground_truth": 1265.0,
+                  "prediction": 2928
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "plasma dihydrouracil/uracil",
+                  "prediction": "All patients (non-deficient DPD)"
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "< 0.01",
+                  "prediction": null
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "European"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10880264",
+      "title": "Pharmacogenetic Factors Influence Escitalopram Pharmacokinetics and Adverse Events in Youth with a Family History of Bipolar Disorder: A Preliminary Study",
+      "benchmarks": {
+        "pheno": {
+          "total_samples": 8,
+          "field_scores": {
+            "Variant/Haplotypes": {
+              "mean_score": 0.375,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Gene": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Drug(s)": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Phenotype Category": {
+              "mean_score": 0.5,
+              "scores": [
+                1.0,
+                0.0,
+                0.0,
+                1.0,
+                1.0,
+                1.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Alleles": {
+              "mean_score": 0.016666666666666666,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.13333333333333333,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Is/Is Not associated": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Direction of effect": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Phenotype": {
+              "mean_score": 0.14675468869338915,
+              "scores": [
+                0.1320754716981132,
+                0.13793103448275862,
+                0.13793103448275862,
+                0.22608695652173913,
+                0.1320754716981132,
+                0.1320754716981132,
+                0.13793103448275862,
+                0.13793103448275862
+              ]
+            },
+            "When treated with/exposed to/when assayed with": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Comparison Allele(s) or Genotype(s)": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.5786257814488982,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Variant/Haplotypes": 1.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 1.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.1320754716981132,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2D6",
+                  "prediction": "CYP2D6"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2D6",
+                  "prediction": "CYP2D6"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, PM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:Psychomotor Agitation, Side Effect:Hyperkinesis, Side Effect:Impulse control disorder",
+                  "prediction": "akathisia"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2D6 NM"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Variant/Haplotypes": 1.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 0.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.13793103448275862,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "metabolism/PK"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, NM, RM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:suicidal ideation, Side Effect:adverse events, Side Effect:deliberate self-harm",
+                  "prediction": "serum escitalopram levels"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2C19 PM"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 2,
+              "field_scores": {
+                "Variant/Haplotypes": 1.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 0.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.13793103448275862,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "intermediate",
+                  "prediction": "RM"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "metabolism/PK"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, NM, RM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:suicidal ideation, Side Effect:adverse events, Side Effect:deliberate self-harm",
+                  "prediction": "serum escitalopram levels"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2C19 PM"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 3,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 1.0,
+                "Alleles": 0.13333333333333333,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.22608695652173913,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "rs6311",
+                  "prediction": "HTR2A"
+                },
+                "Gene": {
+                  "ground_truth": "HTR2A",
+                  "prediction": "HTR2A"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": "CT + TT",
+                  "prediction": "A/G, A/A"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:suicidal ideation, Side Effect:adverse events, Side Effect:deliberate self-harm",
+                  "prediction": "self-injury, suicidality"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": "CC",
+                  "prediction": "HTR2A G/G"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 4,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 1.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.1320754716981132,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2D6",
+                  "prediction": "IM"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2D6",
+                  "prediction": "CYP2D6"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, PM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:Psychomotor Agitation, Side Effect:Hyperkinesis, Side Effect:Impulse control disorder",
+                  "prediction": "akathisia"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2D6 NM"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 5,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 1.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.1320754716981132,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2D6",
+                  "prediction": "PM"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2D6",
+                  "prediction": "CYP2D6"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, PM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:Psychomotor Agitation, Side Effect:Hyperkinesis, Side Effect:Impulse control disorder",
+                  "prediction": "akathisia"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2D6 NM"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 6,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 0.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.13793103448275862,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "IM"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "metabolism/PK"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, NM, RM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:suicidal ideation, Side Effect:adverse events, Side Effect:deliberate self-harm",
+                  "prediction": "serum escitalopram levels"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2C19 PM"
+                }
+              },
+              "dependency_issues": []
+            },
+            {
+              "sample_id": 7,
+              "field_scores": {
+                "Variant/Haplotypes": 0.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 0.0,
+                "Alleles": 0.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "Phenotype": 0.13793103448275862,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "NM"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Toxicity",
+                  "prediction": "metabolism/PK"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": "IM, NM, RM"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Side Effect:suicidal ideation, Side Effect:adverse events, Side Effect:deliberate self-harm",
+                  "prediction": "serum escitalopram levels"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": "CYP2C19 PM"
+                }
+              },
+              "dependency_issues": []
+            }
+          ]
+        },
+        "drug": {
+          "total_samples": 1,
+          "field_scores": {
+            "Variant/Haplotypes": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Gene": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "PMID": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Phenotype Category": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Significance": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Alleles": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Specialty Population": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Metabolizer types": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "isPlural": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Is/Is Not associated": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Direction of effect": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "PD/PK terms": {
+              "mean_score": 0.13333333333333333,
+              "scores": [
+                0.13333333333333333
+              ]
+            },
+            "Multiple drugs And/or": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Population types": {
+              "mean_score": 0.23376623376623376,
+              "scores": [
+                0.23376623376623376
+              ]
+            },
+            "Population Phenotypes or diseases": {
+              "mean_score": 0.3384615384615385,
+              "scores": [
+                0.3384615384615385
+              ]
+            },
+            "Multiple phenotypes or diseases And/or": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Comparison Allele(s) or Genotype(s)": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Comparison Metabolizer types": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Drug(s)": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            }
+          },
+          "overall_score": 0.5634505845032161,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Variant/Haplotypes": 1.0,
+                "Gene": 1.0,
+                "PMID": 0.0,
+                "Phenotype Category": 1.0,
+                "Significance": 1.0,
+                "Alleles": 0.0,
+                "Specialty Population": 1.0,
+                "Metabolizer types": 1.0,
+                "isPlural": 1.0,
+                "Is/Is Not associated": 1.0,
+                "Direction of effect": 1.0,
+                "PD/PK terms": 0.13333333333333333,
+                "Multiple drugs And/or": 0.0,
+                "Population types": 0.23376623376623376,
+                "Population Phenotypes or diseases": 0.3384615384615385,
+                "Multiple phenotypes or diseases And/or": 0.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0,
+                "Comparison Metabolizer types": 0.0,
+                "Drug(s)": 1.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "Gene": {
+                  "ground_truth": "CYP2C19",
+                  "prediction": "CYP2C19"
+                },
+                "PMID": {
+                  "ground_truth": 38377518,
+                  "prediction": null
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Metabolism/PK",
+                  "prediction": "metabolism/PK"
+                },
+                "Significance": {
+                  "ground_truth": "yes",
+                  "prediction": "yes"
+                },
+                "Alleles": {
+                  "ground_truth": null,
+                  "prediction": ""
+                },
+                "Specialty Population": {
+                  "ground_truth": "Pediatric",
+                  "prediction": "Pediatric"
+                },
+                "Metabolizer types": {
+                  "ground_truth": "intermediate metabolizer",
+                  "prediction": "intermediate metabolizer"
+                },
+                "isPlural": {
+                  "ground_truth": "Is",
+                  "prediction": "Is"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "increased",
+                  "prediction": "increased"
+                },
+                "PD/PK terms": {
+                  "ground_truth": "dose-adjusted trough concentrations of",
+                  "prediction": "AUC0\u201324"
+                },
+                "Multiple drugs And/or": {
+                  "ground_truth": null,
+                  "prediction": ""
+                },
+                "Population types": {
+                  "ground_truth": "in children with",
+                  "prediction": "in youth with a first-degree relative with bipolar I disorder"
+                },
+                "Population Phenotypes or diseases": {
+                  "ground_truth": "Other:Depression, Other:Anxiety Disorders",
+                  "prediction": "Disease:bipolar disorder"
+                },
+                "Multiple phenotypes or diseases And/or": {
+                  "ground_truth": "or",
+                  "prediction": ""
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": null,
+                  "prediction": ""
+                },
+                "Comparison Metabolizer types": {
+                  "ground_truth": "normal metabolizer",
+                  "prediction": ""
+                },
+                "Drug(s)": {
+                  "ground_truth": "escitalopram",
+                  "prediction": "escitalopram"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        },
+        "fa": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "study_parameters": {
+          "total_samples": 4,
+          "field_scores": {
+            "Study Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Study Cases": {
+              "mean_score": 0.725,
+              "scores": [
+                1.0,
+                1.0,
+                0.9,
+                0.0
+              ]
+            },
+            "Study Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Characteristics": {
+              "mean_score": 0.6511951223597594,
+              "scores": [
+                0.6387832699619772,
+                0.6387832699619772,
+                0.6311787072243346,
+                0.6960352422907489
+              ]
+            },
+            "Characteristics Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "P Value": {
+              "mean_score": 0.625,
+              "scores": [
+                1.0,
+                0.5,
+                0.5,
+                0.5
+              ]
+            },
+            "Ratio Stat Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Ratio Stat": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Start": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Stop": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Biogeographical Groups": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.7334130081573172,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 1.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.6387832699619772,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 1.0,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452390361,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452390352,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "clinical trial"
+                },
+                "Study Cases": {
+                  "ground_truth": 66.0,
+                  "prediction": 66
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Outpatient youth aged 12\u201317 years who had at least one first-degree relative with bipolar I disorder; TEASAP subscale Self-injury, suicidality and harm to others",
+                  "prediction": "Youth aged 12-17 years with a first-degree relative with bipolar I disorder treated with escitalopram."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.017",
+                  "prediction": "= 0.017"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Multiple groups, Non-Hispanic Caucasian n=44, Hispanic Caucasian n=7, Black or African n = 7, Multiple or other n=8",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 1.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.6387832699619772,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.5,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452390309,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452390301,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "clinical trial"
+                },
+                "Study Cases": {
+                  "ground_truth": 66.0,
+                  "prediction": 66
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Outpatient youth aged 12\u201317 years who had at least one first-degree relative with bipolar I disorder; TEASAP subscale Self-injury, suicidality and harm to others",
+                  "prediction": "Youth aged 12-17 years with a first-degree relative with bipolar I disorder treated with escitalopram."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.09",
+                  "prediction": "= 0.025"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Multiple groups, Non-Hispanic Caucasian n=44, Hispanic Caucasian n=7, Black or African n = 7, Multiple or other n=8",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 2,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.9,
+                "Study Controls": 1.0,
+                "Characteristics": 0.6311787072243346,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.5,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452390397,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452390389,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "clinical trial"
+                },
+                "Study Cases": {
+                  "ground_truth": 64.0,
+                  "prediction": 66
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Outpatient youth aged 12\u201317 years who had at least one first-degree relative with bipolar I disorder; TEASAP subscale Akathisia, hyperkinesis and somatic anxiety",
+                  "prediction": "Youth aged 12-17 years with a first-degree relative with bipolar I disorder treated with escitalopram."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.017",
+                  "prediction": "= 0.013"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Multiple groups, Non-Hispanic Caucasian n=44, Hispanic Caucasian n=7, Black or African n = 7, Multiple or other n=8",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 3,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.6960352422907489,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.5,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452390351,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452390346,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "clinical trial"
+                },
+                "Study Cases": {
+                  "ground_truth": 48.0,
+                  "prediction": 66
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Outpatient youth aged 12\u201317 years who had at least one first-degree relative with bipolar I disorder; dose-normalized AUC0\u201324",
+                  "prediction": "Youth aged 12-17 years with a first-degree relative with bipolar I disorder treated with escitalopram."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.025",
+                  "prediction": "= 0.015"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Multiple groups, Non-Hispanic Caucasian n=33, Hispanic Caucasian n=6, Black or African n = 6, Multiple or other n=6",
+                  "prediction": "Unknown"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10946077",
+      "title": "Individual Irinotecan Therapy Under the Guidance of Pre-Treated UGT1A1*6 Genotyping in Gastric Cancer",
+      "benchmarks": {
+        "pheno": {
+          "total_samples": 1,
+          "field_scores": {
+            "Variant/Haplotypes": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Gene": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Drug(s)": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Phenotype Category": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Alleles": {
+              "mean_score": 0.2222222222222222,
+              "scores": [
+                0.2222222222222222
+              ]
+            },
+            "Is/Is Not associated": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Direction of effect": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            },
+            "Phenotype": {
+              "mean_score": 0.2549019607843137,
+              "scores": [
+                0.2549019607843137
+              ]
+            },
+            "When treated with/exposed to/when assayed with": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0
+              ]
+            },
+            "Comparison Allele(s) or Genotype(s)": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.40359477124183013,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Variant/Haplotypes": 1.0,
+                "Gene": 1.0,
+                "Drug(s)": 1.0,
+                "Phenotype Category": 0.0,
+                "Alleles": 0.2222222222222222,
+                "Is/Is Not associated": 0.0,
+                "Direction of effect": 0.0,
+                "Phenotype": 0.2549019607843137,
+                "When treated with/exposed to/when assayed with": 1.0,
+                "Comparison Allele(s) or Genotype(s)": 0.0
+              },
+              "field_values": {
+                "Variant/Haplotypes": {
+                  "ground_truth": "UGT1A1*6",
+                  "prediction": "UGT1A1*6"
+                },
+                "Gene": {
+                  "ground_truth": "UGT1A1",
+                  "prediction": "UGT1A1"
+                },
+                "Drug(s)": {
+                  "ground_truth": "irinotecan",
+                  "prediction": "irinotecan"
+                },
+                "Phenotype Category": {
+                  "ground_truth": "Efficacy",
+                  "prediction": "toxicity"
+                },
+                "Alleles": {
+                  "ground_truth": "*6 + *28",
+                  "prediction": "AA, GA, GG"
+                },
+                "Is/Is Not associated": {
+                  "ground_truth": "Not associated with",
+                  "prediction": "Associated with"
+                },
+                "Direction of effect": {
+                  "ground_truth": "decreased",
+                  "prediction": "increased"
+                },
+                "Phenotype": {
+                  "ground_truth": "Efficacy:Overall survival, Efficacy:Progression-free survival",
+                  "prediction": "delayed diarrhea, leukopenia, neutropenia"
+                },
+                "When treated with/exposed to/when assayed with": {
+                  "ground_truth": "when treated with",
+                  "prediction": "when treated with"
+                },
+                "Comparison Allele(s) or Genotype(s)": {
+                  "ground_truth": "*1",
+                  "prediction": null
+                }
+              },
+              "dependency_issues": []
+            }
+          ]
+        },
+        "drug": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "fa": {
+          "overall_score": 0.0,
+          "total_samples": 0,
+          "status": "one_empty"
+        },
+        "study_parameters": {
+          "total_samples": 5,
+          "field_scores": {
+            "Study Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Study Cases": {
+              "mean_score": 0.76,
+              "scores": [
+                1.0,
+                1.0,
+                0.9,
+                0.9,
+                0.0
+              ]
+            },
+            "Study Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Characteristics": {
+              "mean_score": 0.19383119568381332,
+              "scores": [
+                0.1038961038961039,
+                0.17857142857142858,
+                0.25,
+                0.21238938053097345,
+                0.22429906542056074
+              ]
+            },
+            "Characteristics Type": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Cases": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Allele of Frequency in Controls": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "P Value": {
+              "mean_score": 0.49000000000000005,
+              "scores": [
+                0.95,
+                0.5,
+                0.5,
+                0.5,
+                0.0
+              ]
+            },
+            "Ratio Stat Type": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "Ratio Stat": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Start": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Confidence Interval Stop": {
+              "mean_score": 1.0,
+              "scores": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "Biogeographical Groups": {
+              "mean_score": 0.0,
+              "scores": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "overall_score": 0.6962554130455876,
+          "detailed_results": [
+            {
+              "sample_id": 0,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 1.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.1038961038961039,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.95,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452426880,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452426860,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "retrospective"
+                },
+                "Study Cases": {
+                  "ground_truth": 110.0,
+                  "prediction": 110
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "OS for *6",
+                  "prediction": "Patients treated with irinotecan, differentiated by UGT1A1 genotype."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.703",
+                  "prediction": "= 0.6821"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "East Asian"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 1,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 1.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.17857142857142858,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.5,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452426891,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452426882,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "retrospective"
+                },
+                "Study Cases": {
+                  "ground_truth": 110.0,
+                  "prediction": 110
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Diarrhea grade 3-4",
+                  "prediction": "Patients with advanced gastric cancer receiving irinotecan treatment based on UGT1A1 genotype."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.136",
+                  "prediction": "= 0.5249"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "HR"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "East Asian"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 2,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.9,
+                "Study Controls": 1.0,
+                "Characteristics": 0.25,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.5,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452426968,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452426961,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "retrospective"
+                },
+                "Study Cases": {
+                  "ground_truth": 110.0,
+                  "prediction": 107
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Leukopenia grade 3-4",
+                  "prediction": "Patients with UGT1A1 genotype receiving irinotecan treatment and analysis of adverse events."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.003",
+                  "prediction": "< 0.003"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "East Asian"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 3,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.9,
+                "Study Controls": 1.0,
+                "Characteristics": 0.21238938053097345,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.5,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452426980,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452426961,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "retrospective"
+                },
+                "Study Cases": {
+                  "ground_truth": 110.0,
+                  "prediction": 107
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Neutropenia grade 3-4",
+                  "prediction": "Patients with UGT1A1 genotype receiving irinotecan treatment and analysis of adverse events."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "< 0.001",
+                  "prediction": "< 0.000"
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "East Asian"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            },
+            {
+              "sample_id": 4,
+              "field_scores": {
+                "Study Parameters ID": 0.0,
+                "Variant Annotation ID": 0.0,
+                "Study Type": 0.0,
+                "Study Cases": 0.0,
+                "Study Controls": 1.0,
+                "Characteristics": 0.22429906542056074,
+                "Characteristics Type": 1.0,
+                "Frequency in Cases": 1.0,
+                "Allele of Frequency in Cases": 1.0,
+                "Frequency in Controls": 1.0,
+                "Allele of Frequency in Controls": 1.0,
+                "P Value": 0.0,
+                "Ratio Stat Type": 0.0,
+                "Ratio Stat": 1.0,
+                "Confidence Interval Start": 1.0,
+                "Confidence Interval Stop": 1.0,
+                "Biogeographical Groups": 0.0
+              },
+              "field_values": {
+                "Study Parameters ID": {
+                  "ground_truth": 1452426889,
+                  "prediction": null
+                },
+                "Variant Annotation ID": {
+                  "ground_truth": 1452426882,
+                  "prediction": null
+                },
+                "Study Type": {
+                  "ground_truth": null,
+                  "prediction": "retrospective"
+                },
+                "Study Cases": {
+                  "ground_truth": 110.0,
+                  "prediction": 5
+                },
+                "Study Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Characteristics": {
+                  "ground_truth": "Neutopenia grade 3-4",
+                  "prediction": "Patients with UGT1A1*6 AA genotype switched to paclitaxel due to severe adverse events."
+                },
+                "Characteristics Type": {
+                  "ground_truth": "Study Cohort",
+                  "prediction": "Study Cohort"
+                },
+                "Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Cases": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Allele of Frequency in Controls": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "P Value": {
+                  "ground_truth": "= 0.136",
+                  "prediction": null
+                },
+                "Ratio Stat Type": {
+                  "ground_truth": null,
+                  "prediction": "Unknown"
+                },
+                "Ratio Stat": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Start": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Confidence Interval Stop": {
+                  "ground_truth": null,
+                  "prediction": null
+                },
+                "Biogeographical Groups": {
+                  "ground_truth": "Unknown",
+                  "prediction": "East Asian"
+                }
+              },
+              "dependency_issues": [],
+              "penalty_info": {
+                "total_penalty": 0.0,
+                "penalized_fields": {},
+                "issues_by_field": {}
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

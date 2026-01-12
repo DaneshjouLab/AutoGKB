@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import json
 from src.utils import get_pmcid_annotation
 from src.benchmark.pheno_benchmark import evaluate_phenotype_annotations
@@ -17,31 +17,49 @@ class AnnotationBenchmark:
         except Exception:
             return 1.0
 
-    def get_var_pheno_ann_score(self, var_pheno_ann: List[dict], pmcid: str):
-        # Load ground truth annotations
-        with open("persistent_data/benchmark_annotations.json", "r") as f:
-            ground_truth_data = json.load(f)
+    def get_var_pheno_ann_score(
+        self,
+        var_pheno_ann: List[dict],
+        pmcid: Optional[str] = None,
+        ground_truth_pheno_ann: Optional[List[dict]] = None,
+    ):
+        """
+        Get phenotype annotation score.
+        
+        Args:
+            var_pheno_ann: Prediction annotations
+            pmcid: PMCID for loading ground truth (for backward compatibility)
+            ground_truth_pheno_ann: Ground truth annotations (preferred, passed directly)
+        """
+        # If ground truth is provided directly, use it (preferred)
+        if ground_truth_pheno_ann is not None:
+            gt_list = ground_truth_pheno_ann
+        elif pmcid is not None:
+            # Fallback: load from file (for backward compatibility)
+            with open("persistent_data/benchmark_annotations.json", "r") as f:
+                ground_truth_data = json.load(f)
 
-        # Get ground truth for this PMCID
-        if pmcid not in ground_truth_data:
-            return 0.0
+            if pmcid not in ground_truth_data:
+                return 0.0
 
-        ground_truth_pheno_ann = ground_truth_data[pmcid].get("var_pheno_ann", [])
+            gt_list = ground_truth_data[pmcid].get("var_pheno_ann", [])
+        else:
+            raise ValueError(
+                "Either ground_truth_pheno_ann or pmcid must be provided"
+            )
 
         # If both are empty, perfect score
-        if not var_pheno_ann and not ground_truth_pheno_ann:
+        if not var_pheno_ann and not gt_list:
             return 1.0
 
         # If one is empty but not the other, score is 0
-        if not var_pheno_ann or not ground_truth_pheno_ann:
+        if not var_pheno_ann or not gt_list:
             return 0.0
 
         # Compare: [ground_truth, prediction]
         try:
-            score = evaluate_phenotype_annotations(
-                [ground_truth_pheno_ann, var_pheno_ann]
-            )
-            return score / 100.0
+            result = evaluate_phenotype_annotations([gt_list, var_pheno_ann])
+            return float(result.get("overall_score", 0.0))
         except Exception:
             return 0.0
 
